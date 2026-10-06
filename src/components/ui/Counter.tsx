@@ -8,7 +8,8 @@ export function Counter({ to, prefix = '', suffix = '', duration = 2 }: { to: nu
   const ref = useRef<HTMLSpanElement>(null)
   const inView = useInView(ref, { once: true, margin: '0px 0px -15% 0px' })
   const reduce = useReducedMotion()
-  const [value, setValue] = useState(reduce ? to : 0)
+  // começa no valor final (HTML pré-renderizado / sem JS); a contagem reinicia em 0 ao entrar na tela
+  const [value, setValue] = useState(to)
 
   useEffect(() => {
     if (!inView || reduce) return

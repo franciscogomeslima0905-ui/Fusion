@@ -12,11 +12,11 @@ import { SectionLabel } from '../components/ui/SectionLabel'
 const HOURS_24 = Array.from({ length: 24 }, (_, h) => h)
 
 export function Hours() {
-  const now = useMemo(() => nowInGym(), [])
-  const todayGroup = groupForDay(now.day)
+  const now = useMemo(() => (typeof window === 'undefined' ? null : nowInGym()), [])
+  const todayGroup = now ? groupForDay(now.day) : hours[0]
   const [active, setActive] = useState(todayGroup.id)
   const group = hours.find((g) => g.id === active) ?? hours[0]
-  const isToday = group.id === todayGroup.id
+  const isToday = !!now && group.id === todayGroup.id
 
   const isOpenAt = (h: number) => group.ranges.some((r) => h * 60 >= toMinutes(r.open) && h * 60 < toMinutes(r.close))
   const totalHours = group.ranges.reduce((acc, r) => acc + (toMinutes(r.close) - toMinutes(r.open)) / 60, 0)
@@ -101,7 +101,7 @@ export function Hours() {
             <div className="mt-8 flex h-40 items-end gap-[3px] sm:h-48 sm:gap-1" aria-hidden>
               {HOURS_24.map((h) => {
                 const open = isOpenAt(h)
-                const current = isToday && h === Math.floor(now.minutes / 60)
+                const current = isToday && !!now && h === Math.floor(now.minutes / 60)
                 return (
                   <div key={h} className="relative flex h-full flex-1 flex-col justify-end">
                     {current && (

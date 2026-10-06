@@ -122,3 +122,14 @@
   scrollbar-width: none;
   &::-webkit-scrollbar { display: none; }
 }
+
+/* HTML pré-renderizado sem JavaScript: os estados iniciais das animações (opacity 0,
+   deslocamentos, blur) ficariam congelados — então são neutralizados até o app montar. */
+html:not(.js-ready) #static [style] {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+}
+html:not(.js-ready) #static [style*='blur('] {
+  filter: none !important;
+}
