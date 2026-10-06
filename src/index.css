@@ -1,0 +1,124 @@
+@import '@fontsource-variable/archivo/wdth.css';
+@import '@fontsource-variable/archivo/wdth-italic.css';
+@import '@fontsource/jetbrains-mono/latin-400.css';
+@import '@fontsource/jetbrains-mono/latin-500.css';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Paleta Fusion Gym: preto profundo, grafites e vermelho do logo */
+  --color-ink: #050506;
+  --color-coal: #0c0c0e;
+  --color-carbon: #141417;
+  --color-graphite: #1d1d21;
+  --color-steel: #8b8d93;
+  --color-mist: #c7c8cc;
+  --color-bone: #f2f2f0;
+  --color-fusion: #e3131b;
+  --color-fusion-deep: #a30d13;
+  --color-fusion-glow: #ff2a33;
+
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-marquee-rev: marquee 44s linear infinite reverse;
+  --animate-pulse-red: pulse-red 2.4s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes pulse-red {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+  }
+}
+
+@layer base {
+  html {
+    background: var(--color-ink);
+    color: var(--color-bone);
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background: var(--color-ink);
+    font-family: var(--font-sans);
+    font-stretch: 100%;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection {
+    background: var(--color-fusion);
+    color: white;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-fusion-glow);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+  img {
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@utility font-wide {
+  font-stretch: 125%;
+}
+@utility font-semiwide {
+  font-stretch: 112%;
+}
+
+/* Títulos display: largos, pesados e com tracking negativo, como a logo */
+@utility display {
+  font-stretch: 125%;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+@utility text-glow-red {
+  text-shadow: 0 0 24px rgb(227 19 27 / 0.55), 0 0 2px rgb(255 42 51 / 0.6);
+}
+
+/* Linha de LED vermelha, inspirada na iluminação da academia */
+@utility led-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-fusion-glow) 20%, var(--color-fusion-glow) 80%, transparent);
+  box-shadow: 0 0 12px 1px rgb(255 42 51 / 0.7), 0 0 40px 4px rgb(227 19 27 / 0.35);
+}
+
+@utility grain {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
