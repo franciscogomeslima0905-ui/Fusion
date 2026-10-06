@@ -29,3 +29,4 @@ dist-ssr
 .env.*.local
 scripts/hero-art/
 dist-single
+fusion-gym-landing-page.html
