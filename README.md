@@ -72,10 +72,12 @@ Quase tudo fica em **um único arquivo: [`src/config/site.ts`](src/config/site.t
 
 ### ⚠️ Antes de publicar, preencha
 
-- [ ] **Planos:** substitua `Plano [NOME]`, `R$ [VALOR]`, `[Descrição…]` e `[Benefício…]` pelos dados reais.
-      Remova ou ajuste o selo `badge: 'Mais escolhido'`.
-- [ ] **Depoimentos:** os textos atuais são **modelos**, e cada card exibe o selo "Exemplo".
-      Ao inserir avaliações reais (com autorização do aluno), troque o texto e defina `placeholder: false`.
+- [ ] **Planos:** os planos Mensal, Semestral e Anual estão com **preços e benefícios fictícios**
+      (provisórios, para apresentação). Substitua pelos valores reais e ajuste os selos (`badge`).
+- [ ] **Depoimentos:** as avaliações atuais são **fictícias** (provisórias). Antes de publicar, troque por
+      avaliações reais de alunos, com autorização — divulgar avaliações inventadas como reais é propaganda
+      enganosa. Itens fictícios estão marcados com `placeholder: true`; ligue `showPlaceholderBadge`
+      para exibir o selo "Exemplo" nos cards.
 - [ ] **Domínio:** troque `https://fusiongym.com.br` em `site.url` e nas meta tags de `index.html`
       (canonical, Open Graph e dados estruturados).
 - [ ] **Coordenadas do mapa:** confira `site.address.fallbackCoords` (usadas só se a Geocoding API não responder).

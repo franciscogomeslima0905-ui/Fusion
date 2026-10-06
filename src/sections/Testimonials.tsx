@@ -1,6 +1,6 @@
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useEffect, useState } from 'react'
-import { testimonials } from '../config/site'
+import { showPlaceholderBadge, testimonials } from '../config/site'
 import { ChevronIcon, StarIcon } from '../components/ui/Icons'
 import { Reveal, SplitLines } from '../components/ui/Reveal'
 import { SectionLabel } from '../components/ui/SectionLabel'
@@ -83,7 +83,7 @@ export function Testimonials() {
                   {Array.from({ length: 5 }).map((_, i) => (
                     <StarIcon key={i} className={`h-5 w-5 ${i < t.rating ? '' : 'text-white/15'}`} />
                   ))}
-                  {t.placeholder && (
+                  {t.placeholder && showPlaceholderBadge && (
                     <span className="ml-3 rounded-full border border-white/15 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.18em] text-steel">Exemplo</span>
                   )}
                 </div>

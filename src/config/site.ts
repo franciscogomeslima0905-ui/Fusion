@@ -122,8 +122,9 @@ export const benefits = [
 ] as const
 
 /* ------------------------------------------------------------------ */
-/*  PLANOS — valores ainda NÃO informados.                             */
-/*  Substitua os campos entre colchetes pelos dados reais.             */
+/*  PLANOS                                                             */
+/*  ⚠️ VALORES E BENEFÍCIOS FICTÍCIOS (provisórios, para apresentação). */
+/*  Substitua pelos dados reais da academia antes de publicar.         */
 /* ------------------------------------------------------------------ */
 export type Plan = {
   id: string
@@ -138,46 +139,83 @@ export type Plan = {
 
 export const plans: Plan[] = [
   {
-    id: 'plano-1',
-    name: 'Plano [NOME]',
-    price: 'R$ [VALOR]',
+    id: 'mensal',
+    name: 'Plano Mensal',
+    price: 'R$ 149,90',
     period: '/mês',
-    description: '[Descrição curta do plano — para quem é indicado.]',
-    features: ['[Benefício 1]', '[Benefício 2]', '[Benefício 3]'],
+    description: 'Flexibilidade total para começar agora, sem fidelidade.',
+    features: ['Acesso livre à musculação e ao funcional', 'Todos os horários de funcionamento', 'Orientação da equipe no salão', 'Sem fidelidade'],
   },
   {
-    id: 'plano-2',
-    name: 'Plano [NOME]',
-    price: 'R$ [VALOR]',
+    id: 'semestral',
+    name: 'Plano Semestral',
+    price: 'R$ 129,90',
     period: '/mês',
-    description: '[Descrição curta do plano — para quem é indicado.]',
-    features: ['[Benefício 1]', '[Benefício 2]', '[Benefício 3]', '[Benefício 4]'],
+    description: 'O equilíbrio ideal entre economia e compromisso com a sua evolução.',
+    features: ['Tudo do Plano Mensal', 'Avaliação física a cada 3 meses', 'Treino personalizado e atualizado', 'Isenção da taxa de matrícula'],
     highlight: true,
-    badge: 'Mais escolhido', // ← remova ou altere se não for o caso
+    badge: 'Mais escolhido',
   },
   {
-    id: 'plano-3',
-    name: 'Plano [NOME]',
-    price: 'R$ [VALOR]',
+    id: 'anual',
+    name: 'Plano Anual',
+    price: 'R$ 109,90',
     period: '/mês',
-    description: '[Descrição curta do plano — para quem é indicado.]',
-    features: ['[Benefício 1]', '[Benefício 2]', '[Benefício 3]'],
+    description: 'O melhor custo-benefício para quem quer resultado de verdade.',
+    features: ['Tudo do Plano Semestral', 'Avaliação física a cada 2 meses', '1 mês de congelamento por ano', 'Desconto em parceiros Fusion'],
+    badge: 'Melhor custo-benefício',
   },
 ]
 
 /* ------------------------------------------------------------------ */
 /*  DEPOIMENTOS                                                        */
-/*  ATENÇÃO: os itens abaixo são MODELOS. Com `placeholder: true`, o   */
-/*  site mostra o aviso "Exemplo" no card. Ao inserir depoimentos      */
-/*  reais (com autorização do aluno), defina `placeholder: false`.     */
+/*  ⚠️ AVALIAÇÕES FICTÍCIAS (provisórias, para apresentação).          */
+/*  Antes de publicar, troque por avaliações reais de alunos (com      */
+/*  autorização) — publicar avaliações inventadas como se fossem reais */
+/*  é propaganda enganosa (Código de Defesa do Consumidor).            */
+/*  `placeholder: true` marca os itens fictícios; com `showPlaceholderBadge` */
+/*  ligado, o card exibe o selo "Exemplo".                             */
 /* ------------------------------------------------------------------ */
 export type Testimonial = { quote: string; name: string; detail: string; rating: 1 | 2 | 3 | 4 | 5; placeholder: boolean }
 
+export const showPlaceholderBadge = false
+
 export const testimonials: Testimonial[] = [
-  { quote: 'Depoimento do cliente. Substitua este texto por uma avaliação real de um aluno da Fusion Gym.', name: 'Nome do cliente', detail: 'Aluno(a) desde [ano]', rating: 5, placeholder: true },
-  { quote: 'Depoimento do cliente. Conte aqui o que o aluno mais gosta na estrutura, no atendimento ou nos resultados.', name: 'Nome do cliente', detail: 'Aluno(a) desde [ano]', rating: 5, placeholder: true },
-  { quote: 'Depoimento do cliente. Avaliações reais do Google ou do Instagram podem ser copiadas para cá, com autorização.', name: 'Nome do cliente', detail: 'Aluno(a) desde [ano]', rating: 5, placeholder: true },
-  { quote: 'Depoimento do cliente. Mantenha os textos curtos: duas ou três frases funcionam melhor no carrossel.', name: 'Nome do cliente', detail: 'Aluno(a) desde [ano]', rating: 5, placeholder: true },
+  {
+    quote: 'Melhor academia que já treinei em Tramandaí. Equipamentos novos, ambiente climatizado e uma iluminação que dá vontade de treinar todos os dias.',
+    name: 'Camila Rodrigues',
+    detail: 'Aluna há 1 ano',
+    rating: 5,
+    placeholder: true,
+  },
+  {
+    quote: 'Treino às 5h antes do trabalho e a academia sempre está impecável. A equipe corrige a execução e acompanha a evolução de perto.',
+    name: 'Rafael Martins',
+    detail: 'Aluno há 2 anos',
+    rating: 5,
+    placeholder: true,
+  },
+  {
+    quote: 'Comecei do zero e me senti acolhida desde o primeiro dia. Em seis meses perdi 9 kg e ganhei muita disposição.',
+    name: 'Juliana Souza',
+    detail: 'Aluna há 8 meses',
+    rating: 5,
+    placeholder: true,
+  },
+  {
+    quote: 'As máquinas articuladas fazem toda a diferença no treino de pernas. Estrutura de cidade grande aqui no litoral. Recomendo demais!',
+    name: 'Diego Almeida',
+    detail: 'Aluno há 1 ano e meio',
+    rating: 5,
+    placeholder: true,
+  },
+  {
+    quote: 'Ambiente top, música boa e horários que cabem na rotina — inclusive no fim de semana. Virou meu lugar favorito da cidade.',
+    name: 'Fernanda Lima',
+    detail: 'Aluna há 6 meses',
+    rating: 5,
+    placeholder: true,
+  },
 ]
 
 /* ------------------------------------------------------------------ */
