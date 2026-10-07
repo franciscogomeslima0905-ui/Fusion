@@ -18,6 +18,10 @@ import mafioso from '../assets/photos/burger-mafioso.webp'
 import prime from '../assets/photos/burger-prime.webp'
 import domCorleone from '../assets/photos/burger-dom-corleone.webp'
 import vivaLasVegas from '../assets/photos/burger-viva-las-vegas.webp'
+import classicoCasa from '../assets/photos/burger-classico-casa.webp'
+import missOnion from '../assets/photos/burger-miss-onion.webp'
+import gouda from '../assets/photos/burger-gouda.webp'
+import creamChicken from '../assets/photos/burger-cream-chicken.webp'
 import mrBrown from '../assets/photos/burger-mr-brown.webp'
 
 // Nomes, descrições e preços: cardápio oficial (aquele-hamburguer.deliverify.com.br), seção "Novidades".
@@ -185,6 +189,42 @@ export const products: Product[] = [
     price: 'R$ 38',
     image: vivaLasVegas,
     alt: 'Aquele Viva Las Vegas: hambúrguer com provolone, doce de leite, bacon e geleia de pimenta',
+    focus: '50% 50%',
+  },
+  {
+    id: 'classico-da-casa',
+    title: 'Aquele Clássico',
+    description: 'Pão salgado amanteigado, maionese defumada, hambúrguer 150 gramas, queijo mussarela, alface e tomate. Acompanha fritas.',
+    price: 'R$ 32',
+    image: classicoCasa,
+    alt: 'Aquele Clássico: hambúrguer com cheddar, alface e tomate no pão salgado',
+    focus: '50% 50%',
+  },
+  {
+    id: 'miss-onion',
+    title: 'Aquele Miss Onion',
+    description: 'Pão australiano, rúcula, hambúrguer 150g, queijo cheddar, queijo mussarela, bacon, cebola caramelizada e maionese especial. Acompanha fritas.',
+    price: 'R$ 39',
+    image: missOnion,
+    alt: 'Aquele Miss Onion: hambúrguer no pão australiano com bacon e cebola caramelizada',
+    focus: '50% 50%',
+  },
+  {
+    id: 'gouda',
+    title: 'Aquele Gouda',
+    description: 'Pão brioche, maionese especial, rúcula, hambúrguer 150g, queijo cheddar, queijo gouda empanado e molho de mostarda e mel.',
+    price: 'R$ 42',
+    image: gouda,
+    alt: 'Aquele Gouda: hambúrguer com cheddar, queijo gouda empanado e molho de mostarda e mel',
+    focus: '50% 50%',
+  },
+  {
+    id: 'cream-chicken',
+    title: 'Aquele Cream Chicken Burguer',
+    description: 'Pão brioche, maionese caseira especial, rúcula, hambúrguer de frango à milanesa, cream cheese e geleia de pimenta de frutas vermelhas.',
+    price: 'R$ 36',
+    image: creamChicken,
+    alt: 'Aquele Cream Chicken Burguer: frango à milanesa com cream cheese e rúcula no pão brioche',
     focus: '50% 50%',
   },
 ]
