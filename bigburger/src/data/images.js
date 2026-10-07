@@ -5,7 +5,7 @@ export const img = {
   logo: 'images/branding/logo.webp',
   xis: { src: 'images/products/xis-big-burger.webp', w: 618, h: 432, alt: 'Xis do Big Burger servido com pote de molho' },
   combo: { src: 'images/products/combo-lanche-refri.webp', w: 783, h: 969, alt: 'Lanche da Big Burger com Coca-Cola' },
-  porcao: { src: 'images/products/porcao-frango.webp', w: 780, h: 1044, alt: 'Porção de frango crocante com batata frita e molho' },
+  porcao: { src: 'images/products/porcao-frango-hd.webp', w: 541, h: 721, alt: 'Porção de frango crocante com batata frita e molho' },
   prato: { src: 'images/products/prato-ala-minuta.webp', w: 783, h: 1041, alt: 'Prato com bife, ovo, batata frita, arroz e feijão' },
   chapa: { src: 'images/products/chapa.webp', w: 546, h: 798, alt: 'Carne e cebola na chapa da Big Burger' },
   almoco: { src: 'images/gallery/almoco-ala-minuta.webp', w: 645, h: 645, alt: 'Ala minuta com arroz, feijão, batata frita e salada' },
@@ -35,4 +35,7 @@ export const img = {
   alaMilanesa: { src: 'images/menu/ala-milanesa.webp', w: 560, h: 700, alt: 'À la minuta de carne à milanesa com ovo, arroz, feijão, batata frita e salada' },
   alaParmegiana: { src: 'images/menu/ala-parmegiana.webp', w: 560, h: 700, alt: 'À la minuta de carne à parmegiana com ovo, arroz, batata frita e salada' },
   alaFrango: { src: 'images/menu/ala-frango.webp', w: 560, h: 700, alt: 'À la minuta de frango com ovo, arroz, feijão, batata frita e salada' },
+  // Fotos do Instagram oficial (@big_burgertramandai) em resolução maior.
+  pratoQuarta: { src: 'images/gallery/prato-do-dia-quarta.webp', w: 721, h: 721, alt: 'Prato do dia: filé de frango à milanesa com molho branco, massa, arroz e salada' },
+  pratoSegunda: { src: 'images/gallery/prato-do-dia-segunda.webp', w: 721, h: 721, alt: 'Prato do dia: frango à xadrez com massa ao molho quatro queijos, arroz e salada' },
 }

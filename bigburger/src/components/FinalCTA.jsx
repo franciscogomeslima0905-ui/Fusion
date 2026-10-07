@@ -15,7 +15,7 @@ export default function FinalCTA() {
       <motion.img
         data-rm-static
         aria-hidden
-        src={img.xis.src}
+        src={img.bigFrango.src}
         alt=""
         loading="lazy"
         style={{ y: bgY, scale }}

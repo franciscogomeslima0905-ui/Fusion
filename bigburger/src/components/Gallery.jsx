@@ -30,11 +30,11 @@ export default function Gallery() {
         <h2 className="display mb-12 text-[20vw] sm:text-[10vw]">Da casa</h2>
         <div className="grid grid-cols-12 gap-3 sm:gap-5">
           <Tile src={img.porcao} speed={6} className="col-span-7 aspect-[3/4] sm:col-span-5" />
-          <Tile src={img.xis} speed={8} pos="40% 50%" className="col-span-5 mt-16 aspect-[3/4] sm:col-span-4 sm:mt-28 sm:aspect-[4/5]" />
-          <Tile src={img.chapa} speed={5} className="col-span-12 aspect-[16/9] sm:col-span-3 sm:mt-10 sm:aspect-[3/5]" />
-          <Tile src={img.almoco} speed={7} className="col-span-5 aspect-square sm:col-span-4 sm:-mt-10" />
-          <Tile src={img.combo} speed={6} className="col-span-7 aspect-[4/5] sm:col-span-4" />
-          <Tile src={img.prato} speed={8} pos="50% 30%" className="col-span-12 aspect-[16/9] sm:col-span-4 sm:mt-14 sm:aspect-[4/5]" />
+          <Tile src={img.bigBacon} speed={8} className="col-span-5 mt-16 aspect-[3/4] sm:col-span-4 sm:mt-28 sm:aspect-[4/5]" />
+          <Tile src={img.pratoSegunda} speed={5} className="col-span-12 aspect-[16/9] sm:col-span-3 sm:mt-10 sm:aspect-[3/5]" />
+          <Tile src={img.alaParmegiana} speed={7} className="col-span-5 aspect-square sm:col-span-4 sm:-mt-10" />
+          <Tile src={img.bigFrango} speed={6} className="col-span-7 aspect-[4/5] sm:col-span-4" />
+          <Tile src={img.pratoQuarta} speed={8} className="col-span-12 aspect-[16/9] sm:col-span-4 sm:mt-14 sm:aspect-[4/5]" />
         </div>
       </div>
     </section>

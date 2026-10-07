@@ -29,7 +29,7 @@ function Stage({ p }) {
         style={{ clipPath: clip }}
         className="absolute left-1/2 top-1/2 z-10 aspect-square h-[78svh] max-h-[92vw] -translate-x-1/2 -translate-y-1/2 sm:max-h-none"
       >
-        <motion.img src={img.almoco.src} alt={img.almoco.alt} loading="lazy" style={{ scale }} className="photo-grade h-full w-full object-cover" />
+        <motion.img src={img.alaCarne.src} alt={img.alaCarne.alt} loading="lazy" style={{ scale }} className="photo-grade h-full w-full object-cover" />
       </motion.div>
       <Beat p={p} range={[0.7, 1.2]} hold className="absolute bottom-[6svh] inset-x-5 z-30 flex flex-col items-start justify-between gap-3 sm:inset-x-12 sm:flex-row sm:items-end">
         <div>

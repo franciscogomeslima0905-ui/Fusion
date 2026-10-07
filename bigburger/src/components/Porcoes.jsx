@@ -28,8 +28,8 @@ function Stage({ p }) {
       <motion.div data-rm-static style={{ y: bigY, scale: bigScale }} className="absolute left-[6vw] top-[14svh] z-10 aspect-[780/1044] h-[62svh] sm:left-[12vw] sm:h-[78svh]">
         <img src={img.porcao.src} alt={img.porcao.alt} loading="lazy" className="photo-grade h-full w-full object-cover" />
       </motion.div>
-      <motion.div data-rm-static style={{ y: smallY }} className="absolute right-[6vw] top-[26svh] z-20 aspect-[783/1041] h-[34svh] sm:right-[14vw] sm:h-[48svh]">
-        <img src={img.prato.src} alt={img.prato.alt} loading="lazy" className="photo-grade h-full w-full object-cover" />
+      <motion.div data-rm-static style={{ y: smallY }} className="absolute right-[6vw] top-[26svh] z-20 aspect-square h-[30svh] sm:right-[14vw] sm:h-[44svh]">
+        <img src={img.pratoSegunda.src} alt={img.pratoSegunda.alt} loading="lazy" className="photo-grade h-full w-full object-cover" />
       </motion.div>
 
       <Beat p={p} range={[0.05, 0.6]} className="absolute bottom-[7svh] right-5 z-30 max-w-[15rem] sm:right-12 sm:max-w-xs">

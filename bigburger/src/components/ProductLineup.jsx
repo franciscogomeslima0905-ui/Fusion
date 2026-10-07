@@ -5,10 +5,10 @@ import { img } from '../data/images'
 import { orderLink } from '../utils/whatsapp'
 
 const items = [
-  { n: '01', name: 'Xis do Big Burger', line: 'Sempre a melhor escolha.', image: img.xis, order: 'o Xis do Big Burger' },
-  { n: '02', name: 'Lanche e refri', line: 'Lanche na bandeja, refrigerante gelado.', image: img.combo, order: 'um lanche com refrigerante' },
+  { n: '01', name: 'Xis Big Frango', line: 'A partir de R$ 33,00', image: img.bigFrango, order: 'o Xis Big Frango' },
+  { n: '02', name: 'Giants Bacon', line: 'A partir de R$ 29,90', image: img.burgerBacon, order: 'o Giants Bacon' },
   { n: '03', name: 'Porção de frango', line: 'Frango crocante, batata frita e molho.', image: img.porcao, order: 'a Porção de frango' },
-  { n: '04', name: 'Prato caseiro', line: 'Bife, ovo, batata frita, arroz e feijão.', image: img.prato, order: 'o Prato com bife e ovo' },
+  { n: '04', name: 'À la Minuta Parmegiana', line: 'R$ 45,00', image: img.alaParmegiana, order: 'a À la Minuta Carne Parmegiana' },
 ]
 
 export default function ProductLineup() {

@@ -40,8 +40,8 @@ function Stage({ p }) {
         className="absolute right-[6vw] top-[24svh] z-10 h-[34svh] w-[78vw] overflow-hidden sm:right-[8vw] sm:top-[18svh] sm:h-[64svh] sm:w-[46vw]"
       >
         <motion.img
-          src={img.xis.src}
-          alt={img.xis.alt}
+          src={img.bigFrango.src}
+          alt={img.bigFrango.alt}
           loading="lazy"
           style={{ scale, objectPosition }}
           className="photo-grade h-full w-full object-cover"
