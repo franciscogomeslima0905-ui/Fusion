@@ -15,4 +15,9 @@ export const img = {
   burgerBacon: { src: '/images/menu/burger-bacon.webp', w: 560, h: 420, alt: 'Hambúrguer com bacon, queijo e molho' },
   burgerPicles: { src: '/images/menu/burger-picles.webp', w: 600, h: 548, alt: 'Hambúrguer com queijo, picles e alface' },
   lancheFrango: { src: '/images/menu/lanche-frango.webp', w: 700, h: 525, alt: 'Sanduíche de frango empanado com queijo, tomate e alface' },
+  // Fotos das Marmitas — cardápio digital oficial.
+  marmitaIscas: { src: '/images/menu/marmita-iscas.webp', w: 700, h: 497, alt: 'Marmita com iscas de frango grelhadas, batata frita, arroz e feijão' },
+  marmitaMilanesa: { src: '/images/menu/marmita-milanesa.webp', w: 700, h: 467, alt: 'Marmita com filé de frango à milanesa, batata frita e arroz' },
+  marmitaStrogonoff: { src: '/images/menu/marmita-strogonoff.webp', w: 700, h: 673, alt: 'Marmita de strogonoff de frango com batata palha' },
+  marmitaCalabresa: { src: '/images/menu/marmita-calabresa.webp', w: 467, h: 700, alt: 'Marmita com calabresa acebolada, arroz e batata frita' },
 }
