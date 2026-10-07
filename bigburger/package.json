@@ -9,7 +9,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "start": "node server/server.js",
-    "images": "node scripts/optimize-images.mjs"
+    "images": "node scripts/optimize-images.mjs",
+    "build:single": "vite build --config vite.single.config.js && node scripts/inline-images.mjs"
   },
   "engines": {
     "node": ">=20"
@@ -19,7 +20,8 @@
     "@vitejs/plugin-react": "^6.1.2",
     "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3",
-    "vite": "^8.3.3"
+    "vite": "^8.3.3",
+    "vite-plugin-singlefile": "^2.3.3"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.3.0",

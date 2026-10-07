@@ -4,3 +4,5 @@ dist
 .env.local
 *.log
 big-burger-landing.zip
+dist-single
+big-burger-landing.html

@@ -9,6 +9,7 @@ npm install
 npm run dev        # http://localhost:5173
 npm run build      # gera dist/
 npm start          # serve dist/ (PORT=3000)
+npm run build:single   # arquivo único dist-single/index.html (fotos, fontes e código embutidos; abre com duplo clique)
 ```
 
 ## Google Maps
