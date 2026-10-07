@@ -16,7 +16,7 @@ export default function MenuItem({ item }) {
         )}
       </div>
       <div className="mt-3 flex items-baseline justify-between gap-4">
-        <h3 className="display text-2xl sm:text-3xl">{item.name}</h3>
+        <h3 className="display text-2xl leading-[.95] sm:text-3xl">{item.name}</h3>
         {item.price != null && (
           <p className="display shrink-0 text-right text-2xl text-gold">
             {item.from && <span className="mono block text-[.6rem] text-ash">a partir de</span>}
@@ -24,7 +24,7 @@ export default function MenuItem({ item }) {
           </p>
         )}
       </div>
-      {item.description && <p className="mt-1 text-sm text-ash">{item.description}</p>}
+      {item.description && <p className="mt-2 text-sm text-ash">{item.description}</p>}
       <a
         href={orderLink(item.order)}
         target="_blank"

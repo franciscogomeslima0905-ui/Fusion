@@ -1,10 +1,15 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
-import { menu } from '../data/menu'
+import { menu as fullMenu } from '../data/menu'
 import { restaurant } from '../data/restaurant'
 import MenuItem from './MenuItem'
 import Button from './Button'
 import { Chapter } from './StoryScene'
+
+// Só mostramos itens com foto; categorias sem nenhuma foto somem das abas.
+const menu = fullMenu
+  .map((c) => ({ ...c, items: c.items.filter((i) => i.image) }))
+  .filter((c) => c.items.length)
 
 export default function Menu() {
   const [active, setActive] = useState(menu[0].id)

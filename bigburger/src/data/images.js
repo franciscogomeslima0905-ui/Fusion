@@ -30,4 +30,9 @@ export const img = {
   miniFrango: { src: '/images/menu/mini-frango.webp', w: 600, h: 548, alt: 'Xis mini com frango desfiado' },
   miniCarne: { src: '/images/menu/mini-carne.webp', w: 700, h: 525, alt: 'Xis mini com hambúrguer, ovo, presunto e queijo' },
   miniCoracao: { src: '/images/menu/mini-coracao.webp', w: 600, h: 548, alt: 'Xis mini com coração chapeado' },
+  // Fotos das À La Minutas — cardápio digital oficial.
+  alaCarne: { src: '/images/menu/ala-carne.webp', w: 560, h: 700, alt: 'À la minuta de carne com ovo, arroz, feijão, batata frita e salada' },
+  alaMilanesa: { src: '/images/menu/ala-milanesa.webp', w: 560, h: 700, alt: 'À la minuta de carne à milanesa com ovo, arroz, feijão, batata frita e salada' },
+  alaParmegiana: { src: '/images/menu/ala-parmegiana.webp', w: 560, h: 700, alt: 'À la minuta de carne à parmegiana com ovo, arroz, batata frita e salada' },
+  alaFrango: { src: '/images/menu/ala-frango.webp', w: 560, h: 700, alt: 'À la minuta de frango com ovo, arroz, feijão, batata frita e salada' },
 }

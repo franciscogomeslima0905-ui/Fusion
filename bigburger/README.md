@@ -29,6 +29,10 @@ Por isso **não foi possível baixar as fotos em alta nem o cardápio completo**
 2. Aponte os arquivos em `src/data/images.js` e adicione itens/preços em `src/data/menu.js`.
 3. Atualize o `canonical`/`og:url` em `index.html` com o domínio definitivo (hoje é um placeholder).
 
+## Cardápio
+O site mostra apenas itens **com foto**; categorias sem foto (Combos, Bebidas…) ficam ocultas. Para exibir um item, dê a ele um `image` em `src/data/menu.js`.
+Categorias já cadastradas do cardápio oficial: Hambúrgueres, Marmitas, Big Xis, Xis Big Mini, À La Minutas (+ Porções do Instagram).
+
 ## Estrutura
 `src/components` (Hero, OXis, NaChapa, Numbers, ProductLineup, Porcoes, AlaMinuta, Menu, Gallery, Location, GoogleMap, FinalCTA…),
 `src/data` (restaurant, menu, images), `src/utils/whatsapp.js`, `server/server.js`.

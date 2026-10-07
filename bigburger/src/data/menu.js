@@ -51,18 +51,21 @@ export const menu = [
     ],
   },
   {
+    id: 'ala-minutas',
+    name: 'À La Minutas',
+    items: [
+      { name: 'À la Minuta Carne', description: 'Bife de gado, ovo, arroz, feijão, batata frita e salada.', price: 35, image: img.alaCarne, order: 'a À la Minuta Carne' },
+      { name: 'À la Minuta Carne à Milanesa', description: 'Bife de gado milanesa, ovo, arroz, feijão, batata frita e salada.', price: 38, image: img.alaMilanesa, order: 'a À la Minuta Carne à Milanesa' },
+      { name: 'Ála Strogonoff de Frango', description: null, price: 37, image: null, order: 'a Ála Strogonoff de Frango' },
+      { name: 'À la Minuta Carne Parmegiana', description: 'Bife de gado parmegiana, ovo, arroz, feijão, batata frita e salada.', price: 45, image: img.alaParmegiana, order: 'a À la Minuta Carne Parmegiana' },
+      { name: 'À la Minuta de Frango', description: 'Bife de frango, ovo, arroz, feijão, batata frita e salada.', price: 30, image: img.alaFrango, order: 'a À la Minuta de Frango' },
+    ],
+  },
+  {
     id: 'porcoes',
     name: 'Porções',
     items: [
       { name: 'Porção de frango', description: 'Frango crocante com batata frita e molho.', price: null, image: img.porcao, order: 'a Porção de frango' },
-    ],
-  },
-  {
-    id: 'pratos',
-    name: 'Pratos',
-    items: [
-      { name: 'Ala minuta', description: 'Comida caseira: arroz, feijão, batata frita e salada.', price: null, image: img.almoco, order: 'a Ala minuta' },
-      { name: 'Prato com bife e ovo', description: 'Bife, ovo, batata frita, arroz e feijão.', price: null, image: img.prato, order: 'o Prato com bife e ovo' },
     ],
   },
   {
