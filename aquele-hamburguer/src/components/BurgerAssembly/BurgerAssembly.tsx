@@ -3,7 +3,7 @@ import { ArrowDown, MessageCircle } from 'lucide-react'
 import { gsap, isLowPower } from '../../lib/gsap'
 import { SITE, whatsappUrl } from '../../lib/links'
 import { useMouseParallax } from '../../hooks/useMouseParallax'
-import { ASSEMBLED_H, layers, usingPlaceholders } from './layers'
+import { ASSEMBLED_H, explodedOffset, layers } from './layers'
 
 /*
  * BurgerAssembly — a assinatura do site.
@@ -28,18 +28,19 @@ const WORDS = [
   { text: 'Pão.', side: 'r', in: 6.7, out: 8.1 },
 ] as const
 
-// Movimentos secundários sutis por camada (início → fim = 0)
-const secondary: Record<string, { x: number; r: number; s: number; rx: number; z: number; blur: number; start: number; dur: number }> = {
-  'bottom-bun': { x: -14, r: 2.5, s: 1.06, rx: -10, z: -30, blur: 2.4, start: 0.8, dur: 2.6 },
-  'sauce-bottom': { x: 38, r: -3, s: 1.04, rx: 6, z: -10, blur: 0, start: 1.2, dur: 2.6 },
-  beef: { x: -22, r: 2, s: 1.05, rx: -6, z: 0, blur: 3, start: 1.6, dur: 2.8 },
-  cheese: { x: -30, r: -4, s: 1.03, rx: 8, z: 18, blur: 0, start: 2.2, dur: 2.6 },
-  lettuce: { x: 34, r: 5, s: 1.04, rx: 14, z: 30, blur: 0, start: 2.7, dur: 2.6 },
-  tomato: { x: -46, r: -6, s: 1.03, rx: 10, z: 40, blur: 0, start: 3.0, dur: 2.6 },
-  onion: { x: 52, r: 9, s: 1.05, rx: 12, z: 52, blur: 0, start: 3.4, dur: 2.6 },
-  'sauce-top': { x: -34, r: 4, s: 1.03, rx: 8, z: 64, blur: 0, start: 3.7, dur: 2.7 },
-  'top-bun': { x: 28, r: -8, s: 1.08, rx: 16, z: 90, blur: 2, start: 4.0, dur: 3.2 },
-}
+// Movimentos secundários sutis por camada (início → fim = 0). `k` = posição a partir da base (0 = pão inferior).
+// Valores alternam de lado/rotação para a convergência parecer orgânica, nunca mecânica.
+const SEC_X = [-14, -22, -30, 34, -46, 52, -34, 28]
+const SEC_R = [2.5, 2, -4, 5, -6, 9, 4, -8]
+const SEC_S = [1.06, 1.05, 1.03, 1.04, 1.03, 1.05, 1.03, 1.08]
+const SEC_RX = [-10, -6, 8, 14, 10, 12, 8, 16]
+const SEC_Z = [-30, 0, 18, 30, 40, 52, 64, 90]
+const SEC_BLUR: Record<string, number> = { 'bottom-bun': 2.4, beef: 3, 'top-bun': 2 }
+const secondary = (id: string, k: number, n: number) => ({
+  x: SEC_X[k % 8], r: SEC_R[k % 8], s: SEC_S[k % 8], rx: SEC_RX[k % 8], z: SEC_Z[k % 8], blur: SEC_BLUR[id] ?? 0,
+  start: 0.8 + k * (3.2 / Math.max(1, n - 1)),
+  dur: 2.6 + k * (0.6 / Math.max(1, n - 1)),
+})
 
 export default function BurgerAssembly() {
   const root = useRef<HTMLElement>(null)
@@ -53,9 +54,6 @@ export default function BurgerAssembly() {
   useLayoutEffect(() => {
     const rootEl = root.current, sceneEl = scene.current, camEl = cam.current, stageEl = stage.current
     if (!rootEl || !sceneEl || !camEl || !stageEl) return
-    if (usingPlaceholders && import.meta.env.DEV) {
-      console.info('[BurgerAssembly] Usando camadas PLACEHOLDER. Coloque as fotos reais recortadas em src/assets/burger/ (veja README).')
-    }
 
     const q = gsap.utils.selector(rootEl)
     const ctx = gsap.context(() => {
@@ -87,7 +85,7 @@ export default function BurgerAssembly() {
           const vh = () => window.innerHeight
           const vw = () => window.innerWidth
           const unit = () => stageEl.offsetWidth / 600 // px por unidade de 600
-          const spread = desktop ? 0.82 : 0.7 // vista explodida mais compacta no mobile
+          const gap = desktop ? 58 : 44 // respiro entre camadas na vista explodida (unidades de 600)
 
           // zoom inicial para a vista explodida caber na tela
           const fitScale = () => {
@@ -95,9 +93,9 @@ export default function BurgerAssembly() {
             const center = (ASSEMBLED_H / 2) * u
             let min = Infinity, max = -Infinity
             for (const l of layers) {
-              const y = (l.y + l.off * spread) * u
+              const y = (l.y + explodedOffset(l, gap)) * u
               min = Math.min(min, y + l.h * u * 0.05)
-              max = Math.max(max, y + l.h * u * 0.92)
+              max = Math.max(max, y + l.h * u * 0.95)
             }
             const top = desktop ? 112 : 96 // respiro do header
             const bottom = desktop ? 64 : 70
@@ -106,7 +104,7 @@ export default function BurgerAssembly() {
           // deslocamento vertical (px) do centro da carne em relação ao centro do palco
           const beefDy = () => {
             const b = layers.find(l => l.id === 'beef')!
-            return (b.y + b.h * 0.5 - ASSEMBLED_H / 2) * unit()
+            return (b.cy - ASSEMBLED_H / 2) * unit()
           }
 
           gsap.set(q('.reveal-line'), { yPercent: 140, y: 0, opacity: 0 })
@@ -144,12 +142,12 @@ export default function BurgerAssembly() {
           // ── camadas
           for (const l of layers) {
             const el = q(`[data-layer="${l.id}"]`)[0] as HTMLElement
-            const s = secondary[l.id]
+            const s = secondary(l.id, layers.length - 1 - l.index, layers.length)
             const lowFx = low
             tl.fromTo(
               el,
               {
-                y: () => l.off * spread * unit(),
+                y: () => explodedOffset(l, gap) * unit(),
                 x: () => s.x * unit() * (desktop ? 1 : 0.6),
                 rotation: s.r,
                 scale: s.s,
@@ -266,14 +264,19 @@ export default function BurgerAssembly() {
                 <img
                   key={l.id}
                   data-layer={l.id}
-                  data-placeholder={l.placeholder || undefined}
-                  className="bl absolute left-0 w-full select-none will-change-transform"
-                  style={{ top: `${(l.y / ASSEMBLED_H) * 100}%`, zIndex: layers.length - i, height: 'auto' }}
+                  className="bl absolute select-none will-change-transform"
+                  style={{
+                    top: `${(l.y / ASSEMBLED_H) * 100}%`,
+                    left: `${(l.x / 600) * 100}%`,
+                    width: `${(l.w / 600) * 100}%`,
+                    height: 'auto',
+                    zIndex: l.z,
+                  }}
                   src={l.src}
                   alt={i === 0 ? 'Hambúrguer artesanal do Aquele Hambúrguer, montado camada por camada' : ''}
                   role={i === 0 ? undefined : 'presentation'}
-                  width={1200}
-                  height={l.h * 2}
+                  width={Math.round(l.w * 2)}
+                  height={Math.round(l.h * 2)}
                   draggable={false}
                   decoding="async"
                   fetchPriority="high"

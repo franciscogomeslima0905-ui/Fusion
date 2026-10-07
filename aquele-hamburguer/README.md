@@ -26,24 +26,24 @@ rolar para cima desmonta (nada é disparado por `onEnter`, nem há autoplay/loop
 | 7.7 – 9 | câmera desloca o produto; entra "Aquele Hambúrguer" + botões |
 | 9 – 10 | câmera avança até a carne e escurece → marquee e próxima cena |
 
-Ajustes finos: `secondary` (timing e movimentos secundários por camada) e `WORDS` em `BurgerAssembly.tsx`;
-distâncias da vista explodida em `layers.ts` (`off`) e `spread` (desktop/mobile) no componente.
+Ajustes finos: `secondary` e arrays `SEC_*` (timing e movimentos secundários por camada) e `WORDS` em `BurgerAssembly.tsx`;
+espaçamento da vista explodida em `gap` (desktop/mobile) no componente.
 Mouse (desktop): leve inclinação 3D via `useMouseParallax`. `prefers-reduced-motion`: hambúrguer montado, sem pin.
 Aparelhos fracos (`isLowPower` em `src/lib/gsap.ts`): sem blur/3D secundário, a montagem é preservada.
 
-### ⚠️ Camadas reais do hambúrguer (pendente)
+### Camadas do hambúrguer (fotografia real fatiada)
 
-As 9 camadas atuais são **PLACEHOLDERS** em ilustração vetorial (`src/assets/burger/placeholder/`, geradas por
-`node scripts/generate-placeholder-layers.mjs`). Não foi possível recortar ingredientes das fotos de baixa resolução
-com qualidade, e o cardápio/Instagram não puderam ser acessados no ambiente de desenvolvimento.
+As 8 camadas em `src/assets/burger/*.webp` (pão superior, molho, alface, cebola, tomate, queijo, carne, pão inferior) foram
+**recortadas de uma fotografia de hambúrguer real** (`scripts/slice-burger/source-burger.webp`): remoção de fundo (rembg),
+separação por cor/posição, e preenchimento das partes ocultas de cada camada para que ela possa se afastar das outras.
+`manifest.json` guarda posição/tamanho/ordem de cada camada e é lido por `layers.ts`.
 
-Para usar **fotos reais**, coloque WebP/PNG **recortados com fundo transparente** em `src/assets/burger/` com estes nomes
-(eles passam a ter prioridade automática):
-
-`top-bun`, `sauce-top`, `onion`, `tomato`, `lettuce`, `cheese`, `beef`, `sauce-bottom`, `bottom-bun`
-
-Cada arquivo deve ter a largura total do hambúrguer (≈1200 px). Se a proporção diferir dos placeholders, ajuste `y`/`h`
-em `layers.ts` (unidades de uma tela de 600 px de largura). Ideal: fotografar e recortar o hambúrguer desmontado, camada por camada.
+Limitações: a foto de origem tem 736 px de largura (as camadas são ampliadas 1,8×) e as partes escondidas de cada
+ingrediente são reconstruídas por preenchimento, então a vista explodida é convincente mas não é uma sessão de fotos
+camada por camada. **O ideal** é fotografar o hambúrguer desmontado e recortar cada ingrediente: substitua os WebP
+(mesmos nomes, fundo transparente) e ajuste `x/y/w/h/z` no `manifest.json`. Para regenerar a partir de outra foto:
+`scripts/slice-burger/` (1_mask → 2_segment → 3_extract; requer Python com rembg, opencv-python-headless, scipy e
+ajuste das faixas de cor/altura em `2_segment.py`).
 
 ## Onde editar
 
