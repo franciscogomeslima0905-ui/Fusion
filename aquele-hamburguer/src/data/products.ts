@@ -3,16 +3,21 @@ import onionRings from '../assets/photos/burger-onion-rings.webp'
 import molhoCremoso from '../assets/photos/burger-molho-cremoso.webp'
 import classico from '../assets/photos/burger-classico.webp'
 import capa from '../assets/photos/burger-capa.webp'
+import mrWhite from '../assets/photos/burger-mr-white.webp'
+import provoleta from '../assets/photos/burger-provoleta.webp'
+import gorgonzola from '../assets/photos/burger-gorgonzola.webp'
+import caudillho from '../assets/photos/burger-caudillho.webp'
 
-// Fotos REAIS recortadas das publicações do Instagram @aquelehamburguer.rs (resolução baixa).
-// Substitua por fotos originais em alta em src/assets/photos/ mantendo (ou ajustando) estes imports.
-// Nomes e preços: só use o que estiver confirmado no cardápio oficial — por isso aqui os títulos são
-// descritivos e NÃO há preços. Troque pelos nomes exatos do cardápio quando quiser.
+// Nomes, descrições e preços: cardápio oficial (aquele-hamburguer.deliverify.com.br), seção "Novidades".
+// Confira os preços antes de publicar — eles mudam no cardápio e aqui são texto fixo.
+// Fotos: arquivos enviados pelo estabelecimento (src/assets/photos/). A foto 'mr-white' e 'provoleta'
+// tiveram o canto inferior cortado para remover uma marca d'água de ferramenta de imagem.
 
 export interface Product {
   id: string
   title: string
   description: string
+  price: string
   image: string
   alt: string
   /** posição do recorte (object-position) para enquadrar o hambúrguer */
@@ -21,44 +26,51 @@ export interface Product {
 
 export const products: Product[] = [
   {
-    id: 'cheddar-bacon',
-    title: 'Cheddar derretido e bacon',
-    description: 'Pão macio e brilhante, carne bem selada, cheddar escorrendo e bacon por cima.',
-    image: cheddarBacon,
-    alt: 'Hambúrguer artesanal com cheddar derretido e bacon sobre uma tábua de madeira',
-    focus: '50% 60%',
+    id: 'mr-white',
+    title: 'Aquele Mr. White',
+    description: 'Pão brioche, maionese especial, hambúrguer 150g, queijo cheddar, cebola caramelizada, bacon e barbecue. Acompanha fritas.',
+    price: 'R$ 39',
+    image: mrWhite,
+    alt: 'Aquele Mr. White: hambúrguer com cheddar, bacon, cebola caramelizada e barbecue',
+    focus: '50% 55%',
   },
   {
-    id: 'onion-rings',
-    title: 'Com onion rings crocantes',
-    description: 'Cheddar, folhas verdes e anéis de cebola empanados empilhados no topo da carne.',
-    image: onionRings,
-    alt: 'Hambúrguer artesanal com onion rings, cheddar e alface',
-    focus: '60% 55%',
+    id: 'provoleta-argentina',
+    title: 'Aquele Provoleta Argentina',
+    description: 'Pão brioche, rúcula, maionese especial, hambúrguer 150g, provolone, geleia de frutas rojas com pimenta e bacon.',
+    price: 'R$ 43',
+    image: provoleta,
+    alt: 'Aquele Provoleta Argentina: hambúrguer com provolone derretido, rúcula e geleia de frutas vermelhas',
+    focus: '50% 52%',
   },
   {
-    id: 'classico',
-    title: 'O clássico da casa',
-    description: 'Carne, queijo, tomate, cebola roxa, picles e alface fresca no pão de brioche.',
-    image: classico,
-    alt: 'Hambúrguer artesanal com queijo, tomate, cebola roxa, picles e alface',
-    focus: '50% 50%',
+    id: 'gorgonzola-especial',
+    title: 'Aquele Gorgonzola Especial',
+    description: 'Pão brioche, rúcula, maionese especial, hambúrguer 150g, queijo gorgonzola, bacon e cebola caramelizada. Acompanha fritas.',
+    price: 'R$ 43',
+    image: gorgonzola,
+    alt: 'Aquele Gorgonzola Especial: hambúrguer com gorgonzola, bacon e cebola caramelizada no prato da casa',
+    focus: '50% 55%',
   },
   {
-    id: 'molho-cremoso',
-    title: 'Molho cremoso e cebola roxa',
-    description: 'Duas carnes, cheddar, molho cremoso e cebola roxa em um pão bem dourado.',
-    image: molhoCremoso,
-    alt: 'Hambúrguer artesanal com molho cremoso e cebola roxa',
-    focus: '65% 55%',
+    id: 'caudillho-da-praia',
+    title: 'Aquele Caudillho da Praia',
+    description: 'Pão brioche, rúcula, maionese especial, hambúrguer de 150g, queijo mussarela e salsa criolla. Acompanha fritas.',
+    price: 'R$ 38',
+    image: caudillho,
+    alt: 'Aquele Caudillho da Praia: hambúrguer com mussarela, rúcula e salsa criolla',
+    focus: '50% 52%',
   },
 ]
 
-export const coverPhoto = capa
-export const photoOnionRings = onionRings
-export const photoClassico = classico
+// Recortes do Instagram (baixa resolução) usados na seção do Instagram e como apoio visual.
 export const photoCheddar = cheddarBacon
 export const photoMolho = molhoCremoso
+export const photoClassico = classico
+export const photoOnionRings = onionRings
+export const photoMrWhite = mrWhite
+export const photoCaudillho = caudillho
+export const coverPhoto = capa
 
 export interface Category {
   id: string
@@ -87,7 +99,7 @@ export const categories: Category[] = [
   {
     id: 'combos',
     title: 'Combos',
-    text: 'Combos de fim de semana e promoções que mudam toda semana. Veja o que está valendo hoje.',
+    text: 'Promoções do mês no cardápio, como a Promoção 2 Aquele Miss Veggie com guaraná 1,5 lts e fritas (R$ 72). Veja o que está valendo hoje.',
   },
   {
     id: 'bebidas',

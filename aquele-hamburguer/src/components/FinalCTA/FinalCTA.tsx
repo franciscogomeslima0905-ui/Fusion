@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from 'react'
 import { gsap } from '../../lib/gsap'
 import { SITE, whatsappUrl } from '../../lib/links'
-import { photoClassico } from '../../data/products'
+import { photoCaudillho } from '../../data/products'
 import { useMaskReveal } from '../../hooks/useMaskReveal'
 import { Mask } from '../Mask'
 import { WhatsAppIcon } from '../Icons'
@@ -25,7 +25,7 @@ export default function FinalCTA() {
       <div data-bigtxt aria-hidden className="display pointer-events-none absolute -bottom-[4vw] left-0 whitespace-nowrap text-[34vw] leading-none text-ink/[.07]">AQUELE</div>
 
       <div data-photo aria-hidden className="absolute -bottom-[8vh] -right-[8vw] h-[58svh] w-[86vw] overflow-hidden shadow-[0_30px_60px_-20px_rgba(0,0,0,.5)] md:-bottom-[10vh] md:right-[-4vw] md:h-[80svh] md:w-[52vw]" style={{ clipPath: 'polygon(14% 0, 100% 0, 100% 100%, 0 100%)' }}>
-        <img src={photoClassico} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
+        <img src={photoCaudillho} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />
       </div>
 
       <div className="relative z-10 flex min-h-[100svh] flex-col justify-center px-5 pb-[48svh] pt-[16vh] md:px-[5vw] md:pb-[8vh]">

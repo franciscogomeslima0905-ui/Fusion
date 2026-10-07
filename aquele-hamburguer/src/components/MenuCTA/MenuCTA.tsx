@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from 'react'
 import { gsap } from '../../lib/gsap'
 import { SITE, whatsappUrl } from '../../lib/links'
-import { photoOnionRings } from '../../data/products'
+import { photoMrWhite } from '../../data/products'
 import { useMaskReveal } from '../../hooks/useMaskReveal'
 import { Mask } from '../Mask'
 import { WhatsAppIcon } from '../Icons'
@@ -22,7 +22,7 @@ export default function MenuCTA() {
   return (
     <section id="cardapio" ref={root} aria-labelledby="t-menu" className="relative flex min-h-[100svh] items-end overflow-hidden bg-ink">
       <div className="absolute inset-y-0 right-0 w-full overflow-hidden md:w-[64%]">
-        <img data-bg src={photoOnionRings} alt="Hambúrguer artesanal com onion rings e cheddar" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover [filter:brightness(.62)_saturate(1.1)] md:[filter:brightness(.85)_saturate(1.1)]" style={{ objectPosition: '62% 55%' }} />
+        <img data-bg src={photoMrWhite} alt="Aquele Mr. White, hambúrguer com cheddar, bacon e cebola caramelizada" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover [filter:brightness(.62)_saturate(1.1)] md:[filter:brightness(.85)_saturate(1.1)]" style={{ objectPosition: '50% 55%' }} />
       </div>
       <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-ink/10 md:bg-gradient-to-t md:from-ink/70 md:via-transparent" />
       <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-ink via-ink/70 to-transparent md:from-ink md:via-ink md:to-transparent md:[background-size:60%_100%] md:bg-no-repeat" />

@@ -55,8 +55,9 @@ em `layers.ts` (unidades de uma tela de 600 px de largura). Ideal: fotografar e 
 | Logo | `src/assets/logo/logo.png` (150 px — troque por versão maior/SVG se tiver) |
 | SEO, Open Graph, JSON-LD | `index.html` (adicione `canonical` e URLs absolutas do domínio ao publicar) |
 
-Fotos atuais: recortes **reais** de publicações do Instagram, ampliados (baixa resolução). Troque por originais em alta.
-Títulos dos produtos são descritivos e **não há preços** (nada foi inventado): use os nomes/preços exatos do cardápio oficial.
+Produtos (nome, descrição, preço e fotos de Mr. White, Provoleta Argentina, Gorgonzola Especial e Caudillho da Praia) vêm do
+cardápio oficial e das fotos enviadas — **confira os preços antes de publicar**, pois estão fixos em `src/data/products.ts`.
+Os recortes do Instagram (seção Instagram e categorias) são de baixa resolução: troque por originais em alta.
 Horário de funcionamento não foi incluído por não estar confirmado.
 
 ## Google Maps

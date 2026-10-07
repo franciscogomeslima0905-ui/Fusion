@@ -69,7 +69,8 @@ export default function BurgerShowcase() {
                 >
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <h3 className="display relative text-[clamp(2.4rem,5.2vw,5rem)]">{p.title}</h3>
+                <h3 className="display relative text-[clamp(2.4rem,4.6vw,4.6rem)]">{p.title}</h3>
+                <p className="display relative mt-3 text-[clamp(1.8rem,3vw,2.8rem)] text-gold">{p.price}</p>
                 <p className={`relative mt-4 max-w-md text-base leading-relaxed text-ash md:text-lg ${flip ? 'md:ml-auto' : ''}`}>{p.description}</p>
                 <a href={SITE.menuUrl} target="_blank" rel="noopener noreferrer" data-cursor="PEDIR" className="link-u relative mt-6 inline-flex items-center gap-2 font-head text-sm font-extrabold uppercase tracking-[.14em] text-gold">
                   Ver no cardápio <ArrowUpRight size={18} aria-hidden />
