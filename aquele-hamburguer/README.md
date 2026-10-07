@@ -10,6 +10,7 @@ npm install
 npm run dev      # http://localhost:5173
 npm run build    # typecheck + build de produção em dist/
 npm run preview  # serve o build
+npm run build:single  # HTML único autocontido em dist-single/ (abre direto do disco; cópia pronta: aquele-hamburguer-landing-page.html)
 ```
 
 ## A assinatura: hambúrguer que monta com o scroll
