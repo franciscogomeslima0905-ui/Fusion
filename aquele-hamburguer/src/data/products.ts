@@ -25,6 +25,9 @@ import creamChicken from '../assets/photos/burger-cream-chicken.webp'
 import bbkChicken from '../assets/photos/burger-bbk-chicken.webp'
 import americanChicken from '../assets/photos/burger-american-chicken.webp'
 import gaudilhoChicken from '../assets/photos/burger-gaudillho-chicken.webp'
+import jalapeno from '../assets/photos/burger-jalapeno.webp'
+import americanoBaconDuplo from '../assets/photos/burger-americano-bacon-duplo.webp'
+import kids from '../assets/photos/burger-kids.webp'
 import mrBrown from '../assets/photos/burger-mr-brown.webp'
 
 // Nomes, descrições e preços: cardápio oficial (aquele-hamburguer.deliverify.com.br), seção "Novidades".
@@ -255,6 +258,33 @@ export const products: Product[] = [
     price: 'R$ 39',
     image: gaudilhoChicken,
     alt: 'Aquele Gaudillho Chicken Burguer: frango à milanesa com mussarela, rúcula e salsa criolla',
+    focus: '50% 50%',
+  },
+  {
+    id: 'jalapeno',
+    title: 'Aquele Jalapeño',
+    description: 'Pão, hambúrguer de 150g, queijo mussarela, queijo cheddar, alface, tomate, jalapeño em conserva e maionese especial. Acompanha fritas.',
+    price: 'R$ 38',
+    image: jalapeno,
+    alt: 'Aquele Jalapeño: hambúrguer com cheddar, tomate, alface e jalapeño em conserva',
+    focus: '50% 50%',
+  },
+  {
+    id: 'americano-bacon-duplo',
+    title: 'Aquele Americano com Bacon Duplo',
+    description: 'Pão, 2 hambúrgueres de 150g, duplo bacon, duplo queijo mussarela, duplo queijo cheddar, alface, tomate, picles, cebola roxa e maionese especial.',
+    price: 'R$ 50',
+    image: americanoBaconDuplo,
+    alt: 'Aquele Americano com Bacon Duplo: dois hambúrgueres com bacon e queijo',
+    focus: '50% 50%',
+  },
+  {
+    id: 'kids',
+    title: 'Aquele Kids',
+    description: 'Pão brioche, maionese especial, smash 75g e queijo cheddar. Acompanha fritas, um sachê de ketchup e um de mostarda.',
+    price: 'R$ 24',
+    image: kids,
+    alt: 'Aquele Kids: smash de 75g com queijo cheddar no pão brioche',
     focus: '50% 50%',
   },
 ]
