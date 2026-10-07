@@ -24,7 +24,7 @@ export default function MenuItem({ item }) {
           </p>
         )}
       </div>
-      <p className="mt-1 text-sm text-ash">{item.description}</p>
+      {item.description && <p className="mt-1 text-sm text-ash">{item.description}</p>}
       <a
         href={orderLink(item.order)}
         target="_blank"

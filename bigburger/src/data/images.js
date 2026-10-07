@@ -25,4 +25,9 @@ export const img = {
   bigCarne: { src: '/images/menu/bigxis-carne.webp', w: 560, h: 700, alt: 'Xis Big Carne com queijo mussarela derretendo' },
   bigBacon: { src: '/images/menu/bigxis-bacon.webp', w: 525, h: 700, alt: 'Xis Big Bacon cortado ao meio, empilhado' },
   bigCoracao: { src: '/images/menu/bigxis-coracao.webp', w: 700, h: 496, alt: 'Xis Big Coração com coraçãozinhos de frango chapados' },
+  // Fotos dos Xis Big Mini — cardápio digital oficial (as menores foram ampliadas).
+  miniCalabresa: { src: '/images/menu/mini-calabresa.webp', w: 600, h: 548, alt: 'Xis mini com calabresa chapeada' },
+  miniFrango: { src: '/images/menu/mini-frango.webp', w: 600, h: 548, alt: 'Xis mini com frango desfiado' },
+  miniCarne: { src: '/images/menu/mini-carne.webp', w: 700, h: 525, alt: 'Xis mini com hambúrguer, ovo, presunto e queijo' },
+  miniCoracao: { src: '/images/menu/mini-coracao.webp', w: 600, h: 548, alt: 'Xis mini com coração chapeado' },
 }

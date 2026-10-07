@@ -1,6 +1,6 @@
 // CARDÁPIO — itens, descrições e preços do cardápio digital oficial (bigrango.saipos.com) e de publicações oficiais.
 // Categorias do cardápio oficial: Marmitas, Combos Marmita, Hambúrgueres, Big Xis, Xis Big Mini, Torradas…
-// Big Xis: 4 primeiros itens (Big Calabresa e demais seguem no cardápio oficial). Marmitas: 4 primeiros itens da categoria (a lista continua no cardápio oficial). Falta cadastrar aqui as demais categorias/itens (price: null = sem preço confirmado). `from: true` = "A partir de".
+// Big Xis: 4 primeiros itens (Big Calabresa e demais seguem no cardápio oficial). Xis Big Mini: 5 itens (o nome do 1º não aparecia na captura: 'Mini Calabresa' é inferido; confirme). Marmitas: 4 primeiros itens da categoria (a lista continua no cardápio oficial). Falta cadastrar aqui as demais categorias/itens (price: null = sem preço confirmado). `from: true` = "A partir de".
 import { img } from './images'
 export const menu = [
   {
@@ -37,6 +37,17 @@ export const menu = [
       { name: 'Xis Calabresa', description: 'Promoção de sexta, só para consumo no salão.', price: 27, image: null, order: 'o Xis Calabresa' },
       { name: 'Xis Frango', description: 'Promoção de sexta, só para consumo no salão.', price: 27, image: null, order: 'o Xis Frango' },
       { name: 'Xis Coração', description: 'Promoção de sexta, só para consumo no salão.', price: 27, image: null, order: 'o Xis Coração' },
+    ],
+  },
+  {
+    id: 'xis-mini',
+    name: 'Xis Big Mini',
+    items: [
+      { name: 'Mini Calabresa', description: 'Pão mini doce, calabresa chapeada, ovo, presunto, queijo, milho, ervilha fresca, alface, tomate e molho da casa.', price: 27, from: true, image: img.miniCalabresa, order: 'o Mini Calabresa' },
+      { name: 'Mini Frango', description: 'Pão mini doce, delicioso frango desfiado com tempero da casa, ovo, presunto, queijo, milho, ervilha fresca, alface, tomate e molho da casa.', price: 27, from: true, image: img.miniFrango, order: 'o Mini Frango' },
+      { name: 'Mini Strogonoff de Gado', description: null, price: 36, image: null, order: 'o Mini Strogonoff de Gado' },
+      { name: 'Mini Carne', description: 'Pão mini doce, hambúrguer, ovo, presunto, queijo, milho, ervilha fresca, alface, tomate e molho da casa.', price: 29, from: true, image: img.miniCarne, order: 'o Mini Carne' },
+      { name: 'Mini Coração', description: 'Pão mini doce, coração chapeado, ovo, presunto, queijo, milho, ervilha fresca, alface, tomate e molho da casa.', price: 30, from: true, image: img.miniCoracao, order: 'o Mini Coração' },
     ],
   },
   {
