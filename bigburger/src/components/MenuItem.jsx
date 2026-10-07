@@ -17,7 +17,12 @@ export default function MenuItem({ item }) {
       </div>
       <div className="mt-3 flex items-baseline justify-between gap-4">
         <h3 className="display text-2xl sm:text-3xl">{item.name}</h3>
-        {item.price != null && <p className="display shrink-0 text-2xl text-gold">{brl(item.price)}</p>}
+        {item.price != null && (
+          <p className="display shrink-0 text-right text-2xl text-gold">
+            {item.from && <span className="mono block text-[.6rem] text-ash">a partir de</span>}
+            {brl(item.price)}
+          </p>
+        )}
       </div>
       <p className="mt-1 text-sm text-ash">{item.description}</p>
       <a
