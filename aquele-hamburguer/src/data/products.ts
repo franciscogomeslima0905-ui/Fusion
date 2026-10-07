@@ -7,6 +7,9 @@ import mrWhite from '../assets/photos/burger-mr-white.webp'
 import provoleta from '../assets/photos/burger-provoleta.webp'
 import gorgonzola from '../assets/photos/burger-gorgonzola.webp'
 import caudillho from '../assets/photos/burger-caudillho.webp'
+import special from '../assets/photos/burger-special.webp'
+import vaoSeOsAneis from '../assets/photos/burger-vao-se-os-aneis.webp'
+import mrBrown from '../assets/photos/burger-mr-brown.webp'
 
 // Nomes, descrições e preços: cardápio oficial (aquele-hamburguer.deliverify.com.br), seção "Novidades".
 // Confira os preços antes de publicar — eles mudam no cardápio e aqui são texto fixo.
@@ -60,6 +63,33 @@ export const products: Product[] = [
     image: caudillho,
     alt: 'Aquele Caudillho da Praia: hambúrguer com mussarela, rúcula e salsa criolla',
     focus: '50% 52%',
+  },
+  {
+    id: 'special-burguer',
+    title: 'Aquele Special Burguer',
+    description: 'Pão, hambúrguer 150g, rúcula, queijo mussarela, queijo cheddar, bacon, cebola na chapa e maionese especial. Acompanha fritas.',
+    price: 'R$ 39',
+    image: special,
+    alt: 'Aquele Special Burguer: hambúrguer com mussarela, cheddar, bacon e cebola na chapa',
+    focus: '50% 50%',
+  },
+  {
+    id: 'vao-se-os-aneis',
+    title: 'Aquele Vão-se os anéis',
+    description: 'Pão brioche ou salgado, rúcula, tomate, hambúrguer, queijo cheddar, bacon, anel de cebola, geleia de pimenta e maionese da casa.',
+    price: 'R$ 39',
+    image: vaoSeOsAneis,
+    alt: 'Aquele Vão-se os anéis: hambúrguer com cheddar, bacon, anel de cebola e geleia de pimenta',
+    focus: '50% 55%',
+  },
+  {
+    id: 'mr-brown',
+    title: 'Aquele Mr. Brown',
+    description: 'Pão Australiano, hambúrguer 150 gramas, queijo cheddar, cebola caramelizada, bacon, barbecue e maionese especial. Acompanha fritas.',
+    price: 'R$ 39',
+    image: mrBrown,
+    alt: 'Aquele Mr. Brown: hambúrguer no pão australiano com cheddar, bacon e cebola caramelizada',
+    focus: '50% 55%',
   },
 ]
 
