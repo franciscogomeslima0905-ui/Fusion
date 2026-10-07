@@ -1,0 +1,31 @@
+@import '@fontsource-variable/cormorant';
+@import '@fontsource-variable/inter';
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Cormorant Variable', Georgia, serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --color-ink: #0a0a0a;
+  --color-coal: #151413;
+  --color-gold: #c9a24a;
+  --color-gold-light: #e3c677;
+  --color-paper: #ffffff;
+  --color-cream: #f6f2ea;
+}
+
+@layer base {
+  html { background: var(--color-ink); -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-cream);
+    color: var(--color-ink);
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible { outline: 2px solid var(--color-gold); outline-offset: 3px; }
+  img { user-select: none; -webkit-user-drag: none; }
+}
+
+/* máscara de linhas/palavras: cada palavra sobe de dentro de um recorte */
+.mask-word { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.12em; margin-bottom: -0.12em; }
+.mask-word > span { display: inline-block; will-change: transform; }
