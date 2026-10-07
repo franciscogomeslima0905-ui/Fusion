@@ -7,7 +7,6 @@ import Header from './components/Header/Header'
 import HorizontalProducts from './components/HorizontalProducts/HorizontalProducts'
 import InstagramSection from './components/InstagramSection/InstagramSection'
 import Location from './components/Location/Location'
-import MenuBoard from './components/MenuBoard/MenuBoard'
 import Marquee from './components/Marquee/Marquee'
 import MenuCTA from './components/MenuCTA/MenuCTA'
 import Reviews from './components/Reviews/Reviews'
@@ -23,7 +22,6 @@ export default function App() {
         <Marquee />
         <BurgerShowcase />
         <HorizontalProducts />
-        <MenuBoard />
         <MenuCTA />
         <Reviews />
         <InstagramSection />

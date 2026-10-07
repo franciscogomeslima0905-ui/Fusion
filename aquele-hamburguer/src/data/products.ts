@@ -22,6 +22,9 @@ import classicoCasa from '../assets/photos/burger-classico-casa.webp'
 import missOnion from '../assets/photos/burger-miss-onion.webp'
 import gouda from '../assets/photos/burger-gouda.webp'
 import creamChicken from '../assets/photos/burger-cream-chicken.webp'
+import bbkChicken from '../assets/photos/burger-bbk-chicken.webp'
+import americanChicken from '../assets/photos/burger-american-chicken.webp'
+import gaudilhoChicken from '../assets/photos/burger-gaudillho-chicken.webp'
 import mrBrown from '../assets/photos/burger-mr-brown.webp'
 
 // Nomes, descrições e preços: cardápio oficial (aquele-hamburguer.deliverify.com.br), seção "Novidades".
@@ -225,6 +228,33 @@ export const products: Product[] = [
     price: 'R$ 36',
     image: creamChicken,
     alt: 'Aquele Cream Chicken Burguer: frango à milanesa com cream cheese e rúcula no pão brioche',
+    focus: '50% 50%',
+  },
+  {
+    id: 'american-chicken',
+    title: 'Aquele American Chicken',
+    description: 'Pão brioche, maionese caseira especial, alface americana, tomate, cebola roxa, picles, peito de frango à milanesa e queijo cheddar.',
+    price: 'R$ 37',
+    image: americanChicken,
+    alt: 'Aquele American Chicken: frango à milanesa com cheddar, tomate, cebola roxa e picles',
+    focus: '50% 50%',
+  },
+  {
+    id: 'bbk-chicken',
+    title: 'Aquele BBK Chicken Burguer',
+    description: 'Pão brioche, maionese caseira especial, alface americana, tomate, peito de frango à milanesa, queijo cheddar, queijo mussarela e bacon.',
+    price: 'R$ 39',
+    image: bbkChicken,
+    alt: 'Aquele BBK Chicken Burguer: frango à milanesa com bacon, cheddar e barbecue',
+    focus: '50% 50%',
+  },
+  {
+    id: 'gaudillho-chicken',
+    title: 'Aquele Gaudillho Chicken Burguer',
+    description: 'Pão brioche, maionese caseira especial, rúcula, peito de frango à milanesa, queijo mussarela e salsa criolla. Acompanha fritas.',
+    price: 'R$ 39',
+    image: gaudilhoChicken,
+    alt: 'Aquele Gaudillho Chicken Burguer: frango à milanesa com mussarela, rúcula e salsa criolla',
     focus: '50% 50%',
   },
 ]
