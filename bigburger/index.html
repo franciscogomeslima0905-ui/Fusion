@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <style>html,body{margin:0;background:#080808;color:#f5f5f5}#boot{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;font-family:Impact,'Arial Narrow',sans-serif;text-transform:uppercase;text-align:center;padding:1.5rem}#boot b{font-size:clamp(3rem,14vw,8rem);line-height:.9;font-weight:400}#boot b i{font-style:normal;color:#e31b23}#boot p{font:500 1rem system-ui,sans-serif;text-transform:none;max-width:34rem;color:#afafaf;margin:0}</style>
+    <title>Big Burger | Xis, Hambúrguer e Lanches em Tramandaí</title>
+    <meta name="description" content="Big Burger em Tramandaí. Xis, hambúrgueres, cachorro-quente, porções, ala minuta e delivery. Faça seu pedido pelo WhatsApp." />
+    <meta name="theme-color" content="#080808" />
+    <link rel="canonical" href="https://bigburgertramandai.com.br/" />
+    <link rel="icon" type="image/png" href="images/branding/favicon.png" />
+    <link rel="apple-touch-icon" href="images/branding/logo-192.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Big Burger" />
+    <meta property="og:title" content="Big Burger | Xis, Hambúrguer e Lanches em Tramandaí" />
+    <meta property="og:description" content="Xis, hambúrgueres, cachorro-quente, porções, ala minuta e delivery. Faça seu pedido pelo WhatsApp." />
+    <meta property="og:url" content="https://bigburgertramandai.com.br/" />
+    <meta property="og:image" content="images/branding/logo-512.png" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["Restaurant", "LocalBusiness"],
+        "name": "Big Burger",
+        "image": "images/branding/logo-512.png",
+        "url": "https://bigburgertramandai.com.br/",
+        "telephone": "+55 51 99393-9449",
+        "servesCuisine": ["Hambúrguer", "Xis", "Lanches", "Porções"],
+        "priceRange": "R$20–40",
+        "sameAs": ["https://instagram.com/big_burgertramandai/"],
+        "hasMenu": "https://bigrango.saipos.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "R. Sahydi Abrahão, 385",
+          "addressLocality": "Tramandaí",
+          "addressRegion": "RS",
+          "postalCode": "95590-000",
+          "addressCountry": "BR"
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "11:00",
+          "closes": "00:00"
+        },
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.5", "reviewCount": "1300" }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"><div id="boot"><b>Big <i>Burger</i></b><p id="boot-msg">Carregando…</p></div></div>
+    <script>
+      // Se o app não iniciar (ex.: abrir dist/index.html direto do disco), explica em vez de deixar a tela vazia.
+      setTimeout(function () {
+        var m = document.getElementById('boot-msg')
+        if (m) m.textContent = location.protocol === 'file:'
+          ? 'Este arquivo precisa de um servidor. Abra o arquivo único big-burger-landing.html (duplo clique) ou hospede esta pasta (Netlify, Vercel, Hostinger…).'
+          : 'Não foi possível carregar a página. Atualize ou tente outro navegador.'
+      }, 2500)
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
