@@ -27,6 +27,13 @@ const layers = [
   { n: 'alface', z: 4, off: -0.24, dx: 0.06,  rot: 6,  range: [0.14, 0.58] },
   { n: 'topo',   z: 5, off: -0.4,  dx: -0.05, rot: -9, range: [0.18, 0.62] },
 ]
+const src = {
+  base: 'images/burger/layer_base.webp',
+  carne: 'images/burger/layer_carne.webp',
+  tomate: 'images/burger/layer_tomate.webp',
+  alface: 'images/burger/layer_alface.webp',
+  topo: 'images/burger/layer_topo.webp',
+}
 const alt = {
   base: 'Pão de baixo do hambúrguer',
   carne: 'Hambúrguer com queijo cheddar derretido',
@@ -46,7 +53,7 @@ function Layer({ p, def }) {
   return (
     <motion.img
       data-rm-static
-      src={`images/burger/layer_${def.n}.webp`}
+      src={src[def.n]}
       alt={alt[def.n]}
       width={m.w}
       height={m.h}
