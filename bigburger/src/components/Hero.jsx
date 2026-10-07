@@ -6,55 +6,62 @@ import { generalOrderLink } from '../utils/whatsapp'
 
 export default function Hero() {
   return (
-    <StoryScene id="inicio" chapter="01" vh={260} label="Big Burger">
+    <StoryScene id="inicio" chapter="01" vh={380} label="Big Burger">
       {(p) => <HeroStage p={p} />}
     </StoryScene>
   )
 }
 
+/**
+ * Como no vídeo: o hambúrguer fica no centro, o título atrás dele; ao rolar,
+ * a câmera "mergulha" nas camadas (pão → molho → carne → queijo) enquanto o título some.
+ */
 function HeroStage({ p }) {
-  const titleY = useTransform(p, [0, 1], ['0%', '-34%'])
-  const titleScale = useTransform(p, [0, 1], [1, 0.82])
-  const titleOpacity = useTransform(p, [0, 0.55, 0.85], [1, 1, 0])
-  const photoScale = useTransform(p, [0, 1], [1, 1.22])
-  const photoY = useTransform(p, [0, 1], ['4%', '-8%'])
-  const clip = useTransform(p, [0, 0.45], ['inset(14% 10% 14% 10%)', 'inset(0% 0% 0% 0%)'])
-  const glow = useTransform(p, [0, 1], [0.25, 0.7])
-  const copyY = useTransform(p, [0, 0.4], ['0%', '-40%'])
-  const copyOpacity = useTransform(p, [0, 0.3], [1, 0])
-  const hint = useTransform(p, [0, 0.12], [1, 0])
+  const titleY = useTransform(p, [0, 0.5], ['0%', '-30%'])
+  const titleScale = useTransform(p, [0, 0.5], [1, 0.84])
+  const titleOpacity = useTransform(p, [0, 0.3, 0.55], [1, 1, 0])
+  const scale = useTransform(p, [0, 0.35, 1], [0.92, 1.18, 2.15])
+  const y = useTransform(p, [0, 0.35, 1], ['3%', '0%', '-4%'])
+  // enquadramento percorre o hambúrguer de cima para baixo
+  const posY = useTransform(p, [0.35, 1], ['50%', '66%'])
+  const objectPosition = useTransform(posY, (v) => `50% ${v}`)
+  const glow = useTransform(p, [0, 1], [0.3, 0.8])
+  const copyY = useTransform(p, [0, 0.3], ['0%', '-40%'])
+  const copyOpacity = useTransform(p, [0, 0.22], [1, 0])
+  const hint = useTransform(p, [0, 0.08], [1, 0])
+  const closing = useTransform(p, [0.78, 0.92], [0, 1])
 
   return (
     <div className="relative h-full w-full bg-ink">
       <motion.div
         aria-hidden
         style={{ opacity: glow }}
-        className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_58%,rgba(244,181,28,.28),transparent_70%)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_50%_55%_at_50%_55%,rgba(244,181,28,.3),transparent_70%)]"
       />
       <Frame />
 
       <motion.h1
         style={{ y: titleY, scale: titleScale, opacity: titleOpacity }}
         data-rm-static
-        className="display absolute inset-x-0 top-[17svh] z-0 text-center text-[31vw] leading-[.8] sm:top-[13svh] sm:text-[17.5vw] sm:leading-[.85]"
+        className="display absolute inset-x-0 top-[16svh] z-0 text-center text-[31vw] leading-[.8] sm:top-[14svh] sm:text-[18vw] sm:leading-[.85]"
       >
         <span className="block sm:inline">Big</span> <span className="block text-red sm:inline">Burger</span>
       </motion.h1>
 
       <motion.div
         data-rm-static
-        style={{ y: photoY, scale: photoScale, clipPath: clip }}
-        className="absolute left-1/2 top-[58%] z-10 aspect-[618/432] w-[88vw] max-w-[640px] -translate-x-1/2 -translate-y-1/2 sm:top-[60%] sm:w-[46vw]"
+        style={{ y, scale }}
+        className="absolute left-1/2 top-[54%] z-10 aspect-[736/1104] h-[72svh] -translate-x-1/2 -translate-y-1/2 sm:top-[56%] sm:h-[80svh]"
       >
-        <img
-          src={img.xis.src}
-          width={img.xis.w}
-          height={img.xis.h}
-          alt={img.xis.alt}
+        <motion.img
+          src={img.hero.src}
+          width={img.hero.w}
+          height={img.hero.h}
+          alt={img.hero.alt}
           fetchPriority="high"
-          className="photo-grade h-full w-full object-cover"
+          style={{ objectPosition }}
+          className="photo-grade h-full w-full object-cover [mask-image:radial-gradient(ellipse_56%_54%_at_50%_50%,#000_62%,transparent_100%)]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-transparent" />
       </motion.div>
 
       <motion.div
@@ -72,6 +79,13 @@ function HeroStage({ p }) {
           <Button href={generalOrderLink()} variant="line">Pedir agora</Button>
         </div>
       </motion.div>
+
+      <motion.p
+        style={{ opacity: closing }}
+        className="display absolute inset-x-5 bottom-[8svh] z-20 text-[15vw] leading-none text-bone sm:inset-x-12 sm:text-[7vw]"
+      >
+        Muito <span className="text-red">sabor</span>
+      </motion.p>
 
       <motion.p style={{ opacity: hint }} className="mono absolute bottom-[3svh] left-1/2 z-20 hidden -translate-x-1/2 text-ash sm:block">
         Role para baixo

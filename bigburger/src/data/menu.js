@@ -1,3 +1,4 @@
+// Fotos de Xis/Hambúrguer abaixo são ilustrativas (enviadas pelo cliente): troque pelas fotos reais de cada item.
 // CARDÁPIO — somente itens e preços confirmados em publicações oficiais da Big Burger.
 // O cardápio completo (adicionais, combos, bebidas, sobremesas) fica em bigrango.saipos.com.
 // Para completar: adicione itens aqui (name, description, price em reais ou null, image opcional).
@@ -9,9 +10,9 @@ export const menu = [
     name: 'Xis',
     items: [
       { name: 'Xis do Big Burger', description: 'O xis da casa: sempre a melhor escolha.', price: null, image: img.xis, order: 'o Xis do Big Burger' },
-      { name: 'Xis Salada', description: 'Promoção de sexta, só para consumo no salão.', price: 27, image: null, order: 'o Xis Salada' },
-      { name: 'Xis Calabresa', description: 'Promoção de sexta, só para consumo no salão.', price: 27, image: null, order: 'o Xis Calabresa' },
-      { name: 'Xis Frango', description: 'Promoção de sexta, só para consumo no salão.', price: 27, image: null, order: 'o Xis Frango' },
+      { name: 'Xis Salada', description: 'Promoção de sexta, só para consumo no salão.', price: 27, image: img.burgerPicles, order: 'o Xis Salada' },
+      { name: 'Xis Calabresa', description: 'Promoção de sexta, só para consumo no salão.', price: 27, image: img.burgerBacon, order: 'o Xis Calabresa' },
+      { name: 'Xis Frango', description: 'Promoção de sexta, só para consumo no salão.', price: 27, image: img.lancheFrango, order: 'o Xis Frango' },
       { name: 'Xis Coração', description: 'Promoção de sexta, só para consumo no salão.', price: 27, image: null, order: 'o Xis Coração' },
     ],
   },
@@ -19,7 +20,7 @@ export const menu = [
     id: 'hamburgueres',
     name: 'Hambúrgueres',
     items: [
-      { name: 'Burger Básico', description: 'Preço divulgado na promoção do Instagram.', price: 20, image: img.combo, order: 'o Burger Básico' },
+      { name: 'Burger Básico', description: 'Preço divulgado na promoção do Instagram.', price: 20, image: img.burgerQueijo, order: 'o Burger Básico' },
     ],
   },
   {

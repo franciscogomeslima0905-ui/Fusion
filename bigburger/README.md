@@ -19,8 +19,7 @@ Sem chave, o site usa o mapa incorporado do Google. O botão **Como chegar** sem
 O ambiente em que o projeto foi criado **não tinha acesso** a `instagram.com`, `bigrango.saipos.com` e Google Maps.
 Por isso **não foi possível baixar as fotos em alta nem o cardápio completo**. O que está no site é só o que é real e verificável:
 
-- Logo e 6 fotos reais da Big Burger, recortadas dos prints do Instagram enviados (≈260 px de largura, ampliadas 3×).
-  Por isso as cenas usam as fotos em tamanho moderado e com granulado; **com fotos originais o resultado melhora muito**.
+- Logo e 6 fotos reais da Big Burger, recortadas dos prints do Instagram enviados (≈260 px de largura, ampliadas 3×), mais 5 fotos ilustrativas enviadas pelo cliente (Hero e fotos dos Xis/Burger no cardápio — troque pelas fotos reais de cada item quando tiver).
 - `src/data/menu.js`: apenas itens/preços vistos em publicações oficiais (Xis na promoção de sexta R$ 27,00 no salão,
   Burger Básico R$ 20,00, Combo X Mini + Refri + Batata P R$ 26,90). Confira com o cardápio digital antes de publicar.
 - O botão **Abrir cardápio completo** aponta para `bigrango.saipos.com`.
