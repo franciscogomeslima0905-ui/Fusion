@@ -1,6 +1,6 @@
 // CARDÁPIO — itens, descrições e preços do cardápio digital oficial (bigrango.saipos.com) e de publicações oficiais.
 // Categorias do cardápio oficial: Marmitas, Combos Marmita, Hambúrgueres, Big Xis, Xis Big Mini, Torradas…
-// Marmitas: 4 primeiros itens da categoria (a lista continua no cardápio oficial). Falta cadastrar aqui as demais categorias/itens (price: null = sem preço confirmado). `from: true` = "A partir de".
+// Big Xis: 4 primeiros itens (Big Calabresa e demais seguem no cardápio oficial). Marmitas: 4 primeiros itens da categoria (a lista continua no cardápio oficial). Falta cadastrar aqui as demais categorias/itens (price: null = sem preço confirmado). `from: true` = "A partir de".
 import { img } from './images'
 export const menu = [
   {
@@ -26,8 +26,12 @@ export const menu = [
   },
   {
     id: 'xis',
-    name: 'Xis',
+    name: 'Big Xis',
     items: [
+      { name: 'Xis Big Frango', description: 'Pão doce especial, delicioso frango desfiado com tempero da casa, fritas dentro do lanche, ovo chapeado, presunto, queijo mussarela derretido, milho, ervilha fresca, alface, tomate e maionese…', price: 33, from: true, image: img.bigFrango, order: 'o Xis Big Frango' },
+      { name: 'Xis Big Carne', description: 'Pão doce especial, exclusivo hambúrguer de 150g com tempero da casa, fritas dentro do lanche, ovo chapeado, presunto, queijo mussarela derretido, milho, ervilha fresca, alface, tomate e maionese…', price: 36, from: true, image: img.bigCarne, order: 'o Xis Big Carne' },
+      { name: 'Xis Big Bacon', description: 'Pão doce especial, hambúrguer de 150g com tempero da casa, bacon em cubos bem fritinho, fritas dentro do lanche, ovo chapeado, presunto, queijo mussarela derretido, milho, ervilha fresca, alface…', price: 41.9, from: true, image: img.bigBacon, order: 'o Xis Big Bacon' },
+      { name: 'Xis Big Coração', description: 'Pão doce especial, coração chapeado com tempero da casa, fritas dentro do lanche, ovo chapeado, presunto, queijo mussarela derretido, milho, ervilha fresca, alface, tomate e maionese artesanal.', price: 36, from: true, image: img.bigCoracao, order: 'o Xis Big Coração' },
       { name: 'Xis do Big Burger', description: 'O xis da casa: sempre a melhor escolha.', price: null, image: img.xis, order: 'o Xis do Big Burger' },
       { name: 'Xis Salada', description: 'Promoção de sexta, só para consumo no salão.', price: 27, image: null, order: 'o Xis Salada' },
       { name: 'Xis Calabresa', description: 'Promoção de sexta, só para consumo no salão.', price: 27, image: null, order: 'o Xis Calabresa' },

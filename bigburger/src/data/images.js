@@ -20,4 +20,9 @@ export const img = {
   marmitaMilanesa: { src: '/images/menu/marmita-milanesa.webp', w: 700, h: 467, alt: 'Marmita com filé de frango à milanesa, batata frita e arroz' },
   marmitaStrogonoff: { src: '/images/menu/marmita-strogonoff.webp', w: 700, h: 673, alt: 'Marmita de strogonoff de frango com batata palha' },
   marmitaCalabresa: { src: '/images/menu/marmita-calabresa.webp', w: 467, h: 700, alt: 'Marmita com calabresa acebolada, arroz e batata frita' },
+  // Fotos dos Big Xis — cardápio digital oficial.
+  bigFrango: { src: '/images/menu/bigxis-frango.webp', w: 700, h: 490, alt: 'Xis Big Frango com frango desfiado e queijo derretido' },
+  bigCarne: { src: '/images/menu/bigxis-carne.webp', w: 560, h: 700, alt: 'Xis Big Carne com queijo mussarela derretendo' },
+  bigBacon: { src: '/images/menu/bigxis-bacon.webp', w: 525, h: 700, alt: 'Xis Big Bacon cortado ao meio, empilhado' },
+  bigCoracao: { src: '/images/menu/bigxis-coracao.webp', w: 700, h: 496, alt: 'Xis Big Coração com coraçãozinhos de frango chapados' },
 }
