@@ -6,6 +6,9 @@ import { products } from '../../data/products'
 import { useMaskReveal } from '../../hooks/useMaskReveal'
 import { Mask } from '../Mask'
 
+const featured = products.filter(p => p.featured)
+const others = products.filter(p => !p.featured)
+
 export default function BurgerShowcase() {
   const root = useRef<HTMLElement>(null)
   useMaskReveal(root)
@@ -35,7 +38,7 @@ export default function BurgerShowcase() {
       </div>
 
       <div className="mt-[10vh] flex flex-col gap-[14vh] md:gap-[18vh]">
-        {products.map((p, i) => {
+        {featured.map((p, i) => {
           const flip = i % 2 === 1
           return (
             <article key={p.id} data-row className={`relative flex flex-col gap-6 md:items-center md:gap-0 ${flip ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
@@ -79,6 +82,28 @@ export default function BurgerShowcase() {
             </article>
           )
         })}
+      </div>
+
+      <div className="mt-[16vh] px-5 md:px-[5vw]">
+        <h3 data-mask-group className="display text-[clamp(2.6rem,7vw,6.5rem)]">
+          <Mask>Todos os <span className="text-gold">Aqueles.</span></Mask>
+        </h3>
+        <ul className="mt-10 grid grid-cols-2 gap-2 md:grid-cols-4 md:gap-3">
+          {others.map(p => (
+            <li key={p.id}>
+              <a href={SITE.menuUrl} target="_blank" rel="noopener noreferrer" data-cursor="VER" aria-label={`${p.title}, ${p.price} — ver no cardápio`} className="group relative block aspect-[4/5] overflow-hidden bg-coal">
+                <img src={p.image} alt={p.alt} loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 [filter:brightness(.88)] group-hover:scale-[1.06] group-hover:[filter:brightness(1.05)]" style={{ objectPosition: p.focus }} />
+                <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
+                <div aria-hidden className="grain absolute inset-0" />
+                <div className="absolute inset-x-0 bottom-0 p-3 md:p-4">
+                  <p className="display text-[clamp(1.2rem,1.9vw,1.9rem)] !leading-[1]">{p.title.replace('Aquele ', '')}</p>
+                  <p className="display mt-1 text-lg text-gold md:text-xl">{p.price}</p>
+                  <p className="mt-2 hidden max-h-0 overflow-hidden text-xs leading-snug text-white/80 opacity-0 transition-[max-height,opacity] duration-500 group-hover:max-h-28 group-hover:opacity-100 md:block">{p.description}</p>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )

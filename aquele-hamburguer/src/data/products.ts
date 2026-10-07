@@ -9,6 +9,11 @@ import gorgonzola from '../assets/photos/burger-gorgonzola.webp'
 import caudillho from '../assets/photos/burger-caudillho.webp'
 import special from '../assets/photos/burger-special.webp'
 import vaoSeOsAneis from '../assets/photos/burger-vao-se-os-aneis.webp'
+import americano from '../assets/photos/burger-americano.webp'
+import bacon from '../assets/photos/burger-bacon.webp'
+import americanoDuplo from '../assets/photos/burger-americano-duplo.webp'
+import americanoBacon from '../assets/photos/burger-americano-bacon.webp'
+import theBurguer from '../assets/photos/burger-the-burguer.webp'
 import mrBrown from '../assets/photos/burger-mr-brown.webp'
 
 // Nomes, descrições e preços: cardápio oficial (aquele-hamburguer.deliverify.com.br), seção "Novidades".
@@ -23,6 +28,8 @@ export interface Product {
   price: string
   image: string
   alt: string
+  /** destaque editorial grande (os demais entram na grade) */
+  featured?: boolean
   /** posição do recorte (object-position) para enquadrar o hambúrguer */
   focus?: string
 }
@@ -30,6 +37,7 @@ export interface Product {
 export const products: Product[] = [
   {
     id: 'mr-white',
+    featured: true,
     title: 'Aquele Mr. White',
     description: 'Pão brioche, maionese especial, hambúrguer 150g, queijo cheddar, cebola caramelizada, bacon e barbecue. Acompanha fritas.',
     price: 'R$ 39',
@@ -39,6 +47,7 @@ export const products: Product[] = [
   },
   {
     id: 'provoleta-argentina',
+    featured: true,
     title: 'Aquele Provoleta Argentina',
     description: 'Pão brioche, rúcula, maionese especial, hambúrguer 150g, provolone, geleia de frutas rojas com pimenta e bacon.',
     price: 'R$ 43',
@@ -48,6 +57,7 @@ export const products: Product[] = [
   },
   {
     id: 'gorgonzola-especial',
+    featured: true,
     title: 'Aquele Gorgonzola Especial',
     description: 'Pão brioche, rúcula, maionese especial, hambúrguer 150g, queijo gorgonzola, bacon e cebola caramelizada. Acompanha fritas.',
     price: 'R$ 43',
@@ -57,6 +67,7 @@ export const products: Product[] = [
   },
   {
     id: 'caudillho-da-praia',
+    featured: true,
     title: 'Aquele Caudillho da Praia',
     description: 'Pão brioche, rúcula, maionese especial, hambúrguer de 150g, queijo mussarela e salsa criolla. Acompanha fritas.',
     price: 'R$ 38',
@@ -90,6 +101,51 @@ export const products: Product[] = [
     image: mrBrown,
     alt: 'Aquele Mr. Brown: hambúrguer no pão australiano com cheddar, bacon e cebola caramelizada',
     focus: '50% 55%',
+  },
+  {
+    id: 'americano',
+    title: 'Aquele Americano',
+    description: 'Pão, hambúrguer de 150g, queijo mussarela, queijo cheddar, alface, tomate, picles, cebola roxa e maionese especial. Acompanha fritas.',
+    price: 'R$ 34',
+    image: americano,
+    alt: 'Aquele Americano: hambúrguer com cheddar, tomate, cebola roxa, picles e alface',
+    focus: '50% 50%',
+  },
+  {
+    id: 'bacon',
+    title: 'Aquele Bacon',
+    description: 'Pão, hambúrguer de 150g, bacon, queijo mussarela, queijo cheddar e maionese da casa. Acompanha fritas.',
+    price: 'R$ 35',
+    image: bacon,
+    alt: 'Aquele Bacon: hambúrguer com bacon, cheddar e maionese da casa',
+    focus: '50% 50%',
+  },
+  {
+    id: 'americano-duplo',
+    title: 'Aquele Americano Duplo',
+    description: 'Pão, 2 hambúrgueres de 150g, duplo queijo mussarela, duplo queijo cheddar, alface, tomate, picles, cebola roxa e maionese especial.',
+    price: 'R$ 44',
+    image: americanoDuplo,
+    alt: 'Aquele Americano Duplo: dois hambúrgueres com queijo, tomate, cebola roxa e alface',
+    focus: '50% 50%',
+  },
+  {
+    id: 'americano-bacon',
+    title: 'Aquele Americano com Bacon',
+    description: 'Pão, hambúrguer de 150g, bacon, queijo mussarela, queijo cheddar, alface, tomate, picles, cebola roxa e maionese especial. Acompanha fritas.',
+    price: 'R$ 39',
+    image: americanoBacon,
+    alt: 'Aquele Americano com Bacon: hambúrguer com bacon, cheddar, tomate grande e cebola roxa',
+    focus: '50% 50%',
+  },
+  {
+    id: 'the-burguer',
+    title: 'Aquele The Burguer',
+    description: 'Pão, hambúrguer de 150g, duplo queijo mussarela e maionese especial. Acompanha fritas.',
+    price: 'R$ 30',
+    image: theBurguer,
+    alt: 'Aquele The Burguer: hambúrguer com duplo queijo mussarela e maionese especial',
+    focus: '50% 50%',
   },
 ]
 

@@ -8,12 +8,8 @@ export const menuGroups: MenuGroup[] = [
   {
     title: 'Hambúrgueres',
     items: [
-      { name: 'Aquele The Burguer', price: 'R$ 30' },
       { name: 'Aquele Clássico', price: 'R$ 32' },
-      { name: 'Aquele Americano', price: 'R$ 34' },
-      { name: 'Aquele Bacon', price: 'R$ 35' },
       { name: 'Aquele Mafioso', price: 'R$ 36' },
-      { name: 'Aquele Americano com Bacon', price: 'R$ 39' },
       { name: 'Aquele Jalapeño', price: 'R$ 38' },
       { name: 'Aquele Prime', price: 'R$ 38' },
       { name: 'Aquele Viva Las Vegas', price: 'R$ 38' },
@@ -21,7 +17,6 @@ export const menuGroups: MenuGroup[] = [
       { name: 'Aquele Dom Corleone', price: 'R$ 39' },
       { name: 'Aquele Gorgonzola', price: 'R$ 42' },
       { name: 'Aquele Gouda', price: 'R$ 42' },
-      { name: 'Aquele Americano Duplo', price: 'R$ 44' },
       { name: 'Aquele Americano com Bacon Duplo', price: 'R$ 50' },
       { name: 'Aquele Kids', price: 'R$ 24' },
     ],
