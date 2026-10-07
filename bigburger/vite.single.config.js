@@ -7,5 +7,11 @@ import { viteSingleFile } from 'vite-plugin-singlefile'
 export default defineConfig({
   base: './',
   plugins: [react(), tailwindcss(), viteSingleFile()],
-  build: { outDir: 'dist-single', assetsInlineLimit: 100_000_000, cssCodeSplit: false },
+  build: {
+    outDir: 'dist-single',
+    assetsInlineLimit: 100_000_000,
+    cssCodeSplit: false,
+    // script clássico (IIFE): funciona em qualquer navegador e direto do disco
+    rollupOptions: { output: { format: 'iife', inlineDynamicImports: true } },
+  },
 })
