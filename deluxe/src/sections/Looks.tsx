@@ -12,6 +12,7 @@ const colA: Item[] = [
 const colB: Item[] = [
   { src: photos.tricot, alt: 'Tricô trançado off-white', ratio: 'aspect-[4/5]', label: 'Tricô trançado' },
   { src: photos.coleteLaranja, alt: 'Colete de tricô caramelo sobre camisa branca', ratio: 'aspect-[3/4]', label: 'Colete caramelo' },
+  { src: photos.infantil, alt: 'Conjunto infantil off-white com laço caramelo', ratio: 'aspect-[3/4]', label: 'Moda infantil' },
 ]
 const colC: Item[] = [
   { src: photos.shortCouro, alt: 'Short de couro ecológico com cinto', ratio: 'aspect-[4/5]', label: 'Short de couro' },

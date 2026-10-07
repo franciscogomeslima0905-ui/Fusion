@@ -11,7 +11,7 @@ npm start        # serve dist/ com Node (PORT=3000)
 
 ## O que editar
 Tudo em `src/config/site.ts`:
-- `whatsappNumber` — **trocar** (só dígitos, DDI+DDD). Hoje é um número de exemplo.
+- `whatsappNumber` — só dígitos, DDI+DDD (já configurado: 55 51 99554-6515).
 - `storeUrl`, `instagramUrl`, `address`.
 - `photos` — as imagens vêm de `src/assets/photos/`. Hoje são recortes dos prints do Instagram
   (baixa resolução). Substitua os arquivos pelas fotos originais mantendo os nomes.
