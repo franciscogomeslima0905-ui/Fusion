@@ -14,6 +14,10 @@ import bacon from '../assets/photos/burger-bacon.webp'
 import americanoDuplo from '../assets/photos/burger-americano-duplo.webp'
 import americanoBacon from '../assets/photos/burger-americano-bacon.webp'
 import theBurguer from '../assets/photos/burger-the-burguer.webp'
+import mafioso from '../assets/photos/burger-mafioso.webp'
+import prime from '../assets/photos/burger-prime.webp'
+import domCorleone from '../assets/photos/burger-dom-corleone.webp'
+import vivaLasVegas from '../assets/photos/burger-viva-las-vegas.webp'
 import mrBrown from '../assets/photos/burger-mr-brown.webp'
 
 // Nomes, descrições e preços: cardápio oficial (aquele-hamburguer.deliverify.com.br), seção "Novidades".
@@ -145,6 +149,42 @@ export const products: Product[] = [
     price: 'R$ 30',
     image: theBurguer,
     alt: 'Aquele The Burguer: hambúrguer com duplo queijo mussarela e maionese especial',
+    focus: '50% 50%',
+  },
+  {
+    id: 'mafioso',
+    title: 'Aquele Mafioso',
+    description: 'Pão brioche, rúcula, maionese especial, hambúrguer 150g, duplo queijo mussarela, tomate seco e cebola crispy. Acompanha fritas.',
+    price: 'R$ 36',
+    image: mafioso,
+    alt: 'Aquele Mafioso: hambúrguer com queijo mussarela, tomate seco e cebola crispy',
+    focus: '50% 50%',
+  },
+  {
+    id: 'prime',
+    title: 'Aquele Prime',
+    description: 'Pão salgado, maionese caseira especial, hambúrguer 150g, queijo cheddar, cebola roxa, barbecue caseiro, bacon e rúcula.',
+    price: 'R$ 38',
+    image: prime,
+    alt: 'Aquele Prime: hambúrguer no pão salgado com bacon, rúcula e barbecue',
+    focus: '50% 50%',
+  },
+  {
+    id: 'dom-corleone',
+    title: 'Aquele Dom Corleone',
+    description: 'Pão, maionese especial, hambúrguer 150g, queijo provolone, tomate cereja confitado e pesto. Acompanha fritas.',
+    price: 'R$ 39',
+    image: domCorleone,
+    alt: 'Aquele Dom Corleone: hambúrguer com provolone derretido, tomate cereja confitado e pesto',
+    focus: '50% 50%',
+  },
+  {
+    id: 'viva-las-vegas',
+    title: 'Aquele Viva Las Vegas',
+    description: 'Pão brioche, hambúrguer, queijo provolone, doce de leite, bacon e geleia argentina de pimenta de frutas vermelhas.',
+    price: 'R$ 38',
+    image: vivaLasVegas,
+    alt: 'Aquele Viva Las Vegas: hambúrguer com provolone, doce de leite, bacon e geleia de pimenta',
     focus: '50% 50%',
   },
 ]
