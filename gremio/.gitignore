@@ -5,3 +5,4 @@ dist-single
 .env
 # frames/vídeos finais da cena (pesados): versionar por Git LFS ou CDN, se preferir
 public/media/hero/frames-*/
+preview/
