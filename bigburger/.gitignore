@@ -1,0 +1,9 @@
+node_modules
+dist
+.env
+.env.local
+*.log
+big-burger-landing.zip
+dist-single
+big-burger-landing.html
+big-burger-para-hospedagem.zip
