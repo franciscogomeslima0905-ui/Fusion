@@ -14,19 +14,19 @@ const stages = [
     tag: 'Iniciação esportiva',
     title: 'O primeiro contato com a bola',
     text: 'Brincar, se movimentar e aprender a conviver em grupo. É aqui que nasce o gosto pelo jogo.',
-    photo: photos.alunoTreinador,
+    photo: photos.duelo,
   },
   {
     tag: 'Desenvolvimento técnico',
     title: 'Fundamentos e confiança',
     text: 'Domínio de bola, passe, condução e leitura de jogo, em atividades que unem técnica e diversão.',
-    photo: photos.cones,
+    photo: photos.drible,
   },
   {
     tag: 'Evolução no futebol',
     title: 'Jogo coletivo e responsabilidade',
     text: 'Mais visão de jogo, trabalho em equipe e maturidade: o atleta cresce dentro e fora de campo.',
-    photo: photos.chute,
+    photo: photos.salto,
   },
 ]
 

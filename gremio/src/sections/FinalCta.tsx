@@ -12,7 +12,7 @@ export function FinalCta() {
   return (
     <section id="contato" ref={root} className="grain relative z-10 overflow-hidden bg-ink py-28 sm:py-36 lg:py-52">
       <div className="absolute inset-0" aria-hidden="true">
-        <img data-parallax="10" src={photos.treinoGrama.src} alt="" loading="lazy" decoding="async" className="photo absolute inset-0 h-[120%] w-full -translate-y-[8%] object-cover opacity-30 blur-[3px]" />
+        <img data-parallax="10" src={photos.turmaBandeira.src} alt="" loading="lazy" decoding="async" className="photo absolute inset-0 h-[120%] w-full -translate-y-[8%] object-cover opacity-30 blur-[3px]" />
         <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/55 to-ink" />
         <div className="absolute inset-y-0 left-0 w-2 bg-blue" />
       </div>

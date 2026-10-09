@@ -7,9 +7,9 @@ import { useSectionFx } from '../hooks/useSectionFx'
 
 const moments = [
   { n: '01', label: 'Treinadores orientando alunos', photo: photos.treinadorGrupo },
-  { n: '02', label: 'Crianças praticando futebol', photo: photos.chute },
+  { n: '02', label: 'Crianças praticando futebol', photo: photos.duelo },
   { n: '03', label: 'Exercícios técnicos', photo: photos.cones },
-  { n: '04', label: 'Atividades coletivas', photo: photos.treinoGrama },
+  { n: '04', label: 'Atividades coletivas', photo: photos.comemoracao },
   { n: '05', label: 'Momentos de aprendizado', photo: photos.prancheta },
   { n: '06', label: 'Treinamentos em campo', photo: photos.treinadorCampo },
 ]

@@ -7,6 +7,11 @@ import { InstagramIcon, ArrowUpRight } from '../components/Icons'
 import { useSectionFx } from '../hooks/useSectionFx'
 
 const order: Photo[] = [
+  photos.duelo,
+  photos.salto,
+  photos.comemoracao,
+  photos.drible,
+  photos.turmaBandeira,
   photos.treinadorGrupo,
   photos.chute,
   photos.quadraFutsal,

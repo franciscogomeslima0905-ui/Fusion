@@ -5,8 +5,8 @@ import { WhatsAppButton } from '../components/Buttons'
 import { useSectionFx } from '../hooks/useSectionFx'
 
 const units = [
-  { n: '01', name: 'Tramandaí', message: messages.tramandai, photo: photos.quadraFutsal, tone: 'bg-navy' },
-  { n: '02', name: 'Capão da Canoa', message: messages.capao, photo: photos.treinoGrama, tone: 'bg-[#05070a]' },
+  { n: '01', name: 'Tramandaí', message: messages.tramandai, photo: photos.comemoracao, tone: 'bg-navy' },
+  { n: '02', name: 'Capão da Canoa', message: messages.capao, photo: photos.duelo, tone: 'bg-[#05070a]' },
 ]
 
 /** Duas localidades. Sem endereço ou mapa: nada foi confirmado — o contato é pelo WhatsApp. */

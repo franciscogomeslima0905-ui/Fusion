@@ -35,7 +35,7 @@ export function About() {
           {/* colagem de fotos reais */}
           <div className="relative lg:col-span-6">
             <div data-img className="grain relative aspect-[4/5] w-[78%] overflow-hidden bg-coal">
-              <img data-parallax="6" src={photos.equipe.src} alt={photos.equipe.alt} loading="lazy" decoding="async" className="photo absolute inset-0 h-[112%] w-full -translate-y-[4%] object-cover" />
+              <img data-parallax="6" src={photos.comemoracao.src} alt={photos.comemoracao.alt} loading="lazy" decoding="async" className="photo absolute inset-0 h-[112%] w-full -translate-y-[4%] object-cover" />
             </div>
             <div data-img className="grain absolute right-0 bottom-[-9%] aspect-[4/5] w-[46%] overflow-hidden border-[6px] border-ink bg-coal sm:bottom-[-7%] lg:bottom-[-12%]">
               <img data-parallax="9" src={photos.treinadorGrupo.src} alt={photos.treinadorGrupo.alt} loading="lazy" decoding="async" className="photo absolute inset-0 h-[116%] w-full -translate-y-[5%] object-cover" />
