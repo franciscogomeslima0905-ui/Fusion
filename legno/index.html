@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Legno — Maestria em Madeira</title>
+  <meta name="description" content="Pérgolas, decks, coberturas, revestimentos e projetos especiais em madeira. Litoral Norte e Porto Alegre, RS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-burnt-wine: #38141b;
+      --color-ink-stone: #262626;
+      --color-warm-parchment: #e0ded8;
+      --color-white: #ffffff;
+
+      --font-display: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+      --font-ui: 'Inter', 'Work Sans', system-ui, sans-serif;
+      --font-body: Arial, Helvetica, system-ui, sans-serif;
+
+      --section-gap: 120px;
+      --read-width: 640px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--color-warm-parchment);
+      color: var(--color-ink-stone);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-feature-settings: 'liga' on;
+      line-height: 1.1;
+    }
+
+    p { max-width: var(--read-width); text-align: left; }
+    p + p { margin-top: 20px; }
+
+    a { color: inherit; }
+
+    .label {
+      font-family: var(--font-ui);
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 1.1;
+      letter-spacing: 0.021em;
+      text-transform: uppercase;
+    }
+
+    .link {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+    .link:hover { text-decoration-thickness: 2px; }
+
+    .anchor {
+      text-align: center;
+      padding-top: var(--section-gap);
+    }
+
+    /* ---------- Menu ---------- */
+    .nav {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 40px;
+      color: var(--color-white);
+      font-family: var(--font-ui);
+    }
+    .nav__mark {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.022em;
+      text-decoration: none;
+    }
+    .nav__links { display: flex; gap: 18px; list-style: none; }
+    .nav__links a {
+      font-size: 15px;
+      letter-spacing: 0.021em;
+      text-decoration: none;
+    }
+    .nav__links a:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 560px;
+      display: flex;
+      align-items: flex-end;
+      color: var(--color-white);
+    }
+    .hero__img { position: absolute; inset: 0; }
+    .hero__veil { position: absolute; inset: 0; background: rgba(38, 38, 38, 0.35); }
+    .hero__text { position: relative; padding: 0 40px 64px; }
+    .hero h1 {
+      font-size: 60px;
+      letter-spacing: 0.031em;
+      max-width: 14ch;
+    }
+
+    /* ---------- Manifesto ---------- */
+    .manifesto {
+      padding: 160px 24px;
+      text-align: center;
+    }
+    .monogram {
+      width: 72px; height: 72px;
+      margin: 0 auto 48px;
+      border: 1px solid var(--color-ink-stone);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-ui);
+      font-size: 11px;
+      letter-spacing: 0.021em;
+      text-transform: uppercase;
+    }
+    .manifesto h2 {
+      font-size: 46px;
+      letter-spacing: 0.022em;
+      max-width: 16ch;
+      margin: 0 auto;
+    }
+    .manifesto .label { margin-top: 32px; }
+
+    /* ---------- Seções divididas ---------- */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 80px;
+    }
+    .split:first-of-type { margin-top: 60px; }
+    .split__img { min-height: 640px; }
+    .split__text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 64px;
+    }
+    .split__text .label { margin-bottom: 24px; }
+    .split__text h2 {
+      font-size: 46px;
+      letter-spacing: 0.022em;
+      margin-bottom: 32px;
+    }
+    .split--reverse .split__img { order: 2; }
+
+    /* ---------- Método ---------- */
+    .section { padding: var(--section-gap) 40px 0; }
+    .section__head { text-align: center; }
+    .section__head h2 {
+      font-size: 46px;
+      letter-spacing: 0.022em;
+      margin-top: 24px;
+    }
+    .rows { max-width: 1000px; margin: 60px auto 0; }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 40px;
+      padding: 32px 0;
+      border-top: 1px solid var(--color-ink-stone);
+      align-items: baseline;
+    }
+    .row:last-child { border-bottom: 1px solid var(--color-ink-stone); }
+    .row h3 { font-size: 32px; letter-spacing: 0.017em; }
+
+    /* ---------- Diferenciais (superfície branca) ---------- */
+    .surface-white {
+      background: var(--color-white);
+      margin-top: var(--section-gap);
+      padding-bottom: var(--section-gap);
+    }
+    .surface-white .section { padding-top: var(--section-gap); }
+
+    /* ---------- Imagem de pausa ---------- */
+    .pause { height: 70vh; min-height: 360px; }
+    .pause img { object-position: 85% 60%; }
+
+    /* ---------- Contato ---------- */
+    .contact { padding: 160px 24px; text-align: center; }
+    .contact h2 {
+      font-size: 46px;
+      letter-spacing: 0.022em;
+      max-width: 18ch;
+      margin: 24px auto 0;
+    }
+    .contact p { margin: 32px auto 0; }
+    .contact__links {
+      margin-top: 40px;
+      display: flex; flex-direction: column; gap: 16px; align-items: center;
+      font-family: var(--font-ui);
+      font-size: 18px;
+      letter-spacing: 0.022em;
+    }
+    .contact__area { margin-top: 48px; }
+
+    /* ---------- Rodapé ---------- */
+    .footer {
+      background: var(--color-burnt-wine);
+      color: var(--color-white);
+      padding: 120px 40px;
+    }
+    .footer h2 {
+      font-size: 32px;
+      letter-spacing: 0.054em;
+      margin-top: 24px;
+      max-width: 22ch;
+    }
+    .footer__links {
+      margin-top: 40px;
+      display: flex; gap: 32px; flex-wrap: wrap;
+      font-family: var(--font-ui);
+      font-size: 15px;
+      letter-spacing: 0.021em;
+    }
+    .footer__small {
+      margin-top: 80px;
+      font-family: var(--font-ui);
+      font-size: 15px;
+      letter-spacing: 0.021em;
+    }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 767px) {
+      :root { --section-gap: 80px; }
+
+      .nav { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px 24px; }
+      .nav__links { gap: 12px; flex-wrap: wrap; }
+
+      .hero__text { padding: 0 24px 48px; }
+      .hero h1 { font-size: 40px; }
+
+      .manifesto { padding: 100px 24px; }
+      .manifesto h2, .section__head h2, .contact h2, .split__text h2 { font-size: 32px; }
+
+      .split { grid-template-columns: 1fr; margin-top: 60px; }
+      .split__img, .split--reverse .split__img { order: 0; min-height: 0; aspect-ratio: 4 / 3; }
+      .split__text { padding: 40px 24px 0; }
+
+      .section { padding-left: 24px; padding-right: 24px; }
+      .row { grid-template-columns: 1fr; gap: 12px; }
+      .row h3 { font-size: 26px; }
+
+      .contact { padding: 100px 24px; }
+      .footer { padding: 80px 24px; }
+      .footer h2 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <a class="nav__mark" href="#topo">LEGNO</a>
+    <ul class="nav__links">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#metodo">Método</a></li>
+      <li><a href="#diferenciais">Diferenciais</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </header>
+
+  <main id="topo">
+
+    <section class="hero">
+      <div class="hero__img">
+        <img src="img/deck-jardim-canteiros.jpg" alt="Deck de madeira amplo, com canteiros embutidos, ao lado de uma casa de colunas vermelhas e de um lago">
+      </div>
+      <div class="hero__veil"></div>
+      <div class="hero__text">
+        <h1>Estruturas que valorizam histórias</h1>
+      </div>
+    </section>
+
+    <section class="manifesto">
+      <!-- {{LOGO_MONOGRAMA}}: substituir pelo símbolo "L" oficial da Legno -->
+      <div class="monogram" aria-hidden="true">{{L}}</div>
+      <h2>Mais que madeira, é maestria.</h2>
+      <p class="label" style="margin-left:auto;margin-right:auto;text-align:center;">Experiência · Precisão · Acabamento</p>
+    </section>
+
+    <div class="anchor label" id="servicos">Pérgolas · Decks · Coberturas · Revestimentos · Projetos especiais</div>
+
+    <section class="split">
+      <div class="split__img">
+        <img src="img/deck-spa-detalhe.jpg" alt="Deck de madeira em réguas contínuas ao redor de uma banheira de hidromassagem, em varanda envidraçada">
+      </div>
+      <div class="split__text">
+        <span class="label">Decks</span>
+        <h2>Réguas alinhadas, piso para viver ao ar livre.</h2>
+        <p>Decks planejados para o espaço e para o uso. Cada régua é assentada com atenção ao alinhamento, ao nivelamento e ao acabamento das bordas.</p>
+        <p>Da varanda ao jardim, o piso de madeira passa a fazer parte da casa.</p>
+      </div>
+    </section>
+
+    <section class="split split--reverse">
+      <div class="split__img">
+        <img src="img/deck-spa-bancada.jpg" alt="Banheira de hidromassagem embutida em estrutura de madeira com banco corrido, em varanda de vidro">
+      </div>
+      <div class="split__text">
+        <span class="label">Projetos especiais</span>
+        <h2>Soluções sob medida para cada ambiente.</h2>
+        <p>Quando o espaço pede algo único, o projeto parte do desenho. Revestimento de spa, bancadas e degraus em madeira, feitos para encaixar no ambiente.</p>
+        <p>O resultado é uma peça integrada à arquitetura, não um acréscimo.</p>
+      </div>
+    </section>
+
+    <section class="split">
+      <div class="split__img">
+        <img src="img/revestimento-deck-fachada.jpg" alt="Deck e revestimento vertical de madeira com acabamento escuro, em frente a uma casa com pérgola">
+      </div>
+      <div class="split__text">
+        <span class="label">Revestimentos</span>
+        <h2>Madeira que protege e dá caráter à obra.</h2>
+        <p>Revestimentos verticais e horizontais em madeira, com acabamento pensado para a exposição de cada ambiente.</p>
+        <p>O tratamento e a escolha do tom fazem parte do projeto desde o início.</p>
+      </div>
+    </section>
+
+    <section class="section" id="metodo">
+      <div class="section__head">
+        <span class="label">Método</span>
+        <h2>Projetar. Executar. Valorizar.</h2>
+      </div>
+      <div class="rows">
+        <div class="row">
+          <h3>Projetar</h3>
+          <p>Visita ao local, medidas e conversa sobre o uso do espaço. Daí sai o desenho e a proposta.</p>
+        </div>
+        <div class="row">
+          <h3>Executar</h3>
+          <p>Obra conduzida com precisão, do corte à montagem, com cuidado no acabamento de cada detalhe.</p>
+        </div>
+        <div class="row">
+          <h3>Valorizar</h3>
+          <p>Uma estrutura bem feita valoriza o imóvel e dura. É esse o resultado que buscamos em cada projeto.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="surface-white" id="diferenciais">
+      <section class="section">
+        <div class="section__head">
+          <span class="label">Diferenciais</span>
+          <h2>O que sustenta cada obra.</h2>
+        </div>
+        <div class="rows">
+          <div class="row">
+            <h3>Soluções sob medida</h3>
+            <p>Cada projeto parte do espaço, do uso e do estilo de quem vai viver nele.</p>
+          </div>
+          <div class="row">
+            <h3>Madeira certificada</h3>
+            <p>Matéria-prima escolhida com critério.</p>
+          </div>
+          <div class="row">
+            <h3>Valoriza seu imóvel</h3>
+            <p>Estrutura bem executada pesa no conjunto da casa.</p>
+          </div>
+          <div class="row">
+            <h3>Do litoral à serra</h3>
+            <p>Atuação no Litoral Norte e em Porto Alegre, RS.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="pause">
+      <img src="img/deck-jardim-canteiros.jpg" alt="Canteiros de madeira ao longo da borda do deck, junto ao gramado e ao lago">
+    </section>
+
+    <section class="contact" id="contato">
+      <span class="label">Contato</span>
+      <h2>Vamos conversar sobre o seu projeto.</h2>
+      <p>Conte o que você imagina para o espaço. Voltamos com uma proposta feita sob medida.</p>
+      <div class="contact__links">
+        <!-- {{WHATSAPP}}: informar o número (somente dígitos, com DDI e DDD) -->
+        <a class="link" href="https://wa.me/{{WHATSAPP}}">Solicitar orçamento pelo WhatsApp</a>
+        <a class="link" href="https://www.instagram.com/legno.maestria">@legno.maestria</a>
+      </div>
+      <p class="label contact__area" style="margin-left:auto;margin-right:auto;text-align:center;">Litoral Norte | Porto Alegre | RS</p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span class="label">LEGNO · Maestria em madeira</span>
+    <h2>Mais que madeira, é maestria.</h2>
+    <div class="footer__links">
+      <a class="link" href="https://wa.me/{{WHATSAPP}}">WhatsApp</a>
+      <a class="link" href="https://www.instagram.com/legno.maestria">Instagram</a>
+    </div>
+    <p class="footer__small">© Legno. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
