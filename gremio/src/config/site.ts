@@ -1,3 +1,5 @@
+import pranchetaA from '../assets/photos/prancheta-a.webp'
+import pranchetaB from '../assets/photos/prancheta-b.webp'
 import duplaEscudo from '../assets/photos/dupla-escudo.webp'
 import equipeCopa from '../assets/photos/equipe-copa.webp'
 import equipeTrofeus from '../assets/photos/equipe-trofeus.webp'
@@ -70,6 +72,8 @@ const p = (src: string, alt: string, w = 262, h = 312): Photo => ({ src, alt, w,
  * (a proporção pode mudar — os componentes usam object-cover).
  */
 export const photos = {
+  pranchetaA: p(pranchetaA, 'Treinador de casaco preto explicando uma jogada na prancheta tática para alunos', 406, 617),
+  pranchetaB: p(pranchetaB, 'Treinador apoiando a prancheta tática enquanto os alunos acompanham a explicação', 406, 617),
   turmaGrande: p(turmaGrande, 'Turma numerosa de alunos de uniforme tricolor reunida no campo', 725, 450),
   treinadora: p(treinadora, 'Treinadora anotando em uma prancheta cercada por alunos ao ar livre', 542, 695),
   equipeTrofeus: p(equipeTrofeus, 'Equipe de alunos com medalhas e troféus ao lado dos treinadores, no ginásio', 725, 450),

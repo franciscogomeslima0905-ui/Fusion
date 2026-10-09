@@ -51,10 +51,12 @@ export function Hero() {
           tl.fromTo(q('[data-shot="2"]'), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.07 }, 0.22)
           tl.fromTo(
             q('[data-shot="2"] img'),
-            { scale: 1.04, transformOrigin: '52% 68%' },
-            { scale: 2.6, transformOrigin: '52% 68%', duration: 0.24, ease: 'power2.inOut' },
+            { scale: 1.04, transformOrigin: '52% 70%' },
+            { scale: 2.2, transformOrigin: '52% 70%', duration: 0.24, ease: 'power2.inOut' },
             0.26,
           )
+          // dois quadros reais do treinador com a prancheta: a troca suave sugere o movimento
+          tl.fromTo(q('[data-shot2b]'), { opacity: 0 }, { opacity: 1, duration: 0.12 }, 0.3)
           tl.fromTo(
             q('[data-board]'),
             { autoAlpha: 0, scale: 0.88, rotation: -5 },
@@ -175,7 +177,7 @@ export function Hero() {
       {(mode === 'stills' || mode === 'static') && (
         <div className="absolute inset-0">
           <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-            <img data-ambient="a" src={photos.prancheta.src} alt="" className="absolute inset-0 h-full w-full scale-125 object-cover opacity-100 blur-[48px] saturate-150" />
+            <img data-ambient="a" src={photos.pranchetaA.src} alt="" className="absolute inset-0 h-full w-full scale-125 object-cover opacity-100 blur-[48px] saturate-150" />
             <img data-ambient="b" src={photos.treinadorGrupo.src} alt="" className="absolute inset-0 h-full w-full scale-125 object-cover blur-[48px] saturate-150" style={{ opacity: 0 }} />
             <div className="absolute inset-0 bg-ink/70" />
           </div>
@@ -189,7 +191,8 @@ export function Hero() {
                 <img src={photos.treinadorCampo.src} alt={photos.treinadorCampo.alt} className={photoCls} />
               </div>
               <div data-shot="2" className="absolute inset-0 overflow-hidden" style={{ visibility: 'hidden' }}>
-                <img src={photos.prancheta.src} alt={photos.prancheta.alt} className={photoCls} />
+                <img src={photos.pranchetaA.src} alt={photos.pranchetaA.alt} className={photoCls} />
+                <img data-shot2b src={photos.pranchetaB.src} alt="" className={photoCls} style={{ opacity: 0 }} />
               </div>
               <div data-board className="absolute inset-[6%] shadow-[0_20px_60px_rgb(0_0_0/0.55)]" style={{ visibility: 'hidden' }}>
                 <TacticalBoard className="h-full w-full" />

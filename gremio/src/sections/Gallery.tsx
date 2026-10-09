@@ -13,6 +13,7 @@ const order: Photo[] = [
   photos.drible,
   photos.turmaBandeira,
   photos.treinadora,
+  photos.pranchetaA,
   photos.turmaGrande,
   photos.equipeTrofeus,
   photos.equipeCopa,
