@@ -1,0 +1,82 @@
+@import '@fontsource/anton';
+@import '@fontsource-variable/oswald';
+@import '@fontsource-variable/inter';
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Anton', 'Impact', 'Arial Narrow', sans-serif;
+  --font-head: 'Oswald Variable', 'Arial Narrow', sans-serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --color-blue: #009fe3;
+  --color-navy: #003b70;
+  --color-ink: #080a0d;
+  --color-coal: #0e1217;
+  --color-steel: #b8bec6;
+  --color-line: rgb(255 255 255 / 0.14);
+}
+
+@layer base {
+  html {
+    background: var(--color-ink);
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-ink);
+    color: #fff;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--color-blue); color: var(--color-ink); }
+  :focus-visible { outline: 2px solid var(--color-blue); outline-offset: 3px; }
+  img { user-select: none; -webkit-user-drag: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+}
+
+/* títulos: Anton, caixa alta, entrelinha curta */
+.t-display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: 0.005em;
+}
+.t-head {
+  font-family: var(--font-head);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 500;
+}
+
+/* máscara de linha: cada palavra sobe de dentro de um recorte */
+.mask-line { display: block; overflow: hidden; padding: 0.16em 0.04em 0.08em; margin: -0.16em -0.04em -0.08em; }
+.mask-line > span { display: block; will-change: transform; }
+
+/* grão de filme (ruído SVG) para dar textura às áreas escuras e às fotos */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* foto de arquivo em baixa resolução: suaviza o serrilhado ao ampliar */
+.photo { image-rendering: auto; filter: contrast(1.04) saturate(1.06); }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+}
+
+/* respiração de câmera na mão da cena provisória */
+@keyframes sway {
+  from { transform: translate3d(-0.35%, 0.2%, 0) rotate(-0.18deg) scale(1.012); }
+  to { transform: translate3d(0.35%, -0.2%, 0) rotate(0.18deg) scale(1.012); }
+}
