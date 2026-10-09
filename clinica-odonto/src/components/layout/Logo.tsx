@@ -5,7 +5,9 @@ import { Img, hasImage } from '../ui/Img'
 /** Usa a logo enviada (src/assets/images/logo.*); sem ela, mostra um logotipo provisório. */
 export function Logo({ light = false, className = 'h-10' }: { light?: boolean; className?: string }) {
   if (hasImage(imageSlots.logo)) {
-    return <Img name={imageSlots.logo} alt={site.name} fit="contain" loading="eager" className={`w-auto ${className}`} />
+    const logo = <Img name={imageSlots.logo} alt={site.name} fit="contain" loading="eager" className={`w-auto ${className}`} />
+    // sobre fundo escuro, a logo enviada (geralmente colorida) ganha um suporte claro para manter a leitura
+    return light ? <span className="inline-block rounded-xl bg-white px-3 py-2">{logo}</span> : logo
   }
   return (
     <span className="inline-flex items-center gap-2 whitespace-nowrap">
