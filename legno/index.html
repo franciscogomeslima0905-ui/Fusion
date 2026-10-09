@@ -116,7 +116,7 @@
       [data-reveal] {
         animation: rise linear forwards;
         animation-timeline: view();
-        animation-range: entry 0% entry 55%;
+        animation-range: entry 0% entry 30%;
       }
       .img-reveal img {
         animation: zoomOut linear forwards;
@@ -220,6 +220,54 @@
     .shot:hover .cap, .shot:focus-visible .cap { opacity: 1; transform: none; }
     .gallery__note { margin-top: 28px; font-size: 14px; }
 
+
+    /* ---------- Por que a Legno ---------- */
+    .why { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 88px; align-items: start; }
+    .why__media { position: sticky; top: 110px; aspect-ratio: 4 / 5; overflow: hidden; }
+    .why__tag { position: absolute; left: 0; bottom: 0; background: var(--espresso); color: var(--cream); padding: 18px 26px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+    .reasons { margin-top: 48px; border-top: 1px solid var(--line-light); }
+    .reason { display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 28px 0; border-bottom: 1px solid var(--line-light); }
+    .reason b { font-size: 12.5px; letter-spacing: 0.18em; color: var(--copper); padding-top: 9px; font-weight: 600; }
+    .reason h3 { margin-bottom: 8px; }
+    .why__cta { margin-top: 44px; display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; }
+    .why__cta .btn { color: var(--espresso); }
+    .on-light .why__cta .link { color: var(--ink); }
+
+    /* ---------- Detalhes ---------- */
+    .details-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .detail__img { aspect-ratio: 4 / 3; overflow: hidden; background: var(--bark); }
+    .detail__img img { transition: transform 1.2s var(--ease); }
+    .detail:hover .detail__img img { transform: scale(1.06); }
+    .detail h3 { margin: 22px 0 8px; font-size: 26px; }
+    .detail p { font-size: 15px; }
+
+    /* ---------- Faixa de foto ---------- */
+    .band { position: relative; height: 72vh; min-height: 440px; max-height: 760px; overflow: hidden; color: var(--cream); background: var(--espresso); }
+    .band__img { position: absolute; inset: -8% 0; }
+    .band__img img { object-position: 50% 60%; }
+    .band__veil { position: absolute; inset: 0; background: linear-gradient(to right, rgba(20, 16, 15, 0.82) 0%, rgba(20, 16, 15, 0.5) 45%, rgba(20, 16, 15, 0.1) 80%), linear-gradient(to top, rgba(20, 16, 15, 0.7) 0%, rgba(20, 16, 15, 0) 60%); }
+    .band__text { position: absolute; left: 0; right: 0; bottom: 0; padding-bottom: 72px; }
+    .band__text h2 { max-width: 20ch; font-size: clamp(34px, 4.6vw, 62px); }
+    .band__text .link { display: inline-block; margin-top: 28px; color: var(--cream); font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; }
+    @supports (animation-timeline: view()) {
+      .band__img img { animation: drift linear both; animation-timeline: view(); animation-range: cover; }
+    }
+    @keyframes drift { from { translate: 0 -5%; } to { translate: 0 5%; } }
+
+    /* ---------- Proposta ---------- */
+    .offer { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .offer__box { background: var(--cream); border: 1px solid var(--line-light); padding: 48px; }
+    .offer__box h3 { font-size: clamp(28px, 2.6vw, 36px); margin-bottom: 8px; }
+    .offer__box > p { font-size: 15px; }
+    .offer__box ul { margin-top: 28px; border-top: 1px solid var(--line-light); }
+    .offer__box li { padding: 15px 0 15px 28px; border-bottom: 1px solid var(--line-light); font-size: 15.5px; position: relative; color: var(--ink); }
+    .offer__box li::before { content: ''; position: absolute; left: 0; top: 25px; width: 14px; height: 1px; background: var(--copper); }
+    .offer__box--dark { background: var(--espresso); color: var(--cream); border-color: var(--espresso); }
+    .offer__box--dark > p { color: var(--cream-soft); }
+    .offer__box--dark ul, .offer__box--dark li { border-color: var(--line-dark); color: var(--cream); }
+    .offer__cta { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: center; text-align: center; }
+    .offer__cta p { max-width: none; }
+
     /* ---------- Madeira ---------- */
     .wood { display: grid; grid-template-columns: 1fr 1.25fr; gap: 88px; align-items: start; }
     .wood__quote { font-family: var(--font-display); font-size: clamp(32px, 3.8vw, 50px); line-height: 1.12; position: sticky; top: 120px; }
@@ -310,7 +358,10 @@
     /* ---------- Responsivo ---------- */
     @media (max-width: 1023px) {
       :root { --section-y: 96px; --gutter: 28px; }
-      .about, .wood, .process, .faq, .contact { grid-template-columns: 1fr; gap: 56px; }
+      .about, .wood, .process, .faq, .contact, .why { grid-template-columns: 1fr; gap: 56px; }
+      .why__media { position: static; aspect-ratio: 16 / 11; }
+      .details-grid { grid-template-columns: 1fr 1fr; }
+      .offer { grid-template-columns: 1fr; }
       .wood__quote, .process .head { position: static; }
       .about__media { aspect-ratio: 16 / 11; }
       .trust__grid { grid-template-columns: repeat(2, 1fr); }
@@ -342,6 +393,11 @@
       .services { grid-template-columns: 1fr; }
       .card__body { padding: 26px; }
       .gallery { grid-template-columns: 1fr; }
+      .details-grid { grid-template-columns: 1fr; }
+      .offer__box { padding: 30px 24px; }
+      .reason { grid-template-columns: 40px 1fr; }
+      .band { min-height: 400px; }
+      .band__text { padding-bottom: 48px; }
       .shot--a, .shot--b, .shot--c, .shot--d { grid-column: span 1; aspect-ratio: 4 / 3; }
       .shot .cap { display: block; opacity: 1; transform: none; padding-top: 40px; }
       .step { padding-left: 72px; }
@@ -373,9 +429,9 @@
       </a>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
       <nav class="nav" id="nav" aria-label="Principal">
-        <a href="#sobre">Sobre</a>
         <a href="#servicos">Serviços</a>
         <a href="#obras">Obras</a>
+        <a href="#porque">Por que a Legno</a>
         <a href="#processo">Processo</a>
         <a href="#perguntas">Perguntas</a>
         <a class="btn btn--sm" href="#contato">Orçamento</a>
@@ -564,6 +620,74 @@
       </div>
     </section>
 
+
+    <!-- POR QUE A LEGNO -->
+    <section class="section on-light" id="porque">
+      <div class="wrap why">
+        <div class="why__media img-reveal" data-reveal>
+          <img src="img/deck-colunas-vertical.jpg" alt="Deck de madeira amplo ao lado de uma casa com colunas vermelhas, com acabamento limpo e réguas alinhadas">
+          <span class="why__tag">Obra entregue</span>
+        </div>
+        <div>
+          <span class="eyebrow" data-reveal>Por que a Legno</span>
+          <h2 data-reveal style="--d:80">Seis motivos para pedir seu orçamento com a gente.</h2>
+          <p style="margin-top:20px" data-reveal>Uma obra em madeira é um investimento na casa. Estes são os pontos que fazem diferença na hora de escolher quem vai executá-la.</p>
+          <div class="reasons">
+            <div class="reason" data-reveal><b>01</b><div><h3>Projeto pensado para o seu espaço</h3><p>Antes de orçar, entendemos o uso, medimos o local e avaliamos a exposição ao sol e à chuva. A proposta nasce do seu espaço, não de um modelo pronto.</p></div></div>
+            <div class="reason" data-reveal><b>02</b><div><h3>Proposta clara antes de começar</h3><p>Você recebe o desenho, a madeira e o acabamento indicados e o prazo informado, para decidir com todas as informações na mão.</p></div></div>
+            <div class="reason" data-reveal><b>03</b><div><h3>Madeira certificada, acabamento certo</h3><p>Matéria-prima escolhida com critério e tratamento adequado ao lugar onde a peça vai ficar.</p></div></div>
+            <div class="reason" data-reveal><b>04</b><div><h3>Execução com precisão</h3><p>Alinhamento, nivelamento e fixação conferidos ao longo da obra. Os detalhes aparecem no resultado final.</p></div></div>
+            <div class="reason" data-reveal><b>05</b><div><h3>Obras reais, que você pode ver</h3><p>Decks, revestimentos e projetos especiais executados pela Legno. Veja as fotos acima e, se quiser, peça mais imagens na conversa.</p></div></div>
+            <div class="reason" data-reveal><b>06</b><div><h3>Orientação depois da entrega</h3><p>Explicamos como conservar a madeira, para que a obra continue bonita por mais tempo.</p></div></div>
+          </div>
+          <div class="why__cta" data-reveal>
+            <a class="btn" href="#contato">Pedir meu orçamento</a>
+            <a class="link" href="#proposta">O que vem na proposta</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DETALHES -->
+    <section class="section on-dark" id="detalhes">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow" data-reveal>Detalhes</span>
+          <h2 data-reveal style="--d:80">O ofício está nos detalhes.</h2>
+          <p data-reveal style="--d:160">É nos pontos que quase ninguém vê de longe que se reconhece uma obra bem executada.</p>
+        </div>
+        <div class="details-grid">
+          <article class="detail" data-reveal style="--d:0">
+            <div class="detail__img img-reveal"><img src="img/detalhe-reguas.jpg" alt="Detalhe do deck de madeira com réguas alinhadas e borda frontal acabada"></div>
+            <h3>Réguas alinhadas</h3>
+            <p>Espaçamento regular, fixação planejada e bordas bem acabadas.</p>
+          </article>
+          <article class="detail" data-reveal style="--d:120">
+            <div class="detail__img img-reveal"><img src="img/detalhe-canteiro.jpg" alt="Detalhe de canteiro embutido no deck, com estrutura interna e revestimento em madeira"></div>
+            <h3>Estrutura bem resolvida</h3>
+            <p>Canteiros e volumes embutidos no deck, com estrutura interna e revestimento em madeira.</p>
+          </article>
+          <article class="detail" data-reveal style="--d:240">
+            <div class="detail__img img-reveal"><img src="img/detalhe-revestimento.jpg" alt="Detalhe do revestimento vertical de madeira com acabamento escuro sob o deck"></div>
+            <h3>Acabamento com caráter</h3>
+            <p>Revestimento vertical com tom e proteção definidos para a exposição do local.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAIXA DE FOTO -->
+    <section class="band" aria-label="Obra executada">
+      <div class="band__img"><img src="img/revestimento-deck-fachada.jpg" alt="Deck com revestimento vertical de madeira escura em frente a uma casa, com gramado e jardim"></div>
+      <div class="band__veil"></div>
+      <div class="band__text">
+        <div class="wrap">
+          <h2 data-reveal>Uma obra bem feita se vê no primeiro olhar e se confirma com o tempo.</h2>
+          <a class="link" href="#contato" data-reveal>Conversar sobre o meu projeto</a>
+        </div>
+      </div>
+    </section>
+
     <!-- MADEIRA -->
     <section class="section on-walnut" id="madeira">
       <div class="wrap wood">
@@ -593,6 +717,46 @@
             </div>
           </li>
         </ul>
+      </div>
+    </section>
+
+
+    <!-- PROPOSTA -->
+    <section class="section on-sand on-light" id="proposta">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow" data-reveal>Antes de decidir</span>
+          <h2 data-reveal style="--d:80">Saiba o que esperar de um orçamento.</h2>
+          <p data-reveal style="--d:160">Compare com calma. Estas são as informações que você deve receber de qualquer empresa e que fazem parte da nossa proposta.</p>
+        </div>
+        <div class="offer">
+          <div class="offer__box" data-reveal>
+            <h3>O que vem na proposta</h3>
+            <p>Tudo descrito antes de você fechar.</p>
+            <ul>
+              <li>Projeto e desenho do que será feito</li>
+              <li>Madeira e acabamento indicados para o local</li>
+              <li>Descrição clara do serviço contratado</li>
+              <li>Prazo informado antes de fechar</li>
+              <li>Orientações de conservação na entrega</li>
+            </ul>
+          </div>
+          <div class="offer__box offer__box--dark" data-reveal style="--d:120">
+            <h3>Perguntas para fazer a qualquer empresa</h3>
+            <p>Respondemos todas elas na conversa, sem pressa.</p>
+            <ul>
+              <li>De onde vem a madeira e ela é certificada?</li>
+              <li>Qual acabamento será aplicado e por quê?</li>
+              <li>Como serão feitos o nivelamento e a fixação?</li>
+              <li>O que está incluso e qual é o prazo?</li>
+              <li>Como conservar a madeira depois da obra?</li>
+            </ul>
+          </div>
+        </div>
+        <div class="offer__cta" data-reveal>
+          <a class="btn" href="#contato">Pedir meu orçamento</a>
+          <a class="link" href="#perguntas">Ver perguntas frequentes</a>
+        </div>
       </div>
     </section>
 
@@ -746,8 +910,9 @@
           <h4>Navegação</h4>
           <ul>
             <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#servicos">Serviços</a></li>
             <li><a href="#obras">Obras</a></li>
+            <li><a href="#porque">Por que a Legno</a></li>
+            <li><a href="#proposta">Proposta</a></li>
             <li><a href="#processo">Processo</a></li>
           </ul>
         </div>
