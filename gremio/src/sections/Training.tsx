@@ -6,7 +6,7 @@ import { WhatsAppButton } from '../components/Buttons'
 import { useSectionFx } from '../hooks/useSectionFx'
 
 const moments = [
-  { n: '01', label: 'Treinadores orientando alunos', photo: photos.treinadorGrupo },
+  { n: '01', label: 'Treinadores orientando alunos', photo: photos.treinadora },
   { n: '02', label: 'Crianças praticando futebol', photo: photos.duelo },
   { n: '03', label: 'Exercícios técnicos', photo: photos.cones },
   { n: '04', label: 'Atividades coletivas', photo: photos.comemoracao },

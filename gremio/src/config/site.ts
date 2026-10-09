@@ -1,3 +1,8 @@
+import duplaEscudo from '../assets/photos/dupla-escudo.webp'
+import equipeCopa from '../assets/photos/equipe-copa.webp'
+import equipeTrofeus from '../assets/photos/equipe-trofeus.webp'
+import treinadora from '../assets/photos/treinadora.webp'
+import turmaGrande from '../assets/photos/turma-grande.webp'
 import comemoracao from '../assets/photos/comemoracao.webp'
 import drible from '../assets/photos/drible.webp'
 import duelo from '../assets/photos/duelo.webp'
@@ -65,6 +70,11 @@ const p = (src: string, alt: string, w = 262, h = 312): Photo => ({ src, alt, w,
  * (a proporção pode mudar — os componentes usam object-cover).
  */
 export const photos = {
+  turmaGrande: p(turmaGrande, 'Turma numerosa de alunos de uniforme tricolor reunida no campo', 725, 450),
+  treinadora: p(treinadora, 'Treinadora anotando em uma prancheta cercada por alunos ao ar livre', 542, 695),
+  equipeTrofeus: p(equipeTrofeus, 'Equipe de alunos com medalhas e troféus ao lado dos treinadores, no ginásio', 725, 450),
+  equipeCopa: p(equipeCopa, 'Equipe de atletas mais velhos com troféus diante do banner da Copa Libertadores', 725, 695),
+  duplaEscudo: p(duplaEscudo, 'Dois alunos abraçados diante do escudo do Grêmio', 542, 695),
   drible: p(drible, 'Aluno de colete roxo conduzindo a bola durante o jogo', 542, 695),
   salto: p(salto, 'Aluno saltando durante uma partida no ginásio', 542, 695),
   comemoracao: p(comemoracao, 'Aluno comemorando com os colegas durante o jogo', 542, 695),
