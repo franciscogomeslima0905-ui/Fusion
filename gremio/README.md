@@ -20,25 +20,33 @@ npm run build:single   # opcional: UM único .html em dist-single/
 `dist/` é um site estático: funciona em Vercel, Netlify, Cloudflare Pages, GitHub Pages ou qualquer servidor
 (`npm start` serve a pasta com Node). Para subpasta, use `vite build --base=/subpasta/`.
 
-## ⚠️ Estado da cena de abertura (leia)
+## Cena de abertura
 
-**Os arquivos de vídeo/frames da cena (treinador → prancheta → alunos) ainda NÃO existem.** Eles precisam ser
-filmados ou produzidos; não foram gerados aqui e o projeto não finge que sim.
+A abertura é uma **ilustração vetorial animada** (SVG), desenhada no próprio projeto e controlada pela rolagem
+(GSAP ScrollTrigger com pin + scrub). Não depende de nenhum arquivo de vídeo e não é fotorrealista — é um estilo
+gráfico editorial nas cores do Grêmio:
 
-Enquanto não existirem, a abertura roda a **cena provisória** (`mode = stills`): fotos reais da escola (recortes
-dos prints do Instagram, baixa resolução) em moldura, com a mesma coreografia de 4 fases controlada pela rolagem,
-e uma **prancheta tática vetorial** (campo, linhas brancas, peças azuis que deslizam) no lugar da cena das mãos.
-Ela **não** é fotorrealista e **não** mostra o treinador mexendo nas peças — isso depende da filmagem real.
+| Rolagem | O que acontece |
+|---|---|
+| 0–25% | O treinador, sozinho no campo, explica gesticulando (cabeça acompanha a prancheta) |
+| 25–50% | A câmera se aproxima da prancheta tática (campo, linhas brancas, peças azuis) |
+| 50–75% | A mão do treinador pega as peças azuis e as desliza pelo campo (braço com cinemática inversa, dedos em pinça, rastro tracejado); depois aponta a região da jogada |
+| 75–100% | A câmera se afasta e revela os alunos em semicírculo (meninos e meninas, uniforme tricolor, chuteiras e meiões); alguns apontam para o treinador; surge o título e o botão |
 
-### Como plugar a cena real (nada no código precisa mudar)
+Onde mexer: `src/scene/illustrated/` — `Coach.tsx` (treinador), `Kid.tsx` (aluno; cor da pele, cabelo, chuteira, pose),
+`IllustratedScene.tsx` (posição dos alunos), `Board.tsx` + `tactics.ts` (prancheta e jogada),
+`choreography.ts` (câmera, tempos e gestos). Dica: abra `/?cena=0.55` para congelar a cena em qualquer ponto (0–1).
+No celular a composição muda (menos alunos, câmera mais fechada); com "reduzir movimento" aparece o quadro final estático.
+
+### Usar filmagem real no lugar da ilustração (opcional)
 1. Grave/produza a sequência (briefing abaixo) em **dois enquadramentos**: horizontal 16:9 e vertical 9:16.
 2. Converta (precisa de `ffmpeg`): `npm run scene:frames -- horizontal.mp4 vertical.mp4`
    → cria `public/media/hero/frames-desktop/`, `frames-mobile/` (150 frames `frame_0001.webp`…), `hero-desktop.mp4`,
    `hero-mobile.mp4` (só keyframes, ideal para rolar) e `poster.webp`.
 3. Em `public/media/hero/manifest.json` troque `"enabled": false` para `true`.
 
-Prioridade em tempo de execução: **frames (canvas)** → **vídeo** → cena provisória. Celular em retrato usa a variante
-`mobile`. Aparelhos fracos, "economizar dados" e conexão 2G caem na cena provisória; "reduzir movimento" mostra a
+Prioridade em tempo de execução: **frames (canvas)** → **vídeo** → ilustração. Celular em retrato usa a variante
+`mobile`. Aparelhos fracos, "economizar dados" e conexão 2G ficam com a ilustração (leve); "reduzir movimento" mostra a
 composição final estática, sem fixar a rolagem.
 
 ### Briefing da filmagem (progresso da rolagem → ação)
@@ -68,7 +76,8 @@ metade inferior (celular) do enquadramento final mais limpo. Duração ideal 8�
 src/
   config/site.ts          dados oficiais, mensagens, fotos
   sections/               Hero, About, Categories, Training, Gallery, Units, FinalCta
-  scene/                  FrameCanvas, VideoScrub, TacticalBoard, useSceneMode, tactics
+  scene/                  FrameCanvas, VideoScrub, useSceneMode
+  scene/illustrated/      ilustração animada: Coach, Kid, Board, Backdrop, choreography
   components/             Header, Footer, Buttons, FloatingWhatsApp, Logo, Icons, MaskTitle
   hooks/useSectionFx.ts   entradas por atributos (data-mask / data-reveal / data-img / data-parallax)
 scripts/make-frames.mjs   vídeo → frames + vídeo só-keyframes
@@ -76,7 +85,7 @@ server/index.mjs          servidor Node estático
 ```
 
 ## Decisões e limites
-- **Three.js / React Three Fiber não foram usados**: sem modelos 3D reais, só adicionariam peso. A estrutura de mídia
-  (frames/vídeo) é o caminho para o realismo pedido.
+- **Three.js / React Three Fiber não foram usados**: a cena é 2D em SVG (leve e nítida em qualquer tela). Para realismo,
+  use a estrutura de mídia (frames/vídeo) acima.
 - Acessibilidade: "pular abertura", menu móvel com Esc, galeria/lightbox com teclado, `prefers-reduced-motion`.
 - Desempenho: fontes locais (`@fontsource`), imagens `webp` com `loading="lazy"`, chunks separados de GSAP/Motion.

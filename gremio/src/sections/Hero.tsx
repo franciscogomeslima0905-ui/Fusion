@@ -1,11 +1,11 @@
 import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { gsap, ScrollTrigger } from '../lib/gsap'
-import { messages, photos, site } from '../config/site'
+import { messages, site } from '../config/site'
 import { WhatsAppButton } from '../components/Buttons'
 import { FrameCanvas } from '../scene/FrameCanvas'
 import { VideoScrub } from '../scene/VideoScrub'
-import { TacticalBoard } from '../scene/TacticalBoard'
-import { pieces } from '../scene/tactics'
+import { IllustratedScene } from '../scene/illustrated/IllustratedScene'
+import { buildIllustrated } from '../scene/illustrated/choreography'
 import { useSceneMode } from '../scene/useSceneMode'
 
 const CHAPTERS = ['O treinador', 'A prancheta', 'A jogada', 'A turma']
@@ -14,12 +14,13 @@ const CHAPTERS = ['O treinador', 'A prancheta', 'A jogada', 'A turma']
  * Abertura cinematográfica fixada (pin) e controlada pela rolagem (scrub):
  *   0–25%   o treinador, sozinho, explicando
  *   25–50%  a câmera se aproxima da prancheta
- *   50–75%  as peças azuis são movimentadas sobre o campo
+ *   50–75%  o treinador movimenta as peças azuis sobre o campo
  *   75–100% a câmera se afasta e revela os alunos; surge o título e o convite
  *
  * Fontes da cena (veja README):
- *   frames → public/media/hero/frames-*  | video → public/media/hero/*.mp4  (arquivos reais de filmagem/render)
- *   stills → cena provisória com fotos reais da escola + prancheta vetorial (usada enquanto não há mídia)
+ *   drawn  → ilustração vetorial animada (src/scene/illustrated) — padrão
+ *   frames → public/media/hero/frames-*   |   video → public/media/hero/*.mp4   (filmagem real, quando existir)
+ * Depuração: acrescente ?cena=0.5 à URL para congelar a cena num ponto (0–1) sem fixar a rolagem.
  */
 export function Hero() {
   const root = useRef<HTMLElement>(null)
@@ -28,10 +29,12 @@ export function Hero() {
   const [mediaReady, setMediaReady] = useState(false)
   const onReady = useCallback(() => setMediaReady(true), [])
   const isMedia = mode === 'frames' || mode === 'video'
+  const isDrawn = mode === 'drawn' || mode === 'static'
 
   useLayoutEffect(() => {
     if (mode === 'loading' || !root.current) return
     const el = root.current
+    const debug = new URLSearchParams(window.location.search).get('cena')
     const ctx = gsap.context(() => {
       const q = gsap.utils.selector(el)
       const mm = gsap.matchMedia()
@@ -40,73 +43,15 @@ export function Hero() {
         const desk = !!c.conditions?.desk
         const tl = gsap.timeline({ paused: true, defaults: { ease: 'none' } })
 
-        /* ---------- cena provisória (fotos reais + prancheta vetorial) ---------- */
-        if (mode === 'stills' || mode === 'static') {
-          const frame = q('[data-frame]')
-          // câmera: leve respiração contínua, como câmera na mão (só quando há movimento)
-          // fase 1 — o treinador
-          tl.fromTo(q('[data-shot="1"] img'), { scale: 1.02, xPercent: 0 }, { scale: 1.18, xPercent: -3, duration: 0.26, ease: 'power1.inOut' }, 0)
-          // fase 2 — aproximação da prancheta
-          tl.to(q('[data-shot="1"]'), { autoAlpha: 0, duration: 0.07 }, 0.22)
-          tl.fromTo(q('[data-shot="2"]'), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.07 }, 0.22)
-          tl.fromTo(
-            q('[data-shot="2"] img'),
-            { scale: 1.04, transformOrigin: '52% 70%' },
-            { scale: 2.2, transformOrigin: '52% 70%', duration: 0.24, ease: 'power2.inOut' },
-            0.26,
-          )
-          // dois quadros reais do treinador com a prancheta: a troca suave sugere o movimento
-          tl.fromTo(q('[data-shot2b]'), { opacity: 0 }, { opacity: 1, duration: 0.12 }, 0.3)
-          tl.fromTo(
-            q('[data-board]'),
-            { autoAlpha: 0, scale: 0.88, rotation: -5 },
-            { autoAlpha: 1, scale: 1, rotation: -1.6, duration: 0.09, ease: 'power2.out' },
-            0.41,
-          )
-          tl.to(q('[data-shot="2"]'), { autoAlpha: 0, duration: 0.06 }, 0.46)
-          // fase 3 — as peças azuis se movem
-          const P3 = { start: 0.5, len: 0.25 }
-          tl.to(q('[data-board]'), { rotation: 0, scale: 1.04, duration: P3.len, ease: 'power1.inOut' }, P3.start)
-          pieces.forEach((p) => {
-            const piece = q(`[data-piece="${p.id}"]`)
-            gsap.set(piece, { x: p.from[0], y: p.from[1], transformOrigin: '0 0' })
-            if (p.from[0] === p.to[0] && p.from[1] === p.to[1]) return
-            const t0 = P3.start + p.at[0] * P3.len
-            const d = (p.at[1] - p.at[0]) * P3.len
-            tl.to(piece, { scale: 1.16, duration: d * 0.18, ease: 'power2.out' }, t0) // pega a peça
-            tl.to(piece, { x: p.to[0], y: p.to[1], duration: d * 0.78, ease: 'power2.inOut' }, t0 + d * 0.12) // desliza
-            tl.to(piece, { scale: 1, duration: d * 0.2, ease: 'power2.in' }, t0 + d * 0.8) // solta
-            const trail = q(`[data-trail="${p.id}"]`)
-            gsap.set(trail, { attr: { x2: p.from[0], y2: p.from[1] } })
-            tl.to(trail, { attr: { x2: p.to[0], y2: p.to[1] }, duration: d * 0.78, ease: 'power2.inOut' }, t0 + d * 0.12)
-          })
-          tl.fromTo(
-            q('[data-zone]'),
-            { opacity: 0, scale: 0.6, svgOrigin: '372 228' },
-            { opacity: 1, scale: 1, svgOrigin: '372 228', duration: 0.04, ease: 'power2.out' },
-            P3.start + P3.len * 0.8,
-          )
-          // fase 4 — a câmera se afasta e revela a turma
-          tl.to(q('[data-board]'), { scale: 0.86, autoAlpha: 0, duration: 0.09, ease: 'power2.in' }, 0.76)
-          tl.fromTo(q('[data-shot="4"]'), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.09 }, 0.76)
-          tl.fromTo(
-            q('[data-shot="4"] img'),
-            { scale: 1.9, transformOrigin: '34% 52%' },
-            { scale: 1, transformOrigin: '34% 52%', duration: 0.24, ease: 'power2.out' },
-            0.75,
-          )
-          tl.to(q('[data-ambient="a"]'), { opacity: 0, duration: 0.14 }, 0.78)
-          tl.fromTo(q('[data-ambient="b"]'), { opacity: 0 }, { opacity: 1, duration: 0.14 }, 0.78)
-          tl.to(
-            frame,
-            desk ? { xPercent: 0, x: () => window.innerWidth * 0.215, scale: 1.04, duration: 0.2, ease: 'power2.inOut' } : { y: () => -window.innerHeight * 0.2, scale: 0.7, duration: 0.2, ease: 'power2.inOut' },
-            0.8,
-          )
-        }
+        // cena ilustrada: câmera, braços, dedos, peças e alunos
+        const scene = isDrawn
+          ? buildIllustrated(el.querySelector('svg[data-scene]') as SVGSVGElement, tl, { desk, idle: mode === 'drawn' })
+          : null
 
         /* ---------- camadas comuns: título, convite, indicadores ---------- */
         tl.to(q('[data-hint]'), { autoAlpha: 0, duration: 0.04 }, 0)
         if (isMedia) tl.fromTo(q('[data-scrim]'), { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.1 }, 0.78)
+        if (isDrawn) tl.fromTo(q('[data-scrim-drawn]'), { opacity: 0 }, { opacity: 1, duration: 0.12 }, 0.8)
         tl.fromTo(q('[data-h="kicker"]'), { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.05, ease: 'power3.out' }, 0.86)
         tl.fromTo(q('[data-h="title"] .mask-line > span'), { yPercent: 112 }, { yPercent: 0, duration: 0.07, stagger: 0.035, ease: 'power4.out' }, 0.87)
         tl.set(q('[data-h="title"]'), { autoAlpha: 1 }, 0.87)
@@ -121,27 +66,35 @@ export function Hero() {
           const idx = Math.min(3, Math.floor(p * 4))
           chapters.forEach((n, i) => ((n as HTMLElement).style.opacity = i === idx ? '1' : i < idx ? '0.55' : '0.28'))
         }
-        tl.eventCallback('onUpdate', sync)
-
-        if (mode === 'static') {
-          // "reduzir movimento": mostra a composição final, sem fixar a rolagem
-          tl.progress(1)
+        tl.eventCallback('onUpdate', () => {
+          scene?.render()
           sync()
-          return () => tl.kill()
+        })
+
+        const finish = () => {
+          scene?.dispose()
+          tl.kill()
+        }
+
+        if (mode === 'static' || debug !== null) {
+          // "reduzir movimento" (ou depuração): composição congelada, sem fixar a rolagem
+          tl.progress(mode === 'static' ? 1 : Math.min(1, Math.max(0, parseFloat(debug ?? '1') || 0)))
+          scene?.render()
+          sync()
+          return finish
         }
 
         gsap.set(q('[data-h]'), { autoAlpha: 0 })
         tl.progress(0)
+        scene?.render()
         sync()
-
-        // entrada (não depende da rolagem)
-        gsap.from(q('[data-frame]'), { clipPath: 'inset(0% 0% 100% 0%)', duration: 1.4, ease: 'power4.inOut', delay: 0.15 })
-        gsap.from(q('[data-hint]'), { autoAlpha: 0, y: 14, duration: 1, delay: 1.2 })
+        gsap.from(q('[data-stage]'), { opacity: 0, duration: 1.2, ease: 'power2.out', delay: 0.1 })
+        gsap.from(q('[data-hint] > *'), { autoAlpha: 0, y: 14, duration: 1, delay: 1.1 })
 
         const st = ScrollTrigger.create({
           trigger: el,
           start: 'top top',
-          end: () => `+=${Math.round(window.innerHeight * (desk ? 4.6 : 4))}`,
+          end: () => `+=${Math.round(window.innerHeight * (desk ? 5 : 4.2))}`,
           pin: true,
           scrub: 0.9,
           anticipatePin: 1,
@@ -154,78 +107,43 @@ export function Hero() {
         return () => {
           cancelAnimationFrame(raf)
           st.kill()
-          tl.kill()
+          finish()
         }
       })
     }, el)
     return () => ctx.revert()
-  }, [mode, isMedia])
+  }, [mode, isMedia, isDrawn])
 
   const poster = manifest?.video?.poster
-  const photoCls = 'photo absolute inset-0 h-full w-full object-cover'
+  const scrim = 'absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-ink/10 lg:bg-gradient-to-r lg:from-ink/85 lg:via-ink/35 lg:to-transparent'
 
   return (
-    <section
-      id="inicio"
-      ref={root}
-      aria-label="Abertura"
-      className="relative h-[100svh] min-h-[560px] overflow-hidden bg-ink text-white"
-    >
-      {mode === 'loading' && null}
-
-      {/* ===== cena provisória: fotos reais da escola + prancheta vetorial ===== */}
-      {(mode === 'stills' || mode === 'static') && (
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-            <img data-ambient="a" src={photos.pranchetaA.src} alt="" className="absolute inset-0 h-full w-full scale-125 object-cover opacity-100 blur-[48px] saturate-150" />
-            <img data-ambient="b" src={photos.treinadorGrupo.src} alt="" className="absolute inset-0 h-full w-full scale-125 object-cover blur-[48px] saturate-150" style={{ opacity: 0 }} />
-            <div className="absolute inset-0 bg-ink/70" />
-          </div>
-
-          <div
-            data-frame
-            className="grain absolute inset-0 m-auto aspect-[3/4] w-[min(86vw,calc(62svh*0.75))] overflow-hidden bg-coal shadow-[0_30px_120px_rgb(0_0_0/0.6)] lg:w-[min(40vw,calc(78svh*0.75))]"
-          >
-            <div className="absolute inset-0 animate-[sway_9s_ease-in-out_infinite_alternate]">
-              <div data-shot="1" className="absolute inset-0 overflow-hidden">
-                <img src={photos.treinadorCampo.src} alt={photos.treinadorCampo.alt} className={photoCls} />
-              </div>
-              <div data-shot="2" className="absolute inset-0 overflow-hidden" style={{ visibility: 'hidden' }}>
-                <img src={photos.pranchetaA.src} alt={photos.pranchetaA.alt} className={photoCls} />
-                <img data-shot2b src={photos.pranchetaB.src} alt="" className={photoCls} style={{ opacity: 0 }} />
-              </div>
-              <div data-board className="absolute inset-[6%] shadow-[0_20px_60px_rgb(0_0_0/0.55)]" style={{ visibility: 'hidden' }}>
-                <TacticalBoard className="h-full w-full" />
-              </div>
-              <div data-shot="4" className="absolute inset-0 overflow-hidden" style={{ visibility: 'hidden' }}>
-                <img src={photos.treinadorGrupo.src} alt={photos.treinadorGrupo.alt} className={photoCls} />
-              </div>
-            </div>
-            <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_90px_rgb(8_10_13/0.7)]" />
-            {/* marcas de enquadramento */}
-            {['left-3 top-3 border-l-2 border-t-2', 'right-3 top-3 border-r-2 border-t-2', 'bottom-3 left-3 border-b-2 border-l-2', 'bottom-3 right-3 border-b-2 border-r-2'].map((c) => (
-              <span key={c} className={`pointer-events-none absolute h-5 w-5 border-blue ${c}`} />
-            ))}
-          </div>
+    <section id="inicio" ref={root} aria-label="Abertura" className="relative h-[100svh] min-h-[560px] overflow-hidden bg-ink text-white">
+      {/* ===== ilustração animada ===== */}
+      {isDrawn && (
+        <div data-stage className="absolute inset-0">
+          <IllustratedScene compact={portrait} />
+          {/* leitura do título sobre a cena aberta */}
+          <div data-scrim-drawn className="pointer-events-none absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/45 to-transparent opacity-0 lg:bg-gradient-to-r lg:from-ink/80 lg:via-ink/30 lg:to-transparent" />
         </div>
       )}
 
       {/* ===== mídia real: sequência de frames ou vídeo ===== */}
       {mode === 'frames' && manifest?.frames && (
-        <div className="absolute inset-0 bg-ink">
+        <div data-stage className="absolute inset-0 bg-ink">
           <FrameCanvas set={(portrait ? manifest.frames.mobile ?? manifest.frames.desktop : manifest.frames.desktop ?? manifest.frames.mobile)!} progressRef={progress} onReady={onReady} />
-          <div data-scrim className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-ink/10 lg:bg-gradient-to-r lg:from-ink/85 lg:via-ink/35 lg:to-transparent" style={{ visibility: 'hidden' }} />
+          <div data-scrim className={scrim} style={{ visibility: 'hidden' }} />
         </div>
       )}
       {mode === 'video' && manifest?.video && (
-        <div className="absolute inset-0 bg-ink">
+        <div data-stage className="absolute inset-0 bg-ink">
           <VideoScrub
             src={(portrait ? manifest.video.mobile ?? manifest.video.desktop : manifest.video.desktop ?? manifest.video.mobile)!}
             poster={poster}
             progressRef={progress}
             onReady={onReady}
           />
-          <div data-scrim className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-ink/10 lg:bg-gradient-to-r lg:from-ink/85 lg:via-ink/35 lg:to-transparent" style={{ visibility: 'hidden' }} />
+          <div data-scrim className={scrim} style={{ visibility: 'hidden' }} />
         </div>
       )}
       {isMedia && !mediaReady && (
@@ -236,24 +154,24 @@ export function Hero() {
 
       {/* ===== título e convite (fase 4) ===== */}
       <div className="pointer-events-none absolute inset-0 z-20">
-        <div className="mx-auto flex h-full max-w-[1600px] items-end px-5 pb-[7svh] sm:px-8 lg:items-center lg:px-12 lg:pb-0">
+        <div className="mx-auto flex h-full max-w-[1600px] items-end px-5 pb-[6svh] sm:px-8 lg:items-start lg:px-12 lg:pt-[12svh] lg:pb-0">
           <div className="max-w-[44rem] lg:max-w-none">
-            <p data-h="kicker" className="t-head mb-4 flex items-center gap-3 text-[0.72rem] text-blue lg:mb-6 lg:text-[0.8rem]">
+            <p data-h="kicker" className="t-head mb-3 flex items-center gap-3 text-[0.72rem] text-blue lg:mb-5 lg:text-[0.8rem]">
               <span className="h-px w-8 bg-blue" />
               Tramandaí · Capão da Canoa
             </p>
             <h1
               data-h="title"
-              className="t-display text-[clamp(2.1rem,10.4vw,3.6rem)] sm:text-[clamp(3.4rem,9vw,6rem)] lg:text-[clamp(3.2rem,6vw,7.6rem)] lg:whitespace-nowrap"
+              className="t-display text-[clamp(2.1rem,10.4vw,3.6rem)] sm:text-[clamp(3.4rem,9vw,6rem)] lg:text-[clamp(2.6rem,min(5.4vw,9.5svh),7rem)] lg:whitespace-nowrap"
             >
               <span className="mask-line"><span>Mais que futebol.</span></span>
               <span className="mask-line"><span className="text-blue">Formamos o futuro.</span></span>
             </h1>
-            <p data-h="lead" className="mt-5 max-w-md text-[0.98rem] leading-relaxed text-steel lg:mt-7 lg:text-lg">
+            <p data-h="lead" className="mt-4 max-w-sm text-[0.98rem] leading-relaxed text-steel lg:mt-5 lg:max-w-none lg:text-[1.05rem] lg:whitespace-nowrap">
               Há mais de {site.years} anos formando atletas e cidadãos dentro e fora de campo.
             </p>
-            <div data-h="cta" className="pointer-events-auto mt-6 lg:mt-9">
-              <WhatsAppButton message={messages.hero} size="lg" className="w-full sm:w-auto">
+            <div data-h="cta" className="pointer-events-auto mt-5 lg:mt-6">
+              <WhatsAppButton message={messages.hero} size="lg" className="w-full sm:w-auto lg:!py-4">
                 Agende uma aula experimental
               </WhatsAppButton>
             </div>
@@ -274,10 +192,7 @@ export function Hero() {
           </li>
         ))}
       </ol>
-      <a
-        href="#escola"
-        className="t-head absolute right-5 bottom-7 z-30 hidden text-[0.68rem] text-white/60 transition-colors hover:text-white sm:right-8 lg:right-12 lg:block"
-      >
+      <a href="#escola" className="t-head absolute right-5 bottom-7 z-30 hidden text-[0.68rem] text-white/60 transition-colors hover:text-white sm:right-8 lg:right-12 lg:block">
         Pular abertura ↓
       </a>
       <div className="absolute inset-x-0 bottom-0 z-30 h-[3px] bg-white/10">

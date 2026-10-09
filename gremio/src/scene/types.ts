@@ -17,6 +17,6 @@ export type SceneManifest = {
   video?: { desktop?: string; mobile?: string; poster?: string }
 }
 
-export type SceneMode = 'loading' | 'frames' | 'video' | 'stills' | 'static'
+export type SceneMode = 'loading' | 'frames' | 'video' | 'drawn' | 'static'
 
 export const MEDIA_BASE = `${import.meta.env.BASE_URL}media/hero/`
