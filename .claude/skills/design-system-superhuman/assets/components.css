@@ -1,0 +1,130 @@
+/* ============================================================
+ *  Design System "Superhuman" — base + componentes (CSS puro)
+ *  Requer os tokens (tokens.css OU tailwind-theme.css) carregados antes.
+ *  Cada bloco corresponde a um componente de references/design-system.md.
+ * ============================================================ */
+
+/* ---------- Base ---------- */
+html {
+  background: var(--surface-parchment-canvas);
+  color: var(--color-ink-charcoal);
+  font-family: var(--font-super-sans-vf);
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-w460);
+  line-height: var(--text-body--line-height);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  margin: 0;
+  background: var(--surface-parchment-canvas); /* nunca branco puro */
+  color: var(--color-ink-charcoal);
+  overflow-x: clip;
+}
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: var(--font-weight-w460); /* voz do sistema: 460, nunca 700 */
+  text-align: left;
+  text-transform: none;
+  font-style: normal;
+}
+p { margin: 0; line-height: 1.5; text-align: left; } /* parágrafo multilinha: 1.5 (body-sm) */
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--color-ink-charcoal); outline-offset: 2px; border-radius: 4px; }
+::selection { background: var(--color-lilac-mist); color: var(--color-ink-charcoal); }
+.tabular { font-variant-numeric: tabular-nums; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.001ms !important; animation-duration: 0.001ms !important; }
+}
+
+/* ---------- Tipografia (8 papéis) ---------- */
+.t-caption      { font-size: var(--text-caption);    line-height: var(--text-caption--line-height); }
+.t-body-sm      { font-size: var(--text-body-sm);    line-height: var(--text-body-sm--line-height); }
+.t-body         { font-size: var(--text-body);       line-height: var(--text-body--line-height); }
+.t-label-bold   { font-size: var(--text-label-bold); line-height: var(--text-label-bold--line-height); font-weight: var(--font-weight-bold); }
+.t-subheading   { font-size: var(--text-subheading); line-height: var(--text-subheading--line-height); font-weight: var(--font-weight-w460); }
+.t-heading-sm   { font-size: var(--text-heading-sm); line-height: var(--text-heading-sm--line-height); letter-spacing: var(--text-heading-sm--letter-spacing); font-weight: var(--font-weight-w460); }
+.t-heading-lg   { font-size: var(--text-heading-lg); line-height: var(--text-heading-lg--line-height); letter-spacing: var(--text-heading-lg--letter-spacing); font-weight: var(--font-weight-w460); }
+.t-display      { font-size: var(--text-display);    line-height: var(--text-display--line-height);    letter-spacing: var(--text-display--letter-spacing);    font-weight: var(--font-weight-w460); }
+.t-muted        { color: var(--color-stone-gray); }
+/* Responsivo: só display e heading-lg podem encolher no mobile; ≥ 768px os valores são os do token */
+@media (max-width: 47.99rem) {
+  .t-display    { font-size: 40px; }
+  .t-heading-lg { font-size: 34px; }
+}
+
+/* ---------- Layout ---------- */
+.container { width: 100%; max-width: var(--page-max-width); margin-inline: auto; padding-inline: var(--spacing-24); box-sizing: border-box; }
+.section   { padding-block: clamp(var(--spacing-64), 8vw, var(--spacing-96)); } /* 64–96px */
+.stack > * + * { margin-top: var(--element-gap); }
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--element-gap);
+  font: inherit; font-size: var(--text-body); font-weight: var(--font-weight-w460); line-height: 1.2;
+  text-decoration: none; cursor: pointer; box-sizing: border-box; white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+/* Primário — o ÚNICO preenchimento cromático de botão */
+.btn-primary { height: 48px; padding: 0 var(--spacing-12); background: var(--color-midnight-wine); color: var(--color-paper-white); border: 0; border-radius: var(--radius-buttons); }
+.btn-primary:hover { background: color-mix(in srgb, var(--color-midnight-wine) 86%, var(--color-paper-white)); }
+/* Secundário (Outlined Light) */
+.btn-secondary { padding: 6px var(--spacing-16); background: var(--color-lilac-mist); color: var(--color-ink-charcoal); border: 1px solid var(--color-ink-charcoal); border-radius: var(--radius-small-buttons); }
+.btn-secondary:hover { background: color-mix(in srgb, var(--color-lilac-mist) 80%, var(--color-paper-white)); }
+/* Ghost (terciário, nav, links de baixa ênfase) */
+.btn-ghost { padding: 0; background: transparent; color: var(--color-ink-charcoal); border: 0; border-radius: 0; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; }
+.btn-ghost:hover { text-decoration-color: currentColor; }
+/* Contorno branco — sobre faixas escuras (Deep Lagoon) */
+.btn-outline-light { padding: var(--spacing-8) var(--spacing-20); background: transparent; color: var(--color-paper-white); border: 1px solid var(--color-paper-white); border-radius: var(--radius-small-buttons); }
+.btn-outline-light:hover { background: rgb(255 255 255 / 0.12); }
+/* Branco — CTA sobre o banner de gradiente */
+.btn-white { height: 48px; padding: 0 var(--spacing-12); background: var(--color-paper-white); color: var(--color-ink-charcoal); border: 0; border-radius: var(--radius-buttons); }
+.btn-white:hover { background: color-mix(in srgb, var(--color-paper-white) 88%, var(--color-warm-parchment)); }
+
+/* ---------- Link (único texto cromático) ---------- */
+.link { color: var(--color-royal-violet); font-weight: var(--font-weight-w460); text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; transition: text-decoration-color 0.2s ease; }
+.link:hover { text-decoration-color: currentColor; }
+
+/* ---------- Cards ---------- */
+/* Suite Product Card — sem sombra; a borda hairline define a borda */
+.card { background: var(--surface-paper-card); padding: var(--card-padding); border: 1px solid var(--color-soft-mist); border-radius: var(--radius-cards); }
+/* Floating Product Card — vidro translúcido sobre fotografia, sem sombra */
+.card-floating { background: rgb(255 255 255 / 0.85); padding: var(--card-padding); border: 1px solid rgb(255 255 255 / 0.2); border-radius: var(--radius-floating-cards); }
+/* Trust Logo Card — célula quadrada de grade (6 em uma linha) */
+.card-logo { display: grid; place-items: center; padding: var(--spacing-24) 0; background: var(--color-paper-white); border: 1px solid var(--color-soft-mist); border-radius: 0; color: var(--color-ink-charcoal); }
+
+/* ---------- Badge / estado selecionado ---------- */
+.badge { display: inline-flex; align-items: center; padding: var(--spacing-4) var(--spacing-12); background: var(--color-lilac-mist); color: var(--color-ink-charcoal); border-radius: var(--radius-pills); font-size: var(--text-caption); line-height: var(--text-caption--line-height); font-weight: var(--font-weight-w540); }
+.field:focus-visible, .is-selected { box-shadow: var(--shadow-subtle); }
+
+/* ---------- Tabs (Suite Tab Strip) ---------- */
+.tabs { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; background: var(--color-paper-white); border-radius: var(--radius-tabs); overflow: hidden; }
+.tab { display: flex; align-items: center; gap: var(--element-gap); padding: var(--spacing-16); background: transparent; color: var(--color-ink-charcoal); border: 0; border-radius: 0; font: inherit; font-weight: var(--font-weight-w460); cursor: pointer; transition: background-color 0.2s ease; }
+.tab[aria-selected='true'] { background: var(--color-lilac-mist); }
+
+/* ---------- Header sticky ---------- */
+.header { position: sticky; top: 0; z-index: 50; height: var(--header-height); display: flex; align-items: center; background: transparent; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color 0.2s ease; }
+.header[data-scrolled='true'] { border-bottom-color: var(--color-soft-mist); } /* ver snippet em SKILL.md */
+
+/* ---------- Banners e faixas ---------- */
+.banner { display: flex; align-items: center; justify-content: center; gap: var(--spacing-12); padding: var(--spacing-12) var(--spacing-16); background: var(--surface-wine-ground); color: var(--color-paper-white); }
+.band-lagoon { background: var(--surface-deep-lagoon-band); color: var(--color-paper-white); padding-block: clamp(var(--spacing-64), 8vw, var(--spacing-96)); } /* full-bleed, nunca dentro de card */
+.band-gradient {
+  position: relative; color: var(--color-ink-charcoal);
+  padding-block: clamp(var(--spacing-64), 8vw, var(--spacing-96));
+  background:
+    radial-gradient(circle at 68% 50%, var(--glow-violet), transparent 45%),
+    radial-gradient(circle at 93% 50%, var(--glow-blue), transparent 45%),
+    radial-gradient(circle at 50% 98%, var(--glow-pink), transparent 45%),
+    radial-gradient(circle at 50% 75%, var(--glow-cyan), transparent 45%),
+    var(--surface-parchment-canvas);
+}
+
+/* ---------- Footer ---------- */
+.footer { background: var(--surface-wine-ground); color: var(--color-paper-white); padding-block: var(--spacing-64); }
+.footer h3 { font-size: var(--text-body-sm); font-weight: var(--font-weight-bold); line-height: 1.5; }
+.footer a { display: block; padding-block: 6px; font-size: var(--text-body-sm); color: rgb(255 255 255 / 0.7); text-decoration: none; transition: color 0.2s ease; }
+.footer a:hover { color: var(--color-paper-white); }
+
+/* ---------- Ícones: linha monocromática 16–20px ---------- */
+.icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; flex: none; }

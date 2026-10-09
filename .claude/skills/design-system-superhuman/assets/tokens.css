@@ -1,0 +1,97 @@
+/* ============================================================
+ *  Design System "Superhuman — golden hour editorial dashboard"
+ *  Tokens em CSS puro. Fonte da verdade: references/design-system.md
+ *  Não altere valores aqui sem alterar a referência.
+ * ============================================================ */
+
+/* Opcional: Inter variável como substituta da Super Sans VF (suporta o peso 460).
+ *   npm i @fontsource-variable/inter   →   @import '@fontsource-variable/inter/wght.css';
+ * Se você tiver a licença da Super Sans VF, declare o @font-face dela e ela passa a ter prioridade. */
+
+:root {
+  /* Cores */
+  --color-midnight-wine: #421d24;   /* ação primária, banner, rodapé */
+  --color-royal-violet: #714cb6;    /* SOMENTE texto de link / frase de destaque */
+  --color-lilac-mist: #d4c7ff;      /* superfícies e botões secundários, badges, selecionado */
+  --color-deep-lagoon: #0c4243;     /* SOMENTE faixas full-bleed */
+  --color-warm-parchment: #f2f0eb;  /* canvas da página */
+  --color-soft-mist: #e3e3e2;       /* bordas hairline, divisores */
+  --color-ink-charcoal: #292827;    /* texto principal */
+  --color-stone-gray: #666666;      /* texto secundário */
+  --color-paper-white: #ffffff;     /* cards elevados, texto sobre fundo escuro */
+
+  /* Superfícies (nível 0 → 4) */
+  --surface-parchment-canvas: var(--color-warm-parchment);
+  --surface-paper-card: var(--color-paper-white);
+  --surface-lilac-wash: var(--color-lilac-mist);
+  --surface-deep-lagoon-band: var(--color-deep-lagoon);
+  --surface-wine-ground: var(--color-midnight-wine);
+
+  /* Brilhos decorativos — EXCLUSIVOS da faixa de gradiente atmosférico (.band-gradient) */
+  --glow-violet: rgb(113 76 182 / 0.55);
+  --glow-blue: rgb(96 140 240 / 0.5);
+  --glow-pink: rgb(240 150 190 / 0.5);
+  --glow-cyan: rgb(110 215 225 / 0.5);
+
+  /* Tipografia — família única */
+  --font-super-sans-vf: 'Super Sans VF', 'Inter Variable', 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Tipografia — escala (os ÚNICOS 8 papéis permitidos) */
+  --text-caption: 12px;      --leading-caption: 1.5;
+  --text-body-sm: 14px;      --leading-body-sm: 1.5;
+  --text-body: 16px;         --leading-body: 1.2;
+  --text-label-bold: 19px;   --leading-label-bold: 1.5;
+  --text-subheading: 26px;   --leading-subheading: 1.3;
+  --text-heading-sm: 28px;   --leading-heading-sm: 1.14;  --tracking-heading-sm: -0.62px;
+  --text-heading-lg: 49px;   --leading-heading-lg: 1.2;   --tracking-heading-lg: -1.32px;
+  --text-display: 64px;      --leading-display: 0.96;     --tracking-display: -1.8px;
+
+
+  /* Mesmos valores no formato do Tailwind v4 (components.css usa estes nomes nos dois mundos) */
+  --text-caption--line-height: 1.5;
+  --text-body-sm--line-height: 1.5;
+  --text-body--line-height: 1.2;
+  --text-label-bold--line-height: 1.5;
+  --text-subheading--line-height: 1.3;
+  --text-heading-sm--line-height: 1.14;  --text-heading-sm--letter-spacing: -0.022em;
+  --text-heading-lg--line-height: 1.2;   --text-heading-lg--letter-spacing: -0.027em;
+  --text-display--line-height: 0.96;     --text-display--letter-spacing: -0.028em;
+
+  /* Tipografia — pesos */
+  --font-weight-w460: 460;
+  --font-weight-medium: 500;
+  --font-weight-w540: 540;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Espaçamento (base 4px) */
+  --spacing-unit: 4px;
+  --spacing-4: 4px;   --spacing-8: 8px;   --spacing-12: 12px;  --spacing-16: 16px;
+  --spacing-20: 20px; --spacing-24: 24px; --spacing-28: 28px;  --spacing-32: 32px;
+  --spacing-36: 36px; --spacing-40: 40px; --spacing-48: 48px;  --spacing-64: 64px;
+  --spacing-80: 80px; --spacing-96: 96px;
+
+  /* Layout */
+  --page-max-width: 1200px;
+  --section-gap-min: 64px;
+  --section-gap-max: 96px;
+  --card-padding: 16px;
+  --element-gap: 8px;
+  --header-height: 64px;
+
+  /* Raios */
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-full: 999px;
+  --radius-tabs: 8px;
+  --radius-cards: 16px;
+  --radius-pills: 999px;
+  --radius-buttons: 16px;
+  --radius-small-buttons: 8px;
+  --radius-floating-cards: 16px;
+
+  /* Sombras — a ÚNICA permitida: anel interno fino (estado selecionado/foco de campos) */
+  --shadow-subtle: rgb(113, 76, 182) 0px 0px 0px 1px inset;
+}

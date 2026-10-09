@@ -1,0 +1,101 @@
+/* ============================================================
+ *  Design System "Superhuman" — Tailwind CSS v4
+ *  Uso (no CSS de entrada, depois de @import 'tailwindcss'):
+ *    @import 'tailwindcss';
+ *    @import './design-system/tailwind-theme.css';
+ *    @import './design-system/components.css';
+ *
+ *  Os `--*: initial` APAGAM os padrões do Tailwind: classes como
+ *  bg-blue-500, shadow-lg, rounded-md, text-xl, font-mono deixam de
+ *  existir. Só o que o design system permite continua disponível.
+ *
+ *  Espaçamento: não redefinimos `--spacing` (já é 4px). Use a escala:
+ *  p-1=4  p-2=8  p-3=12  p-4=16  p-5=20  p-6=24  p-7=28  p-8=32
+ *  p-9=36 p-10=40 p-12=48 p-16=64 p-20=80 p-24=96
+ * ============================================================ */
+
+@theme static {
+  --color-*: initial;
+  --color-midnight-wine: #421d24;
+  --color-royal-violet: #714cb6;
+  --color-lilac-mist: #d4c7ff;
+  --color-deep-lagoon: #0c4243;
+  --color-warm-parchment: #f2f0eb;
+  --color-soft-mist: #e3e3e2;
+  --color-ink-charcoal: #292827;
+  --color-stone-gray: #666666;
+  --color-paper-white: #ffffff;
+
+  --glow-violet: rgb(113 76 182 / 0.55);
+  --glow-blue: rgb(96 140 240 / 0.5);
+  --glow-pink: rgb(240 150 190 / 0.5);
+  --glow-cyan: rgb(110 215 225 / 0.5);
+
+  --font-*: initial;
+  --font-super-sans-vf: 'Super Sans VF', 'Inter Variable', 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-sans: var(--font-super-sans-vf);
+
+  /* utilitários: text-caption | text-body-sm | text-body | text-label-bold | text-subheading | text-heading-sm | text-heading-lg | text-display */
+  --text-*: initial;
+  --text-caption: 12px;      --text-caption--line-height: 1.5;
+  --text-body-sm: 14px;      --text-body-sm--line-height: 1.5;
+  --text-body: 16px;         --text-body--line-height: 1.2;
+  --text-label-bold: 19px;   --text-label-bold--line-height: 1.5;
+  --text-subheading: 26px;   --text-subheading--line-height: 1.3;
+  --text-heading-sm: 28px;   --text-heading-sm--line-height: 1.14;  --text-heading-sm--letter-spacing: -0.022em;
+  --text-heading-lg: 49px;   --text-heading-lg--line-height: 1.2;   --text-heading-lg--letter-spacing: -0.027em;
+  --text-display: 64px;      --text-display--line-height: 0.96;     --text-display--letter-spacing: -0.028em;
+
+  /* utilitários: font-w460 | font-medium | font-w540 | font-semibold | font-bold */
+  --font-weight-*: initial;
+  --font-weight-w460: 460;
+  --font-weight-medium: 500;
+  --font-weight-w540: 540;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* utilitários: rounded-none | rounded-lg | rounded-xl | rounded-2xl | rounded-3xl | rounded-full
+     e semânticos: rounded-card | rounded-button | rounded-small-button | rounded-tabs | rounded-pill | rounded-floating-card */
+  --radius-*: initial;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-full: 999px;
+  --radius-card: 16px;
+  --radius-button: 16px;
+  --radius-small-button: 8px;
+  --radius-tabs: 8px;
+  --radius-pill: 999px;
+  --radius-floating-card: 16px;
+
+  /* única sombra permitida: shadow-subtle */
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
+  --shadow-subtle: rgb(113, 76, 182) 0px 0px 0px 1px inset;
+
+  --breakpoint-*: initial;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+
+  --container-page: 1200px; /* max-w-page */
+}
+
+/* Os mesmos tokens em var() para o components.css (que é CSS puro) */
+:root {
+  --surface-parchment-canvas: var(--color-warm-parchment);
+  --surface-paper-card: var(--color-paper-white);
+  --surface-lilac-wash: var(--color-lilac-mist);
+  --surface-deep-lagoon-band: var(--color-deep-lagoon);
+  --surface-wine-ground: var(--color-midnight-wine);
+  --spacing-4: 4px;   --spacing-8: 8px;   --spacing-12: 12px;  --spacing-16: 16px;
+  --spacing-20: 20px; --spacing-24: 24px; --spacing-28: 28px;  --spacing-32: 32px;
+  --spacing-36: 36px; --spacing-40: 40px; --spacing-48: 48px;  --spacing-64: 64px;
+  --spacing-80: 80px; --spacing-96: 96px;
+  --page-max-width: 1200px;
+  --header-height: 64px;
+  --font-weight-w460: 460;
+}

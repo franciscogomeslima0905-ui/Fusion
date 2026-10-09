@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Exemplo — Design System Superhuman</title>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="components.css" />
+</head>
+<body>
+  <div class="banner t-body-sm">Novidade: conheça a nova suíte. <a class="btn btn-outline-light" style="padding:4px 12px" href="#">Saiba mais</a></div>
+  <header class="header" id="hdr">
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center">
+      <strong class="t-label-bold">Marca</strong>
+      <nav style="display:flex;gap:32px"><a class="btn btn-ghost" href="#">Produtos</a><a class="btn btn-ghost" href="#">Recursos</a><a class="btn btn-ghost" href="#">Empresa</a></nav>
+      <div style="display:flex;gap:16px;align-items:center"><a class="btn btn-ghost" href="#">Entrar</a><a class="btn btn-secondary" href="#">Cadastrar</a></div>
+    </div>
+  </header>
+
+  <section class="section"><div class="container">
+    <h1 class="t-display" style="max-width:12ch">Trabalhe no ritmo da sua melhor ideia</h1>
+    <p class="t-subheading t-muted" style="margin-top:24px;max-width:36ch">Interface editorial, quente e silenciosa. A cor aparece só quando importa.</p>
+    <div style="display:flex;gap:16px;margin-top:32px;align-items:center">
+      <a class="btn btn-primary" href="#">Começar agora <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+      <a class="link" href="#">Saiba mais</a>
+    </div>
+  </div></section>
+
+  <section class="section" style="padding-top:0"><div class="container">
+    <h2 class="t-heading-lg">Sua suíte</h2>
+    <div class="tabs" style="margin-top:32px" role="tablist">
+      <button class="tab" role="tab" aria-selected="true">Mail</button><button class="tab" role="tab" aria-selected="false">Docs</button>
+      <button class="tab" role="tab" aria-selected="false">Dados</button><button class="tab" role="tab" aria-selected="false">Go</button>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:16px">
+      <article class="card"><span class="badge">Novo</span><h3 class="t-label-bold" style="margin-top:12px">Caixa de entrada</h3><p class="t-body" style="margin-top:8px">Organize e responda em metade do tempo.</p><a class="link" style="display:inline-block;margin-top:12px" href="#">Saiba mais</a></article>
+      <article class="card"><h3 class="t-label-bold">Documentos</h3><p class="t-body" style="margin-top:8px">Escreva com colegas e com IA.</p><a class="link" style="display:inline-block;margin-top:12px" href="#">Saiba mais</a></article>
+      <article class="card"><h3 class="t-label-bold">Assistente</h3><p class="t-body" style="margin-top:8px">Respostas onde você já trabalha.</p><a class="link" style="display:inline-block;margin-top:12px" href="#">Saiba mais</a></article>
+    </div>
+  </div></section>
+
+  <section class="band-lagoon"><div class="container" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:48px;align-items:center">
+    <div style="min-height:200px;border:1px solid rgb(255 255 255 / .25);border-radius:0"></div>
+    <div><h2 class="t-display">Faixa de destaque</h2><p class="t-body" style="margin-top:24px;color:rgb(255 255 255 / .8)">Único fundo escuro do sistema, sempre de ponta a ponta.</p><a class="btn btn-outline-light" style="margin-top:24px" href="#">Ler o anúncio</a></div>
+  </div></section>
+
+  <section class="band-gradient"><div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
+    <h2 class="t-heading-lg" style="max-width:16ch">Pronto para começar?</h2><a class="btn btn-white" href="#">Começar agora</a>
+  </div></section>
+
+  <footer class="footer"><div class="container" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px">
+    <div><h3>Produtos</h3><a href="#">Mail</a><a href="#">Docs</a></div>
+    <div><h3>Recursos</h3><a href="#">Blog</a><a href="#">Ajuda</a></div>
+    <div><h3>Empresa</h3><a href="#">Sobre</a><a href="#">Carreiras</a></div>
+    <div><h3>Legal</h3><a href="#">Privacidade</a><a href="#">Termos</a></div>
+  </div></footer>
+  <script>
+    const h = document.getElementById('hdr')
+    const f = () => h.dataset.scrolled = String(scrollY > 8)
+    f(); addEventListener('scroll', f, { passive: true })
+  </script>
+</body>
+</html>
