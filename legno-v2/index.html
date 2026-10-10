@@ -1,0 +1,1090 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Legno | Maestria em Madeira</title>
+  <meta name="description" content="Pérgolas, decks, coberturas, revestimentos e projetos especiais em madeira, sob medida. Litoral Norte e Porto Alegre, RS.">
+  <meta name="theme-color" content="#14100f">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Paleta derivada do logo: madeira cobre sobre espresso */
+      --espresso: #14100f;
+      --walnut: #241913;
+      --bark: #3a271c;
+      --copper: #b57344;
+      --copper-light: #d19c78;
+      --cream: #f3ece2;
+      --sand: #e6d9c8;
+      --ink: #2a1b14;
+      --ink-soft: #5d4a3e;
+      --cream-soft: rgba(243, 236, 226, 0.74);
+      --line-dark: rgba(243, 236, 226, 0.16);
+      --line-light: rgba(42, 27, 20, 0.18);
+
+      --font-display: 'Playfair Display', 'Bodoni Moda', Georgia, serif;
+      --font-ui: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+      --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+      --section-y: 128px;
+      --gutter: 40px;
+      --max: 1240px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { color: inherit; }
+    ul { list-style: none; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    :focus-visible { outline: 2px solid var(--copper-light); outline-offset: 3px; }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-feature-settings: 'liga' on, 'lnum' on;
+      font-variant-numeric: lining-nums;
+      line-height: 1.14;
+      letter-spacing: -0.005em;
+    }
+    h2 { font-size: clamp(30px, 3.7vw, 50px); }
+    h3 { font-size: clamp(21px, 1.9vw, 26px); }
+    p { max-width: 62ch; }
+    p + p { margin-top: 16px; }
+
+    .wrap { width: 100%; max-width: calc(var(--max) + var(--gutter) * 2); margin: 0 auto; padding: 0 var(--gutter); }
+    .section { padding: var(--section-y) 0; position: relative; }
+    .on-dark { background: var(--espresso); color: var(--cream); }
+    .on-walnut { background: var(--walnut); color: var(--cream); }
+    .on-sand { background: var(--sand); }
+    .on-dark p, .on-walnut p { color: var(--cream-soft); }
+    .on-light p { color: var(--ink-soft); }
+
+    .eyebrow {
+      display: inline-flex; align-items: center;
+      font-size: 12.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 24px;
+    }
+    .on-dark .eyebrow, .on-walnut .eyebrow { color: var(--copper-light); }
+
+    .head { max-width: 760px; margin-bottom: 64px; }
+    .head p { margin-top: 20px; font-size: 17px; }
+
+    /* ---------- Botões e links ---------- */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 16px 30px;
+      background: var(--copper); color: var(--espresso);
+      border: 1px solid var(--copper); border-radius: 4px;
+      font-size: 13.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      text-decoration: none; cursor: pointer;
+      transition: background .3s var(--ease), border-color .3s var(--ease), color .3s var(--ease), transform .3s var(--ease);
+    }
+    .btn:hover { background: var(--copper-light); border-color: var(--copper-light); transform: translateY(-2px); }
+    .btn--ghost { background: transparent; color: var(--cream); border-color: rgba(243, 236, 226, 0.5); }
+    .btn--ghost:hover { background: var(--cream); border-color: var(--cream); color: var(--ink); }
+    .btn--sm { padding: 11px 20px; font-size: 12.5px; }
+
+    .link {
+      text-decoration: none; position: relative; font-weight: 500;
+      background: linear-gradient(currentColor, currentColor) left bottom / 100% 1px no-repeat;
+      padding-bottom: 3px;
+      transition: background-size .35s var(--ease);
+    }
+    .link:hover { background-size: 0% 1px; background-position: right bottom; }
+
+    /* ---------- Revelar ao rolar ----------
+       Tudo é visível por padrão (sem JS, sem animação, em capturas de tela).
+       Onde o navegador suporta animação por rolagem, o bloco sobe e aparece ao entrar na tela. */
+    @keyframes rise { from { opacity: 0; translate: 0 28px; } to { opacity: 1; translate: 0 0; } }
+    @keyframes zoomOut { from { scale: 1.12; } to { scale: 1; } }
+    @supports (animation-timeline: view()) {
+      [data-reveal] {
+        animation: rise linear forwards;
+        animation-timeline: view();
+        animation-range: entry 0% entry 30%;
+      }
+      .img-reveal img {
+        animation: zoomOut linear forwards;
+        animation-timeline: view();
+        animation-range: entry 0% cover 40%;
+      }
+    }
+
+    /* ---------- Progresso de leitura ---------- */
+    .progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; background: var(--copper); transform: scaleX(0); transform-origin: left; z-index: 60; }
+
+    /* ---------- Header ---------- */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      color: var(--cream);
+      transition: background .4s var(--ease), padding .4s var(--ease), border-color .4s var(--ease);
+      border-bottom: 1px solid transparent;
+    }
+    .header.is-solid { background: rgba(20, 16, 15, 0.94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-color: var(--line-dark); }
+    .header__in { display: flex; align-items: center; justify-content: space-between; height: 84px; transition: height .4s var(--ease); }
+    .header.is-solid .header__in { height: 68px; }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand img { width: 30px; height: 30px; object-fit: contain; }
+    .brand span { font-size: 18px; font-weight: 500; letter-spacing: 0.22em; }
+    .nav { display: flex; align-items: center; gap: 32px; }
+    .nav a:not(.btn) { font-size: 14px; letter-spacing: 0.04em; text-decoration: none; opacity: 0.88; position: relative; padding: 6px 0; }
+    .nav a:not(.btn)::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--copper-light); transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease); }
+    .nav a:not(.btn):hover { opacity: 1; }
+    .nav a:not(.btn):hover::after { transform: scaleX(1); }
+    .menu-btn { display: none; background: none; border: 1px solid rgba(243, 236, 226, 0.5); border-radius: 4px; padding: 8px 14px; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; }
+
+    /* ---------- Hero: apresentação de imagens e frases ---------- */
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .hero { --slide-ms: 7000ms; position: relative; height: min(100vh, 1000px); min-height: 620px; color: var(--cream); overflow: hidden; background: var(--espresso); }
+    .hero__media { position: absolute; inset: -3% 0; will-change: transform; }
+    .hero__slide { position: absolute; inset: 0; opacity: 0; transition: opacity 2.2s ease-in-out; }
+    .hero__slide.is-active, .hero__slide.is-leaving { opacity: 1; }
+    .hero__slide.is-leaving { opacity: 0; }
+    .hero__slide img { transform-origin: 50% 50%; }
+    .hero__slide:nth-child(2) img { transform-origin: 30% 60%; }
+    .hero__slide:nth-child(3) img { transform-origin: 70% 50%; }
+    .hero__slide:nth-child(4) img { transform-origin: 40% 40%; }
+    .hero__slide.is-active img, .hero__slide.is-leaving img { animation: kenburns 12s linear forwards; }
+    @keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.08); } }
+    .hero__veil { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(20, 16, 15, 0.64) 0%, rgba(20, 16, 15, 0.52) 38%, rgba(20, 16, 15, 0.56) 70%, rgba(20, 16, 15, 0.86) 100%); }
+
+    .hero__body { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 96px 0 150px; }
+    .hero__phrases { display: grid; width: 100%; justify-items: center; }
+    .hero__phrase { grid-area: 1 / 1; display: flex; flex-direction: column; align-items: center; opacity: 0; transform: translateY(18px); pointer-events: none; transition: opacity 1s ease, transform 1.2s var(--ease); }
+    .hero__phrase.is-leaving { transform: translateY(-14px); }
+    .hero__phrase.is-active { opacity: 1; transform: none; pointer-events: auto; transition: opacity 1.4s ease .7s, transform 1.6s var(--ease) .7s; }
+    .hero__label { font-size: 12.5px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream); opacity: 0.9; margin-bottom: 28px; }
+    .hero__text { font-family: var(--font-display); font-weight: 500; font-size: clamp(32px, 5vw, 70px); line-height: 1.15; letter-spacing: -0.01em; max-width: 21ch; text-align: center; color: var(--cream); }
+    .hero__cta { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+    .hero__phrases, .hero__cta { animation: heroIn 1.4s var(--ease) backwards; animation-delay: .3s; }
+    @keyframes heroIn { from { opacity: 0; transform: translateY(20px); } }
+
+    .hero__dots { position: absolute; left: 0; right: 0; bottom: 76px; display: flex; justify-content: center; gap: 22px; }
+    .hero__dot { background: none; border: 0; cursor: pointer; padding: 8px 2px; color: rgba(243, 236, 226, 0.55); font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-align: left; transition: color .4s var(--ease); }
+    .hero__dot:hover, .hero__dot.is-active { color: var(--cream); }
+    .hero__dot::after { content: ''; display: block; height: 1px; width: 36px; margin-top: 8px; background: rgba(243, 236, 226, 0.3); background-image: linear-gradient(var(--copper-light), var(--copper-light)); background-repeat: no-repeat; background-size: 0% 100%; }
+    .hero__dot.is-active::after { animation: fill var(--slide-ms) linear forwards; }
+    .hero.is-paused .hero__dot.is-active::after { animation: none; background-size: 100% 100%; }
+    @keyframes fill { to { background-size: 100% 100%; } }
+
+    .hero__pillars { position: absolute; left: 0; right: 0; bottom: 0; border-top: 1px solid var(--line-dark); background: rgba(20, 16, 15, 0.55); }
+    .hero__pillars ul { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .hero__pillars li { padding: 22px 0; font-size: 12.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cream-soft); text-align: center; }
+    .hero__pillars li + li { border-left: 1px solid var(--line-dark); }
+
+    /* ---------- Faixa de diferenciais ---------- */
+    .trust { background: var(--walnut); color: var(--cream); }
+    .trust__grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .trust__item { padding: 44px 32px 44px 0; }
+    .trust__item + .trust__item { padding-left: 32px; border-left: 1px solid var(--line-dark); }
+    .trust__item h3 { font-size: 22px; margin-bottom: 10px; color: var(--copper-light); }
+    .trust__item p { font-size: 14.5px; color: var(--cream-soft); }
+
+    /* ---------- Sobre ---------- */
+    .about { display: grid; grid-template-columns: 1.05fr 1fr; gap: 88px; align-items: center; }
+    .about__media { position: relative; aspect-ratio: 4 / 5; overflow: hidden; }
+    .about__tag { position: absolute; left: 0; bottom: 0; background: var(--espresso); color: var(--cream); padding: 18px 26px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+    .pillars { margin-top: 40px; border-top: 1px solid var(--line-light); }
+    .pillars li { display: grid; grid-template-columns: 150px 1fr; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--line-light); }
+    .pillars strong { font-family: var(--font-display); font-weight: 500; font-size: 20px; color: var(--copper); }
+    .pillars span { font-size: 15px; color: var(--ink-soft); }
+
+    /* ---------- Serviços ---------- */
+    .services { display: grid; grid-template-columns: repeat(6, 1fr); gap: 24px; }
+    .card { grid-column: span 2; background: var(--walnut); border: 1px solid var(--line-dark); display: flex; flex-direction: column; transition: transform .5s var(--ease), border-color .5s var(--ease); }
+    .card:hover { transform: translateY(-6px); border-color: var(--copper); }
+    .card__img { aspect-ratio: 16 / 10; overflow: hidden; }
+    .card__img img { transition: transform 1.1s var(--ease); }
+    .card:hover .card__img img { transform: scale(1.06); }
+    .card__body { padding: 32px; display: flex; flex-direction: column; flex: 1; }
+    .card__num { font-size: 12.5px; font-weight: 600; letter-spacing: 0.18em; color: var(--copper-light); margin-bottom: 14px; }
+    .card h3 { margin-bottom: 14px; }
+    .card p { font-size: 15px; }
+    .card ul { margin: 22px 0 28px; border-top: 1px solid var(--line-dark); }
+    .card li { padding: 11px 0; border-bottom: 1px solid var(--line-dark); font-size: 14px; color: var(--cream-soft); }
+    .card .link { margin-top: auto; align-self: flex-start; font-size: 13.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--copper-light); }
+    .card--text { grid-column: span 3; background: transparent; position: relative; overflow: hidden; }
+    .card--text::after { content: ''; position: absolute; right: -40px; bottom: -40px; width: 220px; height: 220px; background: url('img/logo-simbolo.png') center / contain no-repeat; opacity: 0.07; pointer-events: none; }
+
+    /* ---------- Obras ---------- */
+    .gallery { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+    .shot { position: relative; overflow: hidden; cursor: zoom-in; background: var(--bark); border: 0; padding: 0; text-align: left; display: block; }
+    .shot--a { grid-column: span 4; aspect-ratio: 16 / 10; }
+    .shot--b { grid-column: span 2; aspect-ratio: 4 / 5; }
+    .shot--c { grid-column: span 2; aspect-ratio: 4 / 5; }
+    .shot--d { grid-column: span 4; aspect-ratio: 16 / 10; }
+    .shot img { transition: transform 1.2s var(--ease); }
+    .shot:hover img { transform: scale(1.05); }
+    .shot .cap { display: block; position: absolute; left: 0; right: 0; bottom: 0; padding: 56px 24px 20px; color: var(--cream); font-size: 14px; line-height: 1.4; background: linear-gradient(to top, rgba(20, 16, 15, 0.85), rgba(20, 16, 15, 0)); transform: translateY(8px); opacity: 0; transition: opacity .5s var(--ease), transform .5s var(--ease); }
+    .shot:hover .cap, .shot:focus-visible .cap { opacity: 1; transform: none; }
+    .gallery__note { margin-top: 28px; font-size: 14px; }
+
+
+    /* ---------- Por que a Legno ---------- */
+    .why { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 88px; align-items: start; }
+    .why__media { position: sticky; top: 110px; aspect-ratio: 4 / 5; overflow: hidden; }
+    .why__tag { position: absolute; left: 0; bottom: 0; background: var(--espresso); color: var(--cream); padding: 18px 26px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+    .reasons { margin-top: 48px; border-top: 1px solid var(--line-light); }
+    .reason { display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 28px 0; border-bottom: 1px solid var(--line-light); }
+    .reason b { font-size: 12.5px; letter-spacing: 0.18em; color: var(--copper); padding-top: 9px; font-weight: 600; }
+    .reason h3 { margin-bottom: 8px; }
+    .why__cta { margin-top: 44px; display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; }
+    .why__cta .btn { color: var(--espresso); }
+    .on-light .why__cta .link { color: var(--ink); }
+
+    /* ---------- Detalhes ---------- */
+    .details-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .detail__img { aspect-ratio: 4 / 3; overflow: hidden; background: var(--bark); }
+    .detail__img img { transition: transform 1.2s var(--ease); }
+    .detail:hover .detail__img img { transform: scale(1.06); }
+    .detail h3 { margin: 22px 0 8px; font-size: 22px; }
+    .detail p { font-size: 15px; }
+
+    /* ---------- Faixa de foto ---------- */
+    .band { position: relative; height: 72vh; min-height: 440px; max-height: 760px; overflow: hidden; color: var(--cream); background: var(--espresso); }
+    .band__img { position: absolute; inset: -8% 0; }
+    .band__img img { object-position: 50% 60%; }
+    .band__veil { position: absolute; inset: 0; background: linear-gradient(to right, rgba(20, 16, 15, 0.82) 0%, rgba(20, 16, 15, 0.5) 45%, rgba(20, 16, 15, 0.1) 80%), linear-gradient(to top, rgba(20, 16, 15, 0.7) 0%, rgba(20, 16, 15, 0) 60%); }
+    .band__text { position: absolute; left: 0; right: 0; bottom: 0; padding-bottom: 72px; }
+    .band__text h2 { max-width: 22ch; font-size: clamp(30px, 4vw, 54px); }
+    .band__text .link { display: inline-block; margin-top: 28px; color: var(--cream); font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; }
+    @supports (animation-timeline: view()) {
+      .band__img img { animation: drift linear both; animation-timeline: view(); animation-range: cover; }
+    }
+    @keyframes drift { from { translate: 0 -5%; } to { translate: 0 5%; } }
+
+    /* ---------- Proposta ---------- */
+    .offer { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .offer__box { background: var(--cream); border: 1px solid var(--line-light); padding: 48px; }
+    .offer__box h3 { font-size: clamp(24px, 2.2vw, 30px); margin-bottom: 8px; }
+    .offer__box > p { font-size: 15px; }
+    .offer__box ul { margin-top: 28px; border-top: 1px solid var(--line-light); }
+    .offer__box li { padding: 15px 0; border-bottom: 1px solid var(--line-light); font-size: 15.5px; position: relative; color: var(--ink); }
+    .offer__box--dark { background: var(--espresso); color: var(--cream); border-color: var(--espresso); }
+    .offer__box--dark > p { color: var(--cream-soft); }
+    .offer__box--dark ul, .offer__box--dark li { border-color: var(--line-dark); color: var(--cream); }
+    .offer__cta { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: center; text-align: center; }
+    .offer__cta p { max-width: none; }
+
+    /* ---------- Madeira ---------- */
+    .wood { display: grid; grid-template-columns: 1fr 1.25fr; gap: 88px; align-items: start; }
+    .wood__quote { font-family: var(--font-display); font-size: clamp(28px, 3.3vw, 44px); line-height: 1.2; position: sticky; top: 120px; }
+    .wood__quote em { font-style: normal; color: var(--copper-light); }
+    .wood__list li { padding: 32px 0; border-top: 1px solid var(--line-dark); display: grid; grid-template-columns: 56px 1fr; gap: 12px; }
+    .wood__list li:last-child { border-bottom: 1px solid var(--line-dark); }
+    .wood__list b { font-size: 12.5px; letter-spacing: 0.18em; color: var(--copper-light); padding-top: 8px; font-weight: 600; }
+    .wood__list h3 { margin-bottom: 10px; }
+
+    /* ---------- Processo ---------- */
+    .timeline { position: relative; max-width: 860px; margin-left: auto; }
+    .timeline::before { content: ''; position: absolute; left: 27px; top: 8px; bottom: 8px; width: 1px; background: var(--line-light); }
+    .timeline__bar { position: absolute; left: 27px; top: 8px; width: 1px; height: 0; background: var(--copper); }
+    .step { position: relative; padding: 0 0 56px 88px; }
+    .step:last-child { padding-bottom: 0; }
+    .step__dot { position: absolute; left: 0; top: 0; width: 56px; height: 56px; border-radius: 50%; background: var(--copper); border: 1px solid var(--copper); display: grid; place-items: center; font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--espresso); }
+    .step__tag { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--copper); margin-bottom: 8px; }
+    .step h3 { margin-bottom: 10px; }
+    .process { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 72px; align-items: start; }
+    .process .head { position: sticky; top: 120px; margin-bottom: 0; }
+
+    /* ---------- Atuação ---------- */
+    .area { padding: 96px 0; text-align: center; }
+    .area__big { font-family: var(--font-display); font-size: clamp(32px, 5vw, 70px); line-height: 1.12; letter-spacing: 0; color: var(--cream); }
+    .area__big span { color: var(--copper-light); }
+    .area p { margin: 20px auto 0; text-align: center; }
+
+    /* ---------- FAQ ---------- */
+    .faq { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 72px; align-items: start; }
+    .faq .head { margin-bottom: 0; }
+    details { border-top: 1px solid var(--line-light); }
+    details:last-child { border-bottom: 1px solid var(--line-light); }
+    summary { list-style: none; cursor: pointer; padding: 26px 48px 26px 0; position: relative; font-family: var(--font-display); font-weight: 500; font-size: 22px; line-height: 1.25; transition: color .3s var(--ease); }
+    summary::-webkit-details-marker { display: none; }
+    summary:hover { color: var(--copper); }
+    summary::before, summary::after { content: ''; position: absolute; right: 8px; top: 50%; width: 16px; height: 1px; background: var(--copper); transition: transform .4s var(--ease); }
+    summary::after { transform: rotate(90deg); }
+    details[open] summary::after { transform: rotate(0); }
+    details > div { padding: 0 48px 28px 0; }
+    details[open] > div { animation: faqIn .5s var(--ease); }
+    @keyframes faqIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+
+    /* ---------- Contato ---------- */
+    .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: start; }
+    .contact__list { margin-top: 40px; border-top: 1px solid var(--line-dark); }
+    .contact__list li { display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line-dark); font-size: 15px; }
+    .contact__list b { font-size: 12.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--copper-light); padding-top: 3px; }
+    .form { background: var(--walnut); border: 1px solid var(--line-dark); padding: 40px; display: grid; gap: 20px; }
+    .form h3 { font-size: 26px; }
+    .field { display: grid; gap: 8px; }
+    .field label { font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--copper-light); }
+    .field input, .field select, .field textarea { width: 100%; background: rgba(243, 236, 226, 0.05); border: 1px solid rgba(243, 236, 226, 0.22); border-radius: 4px; padding: 14px 16px; font-size: 15px; color: var(--cream); transition: border-color .3s var(--ease), background .3s var(--ease); }
+    .field select option { color: var(--ink); }
+    .field textarea { min-height: 110px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--copper); background: rgba(243, 236, 226, 0.08); }
+    .field--row { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form .btn { width: 100%; padding: 18px; }
+    .form__status { font-size: 14px; color: var(--copper-light); min-height: 1.4em; }
+
+    /* ---------- Rodapé ---------- */
+    .footer { background: #0e0b0a; color: var(--cream); padding: 88px 0 40px; }
+    .footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; }
+    .footer__logo { width: 190px; margin-bottom: 20px; }
+    .footer h4 { font-size: 12.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--copper-light); margin-bottom: 18px; }
+    .footer li { margin-bottom: 10px; font-size: 14.5px; }
+    .footer li a { text-decoration: none; color: var(--cream-soft); transition: color .3s var(--ease); }
+    .footer li a:hover { color: var(--cream); }
+    .footer p { font-size: 14.5px; color: var(--cream-soft); }
+    .footer__base { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line-dark); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: rgba(243, 236, 226, 0.5); }
+
+    /* ---------- CTA flutuante ---------- */
+    .fab { position: fixed; right: 24px; bottom: 24px; z-index: 40; opacity: 0; transform: translateY(16px); pointer-events: none; transition: opacity .4s var(--ease), transform .4s var(--ease), background .3s var(--ease); }
+    .fab.is-on { opacity: 1; transform: none; pointer-events: auto; }
+    .fab.is-on:hover { transform: translateY(-2px); }
+
+    /* ---------- Lightbox ---------- */
+    .lb { position: fixed; inset: 0; z-index: 100; background: rgba(14, 11, 10, 0.94); display: none; align-items: center; justify-content: center; padding: 56px 24px; }
+    .lb.is-open { display: flex; animation: faqIn .35s var(--ease); }
+    .lb figure { max-width: 1200px; width: 100%; }
+    .lb img { width: 100%; height: auto; max-height: 76vh; object-fit: contain; }
+    .lb figcaption { margin-top: 16px; color: var(--cream-soft); font-size: 14.5px; text-align: center; }
+    .lb button { position: absolute; background: none; border: 1px solid rgba(243, 236, 226, 0.4); border-radius: 4px; color: var(--cream); padding: 10px 16px; cursor: pointer; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; transition: background .3s, color .3s; }
+    .lb button:hover { background: var(--cream); color: var(--ink); }
+    .lb__close { top: 20px; right: 20px; }
+    .lb__prev { left: 20px; top: 50%; }
+    .lb__next { right: 20px; top: 50%; }
+
+    /* ---------- Responsivo ---------- */
+    @media (max-width: 1023px) {
+      :root { --section-y: 96px; --gutter: 28px; }
+      .about, .wood, .process, .faq, .contact, .why { grid-template-columns: 1fr; gap: 56px; }
+      .why__media { position: static; aspect-ratio: 16 / 11; }
+      .details-grid { grid-template-columns: 1fr 1fr; }
+      .offer { grid-template-columns: 1fr; }
+      .wood__quote, .process .head { position: static; }
+      .about__media { aspect-ratio: 16 / 11; }
+      .trust__grid { grid-template-columns: repeat(2, 1fr); }
+      .trust__item:nth-child(3) { padding-left: 0; border-left: 0; }
+      .trust__item:nth-child(n+3) { border-top: 1px solid var(--line-dark); }
+      .services { grid-template-columns: 1fr 1fr; }
+      .card, .card--text { grid-column: span 1; }
+      .footer__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 860px) {
+      .menu-btn { display: block; }
+      .nav { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: rgba(20, 16, 15, 0.97); border-bottom: 1px solid var(--line-dark); padding: 8px var(--gutter) 24px; display: none; }
+      .nav.is-open { display: flex; }
+      .nav a:not(.btn) { padding: 16px 0; border-bottom: 1px solid var(--line-dark); font-size: 16px; }
+      .nav a:not(.btn)::after { display: none; }
+      .nav .btn { margin-top: 20px; }
+    }
+    @media (max-width: 640px) {
+      :root { --section-y: 80px; --gutter: 20px; }
+      .header__in { height: 68px; }
+      .hero__body { padding: 84px 20px 140px; }
+      .hero__label { margin-bottom: 20px; letter-spacing: 0.18em; }
+      .hero__cta { margin-top: 36px; width: 100%; }
+      .hero__cta .btn { flex: 1 1 100%; }
+      .hero__dots { bottom: 62px; gap: 16px; }
+      .hero__pillars li { padding: 16px 0; font-size: 10.5px; letter-spacing: 0.1em; }
+      .trust__grid { grid-template-columns: 1fr; }
+      .trust__item, .trust__item + .trust__item { padding: 28px 0; border-left: 0; }
+      .trust__item + .trust__item { border-top: 1px solid var(--line-dark); }
+      .pillars li { grid-template-columns: 1fr; gap: 6px; }
+      .services { grid-template-columns: 1fr; }
+      .card__body { padding: 26px; }
+      .gallery { grid-template-columns: 1fr; }
+      .details-grid { grid-template-columns: 1fr; }
+      .offer__box { padding: 30px 24px; }
+      .reason { grid-template-columns: 40px 1fr; }
+      .band { min-height: 400px; }
+      .band__text { padding-bottom: 48px; }
+      .shot--a, .shot--b, .shot--c, .shot--d { grid-column: span 1; aspect-ratio: 4 / 3; }
+      .shot .cap { display: block; opacity: 1; transform: none; padding-top: 40px; }
+      .step { padding-left: 72px; }
+      .step__dot { width: 48px; height: 48px; font-size: 18px; }
+      .timeline::before, .timeline__bar { left: 23px; }
+      summary { font-size: 19px; }
+      .contact__list li { grid-template-columns: 1fr; gap: 4px; }
+      .form { padding: 26px; }
+      .field--row { grid-template-columns: 1fr; }
+      .footer__grid { grid-template-columns: 1fr; }
+      .fab { right: 16px; bottom: 16px; padding: 12px 18px; }
+      .lb__prev, .lb__next { top: auto; bottom: 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="header" id="header">
+    <div class="wrap header__in">
+      <a class="brand" href="#topo" aria-label="Legno, início">
+        <img src="img/logo-simbolo.png" alt="">
+        <span>LEGNO</span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav class="nav" id="nav" aria-label="Principal">
+        <a href="#servicos">Serviços</a>
+        <a href="#obras">Obras</a>
+        <a href="#porque">Por que a Legno</a>
+        <a href="#processo">Processo</a>
+        <a href="#perguntas">Perguntas</a>
+        <a class="btn btn--sm" href="#contato">Orçamento</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="topo">
+
+    <!-- HERO -->
+    <section class="hero" id="inicio" aria-roledescription="carrossel" aria-label="Apresentação da Legno">
+      <div class="hero__media" id="heroMedia">
+        <div class="hero__slide is-active"><img src="img/hero-deck-spa.jpg" alt="Deck de madeira em réguas contínuas ao redor de um spa revestido em madeira, em varanda envidraçada" fetchpriority="high"></div>
+        <div class="hero__slide"><img src="img/hero-deck-canteiros.jpg" alt="Deck amplo de madeira com canteiros embutidos, junto a uma casa de colunas vermelhas e ao jardim"></div>
+        <div class="hero__slide"><img src="img/hero-revestimento.jpg" alt="Revestimento vertical de madeira com acabamento escuro e deck, em frente a uma casa com pérgola"></div>
+        <div class="hero__slide"><img src="img/hero-spa-bancada.jpg" alt="Spa embutido em estrutura de madeira com bancada e degrau, em varanda de vidro"></div>
+      </div>
+      <div class="hero__veil"></div>
+      <div class="hero__body">
+        <h1 class="sr-only">Legno, maestria em madeira</h1>
+        <div class="hero__phrases" aria-live="polite">
+          <div class="hero__phrase is-active"><span class="hero__label">Maestria em madeira</span><p class="hero__text">Estruturas que valorizam histórias.</p></div>
+          <div class="hero__phrase"><span class="hero__label">Precisão e acabamento</span><p class="hero__text">Cada medida pensada, cada detalhe conferido.</p></div>
+          <div class="hero__phrase"><span class="hero__label">Madeira certificada</span><p class="hero__text">Escolhida com critério, trabalhada com maestria.</p></div>
+          <div class="hero__phrase"><span class="hero__label">Sob medida</span><p class="hero__text">Projetos sob medida, feitos para durar.</p></div>
+        </div>
+        <div class="hero__cta">
+          <a class="btn" href="#contato">Solicitar orçamento</a>
+          <a class="btn btn--ghost" href="#obras">Ver obras</a>
+        </div>
+      </div>
+      <div class="hero__dots" role="group" aria-label="Escolher apresentação">
+        <button class="hero__dot is-active" type="button" aria-label="Ir para a apresentação 1">01</button>
+        <button class="hero__dot" type="button" aria-label="Ir para a apresentação 2">02</button>
+        <button class="hero__dot" type="button" aria-label="Ir para a apresentação 3">03</button>
+        <button class="hero__dot" type="button" aria-label="Ir para a apresentação 4">04</button>
+      </div>
+      <div class="hero__pillars">
+        <div class="wrap">
+          <ul>
+            <li>Experiência</li>
+            <li>Precisão</li>
+            <li>Acabamento</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section class="trust" aria-label="Diferenciais">
+      <div class="wrap trust__grid">
+        <div class="trust__item">
+          <h3>Soluções sob medida</h3>
+          <p>Cada projeto parte do espaço, do uso e do estilo de quem vai viver nele.</p>
+        </div>
+        <div class="trust__item">
+          <h3>Madeira certificada</h3>
+          <p>Matéria-prima escolhida com critério, para uma obra que dura.</p>
+        </div>
+        <div class="trust__item">
+          <h3>Valoriza seu imóvel</h3>
+          <p>Estrutura bem executada pesa no conjunto e no valor da casa.</p>
+        </div>
+        <div class="trust__item">
+          <h3>Do litoral à serra</h3>
+          <p>Atuação no Litoral Norte e em Porto Alegre, RS.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section class="section on-light" id="sobre">
+      <div class="wrap about">
+        <div class="about__media img-reveal" data-reveal>
+          <img src="img/deck-spa-bancada.jpg" alt="Spa embutido em estrutura de madeira com bancada e degrau, em varanda de vidro" style="object-position: 70% 50%">
+          <span class="about__tag">Projetar · Executar · Valorizar</span>
+        </div>
+        <div>
+          <span class="eyebrow" data-reveal>Sobre a Legno</span>
+          <h2 data-reveal style="--d:80">Mais que madeira, é maestria.</h2>
+          <div style="margin-top:28px; --d:160" data-reveal>
+            <p>A Legno trabalha a madeira como ofício. Projetamos e executamos pérgolas, decks, coberturas, revestimentos e projetos especiais para casas e áreas externas do Litoral Norte e de Porto Alegre.</p>
+            <p>Cada obra começa no espaço de quem vai usá-lo. Medimos, desenhamos e executamos com atenção ao detalhe, do encaixe ao acabamento final.</p>
+          </div>
+          <ul class="pillars" data-reveal style="--d:200">
+            <li><strong>Experiência</strong><span>Conhecimento de obra aplicado em cada decisão de projeto.</span></li>
+            <li><strong>Precisão</strong><span>Medidas, cortes e montagem conferidos de ponta a ponta.</span></li>
+            <li><strong>Acabamento</strong><span>Cada superfície finalizada para resistir ao uso e ao clima.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="section on-dark" id="servicos">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow" data-reveal>Serviços</span>
+          <h2 data-reveal style="--d:80">Pérgolas, decks, coberturas, revestimentos e projetos especiais.</h2>
+          <p data-reveal style="--d:160">Soluções em madeira para áreas externas e internas, sempre desenhadas para o espaço, a exposição e o uso de cada cliente.</p>
+        </div>
+        <div class="services">
+          <article class="card" data-reveal style="--d:0">
+            <div class="card__img"><img src="img/deck-spa-detalhe.jpg" alt="Deck em réguas contínuas ao redor de um spa, em varanda envidraçada"></div>
+            <div class="card__body">
+              <span class="card__num">01</span>
+              <h3>Decks</h3>
+              <p>Pisos de madeira para quem quer viver ao ar livre, com réguas alinhadas e bordas bem acabadas.</p>
+              <ul>
+                <li>Áreas de piscina, jardim e varanda</li>
+                <li>Entorno de spa e hidromassagem</li>
+                <li>Espaçamento e fixação planejados</li>
+              </ul>
+              <a class="link" href="#contato" data-service="Decks">Pedir orçamento</a>
+            </div>
+          </article>
+          <article class="card" data-reveal style="--d:120">
+            <div class="card__img"><img src="img/revestimento-deck-fachada.jpg" alt="Revestimento vertical de madeira com acabamento escuro e deck, em frente a uma casa com pérgola"></div>
+            <div class="card__body">
+              <span class="card__num">02</span>
+              <h3>Revestimentos</h3>
+              <p>Madeira que protege e dá caráter à obra, com tratamento e tom definidos desde o projeto.</p>
+              <ul>
+                <li>Frentes de deck e platibandas</li>
+                <li>Fachadas, muros e paredes</li>
+                <li>Acabamento conforme a exposição</li>
+              </ul>
+              <a class="link" href="#contato" data-service="Revestimentos">Pedir orçamento</a>
+            </div>
+          </article>
+          <article class="card" data-reveal style="--d:240">
+            <div class="card__img"><img src="img/deck-spa-bancada.jpg" alt="Spa embutido com bancada e degrau em madeira" style="object-position: 70% 50%"></div>
+            <div class="card__body">
+              <span class="card__num">03</span>
+              <h3>Projetos especiais</h3>
+              <p>Quando o espaço pede algo único, o projeto parte do desenho e se integra à arquitetura.</p>
+              <ul>
+                <li>Bancadas, degraus e caixas de spa</li>
+                <li>Canteiros e jardineiras embutidos</li>
+                <li>Peças sob desenho do cliente</li>
+              </ul>
+              <a class="link" href="#contato" data-service="Projetos especiais">Pedir orçamento</a>
+            </div>
+          </article>
+          <article class="card card--text" data-reveal style="--d:0">
+            <div class="card__body">
+              <span class="card__num">04</span>
+              <h3>Pérgolas</h3>
+              <p>Estruturas em madeira para sombra e convívio, dimensionadas conforme o vão e integradas à arquitetura da casa.</p>
+              <ul>
+                <li>Áreas de estar, churrasqueiras e piscinas</li>
+                <li>Opção de cobertura associada</li>
+                <li>Madeira tratada para uso externo</li>
+              </ul>
+              <a class="link" href="#contato" data-service="Pérgolas">Pedir orçamento</a>
+            </div>
+          </article>
+          <article class="card card--text" data-reveal style="--d:120">
+            <div class="card__body">
+              <span class="card__num">05</span>
+              <h3>Coberturas</h3>
+              <p>Proteção para áreas externas com estrutura de madeira, caimento e vedação planejados para o clima da região.</p>
+              <ul>
+                <li>Estrutura e cobertura executadas juntas</li>
+                <li>Caimento e vedação definidos em projeto</li>
+                <li>Acabamento da madeira exposta</li>
+              </ul>
+              <a class="link" href="#contato" data-service="Coberturas">Pedir orçamento</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- OBRAS -->
+    <section class="section on-sand on-light" id="obras">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow" data-reveal>Obras</span>
+          <h2 data-reveal style="--d:80">O trabalho fala por si.</h2>
+          <p data-reveal style="--d:160">Projetos executados pela Legno. Clique em uma foto para ampliar.</p>
+        </div>
+        <div class="gallery" id="gallery">
+          <button class="shot shot--a img-reveal" data-reveal type="button" aria-label="Ampliar foto: deck amplo com canteiros embutidos">
+            <img src="img/deck-jardim-canteiros.jpg" alt="Deck amplo de madeira com canteiros embutidos junto ao jardim e ao lago"><span class="cap">Deck amplo com canteiros embutidos, junto ao jardim</span>
+          </button>
+          <button class="shot shot--b img-reveal" data-reveal style="--d:120" type="button" aria-label="Ampliar foto: deck e spa em varanda envidraçada">
+            <img src="img/deck-spa-detalhe.jpg" alt="Deck de madeira e spa revestido em varanda envidraçada" style="object-position: 60% 50%"><span class="cap">Deck em réguas contínuas e spa revestido em madeira</span>
+          </button>
+          <button class="shot shot--c img-reveal" data-reveal type="button" aria-label="Ampliar foto: spa com bancada de madeira">
+            <img src="img/deck-spa-bancada.jpg" alt="Spa embutido com bancada e degrau em madeira" style="object-position: 75% 50%"><span class="cap">Spa embutido com bancada e degrau em madeira</span>
+          </button>
+          <button class="shot shot--d img-reveal" data-reveal style="--d:120" type="button" aria-label="Ampliar foto: revestimento e deck com acabamento escuro">
+            <img src="img/revestimento-deck-fachada.jpg" alt="Revestimento vertical e deck de madeira com acabamento escuro, em frente a uma casa com pérgola"><span class="cap">Revestimento vertical e deck com acabamento escuro</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- POR QUE A LEGNO -->
+    <section class="section on-light" id="porque">
+      <div class="wrap why">
+        <div class="why__media img-reveal" data-reveal>
+          <img src="img/deck-colunas-vertical.jpg" alt="Deck de madeira amplo ao lado de uma casa com colunas vermelhas, com acabamento limpo e réguas alinhadas">
+          <span class="why__tag">Obra entregue</span>
+        </div>
+        <div>
+          <span class="eyebrow" data-reveal>Por que a Legno</span>
+          <h2 data-reveal style="--d:80">Seis motivos para pedir seu orçamento com a gente.</h2>
+          <p style="margin-top:20px" data-reveal>Uma obra em madeira é um investimento na casa. Estes são os pontos que fazem diferença na hora de escolher quem vai executá-la.</p>
+          <div class="reasons">
+            <div class="reason" data-reveal><b>01</b><div><h3>Projeto pensado para o seu espaço</h3><p>Antes de orçar, entendemos o uso, medimos o local e avaliamos a exposição ao sol e à chuva. A proposta nasce do seu espaço, não de um modelo pronto.</p></div></div>
+            <div class="reason" data-reveal><b>02</b><div><h3>Proposta clara antes de começar</h3><p>Você recebe o desenho, a madeira e o acabamento indicados e o prazo informado, para decidir com todas as informações na mão.</p></div></div>
+            <div class="reason" data-reveal><b>03</b><div><h3>Madeira certificada, acabamento certo</h3><p>Matéria-prima escolhida com critério e tratamento adequado ao lugar onde a peça vai ficar.</p></div></div>
+            <div class="reason" data-reveal><b>04</b><div><h3>Execução com precisão</h3><p>Alinhamento, nivelamento e fixação conferidos ao longo da obra. Os detalhes aparecem no resultado final.</p></div></div>
+            <div class="reason" data-reveal><b>05</b><div><h3>Obras reais, que você pode ver</h3><p>Decks, revestimentos e projetos especiais executados pela Legno. Veja as fotos acima e, se quiser, peça mais imagens na conversa.</p></div></div>
+            <div class="reason" data-reveal><b>06</b><div><h3>Orientação depois da entrega</h3><p>Explicamos como conservar a madeira, para que a obra continue bonita por mais tempo.</p></div></div>
+          </div>
+          <div class="why__cta" data-reveal>
+            <a class="btn" href="#contato">Pedir meu orçamento</a>
+            <a class="link" href="#proposta">O que vem na proposta</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DETALHES -->
+    <section class="section on-dark" id="detalhes">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow" data-reveal>Detalhes</span>
+          <h2 data-reveal style="--d:80">O ofício está nos detalhes.</h2>
+          <p data-reveal style="--d:160">É nos pontos que quase ninguém vê de longe que se reconhece uma obra bem executada.</p>
+        </div>
+        <div class="details-grid">
+          <article class="detail" data-reveal style="--d:0">
+            <div class="detail__img img-reveal"><img src="img/detalhe-reguas.jpg" alt="Detalhe do deck de madeira com réguas alinhadas e borda frontal acabada"></div>
+            <h3>Réguas alinhadas</h3>
+            <p>Espaçamento regular, fixação planejada e bordas bem acabadas.</p>
+          </article>
+          <article class="detail" data-reveal style="--d:120">
+            <div class="detail__img img-reveal"><img src="img/detalhe-canteiro.jpg" alt="Detalhe de canteiro embutido no deck, com estrutura interna e revestimento em madeira"></div>
+            <h3>Estrutura bem resolvida</h3>
+            <p>Canteiros e volumes embutidos no deck, com estrutura interna e revestimento em madeira.</p>
+          </article>
+          <article class="detail" data-reveal style="--d:240">
+            <div class="detail__img img-reveal"><img src="img/detalhe-revestimento.jpg" alt="Detalhe do revestimento vertical de madeira com acabamento escuro sob o deck"></div>
+            <h3>Acabamento com caráter</h3>
+            <p>Revestimento vertical com tom e proteção definidos para a exposição do local.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAIXA DE FOTO -->
+    <section class="band" aria-label="Obra executada">
+      <div class="band__img"><img src="img/revestimento-deck-fachada.jpg" alt="Deck com revestimento vertical de madeira escura em frente a uma casa, com gramado e jardim"></div>
+      <div class="band__veil"></div>
+      <div class="band__text">
+        <div class="wrap">
+          <h2 data-reveal>Uma obra bem feita se vê no primeiro olhar e se confirma com o tempo.</h2>
+          <a class="link" href="#contato" data-reveal>Conversar sobre o meu projeto</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MADEIRA -->
+    <section class="section on-walnut" id="madeira">
+      <div class="wrap wood">
+        <div class="wood__quote" data-reveal>
+          Madeira bem escolhida, bem trabalhada e <em>bem cuidada</em> dura.
+        </div>
+        <ul class="wood__list">
+          <li data-reveal>
+            <b>01</b>
+            <div>
+              <h3>Madeira certificada</h3>
+              <p>Trabalhamos com madeira de origem certificada, selecionada pela qualidade e pela adequação a cada uso.</p>
+            </div>
+          </li>
+          <li data-reveal style="--d:100">
+            <b>02</b>
+            <div>
+              <h3>Acabamento conforme a exposição</h3>
+              <p>Sol, chuva e maresia pedem tratamentos diferentes. Definimos o acabamento junto com o projeto, de acordo com onde a peça vai ficar.</p>
+            </div>
+          </li>
+          <li data-reveal style="--d:200">
+            <b>03</b>
+            <div>
+              <h3>Cuidado ao longo do tempo</h3>
+              <p>Na entrega, orientamos como conservar a madeira. A manutenção periódica mantém a beleza e prolonga a vida da obra.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- PROPOSTA -->
+    <section class="section on-sand on-light" id="proposta">
+      <div class="wrap">
+        <div class="head">
+          <span class="eyebrow" data-reveal>Antes de decidir</span>
+          <h2 data-reveal style="--d:80">Saiba o que esperar de um orçamento.</h2>
+          <p data-reveal style="--d:160">Compare com calma. Estas são as informações que você deve receber de qualquer empresa e que fazem parte da nossa proposta.</p>
+        </div>
+        <div class="offer">
+          <div class="offer__box" data-reveal>
+            <h3>O que vem na proposta</h3>
+            <p>Tudo descrito antes de você fechar.</p>
+            <ul>
+              <li>Projeto e desenho do que será feito</li>
+              <li>Madeira e acabamento indicados para o local</li>
+              <li>Descrição clara do serviço contratado</li>
+              <li>Prazo informado antes de fechar</li>
+              <li>Orientações de conservação na entrega</li>
+            </ul>
+          </div>
+          <div class="offer__box offer__box--dark" data-reveal style="--d:120">
+            <h3>Perguntas para fazer a qualquer empresa</h3>
+            <p>Respondemos todas elas na conversa, sem pressa.</p>
+            <ul>
+              <li>De onde vem a madeira e ela é certificada?</li>
+              <li>Qual acabamento será aplicado e por quê?</li>
+              <li>Como serão feitos o nivelamento e a fixação?</li>
+              <li>O que está incluso e qual é o prazo?</li>
+              <li>Como conservar a madeira depois da obra?</li>
+            </ul>
+          </div>
+        </div>
+        <div class="offer__cta" data-reveal>
+          <a class="btn" href="#contato">Pedir meu orçamento</a>
+          <a class="link" href="#perguntas">Ver perguntas frequentes</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESSO -->
+    <section class="section on-light" id="processo">
+      <div class="wrap process">
+        <div class="head" data-reveal>
+          <span class="eyebrow">Processo</span>
+          <h2>Do primeiro contato à obra entregue.</h2>
+          <p>Um caminho claro em cinco etapas, para você saber o que acontece e quando.</p>
+        </div>
+        <div class="timeline" id="timeline">
+          <div class="timeline__bar" id="timelineBar"></div>
+          <div class="step" data-reveal>
+            <div class="step__dot">1</div>
+            <span class="step__tag">Projetar</span>
+            <h3>Conversa inicial</h3>
+            <p>Você conta o que imagina para o espaço, o uso e o estilo. Entendemos o que é prioridade antes de qualquer desenho.</p>
+          </div>
+          <div class="step" data-reveal>
+            <div class="step__dot">2</div>
+            <span class="step__tag">Projetar</span>
+            <h3>Visita e medição</h3>
+            <p>Visitamos o local, tomamos as medidas e avaliamos a exposição ao sol, à chuva e ao uso diário.</p>
+          </div>
+          <div class="step" data-reveal>
+            <div class="step__dot">3</div>
+            <span class="step__tag">Projetar</span>
+            <h3>Projeto e proposta</h3>
+            <p>Apresentamos o desenho, a madeira e o acabamento indicados, com a proposta detalhada para sua aprovação.</p>
+          </div>
+          <div class="step" data-reveal>
+            <div class="step__dot">4</div>
+            <span class="step__tag">Executar</span>
+            <h3>Execução</h3>
+            <p>Corte, montagem e acabamento conduzidos com precisão, com atenção a cada detalhe da obra.</p>
+          </div>
+          <div class="step" data-reveal>
+            <div class="step__dot">5</div>
+            <span class="step__tag">Valorizar</span>
+            <h3>Entrega e orientações</h3>
+            <p>Conferimos a obra com você e passamos as orientações de conservação para a madeira durar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ATUAÇÃO -->
+    <section class="area on-dark" aria-label="Área de atuação">
+      <div class="wrap">
+        <div class="eyebrow" data-reveal>Onde atuamos</div>
+        <div class="area__big" data-reveal style="--d:100">Litoral Norte <span>|</span> Porto Alegre <span>|</span> RS</div>
+        <p data-reveal style="--d:200">Do litoral à serra, levando o mesmo cuidado de projeto e execução a cada obra.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section on-sand on-light" id="perguntas">
+      <div class="wrap faq">
+        <div class="head" data-reveal>
+          <span class="eyebrow">Perguntas frequentes</span>
+          <h2>O que costumam nos perguntar.</h2>
+          <p>Não encontrou sua dúvida? Fale com a gente pelo WhatsApp.</p>
+        </div>
+        <div data-reveal style="--d:100">
+          <details>
+            <summary>Quais regiões a Legno atende?</summary>
+            <div><p>Atuamos no Litoral Norte e em Porto Alegre, no Rio Grande do Sul. Para outras localidades, consulte a disponibilidade.</p></div>
+          </details>
+          <details>
+            <summary>Como funciona o orçamento?</summary>
+            <div><p>Começa com uma conversa e, quando necessário, uma visita ao local para medir e avaliar o espaço. A partir daí enviamos a proposta com o projeto, a madeira e o acabamento indicados.</p></div>
+          </details>
+          <details>
+            <summary>Qual é o prazo de uma obra?</summary>
+            <div><p>Depende do tipo de serviço, do tamanho e da complexidade do projeto. O prazo é informado na proposta, antes de qualquer compromisso.</p></div>
+          </details>
+          <details>
+            <summary>Posso levar um projeto ou uma ideia própria?</summary>
+            <div><p>Sim. Trabalhamos a partir do seu desenho, de uma referência ou apenas de uma ideia. Nós ajustamos o projeto para que ele funcione no espaço real.</p></div>
+          </details>
+          <details>
+            <summary>A madeira precisa de manutenção?</summary>
+            <div><p>Toda madeira exposta ao tempo se beneficia de manutenção periódica. Na entrega, explicamos como conservar a peça e com que frequência.</p></div>
+          </details>
+          <details>
+            <summary>Vocês fazem só áreas externas?</summary>
+            <div><p>Nosso trabalho é mais visto em decks, pérgolas e coberturas, mas também executamos revestimentos e projetos especiais, que podem ser internos ou externos.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="section on-dark" id="contato">
+      <div class="wrap contact">
+        <div>
+          <span class="eyebrow" data-reveal>Contato</span>
+          <h2 data-reveal style="--d:80">Vamos conversar sobre o seu projeto.</h2>
+          <p style="margin-top:24px; --d:160" data-reveal>Conte o que você imagina para o espaço. Voltamos com uma proposta feita sob medida.</p>
+          <ul class="contact__list" data-reveal style="--d:200">
+            <!-- {{WHATSAPP}}: informar o número (somente dígitos, com DDI e DDD) -->
+            <li><b>WhatsApp</b><a class="link" href="https://wa.me/{{WHATSAPP}}" id="waLink">Solicitar orçamento pelo WhatsApp</a></li>
+            <li><b>Instagram</b><a class="link" href="https://www.instagram.com/legno.maestria" target="_blank" rel="noopener">@legno.maestria</a></li>
+            <li><b>Atuação</b><span>Litoral Norte | Porto Alegre | RS</span></li>
+          </ul>
+        </div>
+        <form class="form" id="form" data-whatsapp="{{WHATSAPP}}" data-reveal style="--d:120" novalidate>
+          <h3>Peça seu orçamento</h3>
+          <div class="field">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" autocomplete="name" required>
+          </div>
+          <div class="field field--row">
+            <div class="field">
+              <label for="servico">Serviço</label>
+              <select id="servico" name="servico">
+                <option>Decks</option>
+                <option>Pérgolas</option>
+                <option>Coberturas</option>
+                <option>Revestimentos</option>
+                <option>Projetos especiais</option>
+                <option>Outro</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="cidade">Cidade</label>
+              <input id="cidade" name="cidade" type="text" autocomplete="address-level2">
+            </div>
+          </div>
+          <div class="field">
+            <label for="msg">Conte sobre o projeto</label>
+            <textarea id="msg" name="msg" placeholder="Ex.: deck de 30 m² para a área da piscina"></textarea>
+          </div>
+          <button class="btn" type="submit">Enviar pelo WhatsApp</button>
+          <p class="form__status" id="formStatus" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__grid">
+        <div>
+          <img class="footer__logo" src="img/logo-completo.png" alt="Legno, maestria em madeira" style="height:auto">
+          <p>Estruturas que valorizam histórias.</p>
+        </div>
+        <div>
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#obras">Obras</a></li>
+            <li><a href="#porque">Por que a Legno</a></li>
+            <li><a href="#proposta">Proposta</a></li>
+            <li><a href="#processo">Processo</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Serviços</h4>
+          <ul>
+            <li><a href="#servicos">Pérgolas</a></li>
+            <li><a href="#servicos">Decks</a></li>
+            <li><a href="#servicos">Coberturas</a></li>
+            <li><a href="#servicos">Revestimentos</a></li>
+            <li><a href="#servicos">Projetos especiais</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contato</h4>
+          <ul>
+            <li><a href="https://wa.me/{{WHATSAPP}}">WhatsApp</a></li>
+            <li><a href="https://www.instagram.com/legno.maestria" target="_blank" rel="noopener">@legno.maestria</a></li>
+            <li><span style="color:var(--cream-soft)">Litoral Norte | Porto Alegre | RS</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__base">
+        <span>© Legno · Maestria em madeira. Todos os direitos reservados.</span>
+        <span>Experiência · Precisão · Acabamento</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="btn fab" id="fab" href="#contato">Pedir orçamento</a>
+
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+    <button class="lb__close" id="lbClose" type="button">Fechar</button>
+    <button class="lb__prev" id="lbPrev" type="button" aria-label="Foto anterior">Anterior</button>
+    <figure><img id="lbImg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt=""><figcaption id="lbCap"></figcaption></figure>
+    <button class="lb__next" id="lbNext" type="button" aria-label="Próxima foto">Próxima</button>
+  </div>
+
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var $ = function (s) { return document.querySelector(s); };
+      var header = $('#header'), heroMedia = $('#heroMedia'), progress = $('#progress'), fab = $('#fab');
+      var hero = $('.hero'), contact = $('#contato'), timeline = $('#timeline'), bar = $('#timelineBar');
+
+      /* Scroll: header, progresso, parallax, CTA flutuante, linha do processo */
+      var ticking = false;
+      function onScroll() {
+        var y = window.scrollY, h = window.innerHeight;
+        header.classList.toggle('is-solid', y > 40);
+        var max = document.documentElement.scrollHeight - h;
+        progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
+        if (!reduce && y < h * 1.2) heroMedia.style.transform = 'translate3d(0,' + (y * 0.14) + 'px,0)';
+        var cTop = contact.getBoundingClientRect().top;
+        fab.classList.toggle('is-on', y > hero.offsetHeight * 0.7 && cTop > h * 0.6);
+        if (timeline) {
+          var r = timeline.getBoundingClientRect();
+          var p = Math.min(Math.max((h * 0.55 - r.top) / r.height, 0), 1);
+          bar.style.height = (p * (r.height - 16)) + 'px';
+        }
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+      window.addEventListener('resize', onScroll);
+      onScroll();
+
+      /* Apresentação do hero: imagens e frases trocam juntas, com transição suave */
+      var slides = Array.prototype.slice.call(document.querySelectorAll('.hero__slide'));
+      var phrases = Array.prototype.slice.call(document.querySelectorAll('.hero__phrase'));
+      var dots = Array.prototype.slice.call(document.querySelectorAll('.hero__dot'));
+      var SLIDE_MS = 7000, idx = 0, timer = null;
+      hero.style.setProperty('--slide-ms', SLIDE_MS + 'ms');
+      function swap(list, from, to, ms) {
+        var prev = list[from], next = list[to];
+        prev.classList.remove('is-active'); prev.classList.add('is-leaving');
+        setTimeout(function () { prev.classList.remove('is-leaving'); }, ms);
+        next.classList.remove('is-leaving'); next.classList.add('is-active');
+      }
+      function go(n) {
+        n = (n + slides.length) % slides.length;
+        if (n === idx) return;
+        swap(slides, idx, n, 2400);
+        swap(phrases, idx, n, 1400);
+        dots[idx].classList.remove('is-active'); dots[n].classList.add('is-active');
+        idx = n;
+      }
+      function stop() { if (timer) { clearInterval(timer); timer = null; } }
+      function start() { stop(); if (!reduce) { hero.classList.remove('is-paused'); timer = setInterval(function () { go(idx + 1); }, SLIDE_MS); } }
+      dots.forEach(function (d, i) { d.addEventListener('click', function () { go(i); start(); }); });
+      document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
+      if (reduce) hero.classList.add('is-paused'); else start();
+
+      /* Menu mobile */
+      var menuBtn = $('#menuBtn'), nav = $('#nav');
+      menuBtn.addEventListener('click', function () {
+        var open = nav.classList.toggle('is-open');
+        menuBtn.setAttribute('aria-expanded', open);
+        menuBtn.textContent = open ? 'Fechar' : 'Menu';
+      });
+      nav.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') { nav.classList.remove('is-open'); menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.textContent = 'Menu'; }
+      });
+
+      /* Pré-seleciona o serviço no formulário */
+      document.querySelectorAll('[data-service]').forEach(function (a) {
+        a.addEventListener('click', function () { $('#servico').value = a.getAttribute('data-service'); });
+      });
+
+      /* Formulário → WhatsApp */
+      var form = $('#form'), status = $('#formStatus');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var num = (form.getAttribute('data-whatsapp') || '').replace(/\D/g, '');
+        var nome = form.nome.value.trim();
+        if (!nome) { status.textContent = 'Informe seu nome para continuar.'; form.nome.focus(); return; }
+        if (!num) { status.textContent = 'O número de WhatsApp da Legno ainda não foi configurado nesta página.'; return; }
+        var txt = 'Olá, sou ' + nome + (form.cidade.value.trim() ? ', de ' + form.cidade.value.trim() : '') +
+          '. Gostaria de um orçamento de: ' + form.servico.value + '.' +
+          (form.msg.value.trim() ? '\n\n' + form.msg.value.trim() : '');
+        status.textContent = 'Abrindo o WhatsApp…';
+        window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(txt), '_blank', 'noopener');
+      });
+
+      /* Lightbox */
+      var shots = Array.prototype.slice.call(document.querySelectorAll('.shot'));
+      var lb = $('#lb'), lbImg = $('#lbImg'), lbCap = $('#lbCap'), cur = 0;
+      function show(i) {
+        cur = (i + shots.length) % shots.length;
+        var im = shots[cur].querySelector('img');
+        lbImg.src = im.currentSrc || im.src; lbImg.alt = im.alt;
+        lbCap.textContent = shots[cur].querySelector('.cap').textContent;
+      }
+      function open(i) { show(i); lb.classList.add('is-open'); document.body.style.overflow = 'hidden'; $('#lbClose').focus(); }
+      function close() { lb.classList.remove('is-open'); document.body.style.overflow = ''; shots[cur].focus(); }
+      shots.forEach(function (s, i) { s.addEventListener('click', function () { open(i); }); });
+      $('#lbClose').addEventListener('click', close);
+      $('#lbPrev').addEventListener('click', function () { show(cur - 1); });
+      $('#lbNext').addEventListener('click', function () { show(cur + 1); });
+      lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+      document.addEventListener('keydown', function (e) {
+        if (!lb.classList.contains('is-open')) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft') show(cur - 1);
+        if (e.key === 'ArrowRight') show(cur + 1);
+      });
+    })();
+  </script>
+</body>
+</html>
