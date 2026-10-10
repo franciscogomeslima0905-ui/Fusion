@@ -150,24 +150,29 @@
 
     /* ---------- Hero: apresentação de imagens e frases ---------- */
     .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-    .hero { --slide-ms: 7000ms; position: relative; height: min(100vh, 1000px); min-height: 620px; color: var(--cream); overflow: hidden; background: var(--espresso); }
+    .hero { --slide-ms: 6500ms; position: relative; height: min(100vh, 1000px); min-height: 620px; color: var(--cream); overflow: hidden; background: var(--espresso); }
     .hero__media { position: absolute; inset: -3% 0; will-change: transform; }
-    .hero__slide { position: absolute; inset: 0; opacity: 0; transition: opacity 2.2s ease-in-out; }
+    .hero__slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.8s ease-in-out; }
     .hero__slide.is-active, .hero__slide.is-leaving { opacity: 1; }
     .hero__slide.is-leaving { opacity: 0; }
     .hero__slide img { transform-origin: 50% 50%; }
     .hero__slide:nth-child(2) img { transform-origin: 30% 60%; }
     .hero__slide:nth-child(3) img { transform-origin: 70% 50%; }
     .hero__slide:nth-child(4) img { transform-origin: 40% 40%; }
-    .hero__slide.is-active img, .hero__slide.is-leaving img { animation: kenburns 12s linear forwards; }
-    @keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.08); } }
+    .hero__slide:nth-child(5) img { transform-origin: 60% 55%; }
+    .hero__slide:nth-child(6) img { transform-origin: 45% 50%; }
+    .hero__slide:nth-child(7) img { transform-origin: 55% 45%; }
+    .hero__slide.is-active img, .hero__slide.is-leaving img { animation: zoomIn 9.5s cubic-bezier(0.3, 0, 0.5, 1) forwards; }
+    .hero__slide:nth-child(even).is-active img, .hero__slide:nth-child(even).is-leaving img { animation-name: zoomOut; }
+    @keyframes zoomIn { from { transform: scale(1); } to { transform: scale(1.15); } }
+    @keyframes zoomOut { from { transform: scale(1.15); } to { transform: scale(1); } }
     .hero__veil { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(20, 16, 15, 0.64) 0%, rgba(20, 16, 15, 0.52) 38%, rgba(20, 16, 15, 0.56) 70%, rgba(20, 16, 15, 0.86) 100%); }
 
     .hero__body { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 96px 0 150px; }
     .hero__phrases { display: grid; width: 100%; justify-items: center; }
-    .hero__phrase { grid-area: 1 / 1; display: flex; flex-direction: column; align-items: center; opacity: 0; transform: translateY(18px); pointer-events: none; transition: opacity 1s ease, transform 1.2s var(--ease); }
-    .hero__phrase.is-leaving { transform: translateY(-14px); }
-    .hero__phrase.is-active { opacity: 1; transform: none; pointer-events: auto; transition: opacity 1.4s ease .7s, transform 1.6s var(--ease) .7s; }
+    .hero__phrase { grid-area: 1 / 1; display: flex; flex-direction: column; align-items: center; opacity: 0; transform: translateY(10px); pointer-events: none; transition: opacity .3s ease, transform .4s ease; }
+    .hero__phrase.is-leaving { transform: translateY(-8px); }
+    .hero__phrase.is-active { opacity: 1; transform: none; pointer-events: auto; transition: opacity .5s ease .22s, transform .55s var(--ease) .22s; }
     .hero__label { font-size: 12.5px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream); opacity: 0.9; margin-bottom: 28px; }
     .hero__text { font-family: var(--font-display); font-weight: 500; font-size: clamp(32px, 5vw, 70px); line-height: 1.15; letter-spacing: -0.01em; max-width: 21ch; text-align: center; color: var(--cream); }
     .hero__cta { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
@@ -218,6 +223,8 @@
     .card ul { margin: 22px 0 28px; border-top: 1px solid var(--line-dark); }
     .card li { padding: 11px 0; border-bottom: 1px solid var(--line-dark); font-size: 14px; color: var(--cream-soft); }
     .card .link { margin-top: auto; align-self: flex-start; font-size: 13.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--copper-light); }
+    .card--wide { grid-column: span 3; }
+    .card--wide .card__img { aspect-ratio: 16 / 7; }
     .card--text { grid-column: span 3; background: transparent; position: relative; overflow: hidden; }
     .card--text::after { content: ''; position: absolute; right: -40px; bottom: -40px; width: 220px; height: 220px; background: url('img/logo-simbolo.png') center / contain no-repeat; opacity: 0.07; pointer-events: none; }
 
@@ -228,6 +235,7 @@
     .shot--b { grid-column: span 2; aspect-ratio: 4 / 5; }
     .shot--c { grid-column: span 2; aspect-ratio: 4 / 5; }
     .shot--d { grid-column: span 4; aspect-ratio: 16 / 10; }
+    .shot--e, .shot--f, .shot--g { grid-column: span 2; aspect-ratio: 4 / 3; }
     .shot img { transition: transform 1.2s var(--ease); }
     .shot:hover img { transform: scale(1.05); }
     .shot .cap { display: block; position: absolute; left: 0; right: 0; bottom: 0; padding: 56px 24px 20px; color: var(--cream); font-size: 14px; line-height: 1.4; background: linear-gradient(to top, rgba(20, 16, 15, 0.85), rgba(20, 16, 15, 0)); transform: translateY(8px); opacity: 0; transition: opacity .5s var(--ease), transform .5s var(--ease); }
@@ -381,7 +389,8 @@
       .trust__item:nth-child(3) { padding-left: 0; border-left: 0; }
       .trust__item:nth-child(n+3) { border-top: 1px solid var(--line-dark); }
       .services { grid-template-columns: 1fr 1fr; }
-      .card, .card--text { grid-column: span 1; }
+      .card, .card--text, .card--wide { grid-column: span 1; }
+      .card--wide .card__img { aspect-ratio: 16 / 10; }
       .footer__grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 860px) {
@@ -413,7 +422,7 @@
       .reason { grid-template-columns: 40px 1fr; }
       .band { min-height: 400px; }
       .band__text { padding-bottom: 48px; }
-      .shot--a, .shot--b, .shot--c, .shot--d { grid-column: span 1; aspect-ratio: 4 / 3; }
+      .shot--a, .shot--b, .shot--c, .shot--d, .shot--e, .shot--f, .shot--g { grid-column: span 1; aspect-ratio: 4 / 3; }
       .shot .cap { display: block; opacity: 1; transform: none; padding-top: 40px; }
       .step { padding-left: 72px; }
       .step__dot { width: 48px; height: 48px; font-size: 18px; }
@@ -461,8 +470,11 @@
       <div class="hero__media" id="heroMedia">
         <div class="hero__slide is-active"><img src="img/hero-deck-spa.jpg" alt="Deck de madeira em réguas contínuas ao redor de um spa revestido em madeira, em varanda envidraçada" fetchpriority="high"></div>
         <div class="hero__slide"><img src="img/hero-deck-canteiros.jpg" alt="Deck amplo de madeira com canteiros embutidos, junto a uma casa de colunas vermelhas e ao jardim"></div>
+        <div class="hero__slide"><img src="img/hero-perola-por-do-sol.jpg" alt="Estrutura de pérgola e painel ripado em madeira, em execução, com palmeiras e luz dourada do fim de tarde"></div>
         <div class="hero__slide"><img src="img/hero-revestimento.jpg" alt="Revestimento vertical de madeira com acabamento escuro e deck, em frente a uma casa com pérgola"></div>
+        <div class="hero__slide"><img src="img/hero-deck-piscina.jpg" alt="Deck de madeira acompanhando a curva de uma piscina, com fechamento em toras de madeira ao fundo"></div>
         <div class="hero__slide"><img src="img/hero-spa-bancada.jpg" alt="Spa embutido em estrutura de madeira com bancada e degrau, em varanda de vidro"></div>
+        <div class="hero__slide"><img src="img/hero-estrutura-toras.jpg" alt="Estrutura de toras de madeira sendo instalada na frente de uma casa, com a base já preparada"></div>
       </div>
       <div class="hero__veil"></div>
       <div class="hero__body">
@@ -470,8 +482,11 @@
         <div class="hero__phrases" aria-live="polite">
           <div class="hero__phrase is-active"><span class="hero__label">Maestria em madeira</span><p class="hero__text">Estruturas que valorizam histórias.</p></div>
           <div class="hero__phrase"><span class="hero__label">Precisão e acabamento</span><p class="hero__text">Cada medida pensada, cada detalhe conferido.</p></div>
+          <div class="hero__phrase"><span class="hero__label">Pérgolas e coberturas</span><p class="hero__text">Estruturas que desenham o seu lugar ao ar livre.</p></div>
           <div class="hero__phrase"><span class="hero__label">Madeira certificada</span><p class="hero__text">Escolhida com critério, trabalhada com maestria.</p></div>
+          <div class="hero__phrase"><span class="hero__label">Decks de piscina</span><p class="hero__text">Decks que acompanham cada curva do seu espaço.</p></div>
           <div class="hero__phrase"><span class="hero__label">Sob medida</span><p class="hero__text">Projetos sob medida, feitos para durar.</p></div>
+          <div class="hero__phrase"><span class="hero__label">Execução cuidadosa</span><p class="hero__text">Uma base bem feita sustenta a obra inteira.</p></div>
         </div>
         <div class="hero__cta">
           <a class="btn" href="#contato">Solicitar orçamento</a>
@@ -483,6 +498,9 @@
         <button class="hero__dot" type="button" aria-label="Ir para a apresentação 2">02</button>
         <button class="hero__dot" type="button" aria-label="Ir para a apresentação 3">03</button>
         <button class="hero__dot" type="button" aria-label="Ir para a apresentação 4">04</button>
+        <button class="hero__dot" type="button" aria-label="Ir para a apresentação 5">05</button>
+        <button class="hero__dot" type="button" aria-label="Ir para a apresentação 6">06</button>
+        <button class="hero__dot" type="button" aria-label="Ir para a apresentação 7">07</button>
       </div>
       <div class="hero__pillars">
         <div class="wrap">
@@ -591,14 +609,15 @@
               <a class="link" href="#contato" data-service="Projetos especiais">Pedir orçamento</a>
             </div>
           </article>
-          <article class="card card--text" data-reveal style="--d:0">
+          <article class="card card--wide" data-reveal style="--d:0">
+            <div class="card__img"><img src="img/th-perola-por-do-sol.jpg" alt="Estrutura de pérgola e painel ripado em madeira, em execução, junto ao deck e ao jardim" style="object-position: 50% 45%"></div>
             <div class="card__body">
               <span class="card__num">04</span>
               <h3>Pérgolas</h3>
               <p>Estruturas em madeira para sombra e convívio, dimensionadas conforme o vão e integradas à arquitetura da casa.</p>
               <ul>
                 <li>Áreas de estar, churrasqueiras e piscinas</li>
-                <li>Opção de cobertura associada</li>
+                <li>Painéis ripados e fechamentos em madeira</li>
                 <li>Madeira tratada para uso externo</li>
               </ul>
               <a class="link" href="#contato" data-service="Pérgolas">Pedir orçamento</a>
@@ -641,6 +660,15 @@
           </button>
           <button class="shot shot--d img-reveal" data-reveal style="--d:120" type="button" aria-label="Ampliar foto: revestimento e deck com acabamento escuro">
             <img src="img/revestimento-deck-fachada.jpg" alt="Revestimento vertical e deck de madeira com acabamento escuro, em frente a uma casa com pérgola"><span class="cap">Revestimento vertical e deck com acabamento escuro</span>
+          </button>
+          <button class="shot shot--e img-reveal" data-reveal type="button" aria-label="Ampliar foto: pérgola e painel ripado em execução">
+            <img src="img/th-perola-por-do-sol.jpg" alt="Estrutura de pérgola e painel ripado em madeira, em execução, com palmeiras ao fundo" style="object-position: 50% 45%"><span class="cap">Pérgola e painel ripado em madeira, em execução</span>
+          </button>
+          <button class="shot shot--f img-reveal" data-reveal style="--d:120" type="button" aria-label="Ampliar foto: deck acompanhando a curva da piscina">
+            <img src="img/th-deck-piscina.jpg" alt="Deck de madeira acompanhando a curva de uma piscina, com fechamento em toras ao fundo" style="object-position: 60% 50%"><span class="cap">Deck acompanhando a curva da piscina</span>
+          </button>
+          <button class="shot shot--g img-reveal" data-reveal style="--d:240" type="button" aria-label="Ampliar foto: fechamento em toras de madeira em execução">
+            <img src="img/th-estrutura-toras.jpg" alt="Estrutura de toras de madeira sendo instalada na frente de uma casa" style="object-position: 62% 50%"><span class="cap">Fechamento em toras de madeira, em execução</span>
           </button>
         </div>
       </div>
@@ -1009,7 +1037,7 @@
       var slides = Array.prototype.slice.call(document.querySelectorAll('.hero__slide'));
       var phrases = Array.prototype.slice.call(document.querySelectorAll('.hero__phrase'));
       var dots = Array.prototype.slice.call(document.querySelectorAll('.hero__dot'));
-      var SLIDE_MS = 7000, idx = 0, timer = null;
+      var SLIDE_MS = 6500, idx = 0, timer = null;
       hero.style.setProperty('--slide-ms', SLIDE_MS + 'ms');
       function swap(list, from, to, ms) {
         var prev = list[from], next = list[to];
@@ -1020,8 +1048,8 @@
       function go(n) {
         n = (n + slides.length) % slides.length;
         if (n === idx) return;
-        swap(slides, idx, n, 2400);
-        swap(phrases, idx, n, 1400);
+        swap(slides, idx, n, 2000);
+        swap(phrases, idx, n, 450);
         dots[idx].classList.remove('is-active'); dots[n].classList.add('is-active');
         idx = n;
       }
