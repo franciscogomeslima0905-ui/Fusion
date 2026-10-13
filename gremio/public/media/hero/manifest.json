@@ -1,0 +1,13 @@
+{
+  "enabled": false,
+  "_leia-me": "Troque enabled para true quando os arquivos reais da cena estiverem nesta pasta. Veja o README (seção 'Cena de abertura').",
+  "frames": {
+    "desktop": { "dir": "frames-desktop", "count": 150, "ext": "webp", "pad": 4 },
+    "mobile": { "dir": "frames-mobile", "count": 150, "ext": "webp", "pad": 4 }
+  },
+  "video": {
+    "desktop": "hero-desktop.mp4",
+    "mobile": "hero-mobile.mp4",
+    "poster": "poster.webp"
+  }
+}
