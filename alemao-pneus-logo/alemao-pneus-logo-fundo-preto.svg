@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2700 1000" width="2700" height="1000">
+  <title>Alemão Pneus</title>
+  <defs>
+    <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".55" stop-color="#eceef2"/>
+      <stop offset="1" stop-color="#b9bdc7"/>
+    </linearGradient>
+    <linearGradient id="flameHi" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffcf4d"/><stop offset="1" stop-color="#f98a12"/>
+    </linearGradient>
+    <linearGradient id="flame" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffa51f"/><stop offset="1" stop-color="#ee6a0a"/>
+    </linearGradient>
+    <linearGradient id="flameDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8710f"/><stop offset="1" stop-color="#b8420a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ff8a1a" stop-opacity=".16"/><stop offset="1" stop-color="#ff8a1a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-5%" y="-5%" width="110%" height="110%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity=".55"/></filter>
+  </defs>
+  <rect width="2700" height="1000" fill="#000"/>
+  <ellipse cx="974" cy="460" rx="780" ry="260" fill="url(#glow)"/>
+  
+<g transform="translate(1286.5,440.0) scale(1.55,1.15)">
+  <!-- back (darker) tongue -->
+  <path d="M0 58 C-70 30 -190 18 -330 70 C-250 62 -190 74 -150 112 C-230 98 -300 110 -352 150 C-250 150 -140 140 -40 118 Z" fill="url(#flameDark)"/>
+  <!-- middle tongue -->
+  <path d="M10 22 C-70 -22 -230 -50 -400 4 C-300 -4 -230 8 -190 44 C-280 28 -350 44 -420 90 C-300 82 -170 72 -30 62 Z" fill="url(#flame)"/>
+  <!-- front/top tongue -->
+  <path d="M40 -6 C-30 -52 -170 -96 -330 -118 C-250 -90 -200 -62 -178 -34 C-250 -52 -320 -48 -380 -22 C-280 -14 -190 -2 -100 26 C-50 34 0 30 40 -6 Z" fill="url(#flameHi)"/>
+</g>
+  <g fill="none" stroke="url(#chrome)" stroke-width="34" stroke-linecap="round" stroke-linejoin="round" filter="url(#soft)">
+    <g transform="translate(271.0,600.0) skewX(-12) translate(0,-183.0) translate(0,17.0)"><path d="M0 166 V46 Q0 0 46 0 H84 Q130 0 130 46 V166 M0 105.0 H130"/></g><g transform="translate(461.0,600.0) skewX(-12) translate(0,-183.0) translate(0,17.0)"><path d="M0 0 V124 Q0 166 42 166 H112"/></g><g transform="translate(633.0,600.0) skewX(-12) translate(0,-183.0) translate(0,17.0)"><path d="M112 0 H42 Q0 0 0 42 V124 Q0 166 42 166 H112 M0 83.0 H96"/></g><g transform="translate(805.0,600.0) skewX(-12) translate(0,-183.0) translate(0,17.0)"><path d="M0 166 V0 L75 122.84 L150 0 V166"/></g><g transform="translate(1015.0,600.0) skewX(-12) translate(0,-183.0) translate(0,17.0)"><path d="M0 166 V46 Q0 0 46 0 H84 Q130 0 130 46 V166 M0 105.0 H130"/><path d="M15.6 -50 Q44.2 -84 67.60000000000001 -62 T119.60000000000001 -62" stroke-width="16" /></g><g transform="translate(1563.0,600.0) skewX(-12) translate(0,-183.0) translate(0,17.0)"><path d="M0 166 V46 Q0 0 46 0 H90 Q136 0 136 46 Q136 92 90 92 H0"/></g><g transform="translate(1759.0,600.0) skewX(-12) translate(0,-183.0) translate(0,17.0)"><path d="M0 166 V0 L126 166 V0"/></g><g transform="translate(1945.0,600.0) skewX(-12) translate(0,-183.0) translate(0,17.0)"><path d="M112 0 H42 Q0 0 0 42 V124 Q0 166 42 166 H112 M0 83.0 H96"/></g><g transform="translate(2117.0,600.0) skewX(-12) translate(0,-183.0) translate(0,17.0)"><path d="M0 0 V120 Q0 166 46 166 H80 Q126 166 126 120 V0"/></g><g transform="translate(2303.0,600.0) skewX(-12) translate(0,-183.0) translate(0,17.0)"><path d="M126 40 Q126 0 84 0 H44 Q0 0 0 42 Q0 83.0 44 83.0 H84 Q126 83.0 126 124 Q126 166 84 166 H42 Q0 166 0 126"/></g>
+  </g>
+  <g transform="translate(1354.0,500.0)"><circle r="141" fill="none" stroke="url(#chrome)" stroke-width="18"/><circle r="141" fill="none" stroke="#0b0b0d" stroke-width="12" stroke-dasharray="6 9.2" opacity=".85"/><circle r="128" fill="none" stroke="#9a9ca3" stroke-width="3"/><circle r="120" fill="#050506"/><circle r="116" fill="none" stroke="url(#chrome)" stroke-width="10"/><path d="M-2.2 -29.9 L-16.1 -106.8 L16.1 -106.8 L2.2 -29.9Z M22.0 -20.4 L73.4 -79.2 L93.6 -54.0 L24.8 -16.9Z M29.7 4.5 L107.7 8.0 L100.5 39.5 L28.7 8.8Z M15.0 26.0 L60.9 89.2 L31.8 103.2 L11.0 27.9Z M-11.0 27.9 L-31.8 103.2 L-60.9 89.2 L-15.0 26.0Z M-28.7 8.8 L-100.5 39.5 L-107.7 8.0 L-29.7 4.5Z M-24.8 -16.9 L-93.6 -54.0 L-73.4 -79.2 L-22.0 -20.4Z" fill="url(#chrome)" stroke="url(#chrome)" stroke-width="5" stroke-linejoin="round"/><circle r="34" fill="url(#chrome)"/><circle r="26" fill="#0b0b0d"/><circle r="20" fill="url(#chrome)"/><circle cx="0.0" cy="-13.0" r="3.2" fill="#0b0b0d"/><circle cx="12.4" cy="-4.0" r="3.2" fill="#0b0b0d"/><circle cx="7.6" cy="10.5" r="3.2" fill="#0b0b0d"/><circle cx="-7.6" cy="10.5" r="3.2" fill="#0b0b0d"/><circle cx="-12.4" cy="-4.0" r="3.2" fill="#0b0b0d"/><circle r="5" fill="#0b0b0d"/></g>
+</svg>
