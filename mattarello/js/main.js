@@ -209,52 +209,30 @@
   /* ------------------------------------------------------------------
      Carrossel do hero
      Troca sozinho a cada SLIDE_MS. Para adicionar mídia: duplique um
-     <article class="hero__text">, um <figure class="hero__slide"> e um
-     <button class="hero__bar"> no HTML.
+     <article class="hero__text"> e um <figure class="hero__slide"> no HTML.
      ------------------------------------------------------------------ */
   const SLIDE_MS = 5500
 
   const hero = $('#inicio')
   const texts = $$('.hero__text', hero)
   const slides = $$('.hero__slide', hero)
-  const bars = $$('.hero__bar', hero)
-  const countEl = $('.hero__count b', hero)
   const indexEl = $('.hero__index b', hero)
-  const countTotal = $('.hero__count span', hero)
-  const textWrap = $('.hero__texts', hero)
-  const pauseBtn = $('[data-pause]', hero)
   const total = slides.length
   const pad = (n) => String(n).padStart(2, '0')
   let current = 0
   let elapsed = 0
-  let userPaused = false
   let offscreen = false
-
-  if (countTotal) countTotal.textContent = `/ ${pad(total)}`
-
-  const paintBars = () => {
-    bars.forEach((b, k) => {
-      const v = k < current ? 1 : k === current ? Math.min(1, elapsed / SLIDE_MS) : 0
-      $('span', b).style.transform = `scaleX(${v.toFixed(4)})`
-    })
-  }
 
   function go(n) {
     n = (n + total) % total
     slides[current].classList.remove('is-active')
     texts[current].classList.remove('is-active')
-    bars[current].classList.remove('is-active')
-    bars[current].removeAttribute('aria-current')
     current = n
     elapsed = 0
     slides[current].classList.add('is-active')
     texts[current].classList.add('is-active')
-    bars[current].classList.add('is-active')
-    bars[current].setAttribute('aria-current', 'true')
     slides.forEach((s, k) => s.setAttribute('aria-hidden', String(k !== current)))
-    if (countEl) countEl.textContent = pad(current + 1)
     if (indexEl) indexEl.textContent = pad(current + 1)
-    paintBars()
   }
 
   // Temporizador do carrossel (independe de animações CSS, então funciona
@@ -263,24 +241,11 @@
   function tick(now) {
     const dt = Math.min(now - last, 100)
     last = now
-    if (!userPaused && !offscreen && !document.hidden) {
+    if (!offscreen && !document.hidden) {
       elapsed += dt
       if (elapsed >= SLIDE_MS) go(current + 1)
-      else paintBars()
     }
     requestAnimationFrame(tick)
-  }
-
-  bars.forEach((b, k) => b.addEventListener('click', () => go(k)))
-  $$('[data-dir]', hero).forEach((btn) => btn.addEventListener('click', () => go(current + Number(btn.dataset.dir))))
-
-  if (pauseBtn) {
-    pauseBtn.addEventListener('click', () => {
-      userPaused = !userPaused
-      pauseBtn.setAttribute('aria-pressed', String(userPaused))
-      pauseBtn.setAttribute('aria-label', userPaused ? 'Retomar rotação' : 'Pausar rotação')
-      textWrap.setAttribute('aria-live', userPaused ? 'polite' : 'off')
-    })
   }
 
   if ('IntersectionObserver' in window) {

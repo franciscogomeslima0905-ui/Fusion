@@ -655,59 +655,6 @@ em {
   gap: 18px 28px;
 }
 
-.hero__controls {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  margin-top: 8px;
-}
-.hero__bars {
-  display: flex;
-  gap: 6px;
-  flex: 1;
-  max-width: 340px;
-}
-.hero__bar {
-  position: relative;
-  flex: 1;
-  height: 20px;
-}
-.hero__bar::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 9px;
-  height: 2px;
-  background: var(--cream-14);
-}
-.hero__bar span {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 9px;
-  height: 2px;
-  background: var(--warm-cream);
-  transform: scaleX(0);
-  transform-origin: left;
-}
-.hero__count {
-  font-size: 14px;
-  letter-spacing: 0.14em;
-  color: var(--cream-70);
-  white-space: nowrap;
-}
-.hero__count b {
-  font-weight: 500;
-  color: var(--warm-cream);
-  margin-right: 6px;
-}
-.hero__arrows {
-  display: flex;
-  gap: 8px;
-  margin-left: auto;
-}
-
 .hero__media {
   position: relative;
   overflow: hidden;
@@ -1227,15 +1174,6 @@ em {
   }
   .hero__lead {
     font-size: 1.02rem;
-  }
-  .hero__bars {
-    max-width: none;
-  }
-  .hero__count {
-    display: none;
-  }
-  .hero__arrows .icon-btn[data-pause] {
-    display: none;
   }
 
   .about__grid {

@@ -12,5 +12,5 @@ Para testar localmente: `python3 -m http.server` dentro desta pasta.
 
 ## Adicionar mais mídias ao carrossel
 No `index.html`, dentro da seção `#inicio`, duplique **um** `<article class="hero__text">`, **um**
-`<figure class="hero__slide">` e **um** `<button class="hero__bar">` (e ajuste o `data-slide`). O JS detecta o total sozinho.
+`<figure class="hero__slide">` (e ajuste o `data-slide`). O JS detecta o total sozinho.
 Fotos ideais: vertical 4:5 (ex.: 1080×1350), sem barras pretas.

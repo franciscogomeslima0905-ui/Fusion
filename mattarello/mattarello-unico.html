@@ -689,59 +689,6 @@ em {
   gap: 18px 28px;
 }
 
-.hero__controls {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  margin-top: 8px;
-}
-.hero__bars {
-  display: flex;
-  gap: 6px;
-  flex: 1;
-  max-width: 340px;
-}
-.hero__bar {
-  position: relative;
-  flex: 1;
-  height: 20px;
-}
-.hero__bar::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 9px;
-  height: 2px;
-  background: var(--cream-14);
-}
-.hero__bar span {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 9px;
-  height: 2px;
-  background: var(--warm-cream);
-  transform: scaleX(0);
-  transform-origin: left;
-}
-.hero__count {
-  font-size: 14px;
-  letter-spacing: 0.14em;
-  color: var(--cream-70);
-  white-space: nowrap;
-}
-.hero__count b {
-  font-weight: 500;
-  color: var(--warm-cream);
-  margin-right: 6px;
-}
-.hero__arrows {
-  display: flex;
-  gap: 8px;
-  margin-left: auto;
-}
-
 .hero__media {
   position: relative;
   overflow: hidden;
@@ -1262,15 +1209,6 @@ em {
   .hero__lead {
     font-size: 1.02rem;
   }
-  .hero__bars {
-    max-width: none;
-  }
-  .hero__count {
-    display: none;
-  }
-  .hero__arrows .icon-btn[data-pause] {
-    display: none;
-  }
 
   .about__grid {
     grid-template-columns: 1fr;
@@ -1583,32 +1521,6 @@ em {
             </a>
           </div>
 
-          <div class="hero__controls">
-            <div class="hero__bars" role="group" aria-label="Escolher destaque">
-              <button class="hero__bar is-active" type="button" aria-label="Destaque 1" aria-current="true"><span></span></button>
-              <button class="hero__bar" type="button" aria-label="Destaque 2"><span></span></button>
-              <button class="hero__bar" type="button" aria-label="Destaque 3"><span></span></button>
-              <button class="hero__bar" type="button" aria-label="Destaque 4"><span></span></button>
-              <button class="hero__bar" type="button" aria-label="Destaque 5"><span></span></button>
-              <button class="hero__bar" type="button" aria-label="Destaque 6"><span></span></button>
-              <button class="hero__bar" type="button" aria-label="Destaque 7"><span></span></button>
-              <button class="hero__bar" type="button" aria-label="Destaque 8"><span></span></button>
-              <button class="hero__bar" type="button" aria-label="Destaque 9"><span></span></button>
-            </div>
-            <div class="hero__count" aria-hidden="true"><b>01</b><span>/ 09</span></div>
-            <div class="hero__arrows">
-              <button class="icon-btn" type="button" data-dir="-1" aria-label="Destaque anterior">
-                <svg aria-hidden="true" style="transform:scaleX(-1)"><use href="#i-arrow" /></svg>
-              </button>
-              <button class="icon-btn" type="button" data-pause aria-label="Pausar rotação" aria-pressed="false">
-                <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3v10M11 3v10" stroke="currentColor" stroke-width="1.8" /></svg>
-                <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3l8 5-8 5z" fill="currentColor" /></svg>
-              </button>
-              <button class="icon-btn" type="button" data-dir="1" aria-label="Próximo destaque">
-                <svg aria-hidden="true"><use href="#i-arrow" /></svg>
-              </button>
-            </div>
-          </div>
         </div>
 
         <div class="hero__media">
@@ -2085,52 +1997,30 @@ window.MATTARELLO = {
   /* ------------------------------------------------------------------
      Carrossel do hero
      Troca sozinho a cada SLIDE_MS. Para adicionar mídia: duplique um
-     <article class="hero__text">, um <figure class="hero__slide"> e um
-     <button class="hero__bar"> no HTML.
+     <article class="hero__text"> e um <figure class="hero__slide"> no HTML.
      ------------------------------------------------------------------ */
   const SLIDE_MS = 5500
 
   const hero = $('#inicio')
   const texts = $$('.hero__text', hero)
   const slides = $$('.hero__slide', hero)
-  const bars = $$('.hero__bar', hero)
-  const countEl = $('.hero__count b', hero)
   const indexEl = $('.hero__index b', hero)
-  const countTotal = $('.hero__count span', hero)
-  const textWrap = $('.hero__texts', hero)
-  const pauseBtn = $('[data-pause]', hero)
   const total = slides.length
   const pad = (n) => String(n).padStart(2, '0')
   let current = 0
   let elapsed = 0
-  let userPaused = false
   let offscreen = false
-
-  if (countTotal) countTotal.textContent = `/ ${pad(total)}`
-
-  const paintBars = () => {
-    bars.forEach((b, k) => {
-      const v = k < current ? 1 : k === current ? Math.min(1, elapsed / SLIDE_MS) : 0
-      $('span', b).style.transform = `scaleX(${v.toFixed(4)})`
-    })
-  }
 
   function go(n) {
     n = (n + total) % total
     slides[current].classList.remove('is-active')
     texts[current].classList.remove('is-active')
-    bars[current].classList.remove('is-active')
-    bars[current].removeAttribute('aria-current')
     current = n
     elapsed = 0
     slides[current].classList.add('is-active')
     texts[current].classList.add('is-active')
-    bars[current].classList.add('is-active')
-    bars[current].setAttribute('aria-current', 'true')
     slides.forEach((s, k) => s.setAttribute('aria-hidden', String(k !== current)))
-    if (countEl) countEl.textContent = pad(current + 1)
     if (indexEl) indexEl.textContent = pad(current + 1)
-    paintBars()
   }
 
   // Temporizador do carrossel (independe de animações CSS, então funciona
@@ -2139,24 +2029,11 @@ window.MATTARELLO = {
   function tick(now) {
     const dt = Math.min(now - last, 100)
     last = now
-    if (!userPaused && !offscreen && !document.hidden) {
+    if (!offscreen && !document.hidden) {
       elapsed += dt
       if (elapsed >= SLIDE_MS) go(current + 1)
-      else paintBars()
     }
     requestAnimationFrame(tick)
-  }
-
-  bars.forEach((b, k) => b.addEventListener('click', () => go(k)))
-  $$('[data-dir]', hero).forEach((btn) => btn.addEventListener('click', () => go(current + Number(btn.dataset.dir))))
-
-  if (pauseBtn) {
-    pauseBtn.addEventListener('click', () => {
-      userPaused = !userPaused
-      pauseBtn.setAttribute('aria-pressed', String(userPaused))
-      pauseBtn.setAttribute('aria-label', userPaused ? 'Retomar rotação' : 'Pausar rotação')
-      textWrap.setAttribute('aria-live', userPaused ? 'polite' : 'off')
-    })
   }
 
   if ('IntersectionObserver' in window) {
