@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Master Car | Estética Automotiva</title>
+  <meta name="description" content="Master Car: estética automotiva com polimento técnico, correção de pintura e proteção. O cuidado que seu carro merece. Agende sua avaliação pelo WhatsApp.">
+  <meta name="theme-color" content="#202020">
+  <meta name="color-scheme" content="dark light">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Master Car">
+  <meta property="og:title" content="Master Car | Estética Automotiva">
+  <meta property="og:description" content="O cuidado que seu carro merece. Polimento técnico, correção de pintura e proteção com produtos profissionais.">
+  <meta property="og:image" content="assets/img/produtos.jpg">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoRepair",
+      "name": "Master Car",
+      "description": "Estética automotiva: polimento técnico, correção de pintura, vitrificação e proteção.",
+      "slogan": "O cuidado que seu carro merece"
+    }
+  </script>
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%23202020%27/%3E%3Cpath d=%27M16 6l9 5v10l-9 5-9-5V11z%27 fill=%27none%27 stroke=%27%23fff%27 stroke-width=%271.6%27/%3E%3C/svg%3E">
+  <link rel="preload" href="fonts/barlow-condensed-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/video/estudio-poster.jpg" as="image">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js', 'is-loading')</script>
+</head>
+<body>
+
+<!-- Ícones reutilizáveis -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M1 8h13M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+  <symbol id="i-logo-car" viewBox="0 0 64 22">
+    <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M6.5 17H3.5C2.4 17 2 16.3 2 15.4v-2.2c0-1 .6-1.7 1.6-2l7.2-2.1L17.6 4c.9-.9 2-1.3 3.2-1.3H37c1.4 0 2.6.5 3.6 1.4l5.9 5.2 9.7 1.6c1.3.2 2.2 1.2 2.2 2.5v2.3c0 1-.5 1.3-1.4 1.3h-3.1"/>
+      <path d="M18.5 17h25"/>
+      <circle cx="12.5" cy="17" r="4.3"/>
+      <circle cx="49.5" cy="17" r="4.3"/>
+      <path d="M19.5 9.2l4.2-4.6M26 9.2V4.6M26 9.2h17.5"/>
+    </g>
+  </symbol>
+</svg>
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- Pré-carregamento -->
+<div class="preloader" aria-hidden="true">
+  <div class="preloader__panel"></div>
+  <div class="preloader__inner">
+    <svg class="preloader__car" width="96" height="33"><use href="#i-logo-car"/></svg>
+    <span class="preloader__word">Master Car</span>
+  </div>
+  <span class="preloader__count"><b>0</b>%</span>
+  <span class="preloader__bar"><i></i></span>
+</div>
+
+<!-- Navegação -->
+<header class="nav" id="nav">
+  <button class="nav__menu" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="burger" aria-hidden="true"><i></i><i></i></span>
+    <span class="nav__menu-label" data-open="Menu" data-close="Fechar">Menu</span>
+  </button>
+  <a class="nav__logo" href="#inicio" aria-label="Master Car — início">
+    <svg width="48" height="17" aria-hidden="true"><use href="#i-logo-car"/></svg>
+    <span>Master Car</span>
+  </a>
+  <a class="btn btn--outline nav__cta" href="#agendar">Agendar<svg class="arrow" width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  <span class="nav__progress" id="progress" aria-hidden="true"></span>
+</header>
+
+<!-- Menu em tela cheia -->
+<nav class="menu" id="menu" aria-label="Menu principal" aria-hidden="true">
+  <ul class="menu__list">
+    <li style="--i:0"><a href="#estudio"><small>01</small><span>O Estúdio</span></a></li>
+    <li style="--i:1"><a href="#servicos"><small>02</small><span>Serviços</span></a></li>
+    <li style="--i:2"><a href="#processo"><small>03</small><span>Processo</span></a></li>
+    <li style="--i:3"><a href="#produtos"><small>04</small><span>Produtos</span></a></li>
+    <li style="--i:4"><a href="#equipe"><small>05</small><span>Equipe</span></a></li>
+    <li style="--i:5"><a href="#duvidas"><small>06</small><span>Dúvidas</span></a></li>
+    <li style="--i:6"><a href="#agendar"><small>07</small><span>Agendar</span></a></li>
+  </ul>
+  <p class="menu__foot">O cuidado que seu carro merece.</p>
+</nav>
+
+<main id="conteudo">
+
+  <!-- 1. HERO -->
+  <section class="hero" id="inicio" aria-label="Master Car">
+    <div class="hero__media" id="heroMedia">
+      <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/video/estudio-poster.jpg" aria-hidden="true">
+        <source src="assets/video/estudio.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero__shade" aria-hidden="true"></div>
+
+    <div class="hero__content container" id="heroContent">
+      <p class="eyebrow hero__eyebrow"><span>Estética automotiva</span></p>
+      <h1 class="hero__title">
+        <span class="line"><span>O cuidado</span></span>
+        <span class="line"><span>que seu carro</span></span>
+        <span class="line"><span>merece</span></span>
+      </h1>
+      <p class="hero__sub"><span>Polimento técnico, correção de pintura e proteção com produtos profissionais.</span></p>
+      <div class="hero__actions">
+        <a class="btn btn--giallo" href="#agendar">Agendar avaliação<svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+
+    <div class="hero__controls" id="heroControls">
+      <div class="pips" aria-hidden="true"><i class="pip pip--on"><b id="pipFill"></b></i><i class="pip"></i></div>
+      <button class="hexbtn" id="heroToggle" type="button" aria-label="Pausar vídeo">
+        <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true">
+          <polygon points="22,2 39.3,12 39.3,32 22,42 4.7,32 4.7,12" fill="none" stroke="currentColor" stroke-width="1.2"/>
+          <g class="ic-pause"><rect x="17" y="15" width="3.2" height="14" fill="currentColor"/><rect x="23.8" y="15" width="3.2" height="14" fill="currentColor"/></g>
+          <path class="ic-play" d="M18 14.5v15l12-7.5z" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- 2. FAIXA DE SERVIÇOS -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track" id="marqueeTrack">
+      <div class="marquee__group">
+        <span>Polimento técnico</span><i></i><span>Correção de pintura</span><i></i><span>Vitrificação</span><i></i><span>Proteção</span><i></i><span>Vidros</span><i></i><span>Couro</span><i></i>
+      </div>
+      <div class="marquee__group">
+        <span>Polimento técnico</span><i></i><span>Correção de pintura</span><i></i><span>Vitrificação</span><i></i><span>Proteção</span><i></i><span>Vidros</span><i></i><span>Couro</span><i></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. O ESTÚDIO -->
+  <section class="section section--marble intro" id="estudio">
+    <div class="container">
+      <div class="head">
+        <h2 class="head__title" data-split="lines">O estúdio</h2>
+        <a class="link" href="#processo" data-reveal>Conheça o processo<svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <p class="statement" id="statement">Cada carro chega com uma história. Devolvemos o brilho, a profundidade e a proteção que ele merece — com técnica, produto certo e atenção a cada detalhe.</p>
+    </div>
+  </section>
+
+  <!-- 4. SERVIÇOS -->
+  <section class="section services" id="servicos">
+    <div class="container">
+      <div class="head">
+        <h2 class="head__title" data-split="lines">Serviços</h2>
+        <a class="link" href="#agendar" data-reveal>Agende uma avaliação<svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+
+      <div class="services__grid">
+        <ul class="svc" id="svcList">
+          <li class="svc__item is-active" data-img="assets/img/composto.jpg" data-alt="Aplicação de composto de polimento em boina de lã" data-pos="50% 55%">
+            <button class="svc__btn" type="button" aria-expanded="true">
+              <span class="svc__num">01</span>
+              <span class="svc__name">Polimento técnico</span>
+              <svg class="arrow" width="24" height="24" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </button>
+            <div class="svc__more"><div>
+              <p>Corte, refino e brilho com compostos profissionais, escolhidos conforme o estado da pintura.</p>
+              <img class="svc__thumb" src="assets/img/composto.jpg" alt="Aplicação de composto de polimento em boina de lã" loading="lazy" width="1066" height="1600">
+            </div></div>
+          </li>
+          <li class="svc__item" data-img="assets/img/lixamento.jpg" data-alt="Profissional fazendo lixamento controlado no capô" data-pos="50% 40%">
+            <button class="svc__btn" type="button" aria-expanded="false">
+              <span class="svc__num">02</span>
+              <span class="svc__name">Correção de pintura</span>
+              <svg class="arrow" width="24" height="24" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </button>
+            <div class="svc__more"><div>
+              <p>Riscos, marcas e defeitos removidos com lixamento controlado, camada por camada.</p>
+              <img class="svc__thumb" src="assets/img/lixamento.jpg" alt="Profissional fazendo lixamento controlado no capô" loading="lazy" width="1066" height="1600">
+            </div></div>
+          </li>
+          <li class="svc__item" data-img="assets/img/treino.jpg" data-alt="Acabamento com politriz orbital sob iluminação de inspeção" data-pos="50% 60%">
+            <button class="svc__btn" type="button" aria-expanded="false">
+              <span class="svc__num">03</span>
+              <span class="svc__name">Proteção e vitrificação</span>
+              <svg class="arrow" width="24" height="24" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </button>
+            <div class="svc__more"><div>
+              <p>Uma camada de proteção que mantém o brilho por mais tempo e facilita a limpeza do dia a dia.</p>
+              <img class="svc__thumb" src="assets/img/treino.jpg" alt="Acabamento com politriz orbital sob iluminação de inspeção" loading="lazy" width="1066" height="1600">
+            </div></div>
+          </li>
+          <li class="svc__item" data-img="assets/img/produtos.jpg" data-alt="Carrinho com produtos profissionais de limpeza e polimento" data-pos="50% 70%">
+            <button class="svc__btn" type="button" aria-expanded="false">
+              <span class="svc__num">04</span>
+              <span class="svc__name">Vidros e couro</span>
+              <svg class="arrow" width="24" height="24" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </button>
+            <div class="svc__more"><div>
+              <p>Vidros limpos e sem manchas. Bancos de couro limpos, hidratados e protegidos.</p>
+              <img class="svc__thumb" src="assets/img/produtos.jpg" alt="Carrinho com produtos profissionais de limpeza e polimento" loading="lazy" width="960" height="1280">
+            </div></div>
+          </li>
+        </ul>
+
+        <div class="svc__stage" aria-hidden="true">
+          <div class="svc__frame" id="svcFrame">
+            <img id="svcImgA" class="is-on" src="assets/img/composto.jpg" alt="">
+            <img id="svcImgB" src="assets/img/lixamento.jpg" alt="">
+          </div>
+          <span class="svc__cap" id="svcCap">01 / 04</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PROCESSO (rolagem horizontal fixada no desktop) -->
+  <section class="process" id="processo" aria-label="Processo">
+    <div class="process__pin" id="processPin">
+      <div class="process__top container">
+        <span class="eyebrow"><span>Processo</span></span>
+        <span class="process__count"><b id="stepNow">01</b> / 03</span>
+      </div>
+
+      <div class="process__track" id="processTrack">
+        <div class="pstep pstep--intro">
+          <h2 class="pstep__big" data-split="lines">Três etapas. Nenhum atalho.</h2>
+          <p class="pstep__hint">Role para acompanhar<svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></p>
+        </div>
+
+        <article class="pstep" data-step="1">
+          <div class="pstep__text">
+            <span class="pstep__num">01</span>
+            <h3>Avaliação</h3>
+            <p>Inspeção da pintura sob luz própria. Entendemos o estado real do carro antes de tocar nele.</p>
+          </div>
+          <figure class="pstep__img"><img src="assets/img/treino.jpg" alt="Equipe acompanhando a técnica de polimento sob a iluminação de inspeção" loading="lazy" width="1066" height="1600"></figure>
+        </article>
+
+        <article class="pstep" data-step="2">
+          <div class="pstep__text">
+            <span class="pstep__num">02</span>
+            <h3>Correção</h3>
+            <p>Riscos, marcas e defeitos removidos com lixamento controlado, camada por camada.</p>
+          </div>
+          <figure class="pstep__img"><img src="assets/img/lixamento.jpg" alt="Lixamento controlado da pintura do capô" loading="lazy" width="1066" height="1600"></figure>
+        </article>
+
+        <article class="pstep" data-step="3">
+          <div class="pstep__text">
+            <span class="pstep__num">03</span>
+            <h3>Polimento e proteção</h3>
+            <p>Compostos profissionais devolvem profundidade e brilho. A proteção final mantém o resultado.</p>
+          </div>
+          <figure class="pstep__img"><img src="assets/img/composto.jpg" alt="Composto aplicado na boina de lã antes do polimento" loading="lazy" width="1066" height="1600"></figure>
+        </article>
+
+        <div class="pstep pstep--end" aria-hidden="true"></div>
+      </div>
+
+      <div class="process__bar" aria-hidden="true"><i id="processBar"></i></div>
+    </div>
+  </section>
+
+  <!-- 6. PRODUTOS -->
+  <section class="section section--marble products" id="produtos">
+    <div class="container products__grid">
+      <div class="products__text">
+        <p class="eyebrow eyebrow--dark" data-reveal><span>Linha profissional</span></p>
+        <h2 class="display" data-split="lines">O produto certo em cada etapa</h2>
+        <p class="lead" data-reveal>Trabalhamos com a linha Lincoln Pro Detail: compostos de corte pesado ao acabamento, limpadores e protetivos de alta performance.</p>
+        <ul class="rows">
+          <li data-reveal><span>Compostos de polimento</span><small>Do corte pesado ao acabamento fino</small></li>
+          <li data-reveal><span>Limpeza e preparação</span><small>IPA, limpa couro e tratamento de vidros</small></li>
+          <li data-reveal><span>Proteção</span><small>Ceras líquidas e selantes para manter o brilho</small></li>
+        </ul>
+        <a class="link" href="#agendar" data-reveal>Fale com a equipe<svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+      <figure class="products__fig">
+        <div class="reveal-img" data-img-reveal><img src="assets/img/produtos.jpg" alt="Carrinho com a linha de produtos Lincoln Pro Detail em frente ao mural do estúdio" loading="lazy" width="960" height="1280"></div>
+        <figcaption>Linha Lincoln Pro Detail</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 7. EQUIPE -->
+  <section class="section section--deep team" id="equipe">
+    <div class="container team__grid">
+      <figure class="team__fig">
+        <div class="reveal-img" data-img-reveal><img src="assets/img/equipe.jpg" alt="Equipe da Master Car reunida no estúdio" loading="lazy" width="1066" height="1600"></div>
+      </figure>
+      <div class="team__text">
+        <p class="eyebrow" data-reveal><span>Equipe</span></p>
+        <h2 class="display" data-split="lines">Paixão por carros. Obsessão por detalhe.</h2>
+        <p class="lead" data-reveal>Uma equipe unida, treinada e apaixonada por automobilismo. Cada carro que passa pelo nosso estúdio recebe o mesmo cuidado.</p>
+        <a class="link link--light" href="#agendar" data-reveal>Conheça de perto<svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. DIFERENCIAIS -->
+  <section class="section why" id="diferenciais">
+    <div class="container">
+      <div class="head">
+        <h2 class="head__title" data-split="lines">Por que Master Car</h2>
+      </div>
+      <div class="why__grid">
+        <article class="why__item">
+          <i class="rule" data-line></i>
+          <small data-reveal>01</small>
+          <h3 data-reveal>Produtos profissionais</h3>
+          <p data-reveal>Linha Lincoln Pro Detail, do corte ao acabamento.</p>
+        </article>
+        <article class="why__item">
+          <i class="rule" data-line></i>
+          <small data-reveal>02</small>
+          <h3 data-reveal>Equipe treinada</h3>
+          <p data-reveal>Técnica e processo definido em cada etapa do serviço.</p>
+        </article>
+        <article class="why__item">
+          <i class="rule" data-line></i>
+          <small data-reveal>03</small>
+          <h3 data-reveal>Ambiente de inspeção</h3>
+          <p data-reveal>Iluminação própria para enxergar e corrigir cada defeito.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. DÚVIDAS -->
+  <section class="section section--marble faq" id="duvidas">
+    <div class="container">
+      <div class="head">
+        <h2 class="head__title" data-split="lines">Dúvidas</h2>
+      </div>
+      <div class="faq__list">
+        <div class="faq__item">
+          <button class="faq__q" type="button" aria-expanded="false"><span>Qual a diferença entre polimento e vitrificação?</span><i aria-hidden="true"></i></button>
+          <div class="faq__a"><div><p>O polimento corrige a pintura, removendo riscos e marcas leves. A vitrificação cria uma camada de proteção que preserva o brilho e facilita a limpeza.</p></div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" type="button" aria-expanded="false"><span>Polir o carro desgasta a pintura?</span><i aria-hidden="true"></i></button>
+          <div class="faq__a"><div><p>O polimento remove uma camada mínima e controlada de verniz. Com técnica e produto adequados, o procedimento é seguro — e a avaliação define o que realmente é necessário.</p></div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" type="button" aria-expanded="false"><span>Quanto tempo leva o serviço?</span><i aria-hidden="true"></i></button>
+          <div class="faq__a"><div><p>Depende do serviço e do estado da pintura. Fazemos a avaliação primeiro e informamos prazo e valor antes de começar.</p></div></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__q" type="button" aria-expanded="false"><span>Como faço para agendar?</span><i aria-hidden="true"></i></button>
+          <div class="faq__a"><div><p>Pelo WhatsApp: preencha o formulário abaixo ou clique em agendar avaliação e fale direto com a equipe.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. AGENDAMENTO -->
+  <section class="section section--carbony cta" id="agendar">
+    <div class="cta__bg" aria-hidden="true"><img src="assets/img/treino.jpg" alt="" loading="lazy"></div>
+    <div class="container cta__grid">
+      <div class="cta__text">
+        <p class="eyebrow" data-reveal><span>Agendamento</span></p>
+        <h2 class="display display--xl" data-split="lines">Agende sua avaliação</h2>
+        <p class="lead" data-reveal>Conte qual é o seu carro e o que ele precisa. Respondemos pelo WhatsApp.</p>
+        <a class="link link--light" data-wa="Olá! Vim pelo site da Master Car e gostaria de agendar uma avaliação." href="#" target="_blank" rel="noopener" data-reveal>Ou fale direto no WhatsApp<svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+
+      <form class="form" id="leadForm" novalidate>
+        <div class="field" data-reveal>
+          <label for="f-nome">Seu nome</label>
+          <input id="f-nome" name="nome" type="text" autocomplete="name" required>
+          <span class="field__err">Informe seu nome.</span>
+        </div>
+        <div class="field" data-reveal>
+          <label for="f-carro">Carro (modelo e ano)</label>
+          <input id="f-carro" name="carro" type="text" autocomplete="off" required placeholder="Ex.: Hilux SRX 2023">
+          <span class="field__err">Informe o modelo do carro.</span>
+        </div>
+        <div class="field" data-reveal>
+          <label for="f-servico">Serviço de interesse</label>
+          <select id="f-servico" name="servico">
+            <option>Quero uma avaliação</option>
+            <option>Polimento técnico</option>
+            <option>Correção de pintura</option>
+            <option>Proteção e vitrificação</option>
+            <option>Vidros e couro</option>
+          </select>
+        </div>
+        <div class="form__actions" data-reveal>
+          <button class="btn btn--giallo" type="submit">Enviar pelo WhatsApp<svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <svg width="72" height="25" aria-hidden="true"><use href="#i-logo-car"/></svg>
+      <p>O cuidado que seu carro merece.</p>
+    </div>
+    <ul class="footer__nav" aria-label="Navegação do rodapé">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#processo">Processo</a></li>
+      <li><a href="#produtos">Produtos</a></li>
+      <li><a href="#equipe">Equipe</a></li>
+    </ul>
+    <div class="footer__contact">
+      <a class="link link--light" data-wa="Olá! Gostaria de falar com a Master Car." href="#" target="_blank" rel="noopener">WhatsApp<svg class="arrow" width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <p>Atendimento com hora marcada</p>
+    </div>
+  </div>
+  <div class="footer__word" aria-hidden="true"><span>Master Car</span></div>
+  <div class="container footer__legal">
+    <small>© <span id="year">2026</span> Master Car. Todos os direitos reservados.</small>
+    <a href="#inicio">Voltar ao topo</a>
+  </div>
+</footer>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/SplitText.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
