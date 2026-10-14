@@ -29,7 +29,7 @@ html = re.sub(r'data-img="(assets/[^"]+)"', lambda m: f'data-img="{key(m.group(1
 html = re.sub(r'(<(?:img|source)\b[^>]*?)\ssrc="(assets/[^"]+)"',
               lambda m: f'{m.group(1)} data-asset="{key(m.group(2))}"', html)
 html = re.sub(r'\sposter="(assets/[^"]+)"', lambda m: f' data-poster="{key(m.group(1))}"', html)
-html = html.replace('content="assets/img/produtos.jpg"', 'content=""')
+html = re.sub(r'content="assets/[^"]*"', 'content=""', html)
 
 loader = """
 (function(){
