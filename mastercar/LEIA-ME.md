@@ -1,6 +1,6 @@
 # Master Car — landing page
 
-Site estático (HTML + CSS + JS), sem build. Para ver, abra `index.html` no navegador
+Site estático (HTML + CSS + JS), sem build. Para gerar uma versão em arquivo único (tudo embutido): `python3 build-single.py`. Para ver, abra `index.html` no navegador
 ou rode `python3 -m http.server` dentro desta pasta.
 
 Visual baseado no `DESIGN.md` (estilo showroom: preto, tipografia condensada em caixa alta,
