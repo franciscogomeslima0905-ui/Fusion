@@ -1,5 +1,5 @@
 /*
- * Dados do Mattarello Gourmet — edite apenas este arquivo para preencher contatos.
+ * Dados do Mattarello Gourmet. Edite apenas este arquivo para preencher contatos.
  * Campos deixados vazios ('' ou []) simplesmente não aparecem na página.
  */
 window.MATTARELLO = {

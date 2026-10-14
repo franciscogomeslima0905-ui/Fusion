@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Mattarello Gourmet — landing page
+   Mattarello Gourmet: landing page
    Sistema visual baseado em "Limón" (DESIGN.md): canvas escuro, seções creme,
    cantos de 1px, tipografia com tracking positivo, superfícies planas.
    Acento amarelo do sistema substituído pelo vermelho do logotipo; o verde do
@@ -49,6 +49,7 @@
   --max: 1200px;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --radius: 1px;
+  --radius-btn: 12px;
 }
 
 *,
@@ -147,12 +148,6 @@ button {
   color: var(--cream-70);
   margin-bottom: 22px;
 }
-.eyebrow::before {
-  content: '';
-  width: 34px;
-  height: 1px;
-  background: var(--brand-red);
-}
 .eyebrow--forest {
   color: var(--forest-ink);
 }
@@ -212,8 +207,8 @@ em {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  padding: 16px 26px;
-  border-radius: var(--radius);
+  padding: 17px 30px;
+  border-radius: var(--radius-btn);
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.09em;
@@ -285,7 +280,8 @@ em {
   display: none;
 }
 .btn--sm {
-  padding: 12px 16px;
+  padding: 12px 18px;
+  border-radius: 10px;
   font-size: 13px;
 }
 
@@ -323,7 +319,7 @@ em {
   width: 44px;
   height: 44px;
   border: 1px solid var(--cream-14);
-  border-radius: var(--radius);
+  border-radius: 12px;
   color: var(--warm-cream);
   transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
@@ -458,7 +454,7 @@ em {
 .nav__links a {
   padding: 8px 12px;
   border: 1px solid transparent;
-  border-radius: var(--radius);
+  border-radius: 10px;
   font-size: 15px;
   font-weight: 400;
   letter-spacing: 0.1em;
@@ -561,7 +557,6 @@ em {
 
 /* ---------- Hero ---------- */
 .hero {
-  --dur: 6.5s;
   display: grid;
   grid-template-columns: 1fr 1fr;
   height: clamp(560px, calc(100svh - var(--nav-h)), 800px);
@@ -585,17 +580,6 @@ em {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--cream-70);
-}
-.hero__kicker-line {
-  width: 0;
-  height: 1px;
-  background: var(--brand-red);
-  animation: grow 1s 0.3s var(--ease) forwards;
-}
-@keyframes grow {
-  to {
-    width: 40px;
-  }
 }
 
 .hero__texts {
@@ -679,9 +663,9 @@ em {
 }
 .hero__bars {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   flex: 1;
-  max-width: 300px;
+  max-width: 340px;
 }
 .hero__bar {
   position: relative;
@@ -706,20 +690,6 @@ em {
   background: var(--warm-cream);
   transform: scaleX(0);
   transform-origin: left;
-}
-.hero__bar.is-done span {
-  transform: scaleX(1);
-}
-.hero__bar.is-active span {
-  animation: fill var(--dur) linear forwards;
-}
-.hero.is-paused .hero__bar.is-active span {
-  animation-play-state: paused;
-}
-@keyframes fill {
-  to {
-    transform: scaleX(1);
-  }
 }
 .hero__count {
   font-size: 14px;
@@ -979,10 +949,6 @@ em {
 }
 .feature__body .h2 em {
   color: var(--warm-cream);
-  text-decoration: underline;
-  text-decoration-color: var(--brand-red);
-  text-decoration-thickness: 3px;
-  text-underline-offset: 8px;
 }
 .feature__actions {
   display: flex;
@@ -1296,10 +1262,6 @@ em {
   .cards {
     grid-template-columns: 1fr 1fr;
   }
-  .cards .card:last-child {
-    grid-column: 1 / -1;
-    max-width: calc(50% - 15px);
-  }
 
   .feature {
     grid-template-columns: 1fr;
@@ -1324,9 +1286,6 @@ em {
   .cards {
     grid-template-columns: 1fr;
     gap: 48px;
-  }
-  .cards .card:last-child {
-    max-width: none;
   }
   .ways {
     grid-template-columns: 1fr;
@@ -1379,6 +1338,12 @@ em {
   .about__img img,
   .feature__img img {
     transform: none;
+  }
+  .hero__slide {
+    transition-duration: 0.8s !important;
+  }
+  .hero__slide.is-active img {
+    animation: none !important;
   }
   .js [data-reveal] {
     opacity: 1;

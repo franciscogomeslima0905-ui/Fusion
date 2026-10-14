@@ -46,7 +46,7 @@
     })
   }
 
-  // Bloco de informações (endereço, horários, telefone, Instagram) — só mostra o que foi preenchido
+  // Bloco de informações (endereço, horários, telefone, Instagram) e só mostra o que foi preenchido
   const info = $('#info')
   if (info) {
     const SVG = 'http://www.w3.org/2000/svg'
@@ -208,9 +208,12 @@
 
   /* ------------------------------------------------------------------
      Carrossel do hero
-     Para adicionar mídia: duplique um <article class="hero__text"> e um
-     <figure class="hero__slide"> no HTML e uma <button class="hero__bar">.
+     Troca sozinho a cada SLIDE_MS. Para adicionar mídia: duplique um
+     <article class="hero__text">, um <figure class="hero__slide"> e um
+     <button class="hero__bar"> no HTML.
      ------------------------------------------------------------------ */
+  const SLIDE_MS = 5500
+
   const hero = $('#inicio')
   const texts = $$('.hero__text', hero)
   const slides = $$('.hero__slide', hero)
@@ -223,86 +226,65 @@
   const total = slides.length
   const pad = (n) => String(n).padStart(2, '0')
   let current = 0
-  let userPaused = reduceMotion
-  let hovering = false
+  let elapsed = 0
+  let userPaused = false
   let offscreen = false
-  let hidden = document.hidden
 
   if (countTotal) countTotal.textContent = `/ ${pad(total)}`
 
-  function syncPause() {
-    const paused = userPaused || hovering || offscreen || hidden
-    hero.classList.toggle('is-paused', paused)
-    textWrap.setAttribute('aria-live', userPaused ? 'polite' : 'off')
+  const paintBars = () => {
+    bars.forEach((b, k) => {
+      const v = k < current ? 1 : k === current ? Math.min(1, elapsed / SLIDE_MS) : 0
+      $('span', b).style.transform = `scaleX(${v.toFixed(4)})`
+    })
   }
 
-  function go(n, { restart = false } = {}) {
+  function go(n) {
     n = (n + total) % total
-    if (n === current && !restart) return
     slides[current].classList.remove('is-active')
     texts[current].classList.remove('is-active')
     bars[current].classList.remove('is-active')
     bars[current].removeAttribute('aria-current')
     current = n
+    elapsed = 0
     slides[current].classList.add('is-active')
     texts[current].classList.add('is-active')
-    slides.forEach((s, k) => s.setAttribute('aria-hidden', String(k !== current)))
-    bars.forEach((b, k) => b.classList.toggle('is-done', k < current))
-    void bars[current].offsetWidth // reinicia a animação da barra de progresso
     bars[current].classList.add('is-active')
     bars[current].setAttribute('aria-current', 'true')
+    slides.forEach((s, k) => s.setAttribute('aria-hidden', String(k !== current)))
     if (countEl) countEl.textContent = pad(current + 1)
     if (indexEl) indexEl.textContent = pad(current + 1)
+    paintBars()
   }
 
-  // A barra de progresso dirige o tempo: quando termina, avança o slide.
-  bars.forEach((b, k) => {
-    $('span', b).addEventListener('animationend', () => {
-      if (!reduceMotion && !userPaused && k === current) go(current + 1)
-    })
-    b.addEventListener('click', () => go(k, { restart: k === current }))
-  })
+  // Temporizador do carrossel (independe de animações CSS, então funciona
+  // mesmo com "reduzir movimento" ativado no aparelho).
+  let last = performance.now()
+  function tick(now) {
+    const dt = Math.min(now - last, 100)
+    last = now
+    if (!userPaused && !offscreen && !document.hidden) {
+      elapsed += dt
+      if (elapsed >= SLIDE_MS) go(current + 1)
+      else paintBars()
+    }
+    requestAnimationFrame(tick)
+  }
 
-  $$('[data-dir]', hero).forEach((btn) =>
-    btn.addEventListener('click', () => go(current + Number(btn.dataset.dir), { restart: true })),
-  )
+  bars.forEach((b, k) => b.addEventListener('click', () => go(k)))
+  $$('[data-dir]', hero).forEach((btn) => btn.addEventListener('click', () => go(current + Number(btn.dataset.dir))))
 
   if (pauseBtn) {
-    const paint = () => {
-      pauseBtn.setAttribute('aria-pressed', String(userPaused))
-      pauseBtn.setAttribute('aria-label', userPaused ? 'Retomar rotação' : 'Pausar rotação')
-    }
-    paint()
     pauseBtn.addEventListener('click', () => {
       userPaused = !userPaused
-      paint()
-      syncPause()
-      if (!userPaused) go(current, { restart: true })
+      pauseBtn.setAttribute('aria-pressed', String(userPaused))
+      pauseBtn.setAttribute('aria-label', userPaused ? 'Retomar rotação' : 'Pausar rotação')
+      textWrap.setAttribute('aria-live', userPaused ? 'polite' : 'off')
     })
   }
 
-  hero.addEventListener('pointerenter', (e) => {
-    if (e.pointerType === 'mouse') {
-      hovering = true
-      syncPause()
-    }
-  })
-  hero.addEventListener('pointerleave', () => {
-    hovering = false
-    syncPause()
-  })
-  document.addEventListener('visibilitychange', () => {
-    hidden = document.hidden
-    syncPause()
-  })
   if ('IntersectionObserver' in window) {
-    new IntersectionObserver(
-      ([e]) => {
-        offscreen = !e.isIntersecting
-        syncPause()
-      },
-      { threshold: 0.2 },
-    ).observe(hero)
+    new IntersectionObserver(([e]) => (offscreen = !e.isIntersecting), { threshold: 0.2 }).observe(hero)
   }
 
   // Gestos de arrastar (toque) e teclado
@@ -315,15 +297,15 @@
     if (startX === null) return
     const dx = e.clientX - startX
     startX = null
-    if (Math.abs(dx) > 48) go(current + (dx < 0 ? 1 : -1), { restart: true })
+    if (Math.abs(dx) > 48) go(current + (dx < 0 ? 1 : -1))
   })
   media.addEventListener('pointercancel', () => (startX = null))
   hero.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') go(current + 1, { restart: true })
-    if (e.key === 'ArrowLeft') go(current - 1, { restart: true })
+    if (e.key === 'ArrowRight') go(current + 1)
+    if (e.key === 'ArrowLeft') go(current - 1)
   })
 
+  requestAnimationFrame(tick)
   slides.forEach((s, k) => s.setAttribute('aria-hidden', String(k !== 0)))
-  syncPause()
   onScroll()
 })()
