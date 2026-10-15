@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Proposta comercial | Landing page Mattarello Gourmet</title>
+<style>
+@font-face { font-family: 'Outfit'; src: url('../fonts/outfit.woff2') format('woff2'); font-weight: 300 700; }
+@font-face { font-family: 'Playfair Display'; src: url('../fonts/playfair-italic.woff2') format('woff2'); font-style: italic; font-weight: 500 700; }
+@font-face { font-family: 'Kaushan Script'; src: url('../fonts/kaushan.woff2') format('woff2'); }
+
+:root {
+  --ink: #1d0b0d;
+  --ink-2: #2a1416;
+  --forest: #103b15;
+  --green: #2f9e57;
+  --red: #c8202a;
+  --red-hot: #e02a35;
+  --cream: #fcf9f0;
+  --sage: #dbe2dc;
+  --cream-70: rgba(252, 249, 240, 0.74);
+  --cream-14: rgba(252, 249, 240, 0.16);
+}
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Outfit', system-ui, sans-serif;
+  font-size: 11.5pt;
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+  color: var(--forest);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+p, h1, h2, h3, ul { margin: 0; padding: 0; }
+ul { list-style: none; }
+em { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-weight: 500; letter-spacing: 0.01em; }
+
+.page {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  page-break-after: always;
+  break-after: page;
+  background: var(--cream);
+}
+.page:last-child { page-break-after: auto; break-after: auto; }
+
+/* logotipo */
+.logo { display: inline-flex; align-items: center; gap: 0.3em; line-height: 1; }
+.logo svg { width: 0.62em; height: 0.95em; flex: none; }
+.logo .r { transform: scaleX(-1); }
+.logo .txt { position: relative; display: block; padding-bottom: 0.5em; }
+.logo .name { display: block; font-family: 'Kaushan Script', cursive; color: #fff; transform: skewX(-4deg); }
+.logo .sub { position: absolute; right: 0.9em; bottom: 0.02em; font-family: 'Kaushan Script', cursive; font-size: 0.46em; color: var(--red-hot); white-space: nowrap; }
+
+.eyebrow { font-size: 8.5pt; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; }
+.tricolor { display: flex; height: 7px; }
+.tricolor i { flex: 1; }
+.tricolor i:nth-child(1) { background: var(--green); }
+.tricolor i:nth-child(2) { background: var(--cream); }
+.tricolor i:nth-child(3) { background: var(--red); }
+
+.foot {
+  position: absolute; left: 18mm; right: 18mm; bottom: 8mm;
+  display: flex; justify-content: space-between;
+  font-size: 8pt; letter-spacing: 0.08em; color: rgba(16, 59, 21, 0.6);
+}
+
+/* ---------- capa ---------- */
+.cover { background: var(--ink); color: var(--cream); }
+.cover .top { position: absolute; left: 18mm; right: 18mm; top: 16mm; display: flex; justify-content: space-between; align-items: center; }
+.cover .logo { font-size: 34pt; }
+.cover .top .eyebrow { color: var(--cream-70); }
+.cover .body { position: absolute; left: 18mm; right: 18mm; top: 62mm; }
+.cover .eyebrow.k { color: var(--red-hot); margin-bottom: 8mm; }
+.cover h1 { font-size: 40pt; font-weight: 500; line-height: 1.08; letter-spacing: 0.035em; max-width: 165mm; }
+.cover h1 em { color: var(--red-hot); }
+.cover .lead { margin-top: 8mm; max-width: 130mm; font-size: 13pt; line-height: 1.55; color: var(--cream-70); }
+.cover .photo { position: absolute; left: 0; right: 0; bottom: 7px; height: 110mm; overflow: hidden; }
+.cover .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; display: block; }
+.cover .meta {
+  position: absolute; left: 18mm; right: 18mm; top: 158mm;
+  display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 14mm;
+}
+.cover .meta div { background: var(--ink); padding: 4mm 6mm 4mm 0; }
+.cover .meta b { display: block; font-size: 7.5pt; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream-70); margin-bottom: 1.5mm; }
+.cover .meta span { font-size: 13pt; font-weight: 500; letter-spacing: 0.04em; }
+.cover .tricolor { position: absolute; left: 0; right: 0; bottom: 0; }
+
+/* ---------- páginas internas ---------- */
+.inner { padding: 18mm 18mm 0; }
+.inner .eyebrow { color: var(--red); margin-bottom: 4mm; }
+.inner h2 { font-size: 25pt; font-weight: 500; line-height: 1.12; letter-spacing: 0.035em; margin-bottom: 6mm; }
+.inner h2 em { color: var(--red); }
+.inner .intro { max-width: 160mm; font-size: 12pt; line-height: 1.6; color: rgba(16, 59, 21, 0.9); }
+
+.shots {
+  position: relative; margin-top: 8mm; height: 70mm;
+  background: var(--ink); overflow: hidden;
+}
+.shots .desk { position: absolute; left: 10mm; top: 8mm; width: 114mm; height: 54mm; object-fit: cover; object-position: top; display: block; border-radius: 2mm; }
+.shots .mob { position: absolute; right: 14mm; top: 6mm; height: 58mm; border-radius: 3.2mm; border: 0.9mm solid #3a2326; display: block; }
+.shots .cap { position: absolute; right: 52mm; bottom: 6mm; width: 38mm; font-size: 8.5pt; line-height: 1.4; color: var(--cream-70); text-align: right; }
+.shots .cap b { color: var(--cream); font-weight: 500; display: block; font-size: 10pt; margin-bottom: 1mm; }
+
+.sub { margin-top: 9mm; font-size: 14pt; font-weight: 500; letter-spacing: 0.04em; margin-bottom: 4mm; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm 6mm; }
+.item { border-top: 1.2px solid var(--forest); padding-top: 3mm; }
+.item .n { font-family: 'Playfair Display', serif; font-style: italic; font-size: 11pt; color: var(--red); }
+.item h3 { font-size: 11pt; font-weight: 600; letter-spacing: 0.03em; margin: 0.5mm 0 1.2mm; }
+.item p { font-size: 9.2pt; line-height: 1.45; color: rgba(16, 59, 21, 0.85); }
+
+/* investimento */
+.price {
+  margin-top: 7mm; display: grid; grid-template-columns: 1.25fr 1fr; background: var(--ink); color: var(--cream);
+  border-radius: 4mm; overflow: hidden;
+}
+.price .main { padding: 7mm 9mm; }
+.price .main .eyebrow { color: var(--cream-70); margin: 0 0 3mm; }
+.price .main .v { font-size: 46pt; font-weight: 500; letter-spacing: 0.03em; line-height: 1; }
+.price .main .v small { font-size: 20pt; font-weight: 400; margin-right: 2mm; color: var(--cream-70); }
+.price .main .n { margin-top: 3mm; font-size: 11pt; color: var(--cream-70); }
+.price .side { background: var(--red); padding: 7mm 8mm; display: flex; flex-direction: column; justify-content: center; gap: 2mm; }
+.price .side .big { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24pt; line-height: 1.05; }
+.price .side p { font-size: 10pt; line-height: 1.45; color: rgba(252, 249, 240, 0.92); }
+
+table.tbl { width: 100%; border-collapse: collapse; margin-top: 6mm; }
+.tbl th { text-align: left; font-size: 7.5pt; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(16, 59, 21, 0.6); padding: 0 0 2.5mm; border-bottom: 1.2px solid var(--forest); }
+.tbl th:last-child, .tbl td:last-child { text-align: right; white-space: nowrap; }
+.tbl td { padding: 2.6mm 0; border-bottom: 1px solid var(--sage); font-size: 10.5pt; vertical-align: top; }
+.tbl td small { display: block; font-size: 8.8pt; color: rgba(16, 59, 21, 0.7); margin-top: 0.8mm; }
+.tbl td b { font-weight: 600; }
+.tbl tr.opt td:first-child b::after { content: 'OPCIONAL'; margin-left: 3mm; font-size: 6.8pt; letter-spacing: 0.2em; color: var(--red); border: 1px solid var(--red); padding: 0.6mm 1.8mm; border-radius: 3mm; vertical-align: 1px; }
+.tbl tr.total td { border-bottom: 0; padding-top: 3.5mm; font-size: 12pt; }
+.tbl tr.total td:last-child { font-size: 15pt; font-weight: 600; color: var(--red); }
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 7mm; margin-top: 6mm; }
+.card { background: #fff; border: 1px solid var(--sage); border-radius: 3mm; padding: 5mm 6mm; }
+.card h3 { font-size: 11.5pt; font-weight: 600; letter-spacing: 0.04em; margin-bottom: 3mm; }
+.card li { position: relative; padding-left: 5mm; font-size: 9.6pt; line-height: 1.45; margin-bottom: 2mm; color: rgba(16, 59, 21, 0.9); }
+.card li::before { content: ''; position: absolute; left: 0; top: 1.9mm; width: 1.8mm; height: 1.8mm; border-radius: 50%; background: var(--red); }
+.card li:last-child { margin-bottom: 0; }
+.card.green { background: var(--forest); border-color: var(--forest); color: var(--cream); }
+.card.green li { color: var(--cream-70); }
+.card.green li::before { background: var(--cream); }
+
+.cta { margin-top: 6mm; display: flex; align-items: center; justify-content: space-between; gap: 10mm; padding-top: 5mm; border-top: 1.2px solid var(--forest); }
+.cta p { font-size: 11pt; max-width: 115mm; line-height: 1.5; }
+.cta .btn { background: var(--red); color: var(--cream); font-weight: 600; font-size: 9.5pt; letter-spacing: 0.1em; text-transform: uppercase; padding: 4mm 7mm; border-radius: 3mm; white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="sw" viewBox="0 0 30 46">
+      <path d="M26 42 C14 39 6 32 5 23 C4 15 10 9 16 12 C20 14 19 20 14 19" fill="none" stroke="#2f9e57" stroke-width="2.6" stroke-linecap="round" />
+      <path d="M25 44 C17 42 11 38 8 34" fill="none" stroke="#c8202a" stroke-width="1.8" stroke-linecap="round" />
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ================= CAPA ================= -->
+<section class="page cover">
+  <div class="top">
+    <span class="logo"><svg><use href="#sw"/></svg><span class="txt"><span class="name">Mattarello</span><span class="sub">gourmet</span></span><svg class="r"><use href="#sw"/></svg></span>
+    <span class="eyebrow">15 de outubro de 2026</span>
+  </div>
+
+  <div class="body">
+    <p class="eyebrow k">Proposta comercial</p>
+    <h1>Uma landing page à altura do <em>seu sabor.</em></h1>
+    <p class="lead">Desenvolvimento de uma página profissional para o Mattarello Gourmet, pizzaria e hamburgueria, com a identidade da marca, animações e pedido direto pelo iFood.</p>
+  </div>
+
+  <div class="meta">
+    <div><b>Preparada para</b><span>Mattarello Gourmet</span></div>
+    <div><b>Investimento</b><span>R$ 540,00 à vista</span></div>
+    <div><b>Mensalidade</b><span>Nenhuma</span></div>
+  </div>
+
+  <div class="photo"><img src="../img/pizza.jpg" alt="" /></div>
+  <div class="tricolor"><i></i><i></i><i></i></div>
+</section>
+
+<!-- ================= PROJETO ================= -->
+<section class="page">
+  <div class="inner">
+    <p class="eyebrow">O projeto</p>
+    <h2>Uma vitrine que <em>abre o apetite.</em></h2>
+    <p class="intro">Uma landing page rápida, bonita e responsiva para apresentar o Mattarello Gourmet, destacar os pratos e levar o cliente direto ao pedido, pelo iFood ou pelo WhatsApp. O visual segue as cores da marca, com fotos de impacto e animações profissionais.</p>
+
+    <div class="shots">
+      <img class="desk" src="assets/desktop.jpg" alt="" />
+      <img class="mob" src="assets/mobile.jpg" alt="" />
+    </div>
+
+    <p class="sub">O que está incluso</p>
+    <div class="grid">
+      <div class="item"><span class="n">01</span><h3>Carrossel de abertura</h3><p>Fotos dos pratos com troca automática e frases de destaque.</p></div>
+      <div class="item"><span class="n">02</span><h3>Animações profissionais</h3><p>Revelação ao rolar a página, faixa animada e transições suaves.</p></div>
+      <div class="item"><span class="n">03</span><h3>Cardápio em destaque</h3><p>Cards com os pratos mais pedidos e botão de pedido.</p></div>
+      <div class="item"><span class="n">04</span><h3>Botões de pedido</h3><p>Atalhos para o iFood e o WhatsApp, com mensagem pronta.</p></div>
+      <div class="item"><span class="n">05</span><h3>Responsivo</h3><p>Visual cuidadoso no celular, no tablet e no computador.</p></div>
+      <div class="item"><span class="n">06</span><h3>Identidade da marca</h3><p>Cores e logotipo do Mattarello aplicados em todo o site.</p></div>
+      <div class="item"><span class="n">07</span><h3>Dados de contato</h3><p>Endereço, horários, telefone e Instagram organizados.</p></div>
+      <div class="item"><span class="n">08</span><h3>Pronto para o Google</h3><p>Informações para busca e prévia ao compartilhar nas redes.</p></div>
+      <div class="item"><span class="n">09</span><h3>Leve e acessível</h3><p>Carregamento rápido e respeito à preferência de movimento.</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>Mattarello Gourmet | Proposta comercial</span><span>2 / 3</span></div>
+</section>
+
+<!-- ================= INVESTIMENTO ================= -->
+<section class="page">
+  <div class="inner">
+    <p class="eyebrow">Investimento</p>
+    <h2>Um valor único, <em>sem mensalidade.</em></h2>
+
+    <div class="price">
+      <div class="main">
+        <p class="eyebrow">Pagamento único, à vista</p>
+        <p class="v"><small>R$</small>540,00</p>
+        <p class="n">Landing page completa, pronta para publicar.</p>
+      </div>
+      <div class="side">
+        <p class="big">Sem mensalidade</p>
+        <p>Nenhuma cobrança recorrente de manutenção, licença ou plano. Você paga uma vez e o site é seu.</p>
+      </div>
+    </div>
+
+    <table class="tbl">
+      <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+      <tbody>
+        <tr><td><b>Landing page Mattarello Gourmet</b><small>Desenvolvimento, design e entrega completa conforme o escopo desta proposta.</small></td><td>R$ 540,00</td></tr>
+        <tr><td><b>Mensalidade</b><small>Sem custo recorrente.</small></td><td>R$ 0,00</td></tr>
+        <tr class="opt"><td><b>Domínio próprio (.com.br)</b><small>Endereço profissional para o seu site. Cobrança anual.</small></td><td>R$ 40,00 / ano</td></tr>
+        <tr class="total"><td><b>Total do projeto</b></td><td>R$ 540,00</td></tr>
+      </tbody>
+    </table>
+
+    <div class="two">
+      <div class="card">
+        <h3>Condições</h3>
+        <ul>
+          <li>Pagamento único de R$ 540,00, à vista.</li>
+          <li>Sem mensalidade, manutenção ou licença.</li>
+          <li>O domínio próprio é opcional: R$ 40,00 por ano, cobrado à parte.</li>
+          <li>Site estático: funciona em hospedagem gratuita, sem custo mensal.</li>
+        </ul>
+      </div>
+      <div class="card green">
+        <h3>Para começar</h3>
+        <ul>
+          <li>Aprovação desta proposta.</li>
+          <li>Envio do link do iFood, endereço, horários, WhatsApp e Instagram.</li>
+          <li>Envio de novas fotos, se houver.</li>
+          <li>Publicação do site e entrega dos arquivos.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cta">
+      <p>Ficou com alguma dúvida? Basta responder esta proposta.</p>
+      <span class="btn">Aprovar proposta</span>
+    </div>
+  </div>
+  <div class="foot"><span>Mattarello Gourmet | Proposta comercial</span><span>3 / 3</span></div>
+</section>
+
+</body>
+</html>
