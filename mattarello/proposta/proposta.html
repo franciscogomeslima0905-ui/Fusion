@@ -74,7 +74,7 @@ em { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-w
 .hero .row { display: flex; justify-content: space-between; align-items: center; }
 .hero .logo { font-size: 30pt; }
 .hero .date { font-size: 8.5pt; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream-70); }
-.hero .k { margin-top: 20mm; font-size: 8.5pt; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--red-hot); }
+.hero .k { margin-top: 24mm; font-size: 8.5pt; font-weight: 600; letter-spacing: 0.26em; text-transform: uppercase; color: var(--red-hot); }
 .hero h1 { margin-top: 4mm; font-size: 34pt; font-weight: 500; line-height: 1.1; letter-spacing: 0.035em; }
 .hero h1 em { color: var(--red-hot); }
 .tricolor { display: flex; height: 6px; }
@@ -83,22 +83,24 @@ em { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-w
 .tricolor i:nth-child(2) { background: var(--cream); }
 .tricolor i:nth-child(3) { background: var(--red); }
 
-.body { padding: 16mm 18mm 0; }
+.body { padding: 20mm 18mm 0; }
+.inc { font-size: 12.5pt; line-height: 1.6; max-width: 160mm; }
+.inc b { font-weight: 600; }
 .body h2 { font-size: 15pt; font-weight: 500; letter-spacing: 0.04em; margin-bottom: 5mm; }
 .list { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5mm 10mm; }
 .list li { position: relative; padding-left: 6mm; font-size: 11pt; line-height: 1.45; }
 .list li::before { content: ''; position: absolute; left: 0; top: 2.3mm; width: 2.2mm; height: 2.2mm; border-radius: 50%; background: var(--red); }
 
-.price { margin-top: 14mm; display: grid; grid-template-columns: 1.2fr 1fr; background: var(--ink); color: var(--cream); border-radius: 4mm; overflow: hidden; }
+.price { margin-top: 18mm; display: grid; grid-template-columns: 1.3fr 1fr; background: var(--ink); color: var(--cream); border-radius: 4mm; overflow: hidden; }
 .price .main { padding: 8mm 9mm; }
 .price .lab { font-size: 8pt; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cream-70); margin-bottom: 3mm; }
 .price .v { font-size: 46pt; font-weight: 500; line-height: 1; letter-spacing: 0.03em; }
 .price .v small { font-size: 20pt; font-weight: 400; margin-right: 2mm; color: var(--cream-70); }
-.price .side { background: var(--red); padding: 8mm; display: flex; flex-direction: column; justify-content: center; gap: 2mm; }
+.price .side { background: var(--red); padding: 8mm; display: flex; align-items: center; }
 .price .side p.big { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24pt; line-height: 1.05; color: var(--cream); }
 .price .side p { font-size: 10pt; line-height: 1.45; color: rgba(252, 249, 240, 0.92); }
 
-.opt { margin-top: 6mm; display: flex; justify-content: space-between; align-items: center; gap: 8mm; border: 1.2px solid var(--forest); border-radius: 4mm; padding: 6mm 8mm; }
+.opt { margin-top: 8mm; display: flex; justify-content: space-between; align-items: center; gap: 8mm; border: 1.2px solid var(--forest); border-radius: 4mm; padding: 6mm 8mm; }
 .opt .tag { display: inline-block; font-size: 7pt; font-weight: 600; letter-spacing: 0.2em; color: var(--red); border: 1px solid var(--red); padding: 0.6mm 2mm; border-radius: 3mm; margin-bottom: 2mm; }
 .opt h3 { font-size: 12pt; font-weight: 600; letter-spacing: 0.03em; }
 .opt p { font-size: 9.5pt; color: rgba(16, 59, 21, 0.8); margin-top: 0.5mm; }
@@ -132,24 +134,15 @@ em { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-w
   <div class="tricolor"><i></i><i></i><i></i></div>
 
   <div class="body">
-    <h2>O que você recebe</h2>
-    <ul class="list">
-      <li>Carrossel de fotos com troca automática</li>
-      <li>Animações profissionais</li>
-      <li>Cardápio com os pratos em destaque</li>
-      <li>Botões de pedido pelo iFood e WhatsApp</li>
-      <li>Visual ajustado para celular e computador</li>
-      <li>Cores e logotipo da sua marca</li>
-    </ul>
+    <p class="inc"><b>Inclui:</b> carrossel de fotos, animações profissionais, cardápio em destaque, botões de pedido (iFood e WhatsApp) e visual adaptado para celular e computador.</p>
 
     <div class="price">
       <div class="main">
-        <p class="lab">Investimento, à vista</p>
+        <p class="lab">Valor, à vista</p>
         <p class="v"><small>R$</small>540,00</p>
       </div>
       <div class="side">
         <p class="big">Sem mensalidade</p>
-        <p>Pagamento único. Nenhuma cobrança mensal.</p>
       </div>
     </div>
 
@@ -157,15 +150,9 @@ em { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-w
       <div>
         <span class="tag">OPCIONAL</span>
         <h3>Domínio próprio (.com.br)</h3>
-        <p>Um endereço profissional para o seu site.</p>
       </div>
       <p class="v">R$ 40,00<small>/ ano</small></p>
     </div>
-  </div>
-
-  <div class="foot">
-    <span>Para aprovar, basta responder esta proposta.</span>
-    <b>Mattarello Gourmet</b>
   </div>
 </section>
 </body>
