@@ -360,15 +360,15 @@ button {
 }
 .hero__fg {
   top: 0;
-  bottom: 0;
   left: 50%;
   height: 100%;
   width: auto;
   max-width: 100%;
+  aspect-ratio: 744 / 552;
   translate: -50% 0;
   object-fit: cover;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
-  mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
 }
 .hero__bar {
   background: var(--brand-dark);
@@ -915,6 +915,15 @@ button {
   }
   .hero {
     --bar-h: 0px;
+  }
+  .hero__fg {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    translate: 0 -50%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
   }
   .hero__bar-inner {
     grid-template-columns: 1fr;
