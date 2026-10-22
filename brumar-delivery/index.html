@@ -8,8 +8,8 @@
       name="description"
       content="Brumar Delivery: o autêntico pão de alho e sanduíche artesanal. Recheio generoso, queijo gratinado e entrega quentinha. Peça pelo WhatsApp."
     />
-    <meta name="theme-color" content="#0d0907" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#7d2515" />
+    <meta name="color-scheme" content="light" />
 
     <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png" />
     <link rel="apple-touch-icon" href="assets/logo-192.png" />
@@ -43,8 +43,7 @@
       href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,200;1,9..144,200&family=Outfit:wght@400&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" as="image" href="assets/hero.webp" type="image/webp" />
-    <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="styles.css" />
     <script>
       document.documentElement.classList.add('js')
     </script>
@@ -77,36 +76,41 @@
     <main>
       <!-- HERO -->
       <section class="hero" aria-labelledby="hero-title">
-        <div class="wrap hero__inner">
         <div class="hero__media">
-          <img
-            src="assets/hero.webp"
-            width="1086"
-            height="1448"
-            alt="Dois pães de alho gourmet gratinados sobre tábua, acompanhados de molhos"
-            fetchpriority="high"
-            data-parallax="0.05"
-          />
+          <video class="hero__bg" muted loop playsinline autoplay preload="auto" poster="assets/hero-poster.webp" aria-hidden="true" tabindex="-1">
+            <source src="assets/hero.mp4" type="video/mp4" />
+          </video>
+          <video
+            class="hero__fg"
+            muted
+            loop
+            playsinline
+            autoplay
+            preload="auto"
+            poster="assets/hero-poster.webp"
+            aria-label="Pães de alho sendo gratinados com maçarico, com queijo derretendo"
+          >
+            <source src="assets/hero.mp4" type="video/mp4" />
+          </video>
         </div>
 
-        <div class="hero__panel">
-          <p class="eyebrow hero__eyebrow">O autêntico · Pão de alho &amp; sanduíche artesanal</p>
-          <h1 class="display hero__title" id="hero-title">
-            <span class="line"><span>Pão de alho</span></span>
-            <span class="line"><span>de verdade,</span></span>
-            <span class="line"><span>na sua porta.</span></span>
-          </h1>
-          <p class="hero__lead">
-            Recheio generoso, queijo gratinado até dourar e aquele pão artesanal que chega quentinho. Escolha o seu e
-            peça em um toque.
-          </p>
-          <div class="hero__actions">
-            <a class="btn btn--lime" href="#pedir" data-wa data-magnetic>
-              Pedir pelo WhatsApp <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg>
-            </a>
-            <a class="link" href="#cardapio">Ver cardápio <span aria-hidden="true">→</span></a>
+        <div class="hero__bar">
+          <div class="wrap hero__bar-inner">
+            <div class="hero__panel">
+              <p class="eyebrow hero__eyebrow">O autêntico · Pão de alho &amp; sanduíche artesanal</p>
+              <h1 class="display hero__title" id="hero-title">
+                <span class="line"><span>Pão de alho</span></span>
+                <span class="line"><span>de verdade,</span></span>
+                <span class="line"><span>na sua porta.</span></span>
+              </h1>
+            </div>
+            <div class="hero__actions">
+              <a class="btn btn--lime" href="#pedir" data-wa data-magnetic>
+                Pedir pelo WhatsApp <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg>
+              </a>
+              <a class="link" href="#cardapio">Ver cardápio <span aria-hidden="true">→</span></a>
+            </div>
           </div>
-        </div>
         </div>
       </section>
 
@@ -217,7 +221,7 @@
       </section>
 
       <!-- SOBRE (split) -->
-      <section class="section band band--sage" id="sobre" aria-labelledby="about-title">
+      <section class="section band band--brand on-dark" id="sobre" aria-labelledby="about-title">
         <div class="wrap split">
           <div class="split__text">
             <p class="eyebrow" data-reveal>Sobre a Brumar</p>
@@ -304,7 +308,7 @@
       </section>
 
       <!-- CTA final -->
-      <section class="cta" id="pedir" aria-labelledby="cta-title">
+      <section class="cta on-dark" id="pedir" aria-labelledby="cta-title">
         <div class="wrap cta__inner">
           <div class="cta__text">
             <p class="eyebrow eyebrow--light" data-reveal>Delivery</p>
@@ -317,7 +321,7 @@
             </div>
           </div>
           <div class="cta__logo" data-reveal>
-            <img src="assets/logo.webp" width="320" height="320" loading="lazy" alt="Logo Brumar Delivery — o autêntico pão de alho e sanduíche artesanal" data-spin />
+            <img src="assets/logo.webp" width="320" height="320" loading="lazy" alt="Logo Brumar Delivery — o autêntico pão de alho e sanduíche artesanal" />
           </div>
         </div>
       </section>
@@ -326,7 +330,7 @@
     <footer class="footer">
       <div class="wrap footer__inner">
         <a class="footer__brand" href="#top" aria-label="Voltar ao topo">
-          <img src="assets/logo.webp" width="48" height="48" alt="" />
+          <img src="assets/logo.webp" width="88" height="88" alt="" />
           <span>Brumar Delivery</span>
         </a>
         <ul class="footer__links">

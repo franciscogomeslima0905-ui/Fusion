@@ -72,11 +72,31 @@ if (reduce || !('IntersectionObserver' in window)) {
   revealTargets.forEach((el) => io.observe(el))
 }
 
-/* Carga inicial do hero */
-const heroImg = document.querySelector('.hero__media img')
+/* Vídeo do hero: carga, pausa fora da tela e respeito a prefers-reduced-motion */
+const heroVideos = $$('.hero video')
+const fg = document.querySelector('.hero__fg')
 const start = () => requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add('is-loaded')))
-const ready = heroImg && heroImg.decode ? heroImg.decode().catch(() => {}) : Promise.resolve()
-Promise.race([ready, new Promise((r) => setTimeout(r, 1800))]).then(start)
+const videoReady = new Promise((resolve) => {
+  if (!fg || fg.readyState >= 2) return resolve()
+  fg.addEventListener('loadeddata', resolve, { once: true })
+})
+Promise.race([videoReady, new Promise((r) => setTimeout(r, 1800))]).then(start)
+
+if (reduce) {
+  heroVideos.forEach((v) => {
+    v.removeAttribute('autoplay')
+    v.pause()
+  })
+} else if ('IntersectionObserver' in window && heroVideos.length) {
+  new IntersectionObserver(
+    ([e]) =>
+      heroVideos.forEach((v) => {
+        if (e.isIntersecting) v.play().catch(() => {})
+        else v.pause()
+      }),
+    { threshold: 0.05 },
+  ).observe(document.querySelector('.hero'))
+}
 
 /* Filtro do cardápio */
 const tabs = $$('.tab')
@@ -119,7 +139,6 @@ tabs.forEach((tab) =>
 const nav = document.querySelector('.nav')
 const bar = document.querySelector('.progress span')
 const parallax = $$('[data-parallax]')
-const spin = $$('[data-spin]')
 let ticking = false
 
 function update() {
@@ -140,11 +159,6 @@ function update() {
     const offset = r.top + r.height / 2 - vh / 2
     const py = Math.max(-slack, Math.min(slack, -offset * f))
     el.style.setProperty('--py', `${py.toFixed(1)}px`)
-  })
-  spin.forEach((el) => {
-    const r = el.getBoundingClientRect()
-    if (r.bottom < 0 || r.top > vh) return
-    el.style.setProperty('--rot', `${((y + r.top) * 0.06).toFixed(1)}deg`)
   })
 }
 const onScroll = () => {

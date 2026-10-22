@@ -1,7 +1,7 @@
 # Brumar Delivery — landing page
 
-Página estática (HTML + CSS + JS puro, sem build) seguindo o layout do `DESIGN.md` (estilo sweetgreen) com paleta escura: preto quente, dourado do logo e marrom-brasa;
-botões em pílula dourada, tipografia display grande com line-height 0.85.
+Página estática (HTML + CSS + JS puro, sem build) seguindo o layout do `DESIGN.md` (estilo sweetgreen) com paleta creme + vinho/tijolo + dourado (sem preto);
+hero com vídeo (`assets/hero.mp4`) ocupando toda a área inicial, texto e botão abaixo dele; tipografia display grande com line-height 0.85.
 
 Para ver: `cd brumar-delivery && python3 -m http.server 8000` → http://localhost:8000
 
