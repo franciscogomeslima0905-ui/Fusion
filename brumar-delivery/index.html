@@ -8,8 +8,8 @@
       name="description"
       content="Brumar Delivery: o autêntico pão de alho e sanduíche artesanal. Recheio generoso, queijo gratinado e entrega quentinha. Peça pelo WhatsApp."
     />
-    <meta name="theme-color" content="#f4f3e7" />
-    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#0d0907" />
+    <meta name="color-scheme" content="dark" />
 
     <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png" />
     <link rel="apple-touch-icon" href="assets/logo-192.png" />
@@ -77,14 +77,15 @@
     <main>
       <!-- HERO -->
       <section class="hero" aria-labelledby="hero-title">
+        <div class="wrap hero__inner">
         <div class="hero__media">
           <img
             src="assets/hero.webp"
-            width="1200"
-            height="940"
-            alt="Pão de alho recheado com carne desfiada e brócolis, coberto de queijo gratinado e dourado"
+            width="1086"
+            height="1448"
+            alt="Dois pães de alho gourmet gratinados sobre tábua, acompanhados de molhos"
             fetchpriority="high"
-            data-parallax="0.1"
+            data-parallax="0.05"
           />
         </div>
 
@@ -105,6 +106,7 @@
             </a>
             <a class="link" href="#cardapio">Ver cardápio <span aria-hidden="true">→</span></a>
           </div>
+        </div>
         </div>
       </section>
 
@@ -132,6 +134,7 @@
             <button class="tab is-active" role="tab" aria-selected="true" data-filter="all">Todos</button>
             <button class="tab" role="tab" aria-selected="false" data-filter="carne">Carne</button>
             <button class="tab" role="tab" aria-selected="false" data-filter="frango">Frango</button>
+            <button class="tab" role="tab" aria-selected="false" data-filter="calabresa">Calabresa</button>
           </div>
 
           <div class="grid" data-stagger>
@@ -187,6 +190,24 @@
                 <h3>Pão de Alho de Frango Gratinado</h3>
                 <p>Frango em cubos, cheddar cremoso e creme de queijo maçaricado até ficar dourado.</p>
                 <a class="link" href="#pedir" data-wa data-item="Pão de Alho de Frango Gratinado"
+                  >Pedir agora <span aria-hidden="true">→</span></a
+                >
+              </div>
+            </article>
+            <article class="card" data-cat="calabresa" data-reveal>
+              <div class="card__img">
+                <img
+                  src="assets/card-calabresa.webp"
+                  width="900"
+                  height="900"
+                  loading="lazy"
+                  alt="Pão de alho com calabresa e queijo gratinado, servido com dois molhos"
+                />
+              </div>
+              <div class="card__body">
+                <h3>Pão de Alho com Calabresa</h3>
+                <p>Calabresa, queijo muçarela gratinado até dourar e molhos para acompanhar.</p>
+                <a class="link" href="#pedir" data-wa data-item="Pão de Alho com Calabresa"
                   >Pedir agora <span aria-hidden="true">→</span></a
                 >
               </div>

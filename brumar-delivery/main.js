@@ -5,8 +5,8 @@ const CONFIG = {
   // Número do WhatsApp com DDI + DDD, só dígitos. Ex.: '5551999999999'
   whatsapp: '5500000000000',
   message: 'Olá, Brumar Delivery! Quero fazer um pedido.',
-  // URL do Instagram (ex.: 'https://www.instagram.com/seu_perfil/'). Vazio = link oculto.
-  instagram: '',
+  // Instagram (perfil visto nas capturas). Vazio = link oculto no rodapé.
+  instagram: 'https://www.instagram.com/brumar_delivery/',
 }
 // ─────────────────────────────────────────────────────────────────────────────
 
