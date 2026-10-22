@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Brumar Delivery | O Autêntico Pão de Alho &amp; Sanduíche Artesanal</title>
+    <meta
+      name="description"
+      content="Brumar Delivery: o autêntico pão de alho e sanduíche artesanal. Recheio generoso, queijo gratinado e entrega quentinha. Peça pelo WhatsApp."
+    />
+    <meta name="theme-color" content="#f4f3e7" />
+    <meta name="color-scheme" content="light" />
+
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/logo-192.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Brumar Delivery" />
+    <meta property="og:title" content="Brumar Delivery | Pão de Alho & Sanduíche Artesanal" />
+    <meta property="og:description" content="Recheio generoso, queijo gratinado e entrega quentinha. Peça pelo WhatsApp." />
+    <meta property="og:image" content="assets/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Brumar Delivery",
+        "description": "O autêntico pão de alho e sanduíche artesanal.",
+        "image": "assets/og-image.jpg",
+        "logo": "assets/logo-512.png",
+        "servesCuisine": ["Pão de alho", "Sanduíches"],
+        "hasMenu": "#cardapio"
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&family=Fraunces:ital,opsz,wght@0,9..144,200;1,9..144,200&family=Outfit:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="assets/hero.webp" type="image/webp" />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      document.documentElement.classList.add('js')
+    </script>
+  </head>
+
+  <body>
+    <a class="skip" href="#cardapio">Ir para o cardápio</a>
+    <div class="progress" aria-hidden="true"><span></span></div>
+
+    <!-- NAV -->
+    <header class="nav" id="top">
+      <nav class="nav__inner" aria-label="Principal">
+        <ul class="nav__links nav__links--left">
+          <li><a href="#cardapio">Cardápio</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+        </ul>
+
+        <a class="nav__logo" href="#top" aria-label="Brumar Delivery — início">
+          <img src="assets/logo.webp" width="56" height="56" alt="" />
+          <span>Brumar <b>Delivery</b></span>
+        </a>
+
+        <ul class="nav__links nav__links--right">
+          <li class="nav__hide-sm"><a href="#como-pedir">Como pedir</a></li>
+          <li><a class="btn btn--outline btn--sm" href="#pedir" data-wa>Pedir</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__media">
+          <img
+            src="assets/hero.webp"
+            width="1200"
+            height="940"
+            alt="Pão de alho recheado com carne desfiada e brócolis, coberto de queijo gratinado e dourado"
+            fetchpriority="high"
+            data-parallax="0.1"
+          />
+        </div>
+
+        <div class="hero__panel">
+          <p class="eyebrow hero__eyebrow">O autêntico · Pão de alho &amp; sanduíche artesanal</p>
+          <h1 class="display hero__title" id="hero-title">
+            <span class="line"><span>Pão de alho</span></span>
+            <span class="line"><span>de verdade,</span></span>
+            <span class="line"><span>na sua porta.</span></span>
+          </h1>
+          <p class="hero__lead">
+            Recheio generoso, queijo gratinado até dourar e aquele pão artesanal que chega quentinho. Escolha o seu e
+            peça em um toque.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--lime" href="#pedir" data-wa data-magnetic>
+              Pedir pelo WhatsApp <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg>
+            </a>
+            <a class="link" href="#cardapio">Ver cardápio <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- MARQUEE -->
+      <section class="marquee" aria-label="Destaques">
+        <div class="marquee__track" aria-hidden="true">
+          <div class="marquee__group">
+            <span>Pão de alho</span><i></i><span>Sanduíche artesanal</span><i></i><span>Queijo gratinado</span><i></i
+            ><span>Recheio generoso</span><i></i><span>Delivery</span><i></i>
+          </div>
+          <div class="marquee__group">
+            <span>Pão de alho</span><i></i><span>Sanduíche artesanal</span><i></i><span>Queijo gratinado</span><i></i
+            ><span>Recheio generoso</span><i></i><span>Delivery</span><i></i>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARDÁPIO -->
+      <section class="section menu" id="cardapio" aria-labelledby="menu-title">
+        <div class="wrap">
+          <p class="eyebrow" data-reveal>Cardápio</p>
+          <h2 class="display-md" id="menu-title" data-split>Escolha o seu recheio.</h2>
+
+          <div class="tabs" role="tablist" aria-label="Filtrar por recheio" data-reveal>
+            <button class="tab is-active" role="tab" aria-selected="true" data-filter="all">Todos</button>
+            <button class="tab" role="tab" aria-selected="false" data-filter="carne">Carne</button>
+            <button class="tab" role="tab" aria-selected="false" data-filter="frango">Frango</button>
+          </div>
+
+          <div class="grid" data-stagger>
+            <article class="card" data-cat="carne" data-reveal>
+              <div class="card__img">
+                <img
+                  src="assets/card-desfiada.webp"
+                  width="900"
+                  height="900"
+                  loading="lazy"
+                  alt="Pão de alho recheado com carne desfiada, brócolis e queijo derretido"
+                />
+              </div>
+              <div class="card__body">
+                <h3>Pão de Alho Recheado de Carne Desfiada</h3>
+                <p>Carne desfiada bem temperada, brócolis e uma cobertura generosa de queijo gratinado.</p>
+                <a class="link" href="#pedir" data-wa data-item="Pão de Alho Recheado de Carne Desfiada"
+                  >Pedir agora <span aria-hidden="true">→</span></a
+                >
+              </div>
+            </article>
+
+            <article class="card" data-cat="carne" data-reveal>
+              <div class="card__img">
+                <img
+                  src="assets/card-tiras.webp"
+                  width="900"
+                  height="900"
+                  loading="lazy"
+                  alt="Pão de alho com tiras de carne, brócolis e queijo gratinado"
+                />
+              </div>
+              <div class="card__body">
+                <h3>Pão de Alho de Carne com Brócolis</h3>
+                <p>Tiras de carne suculenta, brócolis fresquinho e queijo derretido por cima e por dentro.</p>
+                <a class="link" href="#pedir" data-wa data-item="Pão de Alho de Carne com Brócolis"
+                  >Pedir agora <span aria-hidden="true">→</span></a
+                >
+              </div>
+            </article>
+
+            <article class="card" data-cat="frango" data-reveal>
+              <div class="card__img">
+                <img
+                  src="assets/card-frango.webp"
+                  width="900"
+                  height="900"
+                  loading="lazy"
+                  alt="Pão de alho recheado com frango, coberto de cheddar e creme de queijo"
+                />
+              </div>
+              <div class="card__body">
+                <h3>Pão de Alho de Frango Gratinado</h3>
+                <p>Frango em cubos, cheddar cremoso e creme de queijo maçaricado até ficar dourado.</p>
+                <a class="link" href="#pedir" data-wa data-item="Pão de Alho de Frango Gratinado"
+                  >Pedir agora <span aria-hidden="true">→</span></a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOBRE (split) -->
+      <section class="section band band--sage" id="sobre" aria-labelledby="about-title">
+        <div class="wrap split">
+          <div class="split__text">
+            <p class="eyebrow" data-reveal>Sobre a Brumar</p>
+            <h2 class="display-md" id="about-title" data-split>Artesanal de ponta a ponta.</h2>
+
+            <div class="facts" data-stagger>
+              <div class="fact" data-reveal>
+                <h3>Pão artesanal</h3>
+                <p>Crocante por fora, macio por dentro e com o alho no ponto certo.</p>
+              </div>
+              <div class="fact" data-reveal>
+                <h3>Recheio generoso</h3>
+                <p>Carnes e frango bem temperados, com brócolis e muito sabor em cada pedaço.</p>
+              </div>
+              <div class="fact" data-reveal>
+                <h3>Queijo gratinado</h3>
+                <p>Uma camada farta de queijo derretido e dourado, do jeito que deve ser.</p>
+              </div>
+            </div>
+
+            <div data-reveal>
+              <a class="btn btn--outline" href="#cardapio">Ver o cardápio</a>
+            </div>
+          </div>
+
+          <figure class="split__media" data-reveal="image">
+            <img
+              src="assets/split.webp"
+              width="960"
+              height="940"
+              loading="lazy"
+              alt="Pão de alho cortado ao meio mostrando o recheio de carne com brócolis e queijo derretido"
+              data-parallax="0.1"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <!-- FEATURE full-bleed -->
+      <section class="feature" aria-labelledby="feature-title">
+        <div class="feature__media">
+          <img
+            src="assets/banner.webp"
+            width="1085"
+            height="860"
+            loading="lazy"
+            alt="Pão de alho de frango aberto, com cheddar, creme de queijo e crosta maçaricada"
+            data-parallax="0.16"
+          />
+        </div>
+        <div class="feature__panel" data-reveal>
+          <p class="eyebrow">Gratinado de verdade</p>
+          <h2 class="accent" id="feature-title">Cada mordida, uma camada de queijo dourado.</h2>
+          <a class="btn btn--lime" href="#pedir" data-wa data-magnetic>
+            Quero o meu <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- COMO PEDIR -->
+      <section class="section band band--sand" id="como-pedir" aria-labelledby="how-title">
+        <div class="wrap">
+          <p class="eyebrow" data-reveal>Como pedir</p>
+          <h2 class="display-md" id="how-title" data-split>Três passos até a mesa.</h2>
+
+          <ol class="steps" data-stagger>
+            <li class="step" data-reveal>
+              <span class="step__num">01</span>
+              <h3>Escolha seu pão</h3>
+              <p>Veja o cardápio e decida entre carne ou frango — ou peça um de cada.</p>
+            </li>
+            <li class="step" data-reveal>
+              <span class="step__num">02</span>
+              <h3>Chame no WhatsApp</h3>
+              <p>Toque em “Pedir” e a mensagem já vai pronta. É só confirmar endereço e pagamento.</p>
+            </li>
+            <li class="step" data-reveal>
+              <span class="step__num">03</span>
+              <h3>Receba quentinho</h3>
+              <p>Seu pedido sai do forno direto para a sua porta, com o queijo ainda derretendo.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- CTA final -->
+      <section class="cta" id="pedir" aria-labelledby="cta-title">
+        <div class="wrap cta__inner">
+          <div class="cta__text">
+            <p class="eyebrow eyebrow--light" data-reveal>Delivery</p>
+            <h2 class="display-md display-md--light" id="cta-title" data-split>Bateu a fome?</h2>
+            <p class="cta__lead" data-reveal>Chame a gente no WhatsApp e monte o seu pedido agora mesmo.</p>
+            <div data-reveal>
+              <a class="btn btn--lime" href="#pedir" data-wa data-magnetic>
+                Pedir pelo WhatsApp <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" /></svg>
+              </a>
+            </div>
+          </div>
+          <div class="cta__logo" data-reveal>
+            <img src="assets/logo.webp" width="320" height="320" loading="lazy" alt="Logo Brumar Delivery — o autêntico pão de alho e sanduíche artesanal" data-spin />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <a class="footer__brand" href="#top" aria-label="Voltar ao topo">
+          <img src="assets/logo.webp" width="48" height="48" alt="" />
+          <span>Brumar Delivery</span>
+        </a>
+        <ul class="footer__links">
+          <li><a href="#cardapio">Cardápio</a></li>
+          <li><a href="#como-pedir">Como pedir</a></li>
+          <li><a href="#" data-wa>WhatsApp</a></li>
+          <li><a href="#" data-ig hidden>Instagram</a></li>
+        </ul>
+        <p class="footer__copy">© <span id="year">2026</span> Brumar Delivery. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="main.js" defer></script>
+  </body>
+</html>
