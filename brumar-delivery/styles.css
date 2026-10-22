@@ -906,7 +906,7 @@ button {
   }
   .hero__media {
     flex: none;
-    aspect-ratio: 992 / 736;
+    aspect-ratio: 496 / 368;
   }
   .hero__bar-inner {
     grid-template-columns: 1fr;
