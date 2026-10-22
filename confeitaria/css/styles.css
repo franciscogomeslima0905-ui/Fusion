@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Ateliê Doce — landing page
+   Mila Doces e Salgados — landing page
    Sistema visual: "Redbrick" (tinta escarlate sobre papel claro)
    ========================================================================== */
 
@@ -453,17 +453,26 @@ section[id],
   gap: var(--spacing-10);
   color: var(--color-brick-red);
 }
-.logo__mark {
-  width: 30px;
-  height: 30px;
-  transition: transform 0.6s var(--ease-out);
+.logo__img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: transform 0.7s var(--ease-out);
 }
-.logo:hover .logo__mark {
-  transform: rotate(-12deg) scale(1.08);
+.logo:hover .logo__img {
+  transform: rotate(-10deg) scale(1.06);
+}
+.logo__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
 }
 .logo__word {
   font-size: var(--text-body);
-  letter-spacing: 0.017em;
+  letter-spacing: 0.17em;
+  line-height: 1;
+}
+.logo__sub {
   line-height: 1;
 }
 .nav__links {
@@ -1034,10 +1043,20 @@ section[id],
   letter-spacing: -0.005em;
   color: var(--color-brick-red);
 }
-.footer__mark {
-  width: 0.5em;
-  height: 0.5em;
+.footer__brand > span {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-15);
+}
+.footer__brand small {
+  line-height: 1;
+}
+.footer__logo {
+  width: 0.95em;
+  height: 0.95em;
   flex-shrink: 0;
+  border-radius: 50%;
 }
 .footer__nav {
   display: flex;

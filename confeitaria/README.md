@@ -1,4 +1,4 @@
-# Ateliê Doce — landing page
+# Mila Doces e Salgados — landing page
 
 Landing page estática (HTML + CSS + JS puro, sem build) da confeitaria, seguindo o sistema visual
 "Redbrick" do `DESIGN.md`: vermelho `#e82c2a` sobre branco, títulos em serifa leve (peso 300),
@@ -16,9 +16,9 @@ Ou publique a pasta `confeitaria/` em qualquer hospedagem estática (Netlify, Ve
 ## O que editar
 
 - **WhatsApp e Instagram:** objeto `CONFIG` no topo de `js/main.js`. Todos os botões "Pedir/Encomendar"
-  já montam a mensagem com o nome do doce.
-- **Nome da confeitaria:** hoje é um nome provisório, "Ateliê Doce". Troque em `index.html`
-  (título, logo, rodapé) e, se quiser outro ícone, em `favicon.svg`.
+  já montam a mensagem com o nome do produto. Número atual: (51) 98258-9601.
+- **Logo:** `img/logo-mila.png` (rodapé) e `img/logo-mila-96.png` (cabeçalho e ícone da aba). Foi recortada de um
+  print; com o arquivo original da logo a qualidade melhora.
 - **Doces e textos:** seção `#cardapio` em `index.html` (um `<article class="card">` por doce).
 - **Fotos:** `img/` (WebP 720×960 e versão `-sm` 480×640). Substitua mantendo os nomes, de preferência
   por originais em alta resolução.

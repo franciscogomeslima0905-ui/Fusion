@@ -1,13 +1,13 @@
 /* ==========================================================================
-   Ateliê Doce — interações e animações
+   Mila Doces e Salgados — interações e animações
    ========================================================================== */
 ;(() => {
   'use strict'
 
   /* ----- Configuração: edite aqui ------------------------------------- */
   const CONFIG = {
-    // WhatsApp com DDI + DDD + número, apenas dígitos. Ex.: '5551999999999'
-    whatsapp: '5500000000000',
+    // WhatsApp com DDI + DDD + número, apenas dígitos. (51) 98258-9601 → '5551982589601'
+    whatsapp: '5551982589601',
     // URL do Instagram (ex.: 'https://instagram.com/seuperfil'). Vazio = link oculto.
     instagram: '',
     // Mensagem usada quando o botão não define uma própria

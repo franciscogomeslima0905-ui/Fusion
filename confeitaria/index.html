@@ -3,18 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Ateliê Doce | Confeitaria artesanal sob encomenda</title>
+    <title>Mila Doces e Salgados | Confeitaria artesanal sob encomenda</title>
     <meta
       name="description"
-      content="Branquinhos cremosos recheados com Kinder Bueno, brigadeiros gourmet e barras de caramelo com chocolate. Doces artesanais feitos à mão, sob encomenda."
+      content="Mila Doces e Salgados: branquinhos recheados com Kinder Bueno, brigadeiros gourmet, bolos caseiros, brownies recheados e salgados. Tudo feito à mão, sob encomenda."
     />
     <meta name="theme-color" content="#e82c2a" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
-    <meta property="og:site_name" content="Ateliê Doce" />
-    <meta property="og:title" content="Ateliê Doce | Confeitaria artesanal sob encomenda" />
-    <meta property="og:description" content="Doce de verdade, feito à mão. Branquinhos, brigadeiros gourmet e barras de caramelo sob encomenda." />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta property="og:site_name" content="Mila Doces e Salgados" />
+    <meta property="og:title" content="Mila Doces e Salgados | Confeitaria artesanal sob encomenda" />
+    <meta property="og:description" content="Doce de verdade, feito à mão. Branquinhos, brigadeiros, bolos, brownies e salgados sob encomenda." />
+    <link rel="icon" type="image/png" href="img/logo-mila-96.png" />
 
     <link rel="preload" href="fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
@@ -29,14 +29,6 @@
       <symbol id="arrow" viewBox="0 0 26 10">
         <path d="M0 5h24M20 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1" />
       </symbol>
-      <symbol id="mark" viewBox="0 0 32 32">
-        <circle cx="16" cy="12.5" r="9" fill="currentColor" />
-        <g stroke="#fff" stroke-width="1.4" stroke-linecap="round" fill="none">
-          <path d="M11.2 9.4l1.8 1M16 6.4v1.8M20.8 9.4l-1.8 1M12.6 14.6l1.9-.5M19.4 14.6l-1.9-.5M16.4 11.2l.9 1.7" />
-        </g>
-        <path d="M8.5 19.5h15l-2 9.5h-11z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
-        <path d="M13 20l.6 8.5M16 20v8.5M19 20l-.6 8.5" fill="none" stroke="currentColor" stroke-width="1" />
-      </symbol>
     </svg>
 
     <a class="skip" href="#cardapio">Pular para o cardápio</a>
@@ -46,7 +38,7 @@
     <div class="announce">
       <div class="announce__inner">
         <span class="announce__spacer" aria-hidden="true"></span>
-        <p class="announce__text">Confeitaria artesanal · Doces feitos à mão, sob encomenda</p>
+        <p class="announce__text">Mila doces e salgados · Feito à mão, sob encomenda</p>
         <nav class="announce__links" aria-label="Links secundários">
           <a href="#sobre">Sobre</a>
           <a href="#encomendar">Encomendas</a>
@@ -59,9 +51,12 @@
     <!-- Navegação principal -->
     <header class="site-header" id="header">
       <div class="nav">
-        <a class="logo" href="#topo" aria-label="Ateliê Doce — início">
-          <svg class="logo__mark" aria-hidden="true"><use href="#mark" /></svg>
-          <span class="logo__word">ATELIÊ DOCE</span>
+        <a class="logo" href="#topo" aria-label="Mila Doces e Salgados — início">
+          <img class="logo__img" src="img/logo-mila-96.png" width="48" height="48" alt="" />
+          <span class="logo__text">
+            <span class="logo__word">MILA</span>
+            <span class="logo__sub label">Doces e salgados</span>
+          </span>
         </a>
         <nav class="nav__links" aria-label="Principal">
           <a href="#cardapio">Cardápio</a>
@@ -99,6 +94,8 @@
         <a href="#cardapio" data-filter="branquinhos">Branquinhos</a>
         <a href="#cardapio" data-filter="brigadeiros">Brigadeiros</a>
         <a href="#cardapio" data-filter="barras">Barras de caramelo</a>
+        <a href="#cardapio" data-filter="bolos">Bolos e combos</a>
+        <a href="#cardapio" data-filter="brownies">Brownies</a>
       </nav>
     </div>
 
@@ -107,15 +104,15 @@
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__copy">
           <div class="runhead" data-reveal="line">
-            <span class="label">Confeitaria artesanal</span>
+            <span class="label">Doces e salgados artesanais</span>
             <a class="arrow-link" href="#cardapio">Ver cardápio <svg aria-hidden="true"><use href="#arrow" /></svg></a>
           </div>
 
           <div class="hero__body">
             <h1 class="display display--xl" id="hero-title" data-split>Doce de verdade, feito à mão.</h1>
             <p class="lead" data-reveal style="--d: 500ms">
-              Branquinhos cremosos, brigadeiros recheados e barras de caramelo com chocolate — preparados artesanalmente e
-              feitos sob encomenda para adoçar o seu momento.
+              Branquinhos cremosos, brigadeiros recheados, bolos caseiros, brownies e salgados — preparados artesanalmente e feitos
+              sob encomenda para adoçar o seu momento.
             </p>
             <div class="hero__actions" data-reveal style="--d: 650ms">
               <a class="btn" data-wa="Olá! Gostaria de fazer uma encomenda de doces." href="#contato">Fazer encomenda</a>
@@ -151,6 +148,7 @@
       <div class="marquee" aria-hidden="true">
         <div class="marquee__track">
           <ul>
+            <li>Doces e salgados</li><li class="dot"></li>
             <li>Feito à mão</li><li class="dot"></li>
             <li>Sob encomenda</li><li class="dot"></li>
             <li>Recheio generoso</li><li class="dot"></li>
@@ -158,6 +156,7 @@
             <li>Direto da nossa cozinha</li><li class="dot"></li>
           </ul>
           <ul>
+            <li>Doces e salgados</li><li class="dot"></li>
             <li>Feito à mão</li><li class="dot"></li>
             <li>Sob encomenda</li><li class="dot"></li>
             <li>Recheio generoso</li><li class="dot"></li>
@@ -178,10 +177,12 @@
           <div class="section__head">
             <h2 class="display" id="cardapio-title" data-split>Nossos doces</h2>
             <div class="chips" role="group" aria-label="Filtrar por categoria" data-reveal style="--d: 200ms">
-              <button type="button" class="chip is-active" data-filter="todos" aria-pressed="true">Todos <span data-count>4</span></button>
+              <button type="button" class="chip is-active" data-filter="todos" aria-pressed="true">Todos <span data-count>8</span></button>
               <button type="button" class="chip" data-filter="branquinhos" aria-pressed="false">Branquinhos</button>
               <button type="button" class="chip" data-filter="brigadeiros" aria-pressed="false">Brigadeiros</button>
               <button type="button" class="chip" data-filter="barras" aria-pressed="false">Barras</button>
+              <button type="button" class="chip" data-filter="bolos" aria-pressed="false">Bolos e combos</button>
+              <button type="button" class="chip" data-filter="brownies" aria-pressed="false">Brownies</button>
             </div>
           </div>
 
@@ -249,6 +250,70 @@
               <p class="card__text">Base crocante, caramelo macio e uma camada generosa de chocolate por cima.</p>
               <a class="btn btn--sm" data-wa="Olá! Quero encomendar a Barra de Caramelo e Chocolate." href="#contato">Pedir agora</a>
             </article>
+
+            <article class="card" data-cat="bolos">
+              <div class="card__img">
+                <img
+                  src="img/bolo-milho-sm.webp"
+                  srcset="img/bolo-milho-sm.webp 480w, img/bolo-milho.webp 720w"
+                  sizes="(min-width: 1280px) 25vw, (min-width: 600px) 45vw, 90vw"
+                  width="480" height="640" loading="lazy"
+                  alt="Bolo de milho com cobertura cremosa e granulado branco, com uma fatia em formato de coroa por cima"
+                />
+              </div>
+              <p class="label">Bolo caseiro</p>
+              <h3 class="card__title">Bolo de Milho</h3>
+              <p class="card__text">Bolo macio e saboroso, feito com milho em lata, farinha de milho e leite zero lactose.</p>
+              <a class="btn btn--sm" data-wa="Olá! Quero encomendar: Bolo de Milho." href="#contato">Pedir agora</a>
+            </article>
+
+            <article class="card" data-cat="bolos">
+              <div class="card__img">
+                <img
+                  src="img/bolo-chocolate-sm.webp"
+                  srcset="img/bolo-chocolate-sm.webp 480w, img/bolo-chocolate.webp 720w"
+                  sizes="(min-width: 1280px) 25vw, (min-width: 600px) 45vw, 90vw"
+                  width="480" height="640" loading="lazy"
+                  alt="Bolo com cobertura de chocolate e granulado, sobre um prato em meio a plantas"
+                />
+              </div>
+              <p class="label">Bolo caseiro</p>
+              <h3 class="card__title">Bolo com Cobertura de Chocolate</h3>
+              <p class="card__text">Bolo caseiro macio com cobertura de chocolate. Escolha o sabor: milho, cenoura ou chocolate.</p>
+              <a class="btn btn--sm" data-wa="Olá! Quero encomendar: Bolo com Cobertura de Chocolate." href="#contato">Pedir agora</a>
+            </article>
+
+            <article class="card" data-cat="bolos">
+              <div class="card__img">
+                <img
+                  src="img/combo-bolo-salgados-sm.webp"
+                  srcset="img/combo-bolo-salgados-sm.webp 480w, img/combo-bolo-salgados.webp 720w"
+                  sizes="(min-width: 1280px) 25vw, (min-width: 600px) 45vw, 90vw"
+                  width="480" height="640" loading="lazy"
+                  alt="Bolo com cobertura de chocolate ao lado de uma caixa de salgadinhos fritos"
+                />
+              </div>
+              <p class="label">Combo</p>
+              <h3 class="card__title">Combo Delícia</h3>
+              <p class="card__text">Mini bolo caseiro e 15 salgados fritos sortidos. Promoção válida para pedidos pelo WhatsApp.</p>
+              <a class="btn btn--sm" data-wa="Olá! Quero encomendar: Combo Delícia (mini bolo + 15 salgados)." href="#contato">Pedir agora</a>
+            </article>
+
+            <article class="card" data-cat="brownies">
+              <div class="card__img">
+                <img
+                  src="img/brownie-nutella-sm.webp"
+                  srcset="img/brownie-nutella-sm.webp 480w, img/brownie-nutella.webp 720w"
+                  sizes="(min-width: 1280px) 25vw, (min-width: 600px) 45vw, 90vw"
+                  width="480" height="640" loading="lazy"
+                  alt="Brownies embalados individualmente, recheados com creme branco e Nutella, segurados por uma mão"
+                />
+              </div>
+              <p class="label">Brownie recheado</p>
+              <h3 class="card__title">Brownie Recheado com Nutella</h3>
+              <p class="card__text">Casquinha por fora, úmido por dentro e recheado com Nutella. Você precisa experimentar!</p>
+              <a class="btn btn--sm" data-wa="Olá! Quero encomendar: Brownie Recheado com Nutella." href="#contato">Pedir agora</a>
+            </article>
           </div>
         </div>
       </section>
@@ -315,12 +380,12 @@
           <div class="split__text">
             <h2 class="display" id="sobre-title" data-split>Feito à mão, do jeito que a gente gosta de receber.</h2>
             <p class="lead" data-reveal>
-              Cada doce sai da nossa cozinha preparado com calma e muito capricho nos detalhes — do recheio generoso ao
-              granulado, da embalagem ao encontro com você.
+              Na Mila, cada doce e cada salgado sai da cozinha preparado com calma e muito capricho nos detalhes — do
+              recheio generoso ao granulado, da embalagem ao encontro com você.
             </p>
             <p class="lead" data-reveal>
               Trabalhamos sob encomenda para que tudo chegue fresquinho e do tamanho do seu momento: um presente, uma
-              festa ou aquele mimo de fim de tarde.
+              festa ou aquele cafezinho com bolo no fim de tarde.
             </p>
             <div data-reveal>
               <a class="arrow-link arrow-link--lg" href="#cardapio">Ver o cardápio completo <svg aria-hidden="true"><use href="#arrow" /></svg></a>
@@ -445,21 +510,21 @@
     <!-- RODAPÉ -->
     <footer class="footer">
       <div class="footer__top">
-        <p class="footer__brand" aria-label="Ateliê Doce">
-          <svg class="footer__mark" aria-hidden="true"><use href="#mark" /></svg>
-          <span>Ateliê Doce</span>
+        <p class="footer__brand" aria-label="Mila Doces e Salgados">
+          <img class="footer__logo" src="img/logo-mila.png" width="225" height="225" alt="Logo da Mila Doces e Salgados" loading="lazy" />
+          <span>Mila<small class="label">Doces e salgados</small></span>
         </p>
         <nav class="footer__nav" aria-label="Rodapé">
           <a href="#cardapio">Cardápio</a>
           <a href="#sobre">Sobre</a>
           <a href="#encomendar">Como encomendar</a>
           <a href="#duvidas">Dúvidas</a>
-          <a data-wa href="#contato">WhatsApp</a>
+          <a data-wa href="#contato">WhatsApp (51) 98258-9601</a>
           <a data-ig href="#contato" hidden>Instagram</a>
         </nav>
       </div>
       <div class="footer__bottom">
-        <span>© <span id="year">2026</span> Ateliê Doce. Todos os direitos reservados.</span>
+        <span>© <span id="year">2026</span> Mila Doces e Salgados. Todos os direitos reservados.</span>
         <a href="#topo">Voltar ao topo ↑</a>
       </div>
     </footer>
