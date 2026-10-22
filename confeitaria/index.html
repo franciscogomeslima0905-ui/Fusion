@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Ateliê Doce | Confeitaria artesanal sob encomenda</title>
+    <meta
+      name="description"
+      content="Branquinhos cremosos recheados com Kinder Bueno, brigadeiros gourmet e barras de caramelo com chocolate. Doces artesanais feitos à mão, sob encomenda."
+    />
+    <meta name="theme-color" content="#e82c2a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Ateliê Doce" />
+    <meta property="og:title" content="Ateliê Doce | Confeitaria artesanal sob encomenda" />
+    <meta property="og:description" content="Doce de verdade, feito à mão. Branquinhos, brigadeiros gourmet e barras de caramelo sob encomenda." />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <link rel="preload" href="fonts/fraunces-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script>
+      document.documentElement.classList.add('js')
+    </script>
+  </head>
+  <body id="topo">
+    <!-- Sprites SVG reutilizados na página -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+      <symbol id="arrow" viewBox="0 0 26 10">
+        <path d="M0 5h24M20 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1" />
+      </symbol>
+      <symbol id="mark" viewBox="0 0 32 32">
+        <circle cx="16" cy="12.5" r="9" fill="currentColor" />
+        <g stroke="#fff" stroke-width="1.4" stroke-linecap="round" fill="none">
+          <path d="M11.2 9.4l1.8 1M16 6.4v1.8M20.8 9.4l-1.8 1M12.6 14.6l1.9-.5M19.4 14.6l-1.9-.5M16.4 11.2l.9 1.7" />
+        </g>
+        <path d="M8.5 19.5h15l-2 9.5h-11z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
+        <path d="M13 20l.6 8.5M16 20v8.5M19 20l-.6 8.5" fill="none" stroke="currentColor" stroke-width="1" />
+      </symbol>
+    </svg>
+
+    <a class="skip" href="#cardapio">Pular para o cardápio</a>
+    <div class="progress" id="progress" aria-hidden="true"></div>
+
+    <!-- Barra de anúncio -->
+    <div class="announce">
+      <div class="announce__inner">
+        <span class="announce__spacer" aria-hidden="true"></span>
+        <p class="announce__text">Confeitaria artesanal · Doces feitos à mão, sob encomenda</p>
+        <nav class="announce__links" aria-label="Links secundários">
+          <a href="#sobre">Sobre</a>
+          <a href="#encomendar">Encomendas</a>
+          <a href="#duvidas">Dúvidas</a>
+          <a href="#contato">Contato</a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Navegação principal -->
+    <header class="site-header" id="header">
+      <div class="nav">
+        <a class="logo" href="#topo" aria-label="Ateliê Doce — início">
+          <svg class="logo__mark" aria-hidden="true"><use href="#mark" /></svg>
+          <span class="logo__word">ATELIÊ DOCE</span>
+        </a>
+        <nav class="nav__links" aria-label="Principal">
+          <a href="#cardapio">Cardápio</a>
+          <a href="#por-dentro">Por dentro</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#encomendar">Como encomendar</a>
+          <a href="#duvidas">Dúvidas</a>
+        </nav>
+        <div class="nav__actions">
+          <a class="btn nav__cta" data-wa href="#contato">Encomendar</a>
+          <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu">
+            <span class="menu-btn__label">Menu</span>
+            <span class="menu-btn__icon" aria-hidden="true"><i></i><i></i></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Menu mobile -->
+    <div class="menu" id="menu" aria-hidden="true">
+      <nav class="menu__nav" aria-label="Menu mobile">
+        <a href="#cardapio" style="--i: 0">Cardápio</a>
+        <a href="#por-dentro" style="--i: 1">Por dentro</a>
+        <a href="#sobre" style="--i: 2">Sobre</a>
+        <a href="#encomendar" style="--i: 3">Como encomendar</a>
+        <a href="#duvidas" style="--i: 4">Dúvidas</a>
+      </nav>
+      <a class="btn menu__cta" data-wa href="#contato">Encomendar pelo WhatsApp</a>
+    </div>
+
+    <!-- Navegação secundária: categorias -->
+    <div class="subnav">
+      <nav class="subnav__inner" aria-label="Categorias do cardápio">
+        <a href="#cardapio" data-filter="todos" class="is-active">Todos os doces</a>
+        <a href="#cardapio" data-filter="branquinhos">Branquinhos</a>
+        <a href="#cardapio" data-filter="brigadeiros">Brigadeiros</a>
+        <a href="#cardapio" data-filter="barras">Barras de caramelo</a>
+      </nav>
+    </div>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__copy">
+          <div class="runhead" data-reveal="line">
+            <span class="label">Confeitaria artesanal</span>
+            <a class="arrow-link" href="#cardapio">Ver cardápio <svg aria-hidden="true"><use href="#arrow" /></svg></a>
+          </div>
+
+          <div class="hero__body">
+            <h1 class="display display--xl" id="hero-title" data-split>Doce de verdade, feito à mão.</h1>
+            <p class="lead" data-reveal style="--d: 500ms">
+              Branquinhos cremosos, brigadeiros recheados e barras de caramelo com chocolate — preparados artesanalmente e
+              feitos sob encomenda para adoçar o seu momento.
+            </p>
+            <div class="hero__actions" data-reveal style="--d: 650ms">
+              <a class="btn" data-wa="Olá! Gostaria de fazer uma encomenda de doces." href="#contato">Fazer encomenda</a>
+              <a class="arrow-link arrow-link--lg" href="#cardapio">Conhecer os doces <svg aria-hidden="true"><use href="#arrow" /></svg></a>
+            </div>
+          </div>
+
+          <ul class="facts" data-reveal="line">
+            <li><span class="label">01</span> Feito à mão</li>
+            <li><span class="label">02</span> Sob encomenda</li>
+            <li><span class="label">03</span> Recheio generoso</li>
+          </ul>
+        </div>
+
+        <div class="hero__media">
+          <figure class="media" data-reveal="media" style="--d: 150ms">
+            <div class="media__par" data-parallax>
+              <img
+                src="img/branquinho-kinder-bueno.webp"
+                srcset="img/branquinho-kinder-bueno-sm.webp 480w, img/branquinho-kinder-bueno.webp 720w"
+                sizes="(min-width: 900px) 50vw, 100vw"
+                width="720"
+                height="960"
+                alt="Branquinho cremoso coberto com granulado de chocolate branco, sobre prato decorado em uma mesa de madeira"
+                fetchpriority="high"
+              />
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- FAIXA ANIMADA -->
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <ul>
+            <li>Feito à mão</li><li class="dot"></li>
+            <li>Sob encomenda</li><li class="dot"></li>
+            <li>Recheio generoso</li><li class="dot"></li>
+            <li>Embalado com cuidado</li><li class="dot"></li>
+            <li>Direto da nossa cozinha</li><li class="dot"></li>
+          </ul>
+          <ul>
+            <li>Feito à mão</li><li class="dot"></li>
+            <li>Sob encomenda</li><li class="dot"></li>
+            <li>Recheio generoso</li><li class="dot"></li>
+            <li>Embalado com cuidado</li><li class="dot"></li>
+            <li>Direto da nossa cozinha</li><li class="dot"></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CARDÁPIO -->
+      <section class="section" id="cardapio" aria-labelledby="cardapio-title">
+        <div class="wrap">
+          <div class="runhead" data-reveal="line">
+            <span class="label">Cardápio</span>
+            <a class="arrow-link" data-wa="Olá! Gostaria de saber mais sobre o cardápio." href="#contato">Encomendar <svg aria-hidden="true"><use href="#arrow" /></svg></a>
+          </div>
+
+          <div class="section__head">
+            <h2 class="display" id="cardapio-title" data-split>Nossos doces</h2>
+            <div class="chips" role="group" aria-label="Filtrar por categoria" data-reveal style="--d: 200ms">
+              <button type="button" class="chip is-active" data-filter="todos" aria-pressed="true">Todos <span data-count>4</span></button>
+              <button type="button" class="chip" data-filter="branquinhos" aria-pressed="false">Branquinhos</button>
+              <button type="button" class="chip" data-filter="brigadeiros" aria-pressed="false">Brigadeiros</button>
+              <button type="button" class="chip" data-filter="barras" aria-pressed="false">Barras</button>
+            </div>
+          </div>
+
+          <div class="cards" id="cards" data-stagger>
+            <article class="card" data-cat="branquinhos">
+              <div class="card__img">
+                <img
+                  src="img/branquinho-kinder-bueno-sm.webp"
+                  srcset="img/branquinho-kinder-bueno-sm.webp 480w, img/branquinho-kinder-bueno.webp 720w"
+                  sizes="(min-width: 1280px) 25vw, (min-width: 600px) 45vw, 90vw"
+                  width="480" height="640" loading="lazy"
+                  alt="Branquinho cremoso coberto com granulado de chocolate branco, sobre prato decorado"
+                />
+              </div>
+              <p class="label">Branquinho · ~120 g</p>
+              <h3 class="card__title">Branquinho de Ninho com Kinder Bueno</h3>
+              <p class="card__text">Cremoso de leite ninho, recheado com Kinder Bueno e coberto com chocolate branco.</p>
+              <a class="btn btn--sm" data-wa="Olá! Quero encomendar o Branquinho de Ninho com Kinder Bueno." href="#contato">Pedir agora</a>
+            </article>
+
+            <article class="card" data-cat="brigadeiros">
+              <div class="card__img">
+                <img
+                  src="img/brigadeiro-gourmet-sm.webp"
+                  srcset="img/brigadeiro-gourmet-sm.webp 480w, img/brigadeiro-gourmet.webp 720w"
+                  sizes="(min-width: 1280px) 25vw, (min-width: 600px) 45vw, 90vw"
+                  width="480" height="640" loading="lazy"
+                  alt="Brigadeiro gourmet coberto com granulado de chocolate, embalado individualmente"
+                />
+              </div>
+              <p class="label">Brigadeiro gourmet</p>
+              <h3 class="card__title">Brigadeiro Gourmet de Chocolate</h3>
+              <p class="card__text">Cremoso e bem chocolatudo, enrolado em granulado e embalado individualmente.</p>
+              <a class="btn btn--sm" data-wa="Olá! Quero encomendar o Brigadeiro Gourmet de Chocolate." href="#contato">Pedir agora</a>
+            </article>
+
+            <article class="card" data-cat="brigadeiros">
+              <div class="card__img">
+                <img
+                  src="img/brigadeiro-bombom-sm.webp"
+                  srcset="img/brigadeiro-bombom-sm.webp 480w, img/brigadeiro-bombom.webp 720w"
+                  sizes="(min-width: 1280px) 25vw, (min-width: 600px) 45vw, 90vw"
+                  width="480" height="640" loading="lazy"
+                  alt="Doce de chocolate com granulado e pedaços de bombom de recheio rosa, sobre prato branco"
+                />
+              </div>
+              <p class="label">Brigadeiro recheado</p>
+              <h3 class="card__title">Brigadeiro Recheado com Bombom</h3>
+              <p class="card__text">Massa de chocolate coberta com granulado e finalizada com pedaços de bombom.</p>
+              <a class="btn btn--sm" data-wa="Olá! Quero encomendar o Brigadeiro Recheado com Bombom." href="#contato">Pedir agora</a>
+            </article>
+
+            <article class="card" data-cat="barras">
+              <div class="card__img">
+                <img
+                  src="img/barra-caramelo-sm.webp"
+                  srcset="img/barra-caramelo-sm.webp 480w, img/barra-caramelo.webp 720w"
+                  sizes="(min-width: 1280px) 25vw, (min-width: 600px) 45vw, 90vw"
+                  width="480" height="640" loading="lazy"
+                  alt="Fatia de barra com base crocante, camada de caramelo e cobertura de chocolate"
+                />
+              </div>
+              <p class="label">Barra · vendida em fatias</p>
+              <h3 class="card__title">Barra de Caramelo e Chocolate</h3>
+              <p class="card__text">Base crocante, caramelo macio e uma camada generosa de chocolate por cima.</p>
+              <a class="btn btn--sm" data-wa="Olá! Quero encomendar a Barra de Caramelo e Chocolate." href="#contato">Pedir agora</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- POR DENTRO -->
+      <section class="section section--tight" id="por-dentro" aria-labelledby="dentro-title">
+        <div class="wrap">
+          <div class="runhead" data-reveal="line">
+            <span class="label">Por dentro</span>
+            <a class="arrow-link" href="#sobre">Nossa história <svg aria-hidden="true"><use href="#arrow" /></svg></a>
+          </div>
+        </div>
+        <div class="split">
+          <div class="split__media">
+            <figure class="media media--tall" data-reveal="media">
+              <div class="media__par" data-parallax>
+                <img
+                  src="img/branquinho-recheio.webp"
+                  width="720" height="960" loading="lazy"
+                  alt="Branquinho cortado ao meio, com camadas de creme branco e pedaços de Kinder Bueno"
+                />
+              </div>
+            </figure>
+          </div>
+          <div class="split__text">
+            <h2 class="display" id="dentro-title" data-split>Recheio que aparece na primeira mordida.</h2>
+            <p class="lead" data-reveal>
+              O nosso branquinho é cremoso de ninho, recheado com Kinder Bueno e coberto com chocolate branco e granulado.
+              Cada unidade tem cerca de 120&nbsp;g — é doce de sobra para dividir (ou não).
+            </p>
+            <dl class="specs" data-stagger>
+              <div class="specs__row"><dt class="label">Massa</dt><dd>Branquinho cremoso de ninho</dd></div>
+              <div class="specs__row"><dt class="label">Recheio</dt><dd>Kinder Bueno</dd></div>
+              <div class="specs__row"><dt class="label">Cobertura</dt><dd>Chocolate branco e granulado</dd></div>
+              <div class="specs__row"><dt class="label">Peso</dt><dd>Cerca de 120&nbsp;g cada</dd></div>
+            </dl>
+            <div data-reveal>
+              <a class="btn" data-wa="Olá! Quero encomendar o Branquinho de Ninho com Kinder Bueno." href="#contato">Quero o meu</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOBRE -->
+      <section class="section section--tight" id="sobre" aria-labelledby="sobre-title">
+        <div class="wrap">
+          <div class="runhead" data-reveal="line">
+            <span class="label">Sobre a confeitaria</span>
+            <a class="arrow-link" href="#encomendar">Como encomendar <svg aria-hidden="true"><use href="#arrow" /></svg></a>
+          </div>
+        </div>
+        <div class="split split--flip">
+          <div class="split__media">
+            <figure class="media media--tall" data-reveal="media">
+              <div class="media__par" data-parallax>
+                <img
+                  src="img/barra-caramelo.webp"
+                  width="720" height="960" loading="lazy"
+                  alt="Barra de caramelo com chocolate sendo servida com uma espátula"
+                />
+              </div>
+            </figure>
+          </div>
+          <div class="split__text">
+            <h2 class="display" id="sobre-title" data-split>Feito à mão, do jeito que a gente gosta de receber.</h2>
+            <p class="lead" data-reveal>
+              Cada doce sai da nossa cozinha preparado com calma e muito capricho nos detalhes — do recheio generoso ao
+              granulado, da embalagem ao encontro com você.
+            </p>
+            <p class="lead" data-reveal>
+              Trabalhamos sob encomenda para que tudo chegue fresquinho e do tamanho do seu momento: um presente, uma
+              festa ou aquele mimo de fim de tarde.
+            </p>
+            <div data-reveal>
+              <a class="arrow-link arrow-link--lg" href="#cardapio">Ver o cardápio completo <svg aria-hidden="true"><use href="#arrow" /></svg></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMO ENCOMENDAR -->
+      <section class="section" id="encomendar" aria-labelledby="enc-title">
+        <div class="wrap">
+          <div class="runhead" data-reveal="line">
+            <span class="label">Como encomendar</span>
+            <a class="arrow-link" data-wa href="#contato">Começar agora <svg aria-hidden="true"><use href="#arrow" /></svg></a>
+          </div>
+          <h2 class="display section__title" id="enc-title" data-split>Três passos, um doce.</h2>
+
+          <ol class="steps" data-stagger>
+            <li class="step">
+              <span class="step__n" aria-hidden="true">01</span>
+              <h3 class="step__title">Escolha seus doces</h3>
+              <p>Veja o cardápio e separe os sabores e as quantidades que combinam com a sua ocasião.</p>
+            </li>
+            <li class="step">
+              <span class="step__n" aria-hidden="true">02</span>
+              <h3 class="step__title">Chame no WhatsApp</h3>
+              <p>Envie a sua escolha e a data desejada. Respondemos com valores e disponibilidade.</p>
+            </li>
+            <li class="step">
+              <span class="step__n" aria-hidden="true">03</span>
+              <h3 class="step__title">Receba com carinho</h3>
+              <p>Combinamos retirada ou entrega e o seu pedido chega embalado, pronto para saborear ou presentear.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- DÚVIDAS -->
+      <section class="section section--tight" id="duvidas" aria-labelledby="faq-title">
+        <div class="wrap">
+          <div class="runhead" data-reveal="line">
+            <span class="label">Dúvidas frequentes</span>
+            <a class="arrow-link" data-wa href="#contato">Falar com a gente <svg aria-hidden="true"><use href="#arrow" /></svg></a>
+          </div>
+          <div class="faq">
+            <h2 class="display" id="faq-title" data-split>Ficou com alguma dúvida?</h2>
+            <div class="faq__list" data-stagger>
+              <div class="faq__item">
+                <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">
+                  Como faço uma encomenda?<span class="faq__icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1">
+                  <div><p>É simples: escolha os doces, chame a gente no WhatsApp com a quantidade e a data desejada e confirmamos a disponibilidade e os valores.</p></div>
+                </div>
+              </div>
+              <div class="faq__item">
+                <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
+                  Com quanto tempo de antecedência devo pedir?<span class="faq__icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2">
+                  <div><p>Quanto antes, melhor. Como tudo é feito sob encomenda, para grandes quantidades ou datas comemorativas recomendamos falar com a gente com antecedência — combinamos o prazo certinho pelo WhatsApp.</p></div>
+                </div>
+              </div>
+              <div class="faq__item">
+                <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
+                  Vocês entregam ou tenho que retirar?<span class="faq__icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3">
+                  <div><p>Combinamos retirada ou entrega diretamente pelo WhatsApp, de acordo com a sua região e a data do pedido.</p></div>
+                </div>
+              </div>
+              <div class="faq__item">
+                <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
+                  Posso encomendar para festas e presentes?<span class="faq__icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq__a" id="faq-a4" role="region" aria-labelledby="faq-q4">
+                  <div><p>Pode, sim. Conte pra gente a ocasião e a quantidade e montamos o pedido com você.</p></div>
+                </div>
+              </div>
+              <div class="faq__item">
+                <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">
+                  Tenho alergia ou restrição alimentar. E agora?<span class="faq__icon" aria-hidden="true"></span>
+                </button>
+                <div class="faq__a" id="faq-a5" role="region" aria-labelledby="faq-q5">
+                  <div><p>Trabalhamos com ingredientes que podem conter leite, glúten e frutos de casca rija, como avelã. Se você tem alguma alergia ou restrição, avise antes de fechar o pedido.</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHAMADA FINAL -->
+      <section class="cta" id="contato" aria-labelledby="cta-title">
+        <div class="cta__copy">
+          <div class="runhead runhead--light" data-reveal="line">
+            <span class="label">Encomendas</span>
+            <a class="arrow-link" data-wa href="#contato">WhatsApp <svg aria-hidden="true"><use href="#arrow" /></svg></a>
+          </div>
+          <div class="cta__body">
+            <h2 class="display" id="cta-title" data-split>Seu próximo doce está a uma mensagem de distância.</h2>
+            <p class="lead" data-reveal>Conte pra gente o que você quer, quando e quantos. A gente cuida do resto, com todo o capricho.</p>
+            <div data-reveal>
+              <a class="btn btn--light" data-wa="Olá! Gostaria de fazer uma encomenda de doces." href="#contato">Encomendar pelo WhatsApp</a>
+            </div>
+          </div>
+        </div>
+        <div class="cta__media">
+          <figure class="media" data-reveal="media">
+            <div class="media__par" data-parallax>
+              <img
+                src="img/brigadeiro-gourmet.webp"
+                width="720" height="960" loading="lazy"
+                alt="Brigadeiro gourmet coberto com granulado de chocolate, dentro de uma embalagem branca"
+              />
+            </div>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+      <div class="footer__top">
+        <p class="footer__brand" aria-label="Ateliê Doce">
+          <svg class="footer__mark" aria-hidden="true"><use href="#mark" /></svg>
+          <span>Ateliê Doce</span>
+        </p>
+        <nav class="footer__nav" aria-label="Rodapé">
+          <a href="#cardapio">Cardápio</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#encomendar">Como encomendar</a>
+          <a href="#duvidas">Dúvidas</a>
+          <a data-wa href="#contato">WhatsApp</a>
+          <a data-ig href="#contato" hidden>Instagram</a>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <span>© <span id="year">2026</span> Ateliê Doce. Todos os direitos reservados.</span>
+        <a href="#topo">Voltar ao topo ↑</a>
+      </div>
+    </footer>
+
+    <!-- Botão flutuante -->
+    <a class="fab" id="fab" data-wa href="#contato">Encomendar <svg aria-hidden="true"><use href="#arrow" /></svg></a>
+
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
