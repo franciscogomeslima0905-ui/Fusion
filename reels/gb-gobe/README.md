@@ -101,3 +101,5 @@ Montagem: usar as ondas de chocolate de `build.py` como transição (ou *chocola
 
 ## 7. Arquivos
 `plan.py` tempos/paleta/falas · `gfx.py` motor gráfico · `build.py` vídeo · `audio.py` trilha+efeitos+mix · `narration.py` voz · `timing.py` tempos das palavras · `assets/` selos originais (PDF) e PNGs transparentes.
+
+> **Versão atual dos vídeos: sem voz** (só trilha, efeitos e legendas), a pedido. A narração gerada continua em `narracao/` e pode ser reaplicada com `python3 audio.py PASTA` (sem a opção `--sem-voz`) e `build.py`.

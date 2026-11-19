@@ -49,3 +49,5 @@ python3 audio.py PASTA          # trilha + efeitos (+ voz se PASTA/voice.wav exi
 python3 build.py PASTA saida.mp4
 # com voz: python3 narration.py MODELO_KOKORO PASTA  antes dos dois comandos acima
 ```
+
+> **Versão atual dos vídeos: sem voz** (só trilha, efeitos e legendas), a pedido. A narração gerada continua em `narracao/` e pode ser reaplicada com `python3 audio.py PASTA` (sem a opção `--sem-voz`) e `build.py`.

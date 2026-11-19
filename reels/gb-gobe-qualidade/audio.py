@@ -266,7 +266,7 @@ def main(work):
     mus = music() * 0.55
     voice = None
     vp = os.path.join(work, "voice.wav")
-    if os.path.exists(vp):
+    if os.path.exists(vp) and "--sem-voz" not in sys.argv:
         voice = read_wav(vp)
     # ducking: música cai quando há fala (curva suave)
     tl = load_timeline(work)
@@ -277,7 +277,8 @@ def main(work):
     k = int(0.18 * SR)
     sm = np.convolve(act, np.ones(k) / k, "same")
     duck = 1 - 0.52 * sm
-    mus *= duck
+    if voice is not None:
+        mus *= duck      # a música só abaixa quando há voz
     write_wav(os.path.join(work, "music_sfx.wav"), mus + fx)
     out = mus + fx * (0.85 if voice is not None else 1.0)
     if voice is not None:
