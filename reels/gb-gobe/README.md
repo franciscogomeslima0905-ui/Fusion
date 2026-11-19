@@ -10,14 +10,14 @@ Tudo aqui é gerado por código (`plan.py` → `build.py` + `audio.py` + `narrat
 | Roteiro, storyboard, identidade, tempos | Pronto (este arquivo + `plan.py`) |
 | Vídeo animado (5 cenas, ondas de chocolate, legendas, selo no canto) | Pronto (`build.py`) |
 | Trilha original + efeitos sonoros sincronizados | Pronto (`audio.py`, sintetizados em código) |
-| **Narração feminina pt-BR** | **Script pronto (`narration.py`), ainda não executado** — depende de instalar o Kokoro (ver abaixo) |
-| Legendas | Prontas, mas com **tempos estimados**; ficam exatas quando a voz for gerada |
+| Narração feminina pt-BR | Pronta: Kokoro, voz `pf_dora`, encaixada nas janelas de cada cena (`narracao/voice.wav`) |
+| Legendas | Prontas e sincronizadas com a voz real (`narracao/timeline.json`) |
 | Versão fotorrealista com IA de vídeo | Prompts abaixo (seção 6) |
 
 ### Limite honesto do que foi renderizado
 Os brownies deste vídeo são **renderizados proceduralmente (3D de caixas com texturas geradas por código)**, não filmados nem gerados por IA de vídeo. Têm movimento, perspectiva, brilho de chocolate e recheio, mas leem como ilustração 3D estilizada, não como fotografia de comida. Para o fotorrealismo de uma "campanha de grande marca" use os prompts da seção 6 numa ferramenta de vídeo com IA (ou filme os produtos reais) e reaproveite aqui a trilha, os efeitos, as legendas, o selo e os textos. O recheio do Recheadíssimo está em um creme neutro (`FILL_HI/FILL_LO` em `gfx.py`) porque o sabor não foi informado — troque pela cor real.
 
-### Para fechar o vídeo com a voz
+### Para regerar a voz (só se mudar o texto)
 ```bash
 pip install kokoro-onnx soundfile
 # baixar kokoro-v1.0.onnx e voices-v1.0.bin (release model-files-v1.0 do projeto kokoro-onnx) para uma pasta MODELO

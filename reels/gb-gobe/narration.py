@@ -45,9 +45,12 @@ out = np.zeros(int(DUR * SR), np.float32)
 words = []
 for lid, start, end, shown, tts in LINES:
     window = end - start
-    segs, total = synth_line(tts, 1.0)
-    speed = float(np.clip(total / window, 0.85, 1.3))
-    if abs(speed - 1) > 0.02:
+    speed = 1.0
+    segs, total = synth_line(tts, speed)
+    for _ in range(4):   # ajusta a velocidade até a fala caber na janela (sem passar de 1,3x)
+        if total <= window and (total >= window * 0.85 or speed <= 0.88):
+            break
+        speed = float(np.clip(speed * total / (window * 0.96), 0.85, 1.3))
         segs, total = synth_line(tts, speed)
     # centraliza dentro da janela se sobrar espaço
     t = start + max(0.0, (window - total) / 2)

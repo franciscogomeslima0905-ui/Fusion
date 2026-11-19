@@ -6,8 +6,8 @@ Segundo Reels da série, no **mesmo estilo** do primeiro (`../gb-gobe`): 1080×1
 | Item | Estado |
 |---|---|
 | Vídeo (5 cenas), trilha, efeitos, legendas | Pronto |
-| Narração feminina pt-BR | **Script pronto (`narration.py`), ainda não executado** (depende de instalar o Kokoro; ver `../gb-gobe/README.md`) |
-| Tempos das legendas, checklist e etiquetas | Estimados; **se ajustam sozinhos à fala real** (são amarrados às palavras "intenso", "crocante", "macio", "mãos", "cozinha", "protegido", "sabor", "higiene", "aparência", "peça") quando `timeline.json` existir |
+| Narração feminina pt-BR | Pronta: Kokoro, voz `pf_dora` (`narracao/voice.wav`) |
+| Tempos das legendas, checklist e etiquetas | Reais, a partir da voz (`narracao/timeline.json`); checklist e etiquetas são amarrados às palavras "intenso", "crocante", "macio", "mãos", "cozinha", "protegido", "sabor", "higiene", "aparência", "peça") |
 
 > **Confirme as afirmações de higiene antes de publicar.** Escrevi só o que é genérico e plausível para uma confeitaria, mas você é quem sabe o que de fato faz: *"Mãos e utensílios higienizados"*, *"Cozinha sempre limpa"*, *"Brownies bem protegidos"* (e a fala "mãos, utensílios e cozinha sempre limpos… cada brownie bem protegido até chegar à sua mão"). Não citei certificações, normas ou selos. Se tiver algo concreto (touca e luvas, alvará/vigilância sanitária, embalagem lacrada, etc.), troque os textos em `build.py` (`scene3 → items`) e `plan.py` (`LINES`).
 

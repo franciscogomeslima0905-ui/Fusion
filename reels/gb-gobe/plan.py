@@ -29,7 +29,7 @@ EV = dict(
     s3_orbit=(12.5, 15.8),   # recheadíssimo inteiro, supercasquinha
     s3_open=(15.9, 19.0),    # abre e revela o recheio
     s3_choc=(18.8, 22.3),    # chocolate derretido escorre
-    s3_muito=(19.35, 20.2),  # "MUITO" em destaque (acompanha a fala)
+    s3_muito=(20.55, 21.3),  # "MUITO" em destaque (acompanha a fala)
     s4_in=23.4,
     s5_logo=29.6,
     s5_cta=32.2,
@@ -42,9 +42,9 @@ LINES = [
      "Tem dias em que tudo o que a gente precisa é de um pouquinho de felicidade..."),
     ("l2", 4.60, 11.90, "Nosso brownie tradicional tem aquela casquinha crocante e um interior tão macio e úmido que conquista na primeira mordida!",
      "Nosso brownie tradicional tem aquela casquinha crocante e um interior tão macio e úmido que conquista na primeira mordida!"),
-    ("l3a", 12.70, 16.40, "E se você ama um doce de verdade... prepare-se para o nosso Recheadíssimo!",
+    ("l3a", 12.25, 16.95, "E se você ama um doce de verdade... prepare-se para o nosso Recheadíssimo!",
      "E se você ama um doce de verdade... prepare-se para o nosso Recheadíssimo!"),
-    ("l3b", 16.70, 22.60, "Uma supercasquinha crocante, interior macio e muito, mas MUITO recheio para adoçar a vida!",
+    ("l3b", 17.05, 22.65, "Uma supercasquinha crocante, interior macio e muito, mas MUITO recheio para adoçar a vida!",
      "Uma supercasquinha crocante, interior macio e muito, mas MUITO recheio para adoçar a vida!"),
     ("l4", 23.60, 27.80, "Porque na GB GOBÊ, a felicidade tem sabor de chocolate!",
      "Porque na Gê Bê Gobê, a felicidade tem sabor de chocolate!"),

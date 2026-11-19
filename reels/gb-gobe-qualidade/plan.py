@@ -19,7 +19,7 @@ EV = dict(
     s2_open=(4.9, 8.0),     # Tradicional abre devagar
     s2_choc=8.4,            # chocolate escorre sobre o corte
     s3_dome=20.4,           # cúpula protege o brownie (fallback; real = palavra "protegido")
-    s5_logo=29.6,
+    s5_logo=29.45,
     s5_cta=32.4,
 )
 
@@ -33,7 +33,7 @@ LINES = [
      "E porque a gente se importa com você, a higiene vem em primeiro lugar: mãos, utensílios e cozinha sempre limpos, e cada brownie bem protegido até chegar à sua mão."),
     ("l4", 23.60, 27.90, "E cada detalhe é cuidado para encantar também os olhos.",
      "E cada detalhe é cuidado para encantar também os olhos."),
-    ("l5", 29.60, 34.70, "GB GOBÊ. Sabor, higiene e aparência em cada brownie. Peça o seu e se encante!",
+    ("l5", 29.25, 34.85, "GB GOBÊ. Sabor, higiene e aparência em cada brownie. Peça o seu e se encante!",
      "Gê Bê Gobê. Sabor, higiene e aparência em cada brownie. Peça o seu e se encante!"),
 ]
 
