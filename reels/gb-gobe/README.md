@@ -3,6 +3,16 @@
 Vertical 9:16 · 1080×1920 · 30 fps · 35 s · Instagram Reels.
 Tudo aqui é gerado por código (`plan.py` → `build.py` + `audio.py` + `narration.py`) e usa os selos originais em `assets/` **sem modificá-los**.
 
+## Voz: como soa e como trocar por uma mais natural
+A voz é sintética (Kokoro `pf_dora`). Para reduzir o "ar de IA", a narração é gerada **por frase inteira** (vírgulas não cortam a fala), com ritmo calmo (~0,96×), pausas e respiros de tamanhos variados, entonação ampliada (`prosody.py`) e tratamento de estúdio (EQ, compressão leve, ar de sala). O limite é do modelo: ele nunca chega a soar como uma pessoa gravando.
+
+**Para uma voz realmente humana**, grave você mesma (celular, ambiente silencioso) ou gere em outra ferramenta (ElevenLabs, Azure, Google etc., que têm vozes pt-BR bem mais naturais) **um arquivo por fala**, com o texto exato da legenda, nomeados `l1`, `l2`, … (ids em `plan.py → LINES`; mp3/wav/m4a). Depois:
+```bash
+python3 import_voice.py PASTA_TRABALHO PASTA_DOS_AUDIOS   # encaixa nas cenas e recalcula as legendas
+python3 audio.py PASTA_TRABALHO
+python3 build.py PASTA_TRABALHO saida.mp4
+```
+
 ## O que está pronto e o que falta
 
 | Item | Estado |

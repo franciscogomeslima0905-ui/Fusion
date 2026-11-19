@@ -283,8 +283,8 @@ def main(work):
     if voice is not None:
         v = np.zeros(N); m = min(N, len(voice)); v[:m] = voice[:m]
         # leve compressão/saturação para presença da voz
-        v = np.tanh(v * 1.6) / np.tanh(1.6)
-        out = out + np.stack([v, v]) * 1.9
+        pass
+        out = out + np.stack([v, v]) * 1.7
         print("voz incluída")
     else:
         print("SEM voz: mix.wav contém só trilha + efeitos")
