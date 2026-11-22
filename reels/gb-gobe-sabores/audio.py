@@ -200,17 +200,16 @@ def sfx():
         add(buf, glop(260, 0.22), b - 0.15, 0.35); add(buf, glop(340, 0.2), b + 0.2, 0.3)
     for tt in (0.15, 4.0, 9.0, 17.0, 23.0, 30.3):                            # textos entrando
         add(buf, tick_whoosh(0.45, int(tt * 10)), tt, 0.20, 0.0)
-    # cenas 2-5: brownie abre
-    for tt, v in ((EV["s2_open"], 0.85), (EV["s3_open"], 0.8), (EV["s4_open"], 0.7), (EV["s5_open"], 0.7)):
-        add(buf, crunch(1.0, 0.9), tt - 0.05, v); add(buf, crunch(0.6, 0.5), tt + 0.5, v * 0.5, 0.2)
+    # cena 2: mordida no clássico (casquinha estalando)
+    for tt in (EV["s2_bite"] - 0.4, EV["s2_bite"] - 0.2): add(buf, crack_small(0.9), tt, 0.4)
+    add(buf, crunch(1.0, 0.95), EV["s2_bite"] - 0.03, 0.9); add(buf, crunch(0.6, 0.5), EV["s2_bite"] + 0.35, 0.45, 0.2)
     # troca de recheio: pop + brilhos
     for tt in EV["s3_switch"][1:] + EV["s4_switch"][1:]:
         add(buf, pop(820), tt, 0.55); add(buf, chime(2093, 1.0), tt + 0.03, 0.15)
         for j in range(3): add(buf, chime(2349 * (1 + 0.2 * j), 0.9), tt + 0.12 + 0.18 * j, 0.09, -0.4 + 0.4 * j)
-    for tt in (EV["s3_open"] + 0.5, EV["s4_open"] + 0.4, EV["s5_open"] + 0.4):
-        for k in range(4): add(buf, glop(200 + 40 * k, 0.2), tt + 0.4 * k, 0.26, r.uniform(-.4, .4))
-    for c0 in EV["s4_pour"] + (EV["s5_pour"],):                              # recheio escorrendo por cima
-        trickle(buf, c0, c0 + 2.4, 0.13, int(c0 * 3))
+    for tt in EV["s3_switch"] + EV["s4_switch"] + (EV["s5_top"],):           # cobertura sendo confeitada/espalhada
+        for k in range(5): add(buf, glop(190 + 35 * k, 0.2), tt + 0.12 * k + 0.05, 0.28, r.uniform(-.4, .4))
+        trickle(buf, tt, tt + 0.9, 0.08, int(tt * 7))
     # Kinder Bueno cai e pousa
     tk = EV["s5_kinder"]
     add(buf, tick_whoosh(0.5, 41), tk - 0.05, 0.3); add(buf, pop(300), tk + 0.55, 0.65); add(buf, crack_small(1.0), tk + 0.55, 0.5)

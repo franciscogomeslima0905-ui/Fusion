@@ -18,10 +18,9 @@ CORNER_HIDE = 28.9
 
 EV = dict(
     pour=0.15,
-    s2_open=4.4,
-    s3_open=9.2, s3_switch=(9.2, 11.7, 14.1),       # meio amargo -> ao leite -> branco
-    s4_open=17.0, s4_switch=(17.0, 19.9),           # nutella -> doce de leite
-    s4_pour=(17.9, 20.4),
-    s5_open=23.1, s5_pour=24.2, s5_kinder=25.0,
+    s2_bite=5.6,                                     # mordida no clássico
+    s3_switch=(9.2, 11.7, 14.1),                     # meio amargo -> ao leite -> branco (cobertura em espirais)
+    s4_switch=(17.0, 19.9),                          # nutella (espalha) -> doce de leite
+    s5_top=23.1, s5_kinder=25.0,                     # chantilly + ganache; pedaços de Kinder Bueno caem
     s6_logo=29.3, s6_text=30.3, s6_cta=32.0,
 )

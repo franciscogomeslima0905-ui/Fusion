@@ -209,8 +209,6 @@ def contact_shadow(fr, cx, cy, ax, elev, strength=150):
 
 
 # ------------------------------------------------------------------ construção dos brownies (uma vez por processo)
-TRAD = Brownie(11, filling=False, height=0.44, gloss=1.0)
-RECH = Brownie(23, filling=True, height=0.50, gloss=1.35, crust=0.17, crackle=1.3)
 
 
 def pair(B, phi, sx, lift, theta, extra_y=0.0):
@@ -271,110 +269,6 @@ def sparkles(fr, t, pts, speed=2.0, size=26):
     lay = lay.filter(ImageFilter.GaussianBlur(0.6))
     fr.alpha_composite(lay)
 
-# ================================================================== CENA 1 — GANCHO (0–4)
-SP1 = [(310, 760, 0.3), (760, 700, 1.7), (470, 930, 2.9), (820, 1040, 4.1), (270, 1100, 5.3), (600, 640, 6.2)]
-
-
-def scene1(fr, t):
-    fr.alpha_composite(BG["choc"]())
-    fr.alpha_composite(bokeh(W, H, t, [CEREJA, ROSA, (255, 190, 120)], 14, 3, alpha=55))
-    th = math.radians(kf(t, [(0, -34), (4.2, 10)]))
-    S = kf(t, [(0, 720), (4.2, 1060)])
-    el = kf(t, [(0, 27), (4.2, 38)])
-    cy = kf(t, [(0, 1060), (4.2, 1010)])
-    c = cam(S, 540, cy, el)
-    ey = math.radians(el)
-    base_y = cy + S * (TRAD.h / 2 + 0.02) * math.cos(ey)
-    draw_plate(fr, 540, base_y, S * 0.84, CREME, ey)
-    contact_shadow(fr, 540, base_y, S * 0.62, ey, 170)
-    info = place(fr, [TRAD.whole(rot=rotY(th))], c)
-    # ---- chocolate escorrendo sobre o brownie
-    top = next((i for i in info if i["name"] == "top"), None)
-    if top is not None:
-        q = top["quad"]
-        ctr = q.mean(0)
-        a0 = 0.40 * (q[:, 0].max() - q[:, 0].min())
-        b0 = 0.40 * (q[:, 1].max() - q[:, 1].min())
-        t_in = EV["pour"]
-        stream_y = kf(t, [(t_in, -30), (t_in + 0.55, ctr[1])])
-        grow = ease_out((t - t_in - 0.45) / 2.2)
-        m = half_mask()
-        d = ImageDraw.Draw(m)
-        sw = 44 * (1 - 0.25 * ease_out((t - t_in) / 2))
-        if t > t_in and stream_y > 2:
-            d.rectangle([(ctr[0] - sw / 2) / 2, 0, (ctr[0] + sw / 2) / 2, stream_y / 2], fill=255)
-            d.ellipse([(ctr[0] - sw * 0.62) / 2, (stream_y - sw * 0.5) / 2, (ctr[0] + sw * 0.62) / 2, (stream_y + sw * 0.5) / 2], fill=255)
-        if grow > 0:
-            a, b = a0 * grow, b0 * grow
-            d.ellipse([(ctr[0] - a) / 2, (ctr[1] - b) / 2, (ctr[0] + a) / 2, (ctr[1] + b) / 2], fill=255)
-            bars = []
-            rng = np.random.default_rng(5)
-            for k in range(9):
-                u = rng.uniform(-0.86, 0.86)
-                yb = ctr[1] + b * math.sqrt(max(0, 1 - u * u)) - 8
-                bars.append((ctr[0] + u * a, yb, rng.uniform(22, 36), rng.uniform(70, 190) * (S / 800), 1.5 + rng.uniform(0, 1.3), 1.7))
-            drips_mask(m, bars, t)
-        over(fr, choc_rgba(m, t=t))
-    sparkles(fr, t, SP1, 2.2, 28)
-    # ---- texto
-    rows = [(("Qual é o seu", CREME),), (("sabor ", ROSA), ("favorito", CREME)), (("de brownie?", CREME),)]
-    for i, sp in enumerate(rows):
-        ai = ease_out((t - 0.12 - i * 0.26) / 0.5)
-        spr = rich(sp, F_SERIF_BI, 90, shadow=0.55)
-        blit(fr, spr, 540, 430 + i * 112 + (1 - ai) * 36, 0.94 + 0.06 * ai, ai)
-
-
-
-
-# ------------------------------------------------------------------ recheios e peças especiais
-FILLS = dict(   # (claro, escuro) de cada recheio
-    amargo=((104, 56, 36), (66, 32, 20)),
-    leite=((186, 120, 78), (152, 94, 58)),
-    branco=((250, 240, 218), (234, 216, 186)),
-    nutella=((126, 74, 46), (94, 52, 32)),
-    doce=((206, 136, 62), (178, 106, 42)),
-)
-POUR = dict(nutella=(104, 58, 34), doce=(190, 120, 48), branco=(248, 239, 218))   # cor do recheio que escorre
-BR = {k: Brownie(23, filling=True, height=0.50, gloss=1.35, crust=0.17, crackle=1.3, fill=v) for k, v in FILLS.items()}
-
-
-def _kinder_textures():
-    rng = np.random.default_rng(5)
-    S = 256
-    # chocolate ao leite brilhante (topo e laterais)
-    n = fn(S, S, 9, 8, 3)
-    top = to_img(mix((112, 62, 34), (156, 92, 52), n))
-    d = ImageDraw.Draw(top)
-    for x in range(-S, S * 2, 22):
-        d.line([(x, 0), (x + S // 2, S)], fill=(176, 112, 70, 90), width=3)
-    side = to_img(mix((104, 56, 30), (146, 86, 48), fn(128, S, 10, 6, 3)))
-    # corte do wafer (extremidades): casca de chocolate + camadas de wafer e creme
-    W2, H2 = 256, 160
-    end = Image.new("RGBA", (W2, H2), (110, 60, 34, 255))
-    d = ImageDraw.Draw(end)
-    d.rectangle([14, 14, W2 - 14, H2 - 14], fill=(240, 226, 196, 255))
-    layers = 4
-    hh = (H2 - 28) / layers
-    for i in range(layers):
-        y0 = 14 + i * hh
-        d.rectangle([14, y0 + 3, W2 - 14, y0 + hh - 3], fill=(222, 178, 102, 255))
-        for x in range(18, W2 - 18, 9):
-            d.line([(x, y0 + 4), (x, y0 + hh - 4)], fill=(196, 146, 78, 255), width=1)
-    return top, side, end
-
-
-KTOP, KSIDE, KEND = _kinder_textures()
-
-
-def kinder_piece(half, k):
-    """pedaço de Kinder Bueno que cai e pousa em cima da metade `half` (k: 0 = no alto, 1 = pousou)"""
-    h = half["size"][1]
-    local = np.array([-0.07, h / 2 + 0.11 + (1 - k) * 1.5, 0.05])
-    R = half["rot"] @ rotY(-1.2) @ rotZ(0.22 * (1 - k) + 0.05)
-    return dict(size=(0.50, 0.19, 0.22), pos=half["pos"] + half["rot"] @ local, rot=R, cham=0.0,
-                tex=dict(top=KTOP, front=KSIDE, back=KSIDE, left=KEND, right=KEND))
-
-
 # ------------------------------------------------------------------ elementos de apoio
 @lru_cache(None)
 def chip(txt, kind="creme", size=36):
@@ -418,76 +312,6 @@ def title_block(fr, t, t0, label, title, sub, lab_col, title_col, sub_col, title
         blit(fr, line(sub, F_SERIF_BI, 42, sub_col, shadow=shadow * 0.8), 540, 648 + (1 - a) * 24, 1, a)
 
 
-def ooze(fr, info, t, t0, color):
-    """recheio brilhante que vaza do corte + gotas cremosas"""
-    cuts = [i for i in info if i["name"] in ("left", "right") and i["owner"].get("cut") == i["name"]]
-    if not cuts:
-        return
-    m = half_mask()
-    d = ImageDraw.Draw(m)
-    g = ease_out((t - t0) / 1.0)
-    for ci, i in enumerate(cuts):
-        q = i["quad"]
-        outward = np.array([1.0 if i["name"] == "right" else -1.0, 0.0])
-        pts = [tuple(qpoint(q, u, 0.53) + outward * 7 * g) for u in np.linspace(0.04, 0.96, 12)]
-        hband = np.linalg.norm(qpoint(q, 0.5, 0.70) - qpoint(q, 0.5, 0.36)) * 0.80 * g
-        for p0, p1 in zip(pts, pts[1:]):
-            d.line([(p0[0] / 2, p0[1] / 2), (p1[0] / 2, p1[1] / 2)], fill=255, width=max(1, int(hband / 2)))
-        bars = []
-        for k, u in enumerate((0.22, 0.52, 0.80)):
-            p = qpoint(q, u, 0.69)
-            bars.append((p[0], p[1], 18 + 6 * k, (50 + 40 * ((k + ci) % 2)) * (np.linalg.norm(q[0] - q[1]) / 380), t0 + 0.6 + 0.35 * k, 2.0))
-        drips_mask(m, bars, t)
-    over(fr, choc_rgba(m, base=color, bevel=5.0, goo=4, K=34.0, gloss=1.25, t=t))
-
-
-def pour_on_cuts(fr, info, t, c0, color):
-    """recheio que cai do alto sobre os cortes e escorre"""
-    cuts = [i for i in info if i["name"] in ("left", "right") and i["owner"].get("cut") == i["name"]]
-    if not cuts or t <= c0:
-        return
-    m = half_mask()
-    d = ImageDraw.Draw(m)
-    bars = []
-    for ci, i in enumerate(cuts):
-        q = i["quad"]
-        topm = qpoint(q, 0.5, 0.0)
-        sy = kf(t, [(c0, -30), (c0 + 0.6, topm[1] - 6)])
-        if sy > 2:
-            d.rectangle([(topm[0] - 16) / 2, 0, (topm[0] + 16) / 2, sy / 2], fill=255)
-        gg = ease_out((t - c0 - 0.5) / 1.4)
-        if gg > 0:
-            pa, pb = qpoint(q, 0.03, 0.0), qpoint(q, 0.97, 0.0)
-            d.line([(pa[0] / 2, pa[1] / 2 - 2), (pb[0] / 2, pb[1] / 2 - 2)], fill=255, width=int(16 * gg))
-        hq = np.linalg.norm(q[3] - q[0])
-        for k, u in enumerate((0.14, 0.34, 0.55, 0.78, 0.92)):
-            p = qpoint(q, u, 0.0)
-            bars.append((p[0], p[1] - 3, 15 + 5 * ((k + ci) % 3), hq * (0.45 + 0.30 * ((k * 2 + ci) % 3) / 2), c0 + 0.7 + 0.28 * k + 0.15 * ci, 2.4))
-    drips_mask(m, bars, t)
-    over(fr, choc_rgba(m, base=color, gloss=1.15, t=t))
-
-
-def open_cam(t, keys_S, keys_el, keys_cy):
-    S, el, cy = kf(t, keys_S), kf(t, keys_el), kf(t, keys_cy)
-    return S, el, cy
-
-
-def draw_pair_scene(fr, t, B, t_open, open_dur, S, el, cy, plate_col, bump=1.0, kinder=None):
-    """prato + metades do brownie abertas. Devolve info das faces."""
-    open_u = clamp((t - t_open) / open_dur)
-    open_k = 1 - (1 - open_u) ** 3
-    ey = math.radians(el)
-    c = cam(S * bump, 540, cy, el)
-    base_y = cy + S * (B.h / 2 + 0.02) * math.cos(ey)
-    draw_plate(fr, 540, base_y, S * kf(open_k, [(0, 0.86), (1, 1.36)]), plate_col, ey, 0.0)
-    contact_shadow(fr, 540, base_y, S * (0.62 + 0.30 * open_k), ey, int(150 - 125 * open_k))
-    th = math.radians(1.5 * math.sin((t - t_open) * 0.7))
-    solids = pair(B, math.radians(44) * open_k, 0.345 * open_k + 0.004, 0.02 * open_k, th)
-    if kinder is not None:
-        solids.append(kinder_piece(solids[0], kinder))
-    return place(fr, solids, c), open_k
-
-
 def crumbs_burst(fr, t, t0, cy, S, seed, n=24):
     cr = make_crumbs(n, t0, 540, cy - S * 0.1, S * 0.4, seed, vmax=260, rmin=3, rmax=8, up=-300)
     fr.alpha_composite(draw_crumbs(Image.new("RGBA", (W, H), (0, 0, 0, 0)), cr, t))
@@ -509,6 +333,103 @@ def corner_logo(fr, t):
         paste_logo(fr, names[idx], x, y, size, a_vis)
 
 
+# ================================================================== BROWNIE 3D (rm.py)
+import rm
+from rm import BrownieMats, topping_swirl, topping_streak, topping_smooth, topping_half, compose_topping
+
+MATS = BrownieMats(11)
+TOPS = dict(
+    amargo=topping_swirl((60, 28, 18), 1.0, seed=3),
+    leite=topping_swirl((158, 98, 60), 0.95, seed=4),
+    branco=topping_swirl((250, 242, 224), 0.9, seed=5),
+    nutella=topping_streak((104, 56, 32), 0.85, seed=6),
+    doce=topping_smooth((196, 122, 50), 1.0, seed=7),
+    kinder=topping_half((250, 242, 224), (64, 30, 19), seed=9),
+)
+BH = rm.B       # semi-altura do corpo
+
+
+def cam3(S, cx, cy, el):
+    return dict(S=S, cx=cx, cy=cy, elev=math.radians(el), D=5.2)
+
+
+def place_rm(fr, c, yaw, top=None, kin=(), bite=None):
+    out = rm.render(MATS, c, rotY(yaw), np.zeros(3), top=top, kin=kin, bite=bite)
+    if out is None:
+        return
+    lay, (x, y) = out
+    paste(fr, lay, x, y)
+
+
+def plate_under(fr, c, plate_col, rad_mul=0.95, shade=0.06):
+    ey = c["elev"]
+    base_y = c["cy"] + c["S"] * (BH + 0.02) * math.cos(ey)
+    draw_plate(fr, c["cx"], base_y, c["S"] * rad_mul, plate_col, ey, shade)
+    contact_shadow(fr, c["cx"], base_y, c["S"] * 0.60, ey, 135)
+    return base_y
+
+
+def plate_crumbs(fr, c, base_y, seed=5, n=16):
+    rng = np.random.default_rng(seed)
+    d = ImageDraw.Draw(fr, "RGBA")
+    for _ in range(n):
+        x = c["cx"] + rng.uniform(-0.95, 0.95) * c["S"] * 0.9
+        y = base_y + rng.uniform(-0.2, 0.55) * c["S"] * math.sin(c["elev"]) * 0.9
+        r = rng.uniform(2.5, 6.5)
+        pts = [(x + r * math.cos(a) * rng.uniform(0.7, 1.2), y + r * math.sin(a) * 0.8 * rng.uniform(0.7, 1.2)) for a in np.linspace(0, 6.28, 6, endpoint=False)]
+        d.polygon(pts, fill=(54 + int(rng.integers(0, 30)), 26, 16, 255))
+
+
+def top_quad(c, yaw, y=BH):
+    R = rotY(yaw)
+    return np.array([rm.project(c, R, np.zeros(3), (sx * rm.A, y, sz * rm.C))[0] for sx, sz in ((-1, -1), (1, -1), (1, 1), (-1, 1))])
+
+
+# ================================================================== CENA 1 — GANCHO (0–3,5)
+SP1 = [(310, 760, 0.3), (760, 700, 1.7), (470, 930, 2.9), (820, 1040, 4.1), (270, 1100, 5.3), (600, 640, 6.2)]
+
+
+def scene1(fr, t):
+    fr.alpha_composite(BG["choc"]())
+    fr.alpha_composite(bokeh(W, H, t, [CEREJA, ROSA, (255, 190, 120)], 14, 3, alpha=55))
+    yaw = math.radians(kf(t, [(0, -34), (3.9, 8)]))
+    S = kf(t, [(0, 620), (3.9, 860)])
+    el = kf(t, [(0, 30), (3.9, 40)])
+    cy = kf(t, [(0, 1060), (3.9, 1010)])
+    c = cam3(S, 540, cy, el)
+    base_y = plate_under(fr, c, CREME, 0.92, 0.0)
+    place_rm(fr, c, yaw)
+    # ---- chocolate escorrendo sobre o brownie (sobreposição de tela)
+    q = top_quad(c, yaw, BH + 0.02)
+    ctr = q.mean(0)
+    a0 = 0.40 * (q[:, 0].max() - q[:, 0].min()); b0 = 0.40 * (q[:, 1].max() - q[:, 1].min())
+    t_in = EV["pour"]
+    stream_y = kf(t, [(t_in, -30), (t_in + 0.55, ctr[1])])
+    grow = ease_out((t - t_in - 0.45) / 2.0)
+    m = half_mask()
+    d = ImageDraw.Draw(m)
+    sw = 44 * (1 - 0.25 * ease_out((t - t_in) / 2))
+    if t > t_in and stream_y > 2:
+        d.rectangle([(ctr[0] - sw / 2) / 2, 0, (ctr[0] + sw / 2) / 2, stream_y / 2], fill=255)
+        d.ellipse([(ctr[0] - sw * 0.62) / 2, (stream_y - sw * 0.5) / 2, (ctr[0] + sw * 0.62) / 2, (stream_y + sw * 0.5) / 2], fill=255)
+    if grow > 0:
+        a, b = a0 * grow, b0 * grow
+        d.ellipse([(ctr[0] - a) / 2, (ctr[1] - b) / 2, (ctr[0] + a) / 2, (ctr[1] + b) / 2], fill=255)
+        bars = []
+        rng = np.random.default_rng(5)
+        for k in range(9):
+            u = rng.uniform(-0.86, 0.86)
+            yb = ctr[1] + b * math.sqrt(max(0, 1 - u * u)) - 8
+            bars.append((ctr[0] + u * a, yb, rng.uniform(22, 36), rng.uniform(70, 190) * (S / 800), 1.3 + rng.uniform(0, 1.1), 1.6))
+        drips_mask(m, bars, t)
+    over(fr, choc_rgba(m, t=t))
+    sparkles(fr, t, SP1, 2.2, 28)
+    rows = [(("Qual é o seu", CREME),), (("sabor ", ROSA), ("favorito", CREME)), (("de brownie?", CREME),)]
+    for i, sp in enumerate(rows):
+        ai = ease_out((t - 0.12 - i * 0.26) / 0.5)
+        blit(fr, rich(sp, F_SERIF_BI, 90, shadow=0.55), 540, 430 + i * 112 + (1 - ai) * 36, 0.94 + 0.06 * ai, ai)
+
+
 # ================================================================== CENA 2 — O CLÁSSICO (3,5–8,5)
 def scene2(fr, t):
     fr.alpha_composite(BG["cream"]())
@@ -516,49 +437,46 @@ def scene2(fr, t):
     ImageDraw.Draw(ring).ellipse([-160, 560, 1240, 1960], outline=CEREJA + (26,), width=5)
     fr.alpha_composite(ring)
     fr.alpha_composite(bokeh(W, H, t, [ROSA, (255, 220, 190), CEREJA], 12, 8, alpha=34, speed=9))
-    o0 = EV["s2_open"]
-    S = kf(t, [(3.5, 540), (4.4, 440), (7.2, 420), (8.5, 500)])
-    el = kf(t, [(3.5, 29), (4.4, 25), (7.2, 21), (8.5, 18)])
-    cy = kf(t, [(3.5, 1050), (4.4, 1065), (7.2, 1080), (8.5, 1100)])
-    ey = math.radians(el)
-    if t < o0 - 0.04:
-        th = math.radians(-30 * (1 - ease_io((t - 3.5) / 0.9)))
-        base_y = cy + S * (TRAD.h / 2 + 0.02) * math.cos(ey)
-        draw_plate(fr, 540, base_y, S * 0.86, CEREJA, ey, 0.1)
-        contact_shadow(fr, 540, base_y, S * 0.62, ey, 150)
-        place(fr, [TRAD.whole(rot=rotY(th))], cam(S, 540, cy, el))
-    else:
-        info, k = draw_pair_scene(fr, t, TRAD, o0, 2.4, S, el, cy, CEREJA)
-        crumbs_burst(fr, t, o0 - 0.05, cy, S, 61)
+    yaw = math.radians(kf(t, [(3.5, -40), (6.0, -22), (8.5, -14)]))
+    S = kf(t, [(3.5, 640), (5.3, 600), (8.5, 700)])
+    el = kf(t, [(3.5, 33), (8.5, 30)])
+    cy = kf(t, [(3.5, 1090), (8.5, 1110)])
+    c = cam3(S, 540, cy, el)
+    base_y = plate_under(fr, c, CEREJA, 0.95, 0.1)
+    plate_crumbs(fr, c, base_y, 5)
+    tb = EV["s2_bite"]
+    k = ease_back((t - tb) / 0.45, 1.5) if t >= tb else 0.0
+    bite = ((0.50, 0.19, 0.33), 0.27 * clamp(k, 0, 1.15)) if k > 0.02 else None
+    place_rm(fr, c, yaw, bite=bite)
+    if t >= tb:
+        cr = make_crumbs(26, tb, 540 + S * 0.40, cy + S * 0.05, S * 0.12, 61, vmax=240, rmin=3, rmax=8, up=-330)
+        fr.alpha_composite(draw_crumbs(Image.new("RGBA", (W, H), (0, 0, 0, 0)), cr, t))
     title_block(fr, t, 4.0, "BROWNIE", "O clássico que conquista", "Casquinha crocante, interior macio e úmido.", CEREJA, CHOCOLATE, (110, 56, 40), 74)
 
 
 # ================================================================== CENA 3 — RECHEADÍSSIMO (8,5–16,5)
+def topped_scene(fr, t, names, switches, c0, yaw_keys, S_keys, el_keys, cy_keys, plate_col, bump_t=True, bg_fn=None):
+    sw = switches
+    idx = max([i for i, s0 in enumerate(sw) if t >= s0 - 0.001] or [0])
+    bump = bounce(t, sw[idx], 0.55) if idx > 0 else 1.0
+    yaw = math.radians(kf(t, yaw_keys)); S = kf(t, S_keys); el = kf(t, el_keys); cy = kf(t, cy_keys)
+    c = cam3(S * bump, 540, cy, el)
+    base_y = plate_under(fr, c, plate_col, 0.95, 0.0)
+    plate_crumbs(fr, c, base_y, 7)
+    top = compose_topping([TOPS[n] for n in names], list(sw), t)
+    return c, yaw, top, idx
+
+
 def scene3(fr, t):
     fr.alpha_composite(BG["cereja"]())
     fr.alpha_composite(bokeh(W, H, t, [ROSA, (255, 170, 150), CREME], 12, 4, alpha=48, speed=10))
     names = ["amargo", "leite", "branco"]
     sw = EV["s3_switch"]
-    idx = max([i for i, s0 in enumerate(sw) if t >= s0 - 0.001] or [0])
-    bump = bounce(t, sw[idx], 0.55) if idx > 0 else 1.0
-    S = kf(t, [(8.5, 560), (9.2, 430), (16.5, 470)])
-    el = kf(t, [(8.5, 30), (9.2, 24), (16.5, 19)])
-    cy = kf(t, [(8.5, 1050), (9.2, 1075), (16.5, 1095)])
-    ey = math.radians(el)
-    B = BR[names[idx]]
-    if t < EV["s3_open"] - 0.04:
-        th = math.radians(-30 * (1 - ease_io((t - 8.5) / 0.7)))
-        base_y = cy + S * (B.h / 2 + 0.02) * math.cos(ey)
-        draw_plate(fr, 540, base_y, S * 0.86, CREME, ey, 0.06)
-        contact_shadow(fr, 540, base_y, S * 0.62, ey, 150)
-        place(fr, [B.whole(rot=rotY(th))], cam(S, 540, cy, el))
-    else:
-        info, k = draw_pair_scene(fr, t, B, EV["s3_open"], 2.4, S, el, cy, CREME, bump)
-        ooze(fr, info, t, EV["s3_open"] + 0.5, FILLS[names[idx]][1])
-        crumbs_burst(fr, t, EV["s3_open"] - 0.05, cy, S, 71)
-        if idx > 0 and 0 <= t - sw[idx] < 1.0:       # brilhos a cada troca de recheio
-            sparkles(fr, t - sw[idx], [(300, 1000, 0.0), (770, 960, 0.8), (540, 900, 1.6), (880, 1090, 2.2), (220, 1100, 2.9)], 4.0, 36)
-    title_block(fr, t, 9.0, "RECHEADÍSSIMO", "Escolha o recheio", "Brownie com camada generosa de recheio.", ROSA, CREME, CREME, 100, 0.45)
+    c, yaw, top, idx = topped_scene(fr, t, names, sw, 0, [(8.5, -38), (12.5, -10), (16.5, 10)], [(8.5, 600), (16.5, 650)], [(8.5, 36), (16.5, 33)], [(8.5, 1140), (16.5, 1150)], CREME)
+    place_rm(fr, c, yaw, top=top)
+    if idx > 0 and 0 <= t - sw[idx] < 1.0:
+        sparkles(fr, t - sw[idx], [(300, 1000, 0.0), (770, 960, 0.8), (540, 900, 1.6), (880, 1090, 2.2), (220, 1100, 2.9)], 4.0, 36)
+    title_block(fr, t, 9.0, "RECHEADÍSSIMO", "Escolha o recheio", "Recheio cremoso por cima, bem generoso.", ROSA, CREME, CREME, 100, 0.45)
     chip_row(fr, ["Meio amargo", "Ao leite", "Branco"], idx if t >= sw[0] else -1, 758, "creme", 34, 6, t, 9.6)
 
 
@@ -568,41 +486,28 @@ def scene4(fr, t):
     fr.alpha_composite(bokeh(W, H, t, [ROSA, CEREJA, (255, 196, 130)], 16, 12, alpha=60, speed=12))
     names = ["nutella", "doce"]
     sw = EV["s4_switch"]
-    idx = max([i for i, s0 in enumerate(sw) if t >= s0 - 0.001] or [0])
-    bump = bounce(t, sw[idx], 0.55) if idx > 0 else 1.0
-    S = kf(t, [(16.5, 430), (17.0, 420), (22.5, 440)])
-    el = kf(t, [(16.5, 24), (22.5, 19)])
-    cy = kf(t, [(16.5, 1080), (22.5, 1100)])
-    B = BR[names[idx]]
-    info, k = draw_pair_scene(fr, t, B, EV["s4_open"], 1.8, S, el, cy, CREME, bump)
-    ooze(fr, info, t, EV["s4_open"] + 0.4, FILLS[names[idx]][1])
-    pour_on_cuts(fr, info, t, EV["s4_pour"][idx], POUR[names[idx]])
-    crumbs_burst(fr, t, EV["s4_open"] - 0.05, cy, S, 81, 18)
-    if 0 <= t - sw[idx] < 1.0 and idx > 0:
+    c, yaw, top, idx = topped_scene(fr, t, names, sw, 0, [(16.5, -34), (22.5, 4)], [(16.5, 610), (22.5, 660)], [(16.5, 35), (22.5, 33)], [(16.5, 1140), (22.5, 1150)], CREME)
+    place_rm(fr, c, yaw, top=top)
+    if idx > 0 and 0 <= t - sw[idx] < 1.0:
         sparkles(fr, t - sw[idx], [(300, 1000, 0.0), (770, 960, 0.8), (540, 900, 1.6), (880, 1090, 2.2)], 4.0, 36)
     title_block(fr, t, 17.0, "NUTELLA", "Nutella de verdade", "Ou com doce de leite — mesmo preço.", ROSA, CREME, CREME, 100, 0.55)
-    chip_row(fr, ["Nutella", "Doce de leite"], idx, 758, "creme", 34, 8, t, 17.5)
+    chip_row(fr, ["Nutella", "Doce de leite"], idx if t >= sw[0] else -1, 758, "creme", 34, 8, t, 17.5)
 
 
 # ================================================================== CENA 5 — BRANCO & KINDER BUENO (22,5–28,5)
 def scene5(fr, t):
     fr.alpha_composite(bg_img((250, 182, 202), (222, 120, 150), (540, 1000, 850, (255, 222, 232), 0.6)))
     fr.alpha_composite(bokeh(W, H, t, [CREME, CEREJA, (255, 214, 224)], 12, 14, alpha=50, speed=10))
-    S = kf(t, [(22.5, 430), (28.5, 450)])
-    el = kf(t, [(22.5, 24), (28.5, 19)])
-    cy = kf(t, [(22.5, 1080), (28.5, 1100)])
-    kk = ease_back((t - EV["s5_kinder"]) / 0.7, 1.3) if t >= EV["s5_kinder"] else 0.0
-    kin = None if t < EV["s5_kinder"] - 0.01 else kk
-    bump = bounce(t, EV["s5_kinder"] + 0.4, 0.5)
-    info, k = draw_pair_scene(fr, t, BR["branco"], EV["s5_open"], 1.8, S, el, cy, CREME, bump, kinder=kin)
-    ooze(fr, info, t, EV["s5_open"] + 0.4, FILLS["branco"][1])
-    pour_on_cuts(fr, info, t, EV["s5_pour"], POUR["branco"])
-    crumbs_burst(fr, t, EV["s5_open"] - 0.05, cy, S, 91, 18)
-    if t > EV["s5_kinder"] + 0.5:
+    sw = (EV["s5_top"],)
+    c, yaw, top, idx = topped_scene(fr, t, ["kinder"], sw, 0, [(22.5, -34), (28.5, 6)], [(22.5, 620), (28.5, 670)], [(22.5, 36), (28.5, 33)], [(22.5, 1120), (28.5, 1130)], CREME)
+    kin = []
+    for i, (tx, tz, hx, yaw_k, t_drop) in enumerate(((0.05, -0.03, 0.21, 0.6, EV["s5_kinder"]), (0.22, 0.15, 0.19, -0.25, EV["s5_kinder"] + 0.35))):
+        if t >= t_drop - 0.01:
+            kk = ease_back((t - t_drop) / 0.7, 1.2)
+            kin.append(((tx, rm.B + 0.135 + (1 - clamp(kk, 0, 1.2)) * 1.4, tz), hx, 0.065, 0.08, yaw_k + (1 - clamp(kk, 0, 1)) * 0.8))
+    place_rm(fr, c, yaw, top=top, kin=kin)
+    if t > EV["s5_kinder"] + 0.6:
         sparkles(fr, t - EV["s5_kinder"], [(330, 930, 0.0), (760, 900, 1.3), (560, 840, 2.6), (880, 1060, 0.7), (230, 1040, 2.0)], 3.0, 36)
-    # selo "especial da casa"
-    a = ease_back((t - 23.6) / 0.6)
-    tag = chip("ESPECIAL DA CASA", "choc", 28)
     title_block(fr, t, 23.0, "ESPECIAL DA CASA", "Branco & Kinder Bueno", "Chocolate branco com Kinder Bueno por cima.", CHOCOLATE, CHOCOLATE, (110, 56, 40), 84)
 
 
