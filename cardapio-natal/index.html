@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Cardápio de Natal — GB GOBÊ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Manrope:wght@500;600;700;800&family=Oswald:wght@500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --frame:#5b1f2b;      /* bordô escuro da moldura */
+    --cream:#f8f0e6;
+    --crimson:#a3143f;    /* títulos / bordas */
+    --wine:#5b1f2b;       /* nomes dos sabores */
+    --pink:#f4b9d2;
+    --green:#1f5b3c;
+    --green2:#2e7d52;
+    --gold:#e2b04a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#2b0f15}
+  body{width:960px;height:1900px;font-family:'Manrope',sans-serif;color:var(--wine)}
+
+  .poster{position:relative;width:960px;height:1900px;background:var(--frame);overflow:hidden}
+  .card{position:absolute;left:24px;top:14px;right:24px;bottom:14px;background:var(--cream);border-radius:34px;overflow:hidden}
+  .snow{position:absolute;inset:0;pointer-events:none}
+
+  /* ---------- cabeçalho ---------- */
+  .lights{position:absolute;left:0;top:0;width:100%;height:120px;z-index:5}
+  h1{
+    position:absolute;left:0;right:0;top:92px;text-align:center;
+    font-family:'Alfa Slab One',serif;font-weight:400;font-size:142px;line-height:1;
+    color:var(--crimson);letter-spacing:1px;
+    text-shadow:0 5px 0 rgba(91,31,43,.12);
+  }
+  .hat{position:absolute;z-index:6;width:100px;left:792px;top:24px;transform:rotate(12deg)}
+  .edition{
+    position:absolute;left:50%;top:252px;transform:translateX(-50%);
+    display:flex;align-items:center;gap:16px;z-index:4;
+  }
+  .edition .ribbon{
+    background:var(--green);color:#fff;font-family:'Oswald',sans-serif;font-weight:600;
+    letter-spacing:5px;font-size:24px;padding:8px 34px 7px;border-radius:6px;
+    border:2px dashed rgba(255,255,255,.55);outline:4px solid var(--green);outline-offset:-1px;
+    box-shadow:0 6px 0 rgba(31,91,60,.25);white-space:nowrap;
+  }
+  .edition svg{width:52px;height:52px}
+
+  /* ---------- itens ---------- */
+  .items{position:absolute;left:0;right:0;top:392px}
+  .item{position:absolute;left:42px;right:42px;height:150px;border:3px solid var(--crimson);border-radius:30px;background:var(--cream)}
+  .item .txt{position:absolute;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center}
+  .item.l .txt{left:252px;right:24px;align-items:flex-start;text-align:left}
+  .item.r .txt{right:252px;left:24px;align-items:flex-end;text-align:right}
+  .name{white-space:nowrap;display:flex;align-items:baseline;gap:18px;line-height:1}
+  .item.r .name{flex-direction:row}
+  .name b{font-family:'Oswald',sans-serif;font-weight:700;font-size:44px;color:var(--wine);letter-spacing:.3px;text-transform:uppercase}
+  .name i{font-style:normal;font-family:'Oswald',sans-serif;font-weight:700;font-size:35px;color:var(--crimson)}
+  .d1{margin-top:10px;font-weight:800;font-size:14.5px;letter-spacing:.2px;text-transform:uppercase}
+  .d2{margin-top:6px;font-weight:600;font-size:14.5px;text-transform:uppercase}
+  .d2 strong{font-weight:800}
+
+  .photo{position:absolute;width:236px;height:236px;top:-50px;z-index:3}
+  .photo::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--pink)}
+  .photo img{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;object-fit:cover}
+  .item.l .photo{left:-20px}
+  .item.l .photo::before{transform:translate(14px,20px)}
+  .item.r .photo{right:-20px}
+  .item.r .photo::before{transform:translate(-14px,20px)}
+
+  .tag{
+    position:absolute;z-index:6;font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;
+    color:#fff;background:var(--crimson);font-size:17px;line-height:1.05;text-align:center;
+    padding:7px 14px 6px;border-radius:9px;box-shadow:0 4px 0 rgba(91,31,43,.25);letter-spacing:.4px;
+  }
+  .tag.classico{left:-26px;top:-62px;transform:rotate(-14deg)}
+  .tag.especial{right:-24px;top:-62px;transform:rotate(11deg)}
+
+  /* destaque: novo sabor */
+  .item.new{height:176px;border-color:var(--green);border-width:4px;background:
+      linear-gradient(180deg,#fffaf0,#fbf1df);box-shadow:0 0 0 6px rgba(31,91,60,.12)}
+  .item.new .photo{width:262px;height:262px;top:-62px;left:-26px}
+  .item.new .photo::before{background:var(--gold);transform:translate(14px,22px)}
+  .item.new .photo img{border:6px solid #fff}
+  .item.new.l .txt{left:268px}
+  .item.new .name b{font-size:50px;color:var(--green)}
+  .item.new .name i{font-size:39px;color:var(--crimson)}
+  .tag.novo{left:-30px;top:-80px;transform:rotate(-13deg);background:var(--green);font-size:20px;padding:8px 18px 7px;border:2px dashed rgba(255,255,255,.7);outline:4px solid var(--green);outline-offset:-1px}
+  .star{position:absolute;right:20px;top:-26px;z-index:7;width:62px;height:62px}
+
+  /* ---------- rodapé ---------- */
+  .note{
+    position:absolute;left:50%;transform:translateX(-50%);top:1636px;
+    background:var(--pink);color:var(--crimson);font-weight:800;font-size:16.5px;letter-spacing:.8px;
+    padding:15px 36px;border-radius:40px;text-transform:uppercase;white-space:nowrap;z-index:4;
+  }
+  .wish{position:absolute;left:0;right:0;top:1560px;text-align:center;font-family:'Pacifico',cursive;font-size:36px;color:var(--green);z-index:4}
+  .seal{position:absolute;left:50%;top:1706px;transform:translateX(-50%);width:112px;height:112px;z-index:4}
+  .contact{position:absolute;left:0;right:0;bottom:22px;display:flex;justify-content:center;gap:44px;font-weight:700;font-size:16.5px;color:var(--wine);z-index:4}
+  .contact span{display:flex;align-items:center;gap:9px}
+  .contact svg{width:21px;height:21px;fill:none;stroke:var(--wine);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  .holly-l,.holly-r{position:absolute;z-index:4;width:210px}
+  .holly-l{left:-16px;bottom:-8px}
+  .holly-r{right:-16px;bottom:-8px;transform:scaleX(-1)}
+</style>
+</head>
+<body>
+
+<!-- símbolos reutilizáveis -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="flake" viewBox="-50 -50 100 100">
+      <g stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none">
+        <g id="arm"><path d="M0 0V-44M0 -26L-12 -38M0 -26L12 -38M0 -12L-8 -20M0 -12L8 -20"/></g>
+        <use href="#arm" transform="rotate(60)"/><use href="#arm" transform="rotate(120)"/>
+        <use href="#arm" transform="rotate(180)"/><use href="#arm" transform="rotate(240)"/>
+        <use href="#arm" transform="rotate(300)"/>
+      </g>
+    </symbol>
+    <symbol id="leaf" viewBox="0 0 100 50">
+      <path d="M2 25 C12 6 22 14 30 8 C36 18 46 4 56 10 C62 20 74 6 84 14 C90 20 98 22 98 25 C98 28 90 30 84 36 C74 44 62 30 56 40 C46 46 36 32 30 42 C22 36 12 44 2 25Z" fill="#1f5b3c"/>
+      <path d="M6 25H92" stroke="#2e7d52" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <radialGradient id="glow"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".45" stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+  </defs>
+</svg>
+
+<div class="poster">
+  <div class="card">
+    <svg class="snow" id="snow" viewBox="0 0 912 1872" preserveAspectRatio="none"></svg>
+
+    <!-- luzinhas de Natal -->
+    <svg class="lights" viewBox="0 0 912 120" id="lights"></svg>
+
+    <h1>CARDÁPIO</h1>
+
+    <!-- gorro de Papai Noel no "O" -->
+    <svg class="hat" viewBox="0 0 130 120">
+      <path d="M14 98 C10 56 40 18 86 24 C100 26 108 40 104 54 C100 64 94 74 100 98Z" fill="#c8102e"/>
+      <path d="M14 98 C10 56 40 18 86 24" fill="none" stroke="#e8405a" stroke-width="5" stroke-linecap="round" opacity=".6"/>
+      <rect x="6" y="90" width="104" height="26" rx="13" fill="#fff"/>
+      <circle cx="98" cy="22" r="15" fill="#fff"/>
+      <circle cx="94" cy="18" r="5" fill="#f1e9e0"/>
+    </svg>
+
+    <div class="edition">
+      <svg viewBox="0 0 100 50" style="width:92px;height:46px"><use href="#leaf"/><circle cx="46" cy="30" r="7" fill="#c8102e"/><circle cx="60" cy="33" r="7" fill="#c8102e"/><circle cx="44" cy="28" r="2" fill="#fff" opacity=".7"/><circle cx="58" cy="31" r="2" fill="#fff" opacity=".7"/></svg>
+      <div class="ribbon">EDIÇÃO DE NATAL</div>
+      <svg viewBox="0 0 100 50" style="width:92px;height:46px;transform:scaleX(-1)"><use href="#leaf"/><circle cx="46" cy="30" r="7" fill="#c8102e"/><circle cx="60" cy="33" r="7" fill="#c8102e"/><circle cx="44" cy="28" r="2" fill="#fff" opacity=".7"/><circle cx="58" cy="31" r="2" fill="#fff" opacity=".7"/></svg>
+    </div>
+
+    <div class="items">
+
+      <!-- 1 BROWNIE -->
+      <div class="item l" style="top:0">
+        <div class="tag classico">O<br>CLÁSSICO</div>
+        <div class="photo"><img src="assets/brownie.png" alt=""></div>
+        <div class="txt">
+          <div class="name"><b>Brownie</b><i>R$ 10,00</i></div>
+          <div class="d1">Casquinha crocante, interior macio e úmido</div>
+          <div class="d2">O clássico que conquista</div>
+        </div>
+      </div>
+
+      <!-- 2 RECHEADÍSSIMO -->
+      <div class="item r" style="top:236px">
+        <div class="photo"><img src="assets/recheadissimo.png" alt=""></div>
+        <div class="txt">
+          <div class="name"><b>Recheadíssimo</b><i>R$ 13,90</i></div>
+          <div class="d1">Brownie com camada generosa de recheio</div>
+          <div class="d2"><strong>Escolha:</strong> meio amargo, ao leite ou branco</div>
+        </div>
+      </div>
+
+      <!-- 3 NUTELLA -->
+      <div class="item l" style="top:472px">
+        <div class="photo"><img src="assets/nutella.png" alt=""></div>
+        <div class="txt">
+          <div class="name"><b>Nutella</b><i>R$ 15,90</i></div>
+          <div class="d1">Recheadíssimo com Nutella de verdade</div>
+          <div class="d2">Ou com <strong>doce de leite</strong>, mesmo preço</div>
+        </div>
+      </div>
+
+      <!-- 4 BRANCO & KINDER BUENO -->
+      <div class="item r" style="top:708px">
+        <div class="tag especial">ESPECIAL<br>DA CASA</div>
+        <div class="photo"><img src="assets/branco-kinder.png" alt=""></div>
+        <div class="txt">
+          <div class="name"><b style="font-size:35px">Branco &amp; Kinder Bueno</b><i>R$ 15,90</i></div>
+          <div class="d1">Recheio de chocolate branco</div>
+          <div class="d2">Com um pedaço de <strong>Kinder Bueno</strong> por cima</div>
+        </div>
+      </div>
+
+      <!-- 5 NOVO: DOUBLE KINDER -->
+      <div class="item l new" style="top:968px;height:190px">
+        <div class="tag novo">NOVIDADE<br>DE NATAL</div>
+        <svg class="star" viewBox="-50 -50 100 100"><path d="M0-46 L11-14 L45-14 L18 7 L28 40 L0 20 L-28 40 L-18 7 L-45-14 L-11-14Z" fill="#e2b04a" stroke="#fff" stroke-width="5" stroke-linejoin="round"/></svg>
+        <div class="photo"><img src="assets/double-kinder.png" alt=""></div>
+        <div class="txt">
+          <div class="name"><b>Double Kinder</b><i>R$ 17,90</i></div>
+          <div class="d1">Recheio duplo: chocolate branco + doce de leite</div>
+          <div class="d2">Com um pedaço de <strong>Kinder Bueno</strong> por cima</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note">Sem pronta entrega · Peça com 1 dia de antecedência</div>
+    <div class="wish">Feliz Natal!</div>
+    <img class="seal" src="assets/selo.png" alt="GB Gobê">
+
+    <!-- azevinho nos cantos -->
+    <svg class="holly-l" viewBox="0 0 210 130">
+      <g transform="translate(10 96) rotate(-24)"><use href="#leaf" width="110" height="55"/></g>
+      <g transform="translate(24 70) rotate(-58)"><use href="#leaf" width="100" height="50"/></g>
+      <g transform="translate(6 110) rotate(4)"><use href="#leaf" width="120" height="60"/></g>
+      <circle cx="40" cy="96" r="11" fill="#c8102e"/><circle cx="58" cy="102" r="11" fill="#c8102e"/><circle cx="48" cy="82" r="11" fill="#c8102e"/>
+      <circle cx="37" cy="92" r="3" fill="#fff" opacity=".75"/><circle cx="55" cy="98" r="3" fill="#fff" opacity=".75"/><circle cx="45" cy="78" r="3" fill="#fff" opacity=".75"/>
+    </svg>
+    <svg class="holly-r" viewBox="0 0 210 130">
+      <g transform="translate(10 96) rotate(-24)"><use href="#leaf" width="110" height="55"/></g>
+      <g transform="translate(24 70) rotate(-58)"><use href="#leaf" width="100" height="50"/></g>
+      <g transform="translate(6 110) rotate(4)"><use href="#leaf" width="120" height="60"/></g>
+      <circle cx="40" cy="96" r="11" fill="#c8102e"/><circle cx="58" cy="102" r="11" fill="#c8102e"/><circle cx="48" cy="82" r="11" fill="#c8102e"/>
+      <circle cx="37" cy="92" r="3" fill="#fff" opacity=".75"/><circle cx="55" cy="98" r="3" fill="#fff" opacity=".75"/><circle cx="45" cy="78" r="3" fill="#fff" opacity=".75"/>
+    </svg>
+
+    <div class="contact">
+      <span><svg viewBox="0 0 24 24"><path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 8 19.5z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .7c-1-.4-2-1.4-2.4-2.4l.7-1-1-2z"/></svg>(51) 99442-3535</span>
+      <span><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6"/></svg>@gobe.sweets</span>
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>9h às 18h · Tramandaí</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // PRNG determinístico (o desenho sai igual toda vez)
+  let s = 20261225; const rnd = () => (s = (s * 1664525 + 1013904223) % 4294967296) / 4294967296;
+  const NS = 'http://www.w3.org/2000/svg';
+
+  // flocos de neve de fundo (areas livres do cartão)
+  const snow = document.getElementById('snow');
+  for (let i = 0; i < 46; i++){
+    const u = document.createElementNS(NS,'use');
+    const size = 16 + rnd()*30, x = rnd()*912, y = 110 + rnd()*1740;
+    u.setAttribute('href','#flake');
+    u.setAttribute('x', x); u.setAttribute('y', y);
+    u.setAttribute('width', size); u.setAttribute('height', size);
+    u.setAttribute('transform', `rotate(${rnd()*60} ${x+size/2} ${y+size/2})`);
+    u.setAttribute('style', `color:${rnd()<.5?'#f4b9d2':'#a3143f'};opacity:${(.13+rnd()*.2).toFixed(2)}`);
+    snow.appendChild(u);
+  }
+  for (let i = 0; i < 70; i++){
+    const c = document.createElementNS(NS,'circle');
+    c.setAttribute('cx', rnd()*912); c.setAttribute('cy', 100 + rnd()*1770); c.setAttribute('r', 2+rnd()*3.5);
+    c.setAttribute('fill', rnd()<.5 ? '#f4b9d2':'#d9b3b9'); c.setAttribute('opacity', (.35+rnd()*.35).toFixed(2));
+    snow.appendChild(c);
+  }
+
+  // fio de luzes: festões em curva
+  const L = document.getElementById('lights');
+  const cols = ['#c8102e','#e2b04a','#2e7d52','#f08ab6','#e2b04a','#c8102e','#2e7d52','#f4b9d2'];
+  const wire = (x0,x1,sag) => {
+    const p = document.createElementNS(NS,'path');
+    p.setAttribute('d', `M${x0} -6 Q${(x0+x1)/2} ${sag} ${x1} -6`);
+    p.setAttribute('fill','none'); p.setAttribute('stroke','#1f5b3c'); p.setAttribute('stroke-width','3.5');
+    L.appendChild(p); return p;
+  };
+  const swags = 5, w = 912/swags; let k = 0;
+  for (let i=0;i<swags;i++){
+    const x0 = i*w, x1 = (i+1)*w, sag = 74;
+    const p = wire(x0,x1,sag);
+    const len = p.getTotalLength(), n = 7;
+    for (let j=1;j<=n;j++){
+      const pt = p.getPointAtLength(len*j/(n+1));
+      const col = cols[k++ % cols.length];
+      const g = document.createElementNS(NS,'g');
+      g.setAttribute('transform', `translate(${pt.x} ${pt.y})`);
+      g.innerHTML = `
+        <circle r="22" fill="${col}" opacity=".22"/>
+        <rect x="-3.5" y="-3" width="7" height="8" fill="#3b3b3b" rx="1.5"/>
+        <path d="M0 4 C-10 14 -9 24 0 28 C9 24 10 14 0 4Z" fill="${col}"/>
+        <ellipse cx="-3" cy="14" rx="2.2" ry="4.5" fill="#fff" opacity=".6"/>`;
+      L.appendChild(g);
+    }
+  }
+</script>
+</body>
+</html>
