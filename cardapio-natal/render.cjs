@@ -1,7 +1,7 @@
 const { chromium } = require('playwright');
 (async () => {
   const b = await chromium.launch();
-  const p = await b.newPage({ viewport: { width: 960, height: 1900 }, deviceScaleFactor: 2 });
+  const p = await b.newPage({ viewport: { width: 960, height: 1970 }, deviceScaleFactor: 2 });
   await p.goto('file://' + __dirname + '/index.html');
   await p.evaluate(() => document.fonts.ready);
   await p.waitForTimeout(800);
